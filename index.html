@@ -9,7 +9,14 @@
 
 <style>
 
-/* ===== LOADING SCREEN ===== */
+body{
+    margin:0;
+    font-family:'Vazirmatn',sans-serif;
+    background:#0b0b0b;
+    color:#fff;
+}
+
+/* ===== INTRO ===== */
 #intro{
     position:fixed;
     inset:0;
@@ -36,9 +43,6 @@
 #intro h1{
     color:#d4af37;
     margin-top:15px;
-    font-size:18px;
-    letter-spacing:2px;
-    animation: fadeUp 1.5s ease;
 }
 
 @keyframes popIn{
@@ -46,75 +50,57 @@
     100%{transform:scale(1); opacity:1;}
 }
 
-@keyframes fadeUp{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
 @keyframes fadeOut{
-    to{
-        opacity:0;
-        visibility:hidden;
-    }
+    to{opacity:0; visibility:hidden;}
 }
 
-/* ===== MAIN ===== */
-body{
-    margin:0;
-    font-family:'Vazirmatn',sans-serif;
-    background:#0b0b0b;
-    color:#fff;
-}
-
+/* ===== HEADER ===== */
 header{
     text-align:center;
-    padding:30px 10px;
+    padding:25px 10px;
     border-bottom:1px solid #d4af37;
 }
 
 header img{
-    width:100px;
-    height:100px;
+    width:90px;
+    height:90px;
     border-radius:50%;
     border:2px solid #d4af37;
     padding:4px;
     object-fit:cover;
-    margin-bottom:10px;
 }
 
 header h1{
     margin:0;
     color:#d4af37;
-    letter-spacing:2px;
 }
 
-header p{
-    color:#aaa;
-}
-
-.actions{
+/* ===== TABS ===== */
+.tabs{
     display:flex;
     justify-content:center;
     gap:10px;
-    margin-top:10px;
+    margin:15px 0;
     flex-wrap:wrap;
 }
 
-.btn{
+.tab-btn{
     background:#151515;
     border:1px solid #333;
     color:#fff;
     padding:8px 14px;
-    border-radius:8px;
-    text-decoration:none;
+    border-radius:20px;
+    cursor:pointer;
     font-size:13px;
+    transition:0.2s;
 }
 
-.btn:hover{
+.tab-btn.active{
     border-color:#d4af37;
     color:#d4af37;
 }
 
+/* ===== MENU ===== */
 .container{
     max-width:520px;
     margin:auto;
@@ -122,7 +108,12 @@ header p{
 }
 
 .section{
+    display:none;
     margin-bottom:30px;
+}
+
+.section.active{
+    display:block;
 }
 
 .section h2{
@@ -145,58 +136,67 @@ header p{
     color:#d4af37;
 }
 
+/* ===== FOOTER ===== */
 .footer{
     text-align:center;
     padding:25px 10px;
     color:#888;
     border-top:1px solid #222;
     font-size:13px;
-    margin-top:20px;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 INTRO LOADING -->
+<!-- INTRO -->
 <div id="intro">
     <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
     <h1>HAYAT COMPLEX</h1>
 </div>
 
+<!-- HEADER -->
 <header>
     <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
     <h1>HAYAT COMPLEX</h1>
-    <p>☕ منوی دیجیتال کافه</p>
-
-    <div class="actions">
-        <a class="btn" href="https://instagram.com/hayat_complex" target="_blank">📷 اینستاگرام</a>
-        <a class="btn" href="tel:+989011286503">📞 تماس</a>
-    </div>
 </header>
+
+<!-- TABS -->
+<div class="tabs">
+    <button class="tab-btn active" onclick="showTab('hot', this)">☕ گرم</button>
+    <button class="tab-btn" onclick="showTab('cold', this)">🧊 سرد</button>
+</div>
 
 <div class="container">
 
-<div class="section">
+<!-- HOT -->
+<div id="hot" class="section active">
+
 <h2>نوشیدنی‌های گرم</h2>
+
 <div class="card"><span>اسپرسو</span><span class="price">60</span></div>
 <div class="card"><span>آمریکانو</span><span class="price">100</span></div>
 <div class="card"><span>لاته</span><span class="price">160</span></div>
 <div class="card"><span>کاپوچینو</span><span class="price">160</span></div>
 <div class="card"><span>موکا</span><span class="price">160</span></div>
 <div class="card"><span>کارامل ماکیاتو</span><span class="price">160</span></div>
+
 </div>
 
-<div class="section">
+<!-- COLD -->
+<div id="cold" class="section">
+
 <h2>نوشیدنی‌های سرد</h2>
+
 <div class="card"><span>آیس لاته</span><span class="price">160</span></div>
 <div class="card"><span>موهیتو</span><span class="price">160</span></div>
 <div class="card"><span>شیک‌ها</span><span class="price">190</span></div>
-</div>
 
 </div>
 
+</div>
+
+<!-- FOOTER -->
 <div class="footer">
 📷 @hayat_complex | 📞 +98 901 128 6503
 </div>
@@ -204,7 +204,15 @@ header p{
 <script>
 setTimeout(()=>{
     document.getElementById("intro").style.display="none";
-}, 2500);
+},2500);
+
+function showTab(tab, btn){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+
+    document.getElementById(tab).classList.add('active');
+    btn.classList.add('active');
+}
 </script>
 
 </body>
