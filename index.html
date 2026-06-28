@@ -184,7 +184,7 @@ header h1{
     padding-right:10px;
 }
 
-/* ================= CARDS ================= */
+/* ================= CINEMATIC CARDS (Scroll Reveal) ================= */
 .card{
     background:#151515;
     padding:11px 14px;
@@ -192,7 +192,17 @@ header h1{
     border-radius:10px;
     display:flex;
     justify-content:space-between;
-    transition:0.3s;
+
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 0.6s ease;
+
+    border:1px solid rgba(212,175,55,0.05);
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .card:hover{
@@ -265,24 +275,28 @@ html{scroll-behavior:smooth;}
 <!-- HOT -->
 <div id="hot" class="section active">
 <h2>نوشیدنی‌های گرم</h2>
+
 <div class="card"><span>اسپرسو</span><span class="price">60</span></div>
 <div class="card"><span>آمریکانو</span><span class="price">100</span></div>
 <div class="card"><span>لاته</span><span class="price">160</span></div>
 <div class="card"><span>کاپوچینو</span><span class="price">160</span></div>
 <div class="card"><span>موکا</span><span class="price">160</span></div>
+
 </div>
 
 <!-- COLD -->
 <div id="cold" class="section">
 <h2>نوشیدنی‌های سرد</h2>
+
 <div class="card"><span>آیس لاته</span><span class="price">160</span></div>
 <div class="card"><span>موهیتو</span><span class="price">160</span></div>
 <div class="card"><span>شیک‌ها</span><span class="price">190</span></div>
-</div>
 
 </div>
 
-<!-- FOOTER + LOCATION -->
+</div>
+
+<!-- FOOTER -->
 <div class="footer">
 📷 @hayat_complex | 📞 +98 901 128 6503
 <br>
@@ -295,22 +309,45 @@ href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
 
 <script>
 
-/* TAB */
+/* TAB SWITCH */
 function show(tab,btn){
     document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
 
     document.getElementById(tab).classList.add('active');
     btn.classList.add('active');
+
+    triggerReveal(); // وقتی تب عوض شد هم انیمیشن اجرا شود
 }
 
 /* SEARCH */
 document.getElementById("searchInput").addEventListener("input", function(){
     let v = this.value.toLowerCase();
+
     document.querySelectorAll(".card").forEach(c=>{
         c.style.display = c.innerText.toLowerCase().includes(v) ? "flex" : "none";
     });
+
+    triggerReveal();
 });
+
+/* SCROLL / REVEAL */
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{threshold:0.15});
+
+function triggerReveal(){
+    document.querySelectorAll(".card").forEach(c=>{
+        observer.observe(c);
+    });
+}
+
+/* INIT */
+triggerReveal();
 
 /* INTRO */
 setTimeout(()=>{
