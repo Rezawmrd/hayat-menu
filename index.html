@@ -18,7 +18,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= CINEMATIC BACKGROUND (برگشته 💎) ================= */
+/* ================= CINEMATIC BACKGROUND ================= */
 body::before{
     content:"";
     position:fixed;
@@ -37,7 +37,7 @@ body::before{
     to{transform:scale(1.05) translateY(-10px);}
 }
 
-/* ================= INTRO (سینمایی برگشت) ================= */
+/* ================= INTRO ================= */
 #intro{
     position:fixed;
     inset:0;
@@ -121,27 +121,6 @@ header h1{
     box-shadow:0 0 15px rgba(212,175,55,0.25);
 }
 
-/* ================= TABS ================= */
-.tabs{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:15px 0;
-}
-
-.tab-btn{
-    background:#151515;
-    border:1px solid #333;
-    color:#fff;
-    padding:8px 14px;
-    border-radius:20px;
-}
-
-.tab-btn.active{
-    border-color:#d4af37;
-    color:#d4af37;
-}
-
 /* ================= SEARCH ================= */
 .search-box{
     max-width:520px;
@@ -164,6 +143,27 @@ header h1{
 .search-box input:focus{
     border-color:#d4af37;
     box-shadow:0 0 12px rgba(212,175,55,0.2);
+}
+
+/* ================= TABS ================= */
+.tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:15px 0;
+}
+
+.tab-btn{
+    background:#151515;
+    border:1px solid #333;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:20px;
+}
+
+.tab-btn.active{
+    border-color:#d4af37;
+    color:#d4af37;
 }
 
 /* ================= MENU ================= */
@@ -204,7 +204,7 @@ header h1{
     color:#d4af37;
 }
 
-/* ================= FOOTER + LOCATION ================= */
+/* ================= FOOTER ================= */
 .footer{
     text-align:center;
     padding:25px 10px;
@@ -262,16 +262,22 @@ html{scroll-behavior:smooth;}
 
 <div class="container">
 
+<!-- HOT -->
 <div id="hot" class="section active">
-<h2>گرم</h2>
+<h2>نوشیدنی‌های گرم</h2>
 <div class="card"><span>اسپرسو</span><span class="price">60</span></div>
+<div class="card"><span>آمریکانو</span><span class="price">100</span></div>
 <div class="card"><span>لاته</span><span class="price">160</span></div>
+<div class="card"><span>کاپوچینو</span><span class="price">160</span></div>
+<div class="card"><span>موکا</span><span class="price">160</span></div>
 </div>
 
+<!-- COLD -->
 <div id="cold" class="section">
-<h2>سرد</h2>
-<div class="card"><span>موهیتو</span><span class="price">160</span></div>
+<h2>نوشیدنی‌های سرد</h2>
 <div class="card"><span>آیس لاته</span><span class="price">160</span></div>
+<div class="card"><span>موهیتو</span><span class="price">160</span></div>
+<div class="card"><span>شیک‌ها</span><span class="price">190</span></div>
 </div>
 
 </div>
@@ -280,9 +286,10 @@ html{scroll-behavior:smooth;}
 <div class="footer">
 📷 @hayat_complex | 📞 +98 901 128 6503
 <br>
+
 <a class="btn" target="_blank"
-href="https://www.google.com/maps/search/?api=1&query=Hayat+Complex">
-📍 لوکیشن روی نقشه
+href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
+📍 مسیر‌یابی به کافه
 </a>
 </div>
 
