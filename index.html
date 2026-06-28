@@ -14,6 +14,20 @@ body{
     font-family:'Vazirmatn',sans-serif;
     background:#0b0b0b;
     color:#fff;
+    overflow-x:hidden;
+}
+
+/* ===== GOLD BACKGROUND GLOW ===== */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(212,175,55,0.08), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(255,215,0,0.05), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(212,175,55,0.06), transparent 50%);
+    pointer-events:none;
+    z-index:0;
 }
 
 /* ===== INTRO ===== */
@@ -59,7 +73,9 @@ body{
 header{
     text-align:center;
     padding:25px 10px;
-    border-bottom:1px solid #d4af37;
+    border-bottom:1px solid rgba(212,175,55,0.3);
+    position:relative;
+    z-index:1;
 }
 
 header img{
@@ -69,14 +85,28 @@ header img{
     border:2px solid #d4af37;
     padding:4px;
     object-fit:cover;
+    box-shadow:0 0 20px rgba(212,175,55,0.25);
+    transition:0.4s;
+}
+
+header img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 35px rgba(212,175,55,0.4);
 }
 
 header h1{
     margin:0;
     color:#d4af37;
+    animation: glowText 3s infinite ease-in-out;
 }
 
-/* ===== ACTION BUTTONS ===== */
+@keyframes glowText{
+    0%{ text-shadow:0 0 5px rgba(212,175,55,0.2); }
+    50%{ text-shadow:0 0 15px rgba(212,175,55,0.4); }
+    100%{ text-shadow:0 0 5px rgba(212,175,55,0.2); }
+}
+
+/* ===== BUTTONS ===== */
 .actions{
     display:flex;
     justify-content:center;
@@ -99,6 +129,7 @@ header h1{
 .btn:hover{
     border-color:#d4af37;
     color:#d4af37;
+    box-shadow:0 0 15px rgba(212,175,55,0.25);
     transform:scale(1.05);
 }
 
@@ -109,6 +140,8 @@ header h1{
     gap:10px;
     margin:15px 0;
     flex-wrap:wrap;
+    position:relative;
+    z-index:1;
 }
 
 .tab-btn{
@@ -123,9 +156,10 @@ header h1{
 }
 
 .tab-btn.active{
+    background:rgba(212,175,55,0.08);
     border-color:#d4af37;
     color:#d4af37;
-    box-shadow:0 0 10px rgba(212,175,55,0.2);
+    box-shadow:0 0 12px rgba(212,175,55,0.25);
 }
 
 /* ===== MENU ===== */
@@ -133,6 +167,8 @@ header h1{
     max-width:520px;
     margin:auto;
     padding:20px;
+    position:relative;
+    z-index:1;
 }
 
 .section{
@@ -150,7 +186,7 @@ header h1{
     margin-bottom:15px;
 }
 
-/* ===== PROFESSIONAL CARDS ===== */
+/* ===== CARDS ===== */
 .card{
     background:#151515;
     padding:11px 14px;
@@ -163,9 +199,11 @@ header h1{
     opacity:0;
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease forwards;
+
+    border:1px solid rgba(212,175,55,0.05);
 }
 
-/* stagger effect */
+/* stagger */
 .card:nth-child(1){ animation-delay:0.05s; }
 .card:nth-child(2){ animation-delay:0.1s; }
 .card:nth-child(3){ animation-delay:0.15s; }
@@ -174,8 +212,6 @@ header h1{
 .card:nth-child(6){ animation-delay:0.3s; }
 .card:nth-child(7){ animation-delay:0.35s; }
 .card:nth-child(8){ animation-delay:0.4s; }
-.card:nth-child(9){ animation-delay:0.45s; }
-.card:nth-child(10){ animation-delay:0.5s; }
 
 @keyframes fadeInUp{
     to{
@@ -184,11 +220,12 @@ header h1{
     }
 }
 
-/* hover effect */
 .card:hover{
     transform: scale(1.03);
     background:#1f1f1f;
-    box-shadow:0 0 15px rgba(212,175,55,0.15);
+    box-shadow:
+        0 0 15px rgba(212,175,55,0.15),
+        0 0 30px rgba(212,175,55,0.08);
 }
 
 .price{
@@ -197,7 +234,7 @@ header h1{
 }
 
 .card:hover .price{
-    text-shadow:0 0 8px #d4af37;
+    text-shadow:0 0 10px rgba(212,175,55,0.6);
 }
 
 /* ===== FOOTER ===== */
@@ -207,9 +244,10 @@ header h1{
     color:#888;
     border-top:1px solid #222;
     font-size:13px;
+    position:relative;
+    z-index:1;
 }
 
-/* smooth scroll */
 html{
     scroll-behavior:smooth;
 }
