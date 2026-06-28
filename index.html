@@ -75,6 +75,30 @@ header h1{
     color:#d4af37;
 }
 
+/* ===== ACTION BUTTONS (FIXED) ===== */
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:10px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    background:#151515;
+    border:1px solid #333;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.btn:hover{
+    border-color:#d4af37;
+    color:#d4af37;
+}
+
 /* ===== TABS ===== */
 .tabs{
     display:flex;
@@ -154,10 +178,15 @@ header h1{
     <h1>HAYAT COMPLEX</h1>
 </div>
 
-<!-- HEADER -->
+<!-- HEADER (FIXED BUTTONS BACK) -->
 <header>
     <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
     <h1>HAYAT COMPLEX</h1>
+
+    <div class="actions">
+        <a class="btn" href="https://instagram.com/hayat_complex" target="_blank">📷 اینستاگرام</a>
+        <a class="btn" href="tel:+989011286503">📞 تماس</a>
+    </div>
 </header>
 
 <!-- TABS -->
@@ -202,15 +231,16 @@ header h1{
 <div class="card"><span>آیس موکا</span><span class="price">160</span></div>
 <div class="card"><span>آیس کارامل ماکیاتو</span><span class="price">165</span></div>
 <div class="card"><span>آیس چاکلت</span><span class="price">160</span></div>
-<div class="card"><span>اسپرودا</span><span class="price">160</span></div>
-<div class="card"><span>اورنج کافی</span><span class="price">160</span></div>
 <div class="card"><span>موهیتو</span><span class="price">160</span></div>
 <div class="card"><span>انواع کوکتل</span><span class="price">140</span></div>
+
 <div class="card"><span>آبمیوه‌ها</span><span class="price">130-200</span></div>
 <div class="card"><span>شیر موز</span><span class="price">200</span></div>
 <div class="card"><span>موز انبه</span><span class="price">300</span></div>
 <div class="card"><span>آیس پک</span><span class="price">300</span></div>
+
 <div class="card"><span>شیک (نوتلا / لوتوس / وانیل / توت‌فرنگی / طالبی / انبه)</span><span class="price">190</span></div>
+
 <div class="card"><span>پروتئین شیک</span><span class="price">480</span></div>
 
 </div>
@@ -220,7 +250,6 @@ header h1{
 
 <h2>همه آیتم‌ها</h2>
 
-<!-- گرم + سرد کامل -->
 <div class="card"><span>اسپرسو</span><span class="price">60</span></div>
 <div class="card"><span>آمریکانو</span><span class="price">100</span></div>
 <div class="card"><span>لاته</span><span class="price">160</span></div>
