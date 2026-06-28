@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hayat Complex</title>
+<title>Hayat Complex Menu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -17,7 +17,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ===== CINEMATIC LIGHT BACKGROUND ===== */
+/* ===== GOLD BACKGROUND ===== */
 body::before{
     content:"";
     position:fixed;
@@ -32,11 +32,11 @@ body::before{
 }
 
 @keyframes drift{
-    0%{ transform:scale(1) translateY(0px); }
-    100%{ transform:scale(1.05) translateY(-10px); }
+    from{transform:scale(1) translateY(0);}
+    to{transform:scale(1.05) translateY(-10px);}
 }
 
-/* ===== CINEMATIC INTRO ===== */
+/* ===== INTRO ===== */
 #intro{
     position:fixed;
     inset:0;
@@ -46,17 +46,44 @@ body::before{
     align-items:center;
     flex-direction:column;
     z-index:9999;
-    animation: introOut 1.5s ease forwards;
+    animation: fadeOut 1.5s ease forwards;
     animation-delay:3s;
 }
 
-#intro img{
-    width:130px;
-    height:130px;
+/* ⭐ LOGO PROFESSIONAL FIX + ANIMATION */
+#intro img,
+header img{
+    width:95px;
+    height:95px;
+
     border-radius:50%;
     border:2px solid #d4af37;
-    box-shadow:0 0 30px rgba(212,175,55,0.4);
-    animation: zoomGlow 2s ease;
+
+    object-fit:cover;          /* ✔ جلوگیری از کشیدگی */
+    object-position:center;
+
+    box-shadow:
+        0 0 10px rgba(212,175,55,0.4),
+        0 0 30px rgba(212,175,55,0.15);
+
+    animation: logoFloat 4s ease-in-out infinite;
+    transition:0.4s;
+}
+
+/* ✨ انیمیشن حرفه‌ای شناور */
+@keyframes logoFloat{
+    0%{
+        transform:scale(1) translateY(0px);
+        box-shadow:0 0 10px rgba(212,175,55,0.3);
+    }
+    50%{
+        transform:scale(1.05) translateY(-4px);
+        box-shadow:0 0 25px rgba(212,175,55,0.5);
+    }
+    100%{
+        transform:scale(1) translateY(0px);
+        box-shadow:0 0 10px rgba(212,175,55,0.3);
+    }
 }
 
 #intro h1{
@@ -66,17 +93,12 @@ body::before{
     animation: fadeUp 2s ease;
 }
 
-@keyframes zoomGlow{
-    0%{transform:scale(0.2); opacity:0;}
-    100%{transform:scale(1); opacity:1;}
-}
-
 @keyframes fadeUp{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
 
-@keyframes introOut{
+@keyframes fadeOut{
     to{opacity:0; visibility:hidden;}
 }
 
@@ -87,20 +109,6 @@ header{
     border-bottom:1px solid rgba(212,175,55,0.3);
     position:relative;
     z-index:1;
-    animation: fadeIn 2s ease;
-}
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-header img{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    border:2px solid #d4af37;
-    box-shadow:0 0 25px rgba(212,175,55,0.3);
 }
 
 header h1{
@@ -135,9 +143,9 @@ header h1{
 
 .btn:hover{
     border-color:#d4af37;
+    color:#d4af37;
     box-shadow:0 0 15px rgba(212,175,55,0.3);
     transform:scale(1.05);
-    color:#d4af37;
 }
 
 /* ===== TABS ===== */
@@ -146,8 +154,6 @@ header h1{
     justify-content:center;
     gap:10px;
     margin:15px 0;
-    position:relative;
-    z-index:1;
 }
 
 .tab-btn{
@@ -156,15 +162,11 @@ header h1{
     color:#fff;
     padding:8px 14px;
     border-radius:20px;
-    cursor:pointer;
-    transition:0.3s;
 }
 
 .tab-btn.active{
-    background:rgba(212,175,55,0.1);
     border-color:#d4af37;
     color:#d4af37;
-    box-shadow:0 0 12px rgba(212,175,55,0.3);
 }
 
 /* ===== MENU ===== */
@@ -176,13 +178,8 @@ header h1{
     z-index:1;
 }
 
-.section{
-    display:none;
-}
-
-.section.active{
-    display:block;
-}
+.section{ display:none; }
+.section.active{ display:block; }
 
 .section h2{
     color:#d4af37;
@@ -190,53 +187,35 @@ header h1{
     padding-right:10px;
 }
 
-/* ===== CINEMATIC CARDS ===== */
+/* ===== CARDS ===== */
 .card{
     background:#151515;
-    padding:12px 14px;
-    margin-bottom:10px;
+    padding:11px 14px;
+    margin-bottom:8px;
     border-radius:10px;
     display:flex;
     justify-content:space-between;
 
     opacity:0;
-    transform: translateY(25px);
-    animation: cardIn 0.8s ease forwards;
+    transform:translateY(20px);
+    animation:fadeIn 0.7s ease forwards;
 
     border:1px solid rgba(212,175,55,0.05);
-    transition:0.4s;
+    transition:0.3s;
 }
-
-@keyframes cardIn{
-    to{
-        opacity:1;
-        transform: translateY(0);
-    }
-}
-
-/* stagger cinematic */
-.card:nth-child(1){ animation-delay:0.05s; }
-.card:nth-child(2){ animation-delay:0.1s; }
-.card:nth-child(3){ animation-delay:0.15s; }
-.card:nth-child(4){ animation-delay:0.2s; }
-.card:nth-child(5){ animation-delay:0.25s; }
-.card:nth-child(6){ animation-delay:0.3s; }
-.card:nth-child(7){ animation-delay:0.35s; }
 
 .card:hover{
-    transform: scale(1.04);
+    transform:scale(1.03);
     background:#1f1f1f;
-    box-shadow:
-        0 0 20px rgba(212,175,55,0.2),
-        0 0 40px rgba(212,175,55,0.1);
+    box-shadow:0 0 20px rgba(212,175,55,0.15);
+}
+
+@keyframes fadeIn{
+    to{opacity:1; transform:translateY(0);}
 }
 
 .price{
     color:#d4af37;
-}
-
-.card:hover .price{
-    text-shadow:0 0 12px rgba(212,175,55,0.7);
 }
 
 /* ===== FOOTER ===== */
@@ -245,21 +224,16 @@ header h1{
     padding:25px 10px;
     color:#888;
     border-top:1px solid #222;
-    position:relative;
-    z-index:1;
 }
 
-/* smooth scroll cinematic feel */
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 </style>
 </head>
 
 <body>
 
-<!-- CINEMATIC INTRO -->
+<!-- INTRO -->
 <div id="intro">
     <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
     <h1>HAYAT COMPLEX</h1>
@@ -271,16 +245,15 @@ html{
     <h1>HAYAT COMPLEX</h1>
 
     <div class="actions">
-        <a class="btn" href="https://instagram.com/hayat_complex" target="_blank">📷 اینستاگرام</a>
+        <a class="btn" href="https://instagram.com/hayat_complex">📷 اینستاگرام</a>
         <a class="btn" href="tel:+989011286503">📞 تماس</a>
     </div>
 </header>
 
 <!-- TABS -->
 <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('hot', this)">☕ گرم</button>
-    <button class="tab-btn" onclick="showTab('cold', this)">🧊 سرد</button>
-    <button class="tab-btn" onclick="showTab('all', this)">🍽 همه</button>
+    <button class="tab-btn active" onclick="show('hot',this)">گرم</button>
+    <button class="tab-btn" onclick="show('cold',this)">سرد</button>
 </div>
 
 <div class="container">
@@ -307,16 +280,6 @@ html{
 
 </div>
 
-<!-- ALL -->
-<div id="all" class="section">
-<h2>همه آیتم‌ها</h2>
-
-<div class="card"><span>اسپرسو</span><span class="price">60</span></div>
-<div class="card"><span>آمریکانو</span><span class="price">100</span></div>
-<div class="card"><span>لاته</span><span class="price">160</span></div>
-
-</div>
-
 </div>
 
 <!-- FOOTER -->
@@ -325,11 +288,7 @@ html{
 </div>
 
 <script>
-setTimeout(()=>{
-    document.getElementById("intro").style.display="none";
-},3000);
-
-function showTab(tab, btn){
+function show(tab,btn){
     document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
 
