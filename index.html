@@ -15,6 +15,7 @@ body{
     color:#fff;
 }
 
+/* ===== HEADER ===== */
 header{
     text-align:center;
     padding:30px 10px;
@@ -29,19 +30,47 @@ header img{
     padding:4px;
     object-fit:cover;
     margin-bottom:10px;
+
+    /* ✨ انیمیشن لوگو */
+    animation: logoIntro 1.2s ease-out;
+}
+
+@keyframes logoIntro {
+    0%{
+        opacity:0;
+        transform:scale(0.5) rotate(-10deg);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1) rotate(0deg);
+    }
 }
 
 header h1{
     margin:0;
     color:#d4af37;
     letter-spacing:2px;
+    animation: fadeUp 1.2s ease-out;
 }
 
 header p{
     color:#aaa;
     margin-top:5px;
+    animation: fadeUp 1.5s ease-out;
 }
 
+@keyframes fadeUp {
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===== BUTTONS ===== */
 .actions{
     display:flex;
     justify-content:center;
@@ -58,6 +87,7 @@ header p{
     border-radius:8px;
     text-decoration:none;
     font-size:13px;
+    transition:0.2s;
 }
 
 .btn:hover{
@@ -65,6 +95,7 @@ header p{
     color:#d4af37;
 }
 
+/* ===== LAYOUT ===== */
 .container{
     max-width:520px;
     margin:auto;
@@ -82,6 +113,7 @@ header p{
     margin-bottom:15px;
 }
 
+/* ===== MENU CARDS ===== */
 .card{
     background:#151515;
     padding:11px 14px;
@@ -89,12 +121,19 @@ header p{
     border-radius:10px;
     display:flex;
     justify-content:space-between;
+    transition:0.2s;
+}
+
+.card:hover{
+    background:#1f1f1f;
+    transform:scale(1.02);
 }
 
 .price{
     color:#d4af37;
 }
 
+/* ===== FOOTER ===== */
 .footer{
     text-align:center;
     padding:25px 10px;
@@ -109,20 +148,25 @@ header p{
 <body>
 
 <header>
-    <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
-    <h1>HAYAT COMPLEX</h1>
-    <p>☕ منوی دیجیتال کافه</p>
 
-    <div class="actions">
-        <a class="btn" href="https://instagram.com/hayat_complex" target="_blank">📷 اینستاگرام</a>
-        <a class="btn" href="tel:+989011286503">📞 تماس</a>
-    </div>
+<img src="file_000000005f7471fdbdd33eefd3f2e476.png">
+
+<h1>HAYAT COMPLEX</h1>
+<p>☕ منوی دیجیتال کافه</p>
+
+<div class="actions">
+<a class="btn" href="https://instagram.com/hayat_complex" target="_blank">📷 اینستاگرام</a>
+<a class="btn" href="tel:+989011286503">📞 تماس</a>
+</div>
+
 </header>
 
 <div class="container">
 
+<!-- HOT DRINKS -->
 <div class="section">
 <h2>نوشیدنی‌های گرم</h2>
+
 <div class="card"><span>اسپرسو</span><span class="price">60</span></div>
 <div class="card"><span>آمریکانو</span><span class="price">100</span></div>
 <div class="card"><span>لاته</span><span class="price">160</span></div>
@@ -137,10 +181,13 @@ header p{
 <div class="card"><span>ماچا</span><span class="price">160</span></div>
 <div class="card"><span>دمنوش</span><span class="price">90</span></div>
 <div class="card"><span>چای</span><span class="price">40</span></div>
+
 </div>
 
+<!-- COLD DRINKS -->
 <div class="section">
 <h2>نوشیدنی‌های سرد</h2>
+
 <div class="card"><span>آفوگاتو</span><span class="price">150</span></div>
 <div class="card"><span>آیس آمریکانو</span><span class="price">110</span></div>
 <div class="card"><span>آیس لاته</span><span class="price">160</span></div>
@@ -155,12 +202,14 @@ header p{
 <div class="card"><span>آیس پک</span><span class="price">300</span></div>
 <div class="card"><span>شیک (نوتلا / لوتوس / وانیل / توت‌فرنگی / طالبی / انبه)</span><span class="price">190</span></div>
 <div class="card"><span>پروتئین شیک</span><span class="price">480</span></div>
-</div>
 
 </div>
 
+</div>
+
+<!-- FOOTER -->
 <div class="footer">
-📍 Hayat Complex | 📷 @hayat_complex | 📞 +98 901 128 6503
+📷 @hayat_complex | 📞 +98 901 128 6503
 </div>
 
 </body>
