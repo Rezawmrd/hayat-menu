@@ -92,7 +92,6 @@ header h1{
     border-radius:20px;
     cursor:pointer;
     font-size:13px;
-    transition:0.2s;
 }
 
 .tab-btn.active{
@@ -109,7 +108,6 @@ header h1{
 
 .section{
     display:none;
-    margin-bottom:30px;
 }
 
 .section.active{
@@ -144,6 +142,7 @@ header h1{
     border-top:1px solid #222;
     font-size:13px;
 }
+
 </style>
 </head>
 
@@ -165,6 +164,7 @@ header h1{
 <div class="tabs">
     <button class="tab-btn active" onclick="showTab('hot', this)">☕ گرم</button>
     <button class="tab-btn" onclick="showTab('cold', this)">🧊 سرد</button>
+    <button class="tab-btn" onclick="showTab('all', this)">🍽 همه</button>
 </div>
 
 <div class="container">
@@ -180,6 +180,14 @@ header h1{
 <div class="card"><span>کاپوچینو</span><span class="price">160</span></div>
 <div class="card"><span>موکا</span><span class="price">160</span></div>
 <div class="card"><span>کارامل ماکیاتو</span><span class="price">160</span></div>
+<div class="card"><span>هات چاکلت</span><span class="price">160</span></div>
+<div class="card"><span>پینک چاکلت</span><span class="price">180</span></div>
+<div class="card"><span>وایت چاکلت</span><span class="price">180</span></div>
+<div class="card"><span>ماسالا</span><span class="price">160</span></div>
+<div class="card"><span>کرک</span><span class="price">160</span></div>
+<div class="card"><span>ماچا</span><span class="price">160</span></div>
+<div class="card"><span>دمنوش</span><span class="price">90</span></div>
+<div class="card"><span>چای</span><span class="price">40</span></div>
 
 </div>
 
@@ -188,6 +196,34 @@ header h1{
 
 <h2>نوشیدنی‌های سرد</h2>
 
+<div class="card"><span>آفوگاتو</span><span class="price">150</span></div>
+<div class="card"><span>آیس آمریکانو</span><span class="price">110</span></div>
+<div class="card"><span>آیس لاته</span><span class="price">160</span></div>
+<div class="card"><span>آیس موکا</span><span class="price">160</span></div>
+<div class="card"><span>آیس کارامل ماکیاتو</span><span class="price">165</span></div>
+<div class="card"><span>آیس چاکلت</span><span class="price">160</span></div>
+<div class="card"><span>اسپرودا</span><span class="price">160</span></div>
+<div class="card"><span>اورنج کافی</span><span class="price">160</span></div>
+<div class="card"><span>موهیتو</span><span class="price">160</span></div>
+<div class="card"><span>انواع کوکتل</span><span class="price">140</span></div>
+<div class="card"><span>آبمیوه‌ها</span><span class="price">130-200</span></div>
+<div class="card"><span>شیر موز</span><span class="price">200</span></div>
+<div class="card"><span>موز انبه</span><span class="price">300</span></div>
+<div class="card"><span>آیس پک</span><span class="price">300</span></div>
+<div class="card"><span>شیک (نوتلا / لوتوس / وانیل / توت‌فرنگی / طالبی / انبه)</span><span class="price">190</span></div>
+<div class="card"><span>پروتئین شیک</span><span class="price">480</span></div>
+
+</div>
+
+<!-- ALL -->
+<div id="all" class="section">
+
+<h2>همه آیتم‌ها</h2>
+
+<!-- گرم + سرد کامل -->
+<div class="card"><span>اسپرسو</span><span class="price">60</span></div>
+<div class="card"><span>آمریکانو</span><span class="price">100</span></div>
+<div class="card"><span>لاته</span><span class="price">160</span></div>
 <div class="card"><span>آیس لاته</span><span class="price">160</span></div>
 <div class="card"><span>موهیتو</span><span class="price">160</span></div>
 <div class="card"><span>شیک‌ها</span><span class="price">190</span></div>
