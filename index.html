@@ -1,89 +1,129 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hayat Complex Menu</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Vazirmatn', sans-serif;
     background: #0b0b0b;
-    color: #f5f5f5;
-    text-align: center;
+    color: #fff;
 }
 
-.header {
+header {
+    text-align: center;
     padding: 30px 10px;
     border-bottom: 1px solid #d4af37;
 }
 
-h1 {
+header h1 {
     color: #d4af37;
-    margin: 10px 0;
+    margin: 0;
+    letter-spacing: 2px;
 }
 
-.menu {
-    padding: 20px;
+header p {
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.container {
     max-width: 500px;
     margin: auto;
-    text-align: right;
+    padding: 20px;
 }
 
 .section {
-    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .section h2 {
     color: #d4af37;
-    border-bottom: 1px solid #333;
-    padding-bottom: 5px;
+    border-right: 3px solid #d4af37;
+    padding-right: 10px;
+    margin-bottom: 15px;
 }
 
-.item {
+.card {
+    background: #151515;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dashed #333;
+    transition: 0.3s;
+}
+
+.card:hover {
+    background: #1f1f1f;
+    transform: scale(1.02);
+}
+
+.price {
+    color: #d4af37;
 }
 
 .footer {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #aaa;
+    text-align: center;
+    padding: 30px 10px;
+    color: #888;
+    border-top: 1px solid #222;
+    margin-top: 30px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<header>
     <h1>HAYAT COMPLEX</h1>
     <p>☕ منوی کافه</p>
-</div>
+</header>
 
-<div class="menu">
+<div class="container">
 
     <div class="section">
         <h2>نوشیدنی‌های گرم</h2>
-        <div class="item"><span>اسپرسو</span><span>60</span></div>
-        <div class="item"><span>آمریکانو</span><span>100</span></div>
-        <div class="item"><span>لاته</span><span>160</span></div>
+
+        <div class="card">
+            <span>اسپرسو</span>
+            <span class="price">60</span>
+        </div>
+
+        <div class="card">
+            <span>آمریکانو</span>
+            <span class="price">100</span>
+        </div>
+
+        <div class="card">
+            <span>لاته</span>
+            <span class="price">160</span>
+        </div>
     </div>
 
     <div class="section">
         <h2>نوشیدنی‌های سرد</h2>
-        <div class="item"><span>آیس لاته</span><span>180</span></div>
-        <div class="item"><span>موهیتو</span><span>170</span></div>
+
+        <div class="card">
+            <span>آیس لاته</span>
+            <span class="price">180</span>
+        </div>
+
+        <div class="card">
+            <span>موهیتو</span>
+            <span class="price">170</span>
+        </div>
     </div>
 
 </div>
 
 <div class="footer">
-📍 Hayat Complex <br>
-📷 Instagram: @hayat_complex <br>
-📞 +98 901 128 6503
+📍 Hayat Complex | 📷 @hayat_complex | 📞 +98 901 128 6503
 </div>
 
 </body>
