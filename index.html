@@ -47,6 +47,8 @@ body::before{
     align-items:center;
     flex-direction:column;
     z-index:9999;
+    animation: fadeOut 1.5s ease forwards;
+    animation-delay:3s;
 }
 
 #intro img{
@@ -85,9 +87,9 @@ header img{
 }
 
 @keyframes logoFloat{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-4px);}
-    100%{transform:translateY(0);}
+    0%{transform:translateY(0); box-shadow:0 0 10px rgba(212,175,55,0.3);}
+    50%{transform:translateY(-4px); box-shadow:0 0 25px rgba(212,175,55,0.5);}
+    100%{transform:translateY(0); box-shadow:0 0 10px rgba(212,175,55,0.3);}
 }
 
 header h1{
@@ -96,6 +98,13 @@ header h1{
 }
 
 /* ================= BUTTONS ================= */
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:10px;
+}
+
 .btn{
     background:#151515;
     border:1px solid #333;
@@ -128,6 +137,12 @@ header h1{
     border:1px solid #333;
     background:#151515;
     color:#fff;
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#d4af37;
+    box-shadow:0 0 12px rgba(212,175,55,0.2);
 }
 
 /* ================= TABS ================= */
@@ -160,8 +175,8 @@ header h1{
     z-index:1;
 }
 
-.section{display:none;}
-.section.active{display:block;}
+.section{ display:none; }
+.section.active{ display:block; }
 
 .section h2{
     color:#d4af37;
@@ -169,7 +184,7 @@ header h1{
     padding-right:10px;
 }
 
-/* ================= CARDS (SCROLL ANIMATION) ================= */
+/* ================= CINEMATIC CARDS (Scroll Reveal) ================= */
 .card{
     background:#151515;
     padding:11px 14px;
@@ -190,7 +205,14 @@ header h1{
     transform:translateY(0);
 }
 
-.price{color:#d4af37;}
+.card:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 20px rgba(212,175,55,0.15);
+}
+
+.price{
+    color:#d4af37;
+}
 
 /* ================= FOOTER ================= */
 .footer{
@@ -207,37 +229,10 @@ header h1{
     color:#d4af37;
 }
 
-/* ================= FLOATING BUTTONS ================= */
-.floating{
-    position:fixed;
-    left:15px;
-    bottom:20px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    z-index:9999;
-}
-
-.floating a{
-    width:45px;
-    height:45px;
-    background:#151515;
-    border:1px solid #d4af37;
-    color:#d4af37;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:50%;
-    text-decoration:none;
-    font-size:18px;
-    box-shadow:0 0 15px rgba(212,175,55,0.15);
-    transition:0.3s;
-}
-
-.floating a:hover{
-    transform:scale(1.1);
+.footer .btn:hover{
     background:#d4af37;
     color:#000;
+    box-shadow:0 0 15px rgba(212,175,55,0.4);
 }
 
 html{scroll-behavior:smooth;}
@@ -257,6 +252,11 @@ html{scroll-behavior:smooth;}
 <header>
     <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
     <h1>HAYAT COMPLEX</h1>
+
+    <div class="actions">
+        <a class="btn" href="https://instagram.com/hayat_complex">📷 اینستاگرام</a>
+        <a class="btn" href="tel:+989011286503">📞 تماس</a>
+    </div>
 </header>
 
 <!-- SEARCH -->
@@ -272,15 +272,26 @@ html{scroll-behavior:smooth;}
 
 <div class="container">
 
+<!-- HOT -->
 <div id="hot" class="section active">
-<h2>گرم</h2>
+<h2>نوشیدنی‌های گرم</h2>
+
 <div class="card"><span>اسپرسو</span><span class="price">60</span></div>
+<div class="card"><span>آمریکانو</span><span class="price">100</span></div>
 <div class="card"><span>لاته</span><span class="price">160</span></div>
+<div class="card"><span>کاپوچینو</span><span class="price">160</span></div>
+<div class="card"><span>موکا</span><span class="price">160</span></div>
+
 </div>
 
+<!-- COLD -->
 <div id="cold" class="section">
-<h2>سرد</h2>
+<h2>نوشیدنی‌های سرد</h2>
+
+<div class="card"><span>آیس لاته</span><span class="price">160</span></div>
 <div class="card"><span>موهیتو</span><span class="price">160</span></div>
+<div class="card"><span>شیک‌ها</span><span class="price">190</span></div>
+
 </div>
 
 </div>
@@ -289,43 +300,42 @@ html{scroll-behavior:smooth;}
 <div class="footer">
 📷 @hayat_complex | 📞 +98 901 128 6503
 <br>
-<a class="btn" target="_blank" href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
+
+<a class="btn" target="_blank"
+href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
 📍 مسیر‌یابی به کافه
 </a>
 </div>
 
-<!-- FLOATING BUTTONS -->
-<div class="floating">
-    <a href="https://instagram.com/hayat_complex" target="_blank">📷</a>
-    <a href="tel:+989011286503">📞</a>
-    <a href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA" target="_blank">📍</a>
-</div>
-
 <script>
 
-/* TAB */
+/* TAB SWITCH */
 function show(tab,btn){
     document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+
     document.getElementById(tab).classList.add('active');
     btn.classList.add('active');
-    triggerReveal();
+
+    triggerReveal(); // وقتی تب عوض شد هم انیمیشن اجرا شود
 }
 
 /* SEARCH */
 document.getElementById("searchInput").addEventListener("input", function(){
     let v = this.value.toLowerCase();
+
     document.querySelectorAll(".card").forEach(c=>{
         c.style.display = c.innerText.toLowerCase().includes(v) ? "flex" : "none";
     });
+
     triggerReveal();
 });
 
-/* SCROLL REVEAL */
+/* SCROLL / REVEAL */
 const observer = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-        if(e.isIntersecting){
-            e.target.classList.add("show");
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
         }
     });
 },{threshold:0.15});
@@ -335,6 +345,8 @@ function triggerReveal(){
         observer.observe(c);
     });
 }
+
+/* INIT */
 triggerReveal();
 
 /* INTRO */
