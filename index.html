@@ -9,6 +9,7 @@
 
 <style>
 
+/* ================= BASE ================= */
 body{
     margin:0;
     font-family:'Vazirmatn',sans-serif;
@@ -17,7 +18,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ===== BACKGROUND GLOW ===== */
+/* ================= CINEMATIC BACKGROUND (برگشته 💎) ================= */
 body::before{
     content:"";
     position:fixed;
@@ -36,7 +37,7 @@ body::before{
     to{transform:scale(1.05) translateY(-10px);}
 }
 
-/* ===== INTRO ===== */
+/* ================= INTRO (سینمایی برگشت) ================= */
 #intro{
     position:fixed;
     inset:0;
@@ -55,8 +56,9 @@ body::before{
     height:120px;
     border-radius:50%;
     border:2px solid #d4af37;
-    box-shadow:0 0 25px rgba(212/175/55,0.4);
+    box-shadow:0 0 25px rgba(212,175,55,0.4);
     object-fit:cover;
+    animation: logoFloat 4s ease-in-out infinite;
 }
 
 #intro h1{
@@ -65,7 +67,7 @@ body::before{
     letter-spacing:3px;
 }
 
-/* ===== HEADER ===== */
+/* ================= HEADER ================= */
 header{
     text-align:center;
     padding:25px 10px;
@@ -81,6 +83,13 @@ header img{
     border:2px solid #d4af37;
     object-fit:cover;
     box-shadow:0 0 20px rgba(212,175,55,0.3);
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+    0%{transform:translateY(0); box-shadow:0 0 10px rgba(212,175,55,0.3);}
+    50%{transform:translateY(-4px); box-shadow:0 0 25px rgba(212,175,55,0.5);}
+    100%{transform:translateY(0); box-shadow:0 0 10px rgba(212,175,55,0.3);}
 }
 
 header h1{
@@ -88,7 +97,7 @@ header h1{
     color:#d4af37;
 }
 
-/* ===== BUTTONS ===== */
+/* ================= BUTTONS ================= */
 .actions{
     display:flex;
     justify-content:center;
@@ -112,7 +121,7 @@ header h1{
     box-shadow:0 0 15px rgba(212,175,55,0.25);
 }
 
-/* ===== TABS ===== */
+/* ================= TABS ================= */
 .tabs{
     display:flex;
     justify-content:center;
@@ -133,7 +142,7 @@ header h1{
     color:#d4af37;
 }
 
-/* ===== SEARCH ===== */
+/* ================= SEARCH ================= */
 .search-box{
     max-width:520px;
     margin:10px auto 15px;
@@ -144,7 +153,7 @@ header h1{
 
 .search-box input{
     width:100%;
-    padding:10px 12px;
+    padding:10px;
     border-radius:10px;
     border:1px solid #333;
     background:#151515;
@@ -157,7 +166,7 @@ header h1{
     box-shadow:0 0 12px rgba(212,175,55,0.2);
 }
 
-/* ===== MENU ===== */
+/* ================= MENU ================= */
 .container{
     max-width:520px;
     margin:auto;
@@ -175,7 +184,7 @@ header h1{
     padding-right:10px;
 }
 
-/* ===== CARDS ===== */
+/* ================= CARDS ================= */
 .card{
     background:#151515;
     padding:11px 14px;
@@ -195,13 +204,28 @@ header h1{
     color:#d4af37;
 }
 
-/* ===== FOOTER ===== */
+/* ================= FOOTER + LOCATION ================= */
 .footer{
     text-align:center;
     padding:25px 10px;
     color:#888;
     border-top:1px solid #222;
 }
+
+.footer .btn{
+    margin-top:10px;
+    display:inline-block;
+    border:1px solid #d4af37;
+    color:#d4af37;
+}
+
+.footer .btn:hover{
+    background:#d4af37;
+    color:#000;
+    box-shadow:0 0 15px rgba(212,175,55,0.4);
+}
+
+html{scroll-behavior:smooth;}
 
 </style>
 </head>
@@ -238,38 +262,33 @@ header h1{
 
 <div class="container">
 
-<!-- HOT -->
 <div id="hot" class="section active">
-<h2>نوشیدنی‌های گرم</h2>
-
+<h2>گرم</h2>
 <div class="card"><span>اسپرسو</span><span class="price">60</span></div>
-<div class="card"><span>آمریکانو</span><span class="price">100</span></div>
 <div class="card"><span>لاته</span><span class="price">160</span></div>
-<div class="card"><span>کاپوچینو</span><span class="price">160</span></div>
-<div class="card"><span>موکا</span><span class="price">160</span></div>
-<div class="card"><span>هات چاکلت</span><span class="price">160</span></div>
-
 </div>
 
-<!-- COLD -->
 <div id="cold" class="section">
-<h2>نوشیدنی‌های سرد</h2>
-
-<div class="card"><span>آیس لاته</span><span class="price">160</span></div>
+<h2>سرد</h2>
 <div class="card"><span>موهیتو</span><span class="price">160</span></div>
-<div class="card"><span>شیک‌ها</span><span class="price">190</span></div>
-
+<div class="card"><span>آیس لاته</span><span class="price">160</span></div>
 </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER + LOCATION -->
 <div class="footer">
 📷 @hayat_complex | 📞 +98 901 128 6503
+<br>
+<a class="btn" target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Hayat+Complex">
+📍 لوکیشن روی نقشه
+</a>
 </div>
 
 <script>
 
+/* TAB */
 function show(tab,btn){
     document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
@@ -278,18 +297,15 @@ function show(tab,btn){
     btn.classList.add('active');
 }
 
-/* ===== SEARCH FUNCTION ===== */
-document.getElementById("searchInput").addEventListener("input", function () {
-    let value = this.value.toLowerCase();
-    let cards = document.querySelectorAll(".card");
-
-    cards.forEach(card => {
-        let text = card.innerText.toLowerCase();
-        card.style.display = text.includes(value) ? "flex" : "none";
+/* SEARCH */
+document.getElementById("searchInput").addEventListener("input", function(){
+    let v = this.value.toLowerCase();
+    document.querySelectorAll(".card").forEach(c=>{
+        c.style.display = c.innerText.toLowerCase().includes(v) ? "flex" : "none";
     });
 });
 
-/* intro */
+/* INTRO */
 setTimeout(()=>{
     document.getElementById("intro").style.display="none";
 },3000);
