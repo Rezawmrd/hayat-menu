@@ -17,7 +17,7 @@ body{
 
 header{
     text-align:center;
-    padding:30px 10px;
+    padding:35px 10px 20px;
     border-bottom:1px solid #d4af37;
 }
 
@@ -29,6 +29,31 @@ header h1{
 
 header p{
     color:#aaa;
+    margin-top:6px;
+}
+
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:15px 0;
+    flex-wrap:wrap;
+}
+
+.btn{
+    background:#151515;
+    border:1px solid #333;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px;
+    transition:0.2s;
+}
+
+.btn:hover{
+    border-color:#d4af37;
+    color:#d4af37;
 }
 
 .container{
@@ -50,12 +75,12 @@ header p{
 
 .card{
     background:#151515;
-    padding:10px 14px;
+    padding:11px 14px;
     margin-bottom:8px;
     border-radius:10px;
     display:flex;
     justify-content:space-between;
-    transition:0.25s;
+    transition:0.2s;
 }
 
 .card:hover{
@@ -73,6 +98,7 @@ header p{
     color:#888;
     border-top:1px solid #222;
     font-size:13px;
+    margin-top:20px;
 }
 </style>
 </head>
@@ -81,12 +107,16 @@ header p{
 
 <header>
 <h1>HAYAT COMPLEX</h1>
-<p>☕ منوی کافه</p>
+<p>☕ منوی دیجیتال کافه</p>
+
+<div class="actions">
+<a class="btn" href="https://instagram.com/hayat_complex" target="_blank">📷 اینستاگرام</a>
+<a class="btn" href="tel:+989011286503">📞 تماس</a>
+</div>
 </header>
 
 <div class="container">
 
-<!-- گرم -->
 <div class="section">
 <h2>نوشیدنی‌های گرم</h2>
 
@@ -96,20 +126,17 @@ header p{
 <div class="card"><span>کاپوچینو</span><span class="price">160</span></div>
 <div class="card"><span>موکا</span><span class="price">160</span></div>
 <div class="card"><span>کارامل ماکیاتو</span><span class="price">160</span></div>
-
 <div class="card"><span>هات چاکلت</span><span class="price">160</span></div>
 <div class="card"><span>پینک چاکلت</span><span class="price">180</span></div>
 <div class="card"><span>وایت چاکلت</span><span class="price">180</span></div>
 <div class="card"><span>ماسالا</span><span class="price">160</span></div>
 <div class="card"><span>کرک</span><span class="price">160</span></div>
 <div class="card"><span>ماچا</span><span class="price">160</span></div>
-
 <div class="card"><span>دمنوش</span><span class="price">90</span></div>
 <div class="card"><span>چای</span><span class="price">40</span></div>
 
 </div>
 
-<!-- سرد -->
 <div class="section">
 <h2>نوشیدنی‌های سرد</h2>
 
@@ -121,23 +148,16 @@ header p{
 <div class="card"><span>آیس چاکلت</span><span class="price">160</span></div>
 <div class="card"><span>اسپرودا</span><span class="price">160</span></div>
 <div class="card"><span>اورنج کافی</span><span class="price">160</span></div>
-
 <div class="card"><span>موهیتو</span><span class="price">160</span></div>
 <div class="card"><span>انواع کوکتل</span><span class="price">140</span></div>
 
-<div class="card"><span>آب طالبی</span><span class="price">150</span></div>
-<div class="card"><span>آب کرفس</span><span class="price">150</span></div>
-<div class="card"><span>آب هندوانه</span><span class="price">150</span></div>
-<div class="card"><span>آب سیب</span><span class="price">150</span></div>
-<div class="card"><span>آب هویج</span><span class="price">130</span></div>
-<div class="card"><span>آب انار</span><span class="price">200</span></div>
-<div class="card"><span>آب پرتغال</span><span class="price">200</span></div>
+<div class="card"><span>آبمیوه‌ها</span><span class="price">130-200</span></div>
 
 <div class="card"><span>شیر موز</span><span class="price">200</span></div>
 <div class="card"><span>موز انبه</span><span class="price">300</span></div>
-
 <div class="card"><span>آیس پک</span><span class="price">300</span></div>
-<div class="card"><span>شیک (نوتلا/لوتوس/وانیل/توت فرنگی/طالبی/انبه)</span><span class="price">190</span></div>
+
+<div class="card"><span>شیک (نوتلا / لوتوس / وانیل / توت‌فرنگی / طالبی / انبه)</span><span class="price">190</span></div>
 
 <div class="card"><span>پروتئین شیک</span><span class="price">480</span></div>
 
