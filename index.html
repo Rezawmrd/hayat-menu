@@ -121,29 +121,6 @@ header h1{
     box-shadow:0 0 15px rgba(212,175,55,0.25);
 }
 
-/* ================= SEARCH ================= */
-.search-box{
-    max-width:520px;
-    margin:10px auto 15px;
-    padding:0 20px;
-    position:relative;
-    z-index:2;
-}
-
-.search-box input{
-    width:100%;
-    padding:10px;
-    border-radius:10px;
-    border:1px solid #333;
-    background:#151515;
-    color:#fff;
-    outline:none;
-}
-
-.search-box input:focus{
-    border-color:#d4af37;
-    box-shadow:0 0 12px rgba(212,175,55,0.2);
-}
 
 /* ================= TABS ================= */
 .tabs{
@@ -259,16 +236,6 @@ html{scroll-behavior:smooth;}
     </div>
 </header>
 
-<!-- SEARCH -->
-<div class="search-box">
-    <input type="text" id="searchInput" placeholder="🔍 جستجو در منو...">
-</div>
-
-    <div class="smart-box">
-
-<div id="result"></div>
-
-</div>
 <!-- TABS -->
 <div class="tabs">
     <button class="tab-btn active" onclick="show('hot',this)">گرم</button>
@@ -321,17 +288,6 @@ function show(tab,btn){
 
     triggerReveal(); // وقتی تب عوض شد هم انیمیشن اجرا شود
 }
-
-/* SEARCH */
-document.getElementById("searchInput").addEventListener("input", function(){
-    let v = this.value.toLowerCase();
-
-    document.querySelectorAll(".card").forEach(c=>{
-        c.style.display = c.innerText.toLowerCase().includes(v) ? "flex" : "none";
-    });
-
-    triggerReveal();
-});
 
 /* SCROLL / REVEAL */
 const observer = new IntersectionObserver(entries=>{
