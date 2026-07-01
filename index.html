@@ -238,12 +238,58 @@ html{scroll-behavior:smooth;}
 
 <!-- TABS -->
 <div class="tabs">
-    <button class="tab-btn active" onclick="show('hot',this)">گرم</button>
-    <button class="tab-btn" onclick="show('cold',this)">سرد</button>
+    <button class="tab-btn active" onclick="show('breakfast',this)">صبحانه</button>
+    <button class="tab-btn" onclick="show('food',this)">غذا</button>
+    <button class="tab-btn" onclick="show('cake',this)">کیک</button>
+    <button class="tab-btn" onclick="show('hot',this)">نوشیدنی گرم</button>
+    <button class="tab-btn" onclick="show('cold',this)">نوشیدنی سرد</button>
+</div>
+<!-- BREAKFAST -->
+<div id="breakfast" class="section">
+    <h2>صبحانه</h2>
+
+    <div class="card">
+        <span>املت</span>
+        <span class="price">...</span>
+    </div>
+
+    <div class="card">
+        <span>صبحانه انگلیسی</span>
+        <span class="price">...</span>
+    </div>
 </div>
 
-<div class="container">
+<!-- FOOD -->
+<div id="food" class="section">
+    <h2>غذا</h2>
 
+    <div class="card">
+        <span>برگر</span>
+        <span class="price">...</span>
+    </div>
+
+    <div class="card">
+        <span>پاستا</span>
+        <span class="price">...</span>
+    </div>
+</div>
+
+<!-- CAKE -->
+<div id="cake" class="section">
+    <h2>کیک</h2>
+
+    <div class="card">
+        <span>چیزکیک</span>
+        <span class="price">...</span>
+    </div>
+
+    <div class="card">
+        <span>براونی</span>
+        <span class="price">...</span>
+    </div>
+</div>
+    
+    
 <!-- HOT -->
 <div id="hot" class="section active">
 <h2>نوشیدنی‌های گرم</h2>
