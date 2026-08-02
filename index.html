@@ -7,6 +7,38 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
 
+    /* ===== Sub Tabs ===== */
+
+.sub-tabs{
+    display:flex;
+    gap:10px;
+    margin:15px 0 20px;
+}
+
+.sub-tab{
+    flex:1;
+    background:#151515;
+    color:#fff;
+    border:1px solid #333;
+    border-radius:12px;
+    padding:10px;
+    cursor:pointer;
+    transition:.3s;
+    font-family:'Vazirmatn',sans-serif;
+}
+
+.sub-tab.active{
+    border-color:#d4af37;
+    color:#d4af37;
+}
+
+.sub-section{
+    display:none;
+}
+
+.sub-section.active{
+    display:block;
+}
 <style>
 
 /* ================= BASE ================= */
