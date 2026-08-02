@@ -407,44 +407,50 @@ html{scroll-behavior:smooth;}
     
     
 <!-- HOT -->
-
 <div id="hot" class="section">
-    <h2>☕ نوشیدنی‌های گرم</h2>
-    <div id="espresso" class="sub-section active">
 
-    <div class="sub-tabs">
+<h2>☕ نوشیدنی‌های گرم</h2>
+
+<div class="sub-tabs">
     <button class="sub-tab active" onclick="showHot('espresso',this)">
-        بر پایه اسپرسو
+        ☕ بر پایه اسپرسو
     </button>
-        
 
-            <div class="card"><span> اسپرسو سینگل</span><span class="price">95</span></div>
-<div class="card"><span>اسپرسو دبل </span><span class="price">145</span></div>
+    <button class="sub-tab" onclick="showHot('normal',this)">
+        🍵 نوشیدنی گرم
+    </button>
+</div>
+
+<!-- بر پایه اسپرسو -->
+<div id="espresso" class="sub-section active">
+
+<div class="card"><span>اسپرسو سینگل</span><span class="price">95</span></div>
+<div class="card"><span>اسپرسو دبل</span><span class="price">145</span></div>
 <div class="card"><span>اسپرسو ۱۰۰ عربیکا</span><span class="price">165</span></div>
+
 <div class="card"><span>آمریکانو سینگل</span><span class="price">95</span></div>
 <div class="card"><span>آمریکانو دبل</span><span class="price">145</span></div>
-<div class="card"><span>آمریکانو ۱۰۰ عربیکا</span><span class="price">165</span></div> 
+<div class="card"><span>آمریکانو ۱۰۰ عربیکا</span><span class="price">165</span></div>
+
 <div class="card"><span>لاته سینگل</span><span class="price">175</span></div>
 <div class="card"><span>لاته دبل</span><span class="price">195</span></div>
-<div class="card"><span>لاته ۱۰۰عربیکا</span><span class="price">205</span></div>
-<div class="card"><span>کاپوچینو سینگل </span><span class="price">160</span></div>
+<div class="card"><span>لاته ۱۰۰ عربیکا</span><span class="price">205</span></div>
+
+<div class="card"><span>کاپوچینو سینگل</span><span class="price">160</span></div>
 <div class="card"><span>کاپوچینو دبل</span><span class="price">180</span></div>
-<div class="card"><span> کاپوچینو ۱۰۰عربیکا </span><span class="price">190</span></div>
+<div class="card"><span>کاپوچینو ۱۰۰ عربیکا</span><span class="price">190</span></div>
+
 <div class="card"><span>موکا سینگل</span><span class="price">185</span></div>
 <div class="card"><span>موکا دبل</span><span class="price">205</span></div>
 <div class="card"><span>موکا ۱۰۰ عربیکا</span><span class="price">220</span></div>
-        </div>
 
+</div>
 
-        <div id="normal" class="sub-section">
-    <button class="sub-tab" onclick="showHot('normal',this)">
-        نوشیدنی گرم
-    </button>
-    </div>
-    
-        
+<!-- نوشیدنی گرم -->
+<div id="normal" class="sub-section">
+
 <div class="card"><span>هات چاکلت</span><span class="price">220</span></div>
-<div class="card"><span> چای ماسالا</span><span class="price">215</span></div>
+<div class="card"><span>چای ماسالا</span><span class="price">215</span></div>
 <div class="card"><span>وایت چاکلت</span><span class="price">215</span></div>
 <div class="card"><span>پینک چاکلت</span><span class="price">225</span></div>
 <div class="card"><span>کرک</span><span class="price">210</span></div>
@@ -595,6 +601,21 @@ setTimeout(()=>{
     document.getElementById("intro").style.display="none";
 },3000);
 
+    function showHot(tab, btn){
+
+    document.querySelectorAll(".sub-section").forEach(function(s){
+        s.classList.remove("active");
+    });
+
+    document.querySelectorAll(".sub-tab").forEach(function(b){
+        b.classList.remove("active");
+    });
+
+    document.getElementById(tab).classList.add("active");
+    btn.classList.add("active");
+
+    triggerReveal();
+    }
 </script>
 
 </body>
