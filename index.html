@@ -259,6 +259,30 @@ html{scroll-behavior:smooth;}
 .sub-section.active{
     display:block;
 }
+
+.multi-card{
+    display:block;
+    padding:15px;
+}
+
+.item-info strong{
+    display:block;
+    font-size:18px;
+    color:#d4af37;
+    margin-bottom:12px;
+}
+
+.size-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 0;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.size-row:first-of-type{
+    border-top:none;
+}
     
 </style>
 </head>
@@ -424,26 +448,120 @@ html{scroll-behavior:smooth;}
 <!-- بر پایه اسپرسو -->
 <div id="espresso" class="sub-section active">
 
-<div class="card"><span>اسپرسو سینگل</span><span class="price">95</span></div>
-<div class="card"><span>اسپرسو دبل</span><span class="price">145</span></div>
-<div class="card"><span>اسپرسو ۱۰۰ عربیکا</span><span class="price">165</span></div>
+<div class="card multi-card">
 
-<div class="card"><span>آمریکانو سینگل</span><span class="price">95</span></div>
-<div class="card"><span>آمریکانو دبل</span><span class="price">145</span></div>
-<div class="card"><span>آمریکانو ۱۰۰ عربیکا</span><span class="price">165</span></div>
+    <div class="item-info">
+        <strong>☕ اسپرسو</strong>
 
-<div class="card"><span>لاته سینگل</span><span class="price">175</span></div>
-<div class="card"><span>لاته دبل</span><span class="price">195</span></div>
-<div class="card"><span>لاته ۱۰۰ عربیکا</span><span class="price">205</span></div>
+        <div class="size-row">
+            <span>سینگل</span>
+            <span class="price">95</span>
+        </div>
 
-<div class="card"><span>کاپوچینو سینگل</span><span class="price">160</span></div>
-<div class="card"><span>کاپوچینو دبل</span><span class="price">180</span></div>
-<div class="card"><span>کاپوچینو ۱۰۰ عربیکا</span><span class="price">190</span></div>
+        <div class="size-row">
+            <span>دبل</span>
+            <span class="price">145</span>
+        </div>
 
-<div class="card"><span>موکا سینگل</span><span class="price">185</span></div>
-<div class="card"><span>موکا دبل</span><span class="price">205</span></div>
-<div class="card"><span>موکا ۱۰۰ عربیکا</span><span class="price">220</span></div>
+        <div class="size-row">
+            <span>۱۰۰٪ عربیکا</span>
+            <span class="price">165</span>
+        </div>
+    </div>
 
+</div>
+
+<div class="card multi-card">
+
+    <div class="item-info">
+        <strong>☕ آمریکانو</strong>
+
+        <div class="size-row">
+            <span>سینگل</span>
+            <span class="price">95</span>
+        </div>
+
+        <div class="size-row">
+            <span>دبل</span>
+            <span class="price">145</span>
+        </div>
+
+        <div class="size-row">
+            <span>۱۰۰٪ عربیکا</span>
+            <span class="price">165</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="card multi-card">
+
+    <div class="item-info">
+        <strong>☕ لاته</strong>
+
+        <div class="size-row">
+            <span>سینگل</span>
+            <span class="price">175</span>
+        </div>
+
+        <div class="size-row">
+            <span>دبل</span>
+            <span class="price">195</span>
+        </div>
+
+        <div class="size-row">
+            <span>۱۰۰٪ عربیکا</span>
+            <span class="price">205</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="card multi-card">
+
+    <div class="item-info">
+        <strong>☕ کاپوچینو</strong>
+
+        <div class="size-row">
+            <span>سینگل</span>
+            <span class="price">160</span>
+        </div>
+
+        <div class="size-row">
+            <span>دبل</span>
+            <span class="price">180</span>
+        </div>
+
+        <div class="size-row">
+            <span>۱۰۰٪ عربیکا</span>
+            <span class="price">190</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="card multi-card">
+
+    <div class="item-info">
+        <strong>☕ موکا</strong>
+
+        <div class="size-row">
+            <span>سینگل</span>
+            <span class="price">185</span>
+        </div>
+
+        <div class="size-row">
+            <span>دبل</span>
+            <span class="price">205</span>
+        </div>
+
+        <div class="size-row">
+            <span>۱۰۰٪ عربیکا</span>
+            <span class="price">220</span>
+        </div>
+    </div>
+
+</div>
 </div>
 
 <!-- نوشیدنی گرم -->
