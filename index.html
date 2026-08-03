@@ -284,22 +284,21 @@ html{scroll-behavior:smooth;}
     border-top:none;
 }
 
-    /* ===== Cold Sub Tabs ===== */
+    /* ===== Cold Tabs - Two Rows ===== */
 
 .cold-tabs{
-    overflow-x:auto;
-    justify-content:flex-start;
-    padding-bottom:5px;
-    scrollbar-width:none;
-}
-
-.cold-tabs::-webkit-scrollbar{
-    display:none;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+    margin:15px 0 20px;
 }
 
 .cold-tabs .sub-tab{
-    flex:0 0 auto;
+    width:100%;
+    box-sizing:border-box;
     white-space:nowrap;
+    padding:10px 5px;
+    font-size:13px;
 }
     
 </style>
