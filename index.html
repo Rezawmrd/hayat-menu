@@ -841,69 +841,104 @@ href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
 
 <script>
 
-/* TAB SWITCH */
-function show(tab,btn){
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+/* ================= TAB SWITCH ================= */
+
+function show(tab, btn){
+
+    document.querySelectorAll('.section').forEach(function(s){
+        s.classList.remove('active');
+    });
+
+    document.querySelectorAll('.tab-btn').forEach(function(b){
+        b.classList.remove('active');
+    });
 
     document.getElementById(tab).classList.add('active');
     btn.classList.add('active');
 
-    triggerReveal(); // وقتی تب عوض شد هم انیمیشن اجرا شود
+    triggerReveal();
 }
 
-/* SCROLL / REVEAL */
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
+
+/* ================= SCROLL / REVEAL ================= */
+
+const observer = new IntersectionObserver(function(entries){
+
+    entries.forEach(function(entry){
+
         if(entry.isIntersecting){
             entry.target.classList.add("show");
         }
+
     });
+
 },{threshold:0.15});
 
+
 function triggerReveal(){
-    document.querySelectorAll(".card").forEach(c=>{
-        observer.observe(c);
+
+    document.querySelectorAll(".card").forEach(function(card){
+        observer.observe(card);
     });
+
 }
 
-/* INIT */
+
+/* ================= HOT DRINK SUB TABS ================= */
+
+function showHot(tab, btn){
+
+    document.querySelectorAll("#hot .sub-section").forEach(function(section){
+        section.classList.remove("active");
+    });
+
+    document.querySelectorAll("#hot .sub-tab").forEach(function(button){
+        button.classList.remove("active");
+    });
+
+    document.getElementById(tab).classList.add("active");
+    btn.classList.add("active");
+
+    triggerReveal();
+}
+
+
+/* ================= COLD DRINK SUB TABS ================= */
+
+function showCold(tab, btn){
+
+    document.querySelectorAll("#cold .sub-section").forEach(function(section){
+        section.classList.remove("active");
+    });
+
+    document.querySelectorAll("#cold .sub-tab").forEach(function(button){
+        button.classList.remove("active");
+    });
+
+    document.getElementById(tab).classList.add("active");
+    btn.classList.add("active");
+
+    triggerReveal();
+}
+
+
+/* ================= INIT ================= */
+
 triggerReveal();
 
-/* INTRO */
-setTimeout(()=>{
-    document.getElementById("intro").style.display="none";
+
+/* ================= INTRO ================= */
+
+setTimeout(function(){
+
+    const intro = document.getElementById("intro");
+
+    if(intro){
+        intro.style.display = "none";
+    }
+
 },3000);
 
-        function showCold(tab, btn){
-
-    document.querySelectorAll("#cold .sub-section").forEach(function(s){
-        s.classList.remove("active");
-    });
-
-    document.querySelectorAll("#cold .sub-tab").forEach(function(b){
-        b.classList.remove("active");
-    });
-
-    document.getElementById(tab).classList.add("active");
-    btn.classList.add("active");
-
-    triggerReveal();
-        }
-
-    document.querySelectorAll(".sub-section").forEach(function(s){
-        s.classList.remove("active");
-    });
-
-    document.querySelectorAll(".sub-tab").forEach(function(b){
-        b.classList.remove("active");
-    });
-
-    document.getElementById(tab).classList.add("active");
-    btn.classList.add("active");
-
-    triggerReveal();
-    }
 </script>
 
 </body>
