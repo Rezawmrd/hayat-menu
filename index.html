@@ -283,6 +283,24 @@ html{scroll-behavior:smooth;}
 .size-row:first-of-type{
     border-top:none;
 }
+
+    /* ===== Cold Sub Tabs ===== */
+
+.cold-tabs{
+    overflow-x:auto;
+    justify-content:flex-start;
+    padding-bottom:5px;
+    scrollbar-width:none;
+}
+
+.cold-tabs::-webkit-scrollbar{
+    display:none;
+}
+
+.cold-tabs .sub-tab{
+    flex:0 0 auto;
+    white-space:nowrap;
+}
     
 </style>
 </head>
@@ -582,103 +600,237 @@ html{scroll-behavior:smooth;}
 
 </div> <!-- hot -->
 
+
 <!-- COLD -->
 <div id="cold" class="section">
+
     <h2>🧊 نوشیدنی‌های سرد</h2>
 
-    <div class="card">
-        <span>آفوگاتو</span>
-        <span class="price">170</span>
+    <div class="sub-tabs cold-tabs">
+
+        <button class="sub-tab active" onclick="showCold('cold-espresso',this)">
+            ☕ بر پایه اسپرسو
+        </button>
+
+        <button class="sub-tab" onclick="showCold('cold-normal',this)">
+            🧊 نوشیدنی‌های سرد
+        </button>
+
+        <button class="sub-tab" onclick="showCold('mocktail',this)">
+            🍹 ماکتل‌ها
+        </button>
+
+        <button class="sub-tab" onclick="showCold('shake',this)">
+            🥤 شیک‌ها
+        </button>
+
+        <button class="sub-tab" onclick="showCold('smoothie',this)">
+            🍓 اسموتی‌ها
+        </button>
+
+        <button class="sub-tab" onclick="showCold('juice',this)">
+            🍊 آب‌میوه‌ها
+        </button>
+
     </div>
 
-    <div class="card">
-        <span>آیس آمریکانو</span>
-        <span class="price">140</span>
+
+    <!-- نوشیدنی‌های سرد بر پایه اسپرسو -->
+    <div id="cold-espresso" class="sub-section active">
+
+        <div class="card multi-card">
+            <div class="item-info">
+                <strong>☕ آیس آمریکانو</strong>
+
+                <div class="size-row">
+                    <span>سینگل</span>
+                    <span class="price">105</span>
+                </div>
+
+                <div class="size-row">
+                    <span>دبل</span>
+                    <span class="price">155</span>
+                </div>
+
+                <div class="size-row">
+                    <span>۱۰۰٪ عربیکا</span>
+                    <span class="price">175</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card multi-card">
+            <div class="item-info">
+                <strong>☕ آیس لاته</strong>
+
+                <div class="size-row">
+                    <span>سینگل</span>
+                    <span class="price">175</span>
+                </div>
+
+                <div class="size-row">
+                    <span>دبل</span>
+                    <span class="price">195</span>
+                </div>
+
+                <div class="size-row">
+                    <span>۱۰۰٪ عربیکا</span>
+                    <span class="price">205</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card multi-card">
+            <div class="item-info">
+                <strong>☕ آیس موکا</strong>
+
+                <div class="size-row">
+                    <span>سینگل</span>
+                    <span class="price">185</span>
+                </div>
+
+                <div class="size-row">
+                    <span>دبل</span>
+                    <span class="price">205</span>
+                </div>
+
+                <div class="size-row">
+                    <span>۱۰۰٪ عربیکا</span>
+                    <span class="price">220</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="card">
-        <span>آیس لاته</span>
-        <span class="price">170</span>
+
+    <!-- نوشیدنی‌های سرد -->
+    <div id="cold-normal" class="sub-section">
+
+        <div class="card">
+            <span>آفوگاتو</span>
+            <span class="price">245</span>
+        </div>
+
+        <div class="card">
+            <span>آیس چاکلت</span>
+            <span class="price">210</span>
+        </div>
+
+        <div class="card">
+            <span>آیس ماچا</span>
+            <span class="price">200</span>
+        </div>
+
+        <div class="card">
+            <span>آیس ماچا توت‌فرنگی</span>
+            <span class="price">250</span>
+        </div>
+
     </div>
 
-    <div class="card">
-        <span>آیس موکا</span>
-        <span class="price">180</span>
+
+    <!-- ماکتل‌ها -->
+    <div id="mocktail" class="sub-section">
+
+        <div class="card">
+            <span>لیموناد</span>
+            <span class="price">180</span>
+        </div>
+
+        <div class="card">
+            <span>موهیتو</span>
+            <span class="price">190</span>
+        </div>
+
+        <div class="card">
+            <span>بلو موهیتو</span>
+            <span class="price">210</span>
+        </div>
+
+        <div class="card">
+            <span>موهیتو توت‌فرنگی</span>
+            <span class="price">230</span>
+        </div>
+
+        <div class="card">
+            <span>بلو هاوایی</span>
+            <span class="price">265</span>
+        </div>
+
     </div>
 
-    <div class="card">
-        <span>آیس کارامل ماکیاتو</span>
-        <span class="price">200</span>
-    </div>
 
-    <div class="card">
-        <span>آیس چاکلت</span>
-        <span class="price">190</span>
-    </div>
+    <!-- شیک‌ها -->
+    <div id="shake" class="sub-section">
 
-    <div class="card">
-        <span>اسپرودا</span>
-        <span class="price">180</span>
-    </div>
+        <div class="card">
+            <span>نوتلا</span>
+            <span class="price">365</span>
+        </div>
 
-    <div class="card">
-        <span>اورنج کافی</span>
-        <span class="price">180</span>
-    </div>
+        <div class="card">
+            <span>لوتوس</span>
+            <span class="price">375</span>
+        </div>
 
-    <div class="card">
-        <div class="item">
+        <div class="card">
+            <span>اورئو</span>
+            <span class="price">315</span>
+        </div>
+
+        <div class="card">
             <span>پروتئین شیک</span>
-            <span class="desc">کره بادام زمینی، موز، شیر، مغزیجات، پودر پروتئین وی</span>
+            <span class="price">495</span>
         </div>
-        <span class="price">580</span>
-    </div>
 
-    <div class="card">
-        <span>آیس پک</span>
-        <span class="price">300</span>
-    </div>
-
-    <div class="card">
-        <div class="item">
-            <span>شیک</span>
-            <span class="desc">نوتلا، لوتوس، وانیل، توت فرنگی، طالبی، انبه</span>
+        <div class="card">
+            <span>تمام شیک‌های میوه‌ای</span>
+            <span class="price">290</span>
         </div>
-        <span class="price">290</span>
+
     </div>
 
-    <div class="card">
-        <span>موهیتو</span>
-        <span class="price">180</span>
+
+    <!-- اسموتی‌ها -->
+    <div id="smoothie" class="sub-section">
+
+        <div class="card">
+            <span>موز انبه</span>
+            <span class="price">375</span>
+        </div>
+
+        <div class="card">
+            <span>موز</span>
+            <span class="price">250</span>
+        </div>
+
+        <div class="card">
+            <span>انبه</span>
+            <span class="price">280</span>
+        </div>
+
+        <div class="card">
+            <span>انبه و توت‌فرنگی</span>
+            <span class="price">320</span>
+        </div>
+
     </div>
 
-    <div class="card">
-        <span>بلو موهیتو</span>
-        <span class="price">220</span>
+
+    <!-- آب‌میوه‌ها -->
+    <div id="juice" class="sub-section">
+
+        <div class="card">
+            <span>تمام آب‌میوه‌های فصل</span>
+            <span class="price">245</span>
+        </div>
+
     </div>
 
-    <div class="card">
-        <span>انواع ماکتل و بورش </span>
-        <span class="price">170</span>
     </div>
-    
-<div class="card">
-    <span>آب‌میوه فصل</span>
-    <span class="price">از  150 تا 300</span>
-</div>
-
-    <div class="card">
-        <span>شیر موز</span>
-        <span class="price">300</span>
-    </div>
-
-    <div class="card">
-        <span>موز انبه</span>
-        <span class="price">370</span>
-    </div>
-
-</div>
-
 <!-- FOOTER -->
 <div class="footer">
 <a class="btn" target="_blank"
@@ -723,7 +875,21 @@ setTimeout(()=>{
     document.getElementById("intro").style.display="none";
 },3000);
 
-    function showHot(tab, btn){
+        function showCold(tab, btn){
+
+    document.querySelectorAll("#cold .sub-section").forEach(function(s){
+        s.classList.remove("active");
+    });
+
+    document.querySelectorAll("#cold .sub-tab").forEach(function(b){
+        b.classList.remove("active");
+    });
+
+    document.getElementById(tab).classList.add("active");
+    btn.classList.add("active");
+
+    triggerReveal();
+        }
 
     document.querySelectorAll(".sub-section").forEach(function(s){
         s.classList.remove("active");
