@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>HAYAT | ورود مدیر</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Vazirmatn',sans-serif;
+    background:#090909;
+    color:#fff;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(212,175,55,.12),
+        transparent 40%
+    ),
+    radial-gradient(
+        circle at 80% 80%,
+        rgba(212,175,55,.08),
+        transparent 45%
+    );
+    pointer-events:none;
+}
+
+.login-box{
+    width:min(420px,92%);
+    background:#121212;
+    border:1px solid rgba(212,175,55,.3);
+    border-radius:18px;
+    padding:30px 24px;
+    text-align:center;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5);
+}
+
+.logo{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #d4af37;
+    box-shadow:
+        0 0 25px rgba(212,175,55,.35);
+}
+
+h1{
+    color:#d4af37;
+    margin:15px 0 3px;
+}
+
+.subtitle{
+    color:#777;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.field{
+    text-align:right;
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border-radius:9px;
+    border:1px solid #333;
+    background:#191919;
+    color:#fff;
+    outline:none;
+    font-family:inherit;
+    font-size:14px;
+}
+
+input:focus{
+    border-color:#d4af37;
+}
+
+button{
+    width:100%;
+    margin-top:8px;
+    padding:12px;
+    border:none;
+    border-radius:9px;
+    background:#d4af37;
+    color:#000;
+    font-family:inherit;
+    font-weight:700;
+    cursor:pointer;
+}
+
+button:hover{
+    box-shadow:
+        0 0 20px rgba(212,175,55,.3);
+}
+
+button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.error{
+    display:none;
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+    background:rgba(231,76,60,.1);
+    border:1px solid rgba(231,76,60,.3);
+    color:#ff8a80;
+    font-size:13px;
+}
+
+.back{
+    display:block;
+    margin-top:18px;
+    color:#777;
+    text-decoration:none;
+    font-size:12px;
+}
+
+.back:hover{
+    color:#d4af37;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <img
+        class="logo"
+        src="file_000000005f7471fdbdd33eefd3f2e476.png"
+    >
+
+    <h1>HAYAT COMPLEX</h1>
+
+    <div class="subtitle">
+        ورود به پنل مدیریت
+    </div>
+
+
+    <form id="loginForm">
+
+        <div class="field">
+
+            <label>
+                ایمیل مدیر
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                autocomplete="username"
+                required
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                رمز عبور
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                autocomplete="current-password"
+                required
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            id="loginButton">
+
+            ورود به پنل
+
+        </button>
+
+    </form>
+
+
+    <div
+        id="error"
+        class="error">
+    </div>
+
+
+    <a
+        class="back"
+        href="index.html">
+
+        ← بازگشت به منو
+
+    </a>
+
+</div>
+
+
+<script>
+
+/* ================= SUPABASE ================= */
+
+const SUPABASE_URL =
+    "https://lryoqddbyasdtjdrwpvx.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_pZbQaJ78di1MH3PUcJfeyw_0vPl43k9";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* ================= ELEMENTS ================= */
+
+const form =
+    document.getElementById("loginForm");
+
+const button =
+    document.getElementById("loginButton");
+
+const errorBox =
+    document.getElementById("error");
+
+
+/* ================= CHECK SESSION ================= */
+
+async function checkSession(){
+
+    const {
+        data
+    } = await supabaseClient
+        .auth
+        .getSession();
+
+
+    if(
+        data &&
+        data.session &&
+        data.session.user &&
+        data.session.user.id ===
+        "c7916c81-caaa-4050-bcae-9d0546bebb96"
+    ){
+
+        window.location.href =
+            "admin.html";
+
+    }
+
+}
+
+
+checkSession();
+
+
+/* ================= LOGIN ================= */
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        errorBox.style.display =
+            "none";
+
+
+        button.disabled =
+            true;
+
+
+        button.innerText =
+            "در حال ورود...";
+
+
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
+
+        const password =
+            document
+            .getElementById("password")
+            .value;
+
+
+        try{
+
+            const {
+                data,
+                error
+            } =
+            await supabaseClient
+                .auth
+                .signInWithPassword({
+                    email:email,
+                    password:password
+                });
+
+
+            if(error){
+
+                throw error;
+
+            }
+
+
+            if(
+                !data.user ||
+                data.user.id !==
+                "c7916c81-caaa-4050-bcae-9d0546bebb96"
+            ){
+
+                await supabaseClient
+                    .auth
+                    .signOut();
+
+                throw new Error(
+                    "این حساب اجازه ورود به پنل مدیریت را ندارد."
+                );
+
+            }
+
+
+            window.location.href =
+                "admin.html";
+
+
+        }catch(error){
+
+            console.error(error);
+
+
+            errorBox.innerText =
+                error.message ||
+                "ورود انجام نشد.";
+
+
+            errorBox.style.display =
+                "block";
+
+
+            button.disabled =
+                false;
+
+
+            button.innerText =
+                "ورود به پنل";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
