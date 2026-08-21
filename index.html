@@ -5,14 +5,11 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>HAYAT COMPLEX</title>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -22,6 +19,10 @@ rel="stylesheet">
 
 *{
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -40,19 +41,17 @@ body::before{
     background:
     radial-gradient(
         circle at 20% 30%,
-        rgba(212,175,55,0.10),
+        rgba(212,175,55,.10),
         transparent 40%
     ),
-
     radial-gradient(
         circle at 80% 20%,
-        rgba(255,215,0,0.06),
+        rgba(255,215,0,.06),
         transparent 45%
     ),
-
     radial-gradient(
         circle at 50% 80%,
-        rgba(212,175,55,0.08),
+        rgba(212,175,55,.08),
         transparent 50%
     );
 
@@ -66,13 +65,11 @@ body::before{
 @keyframes drift{
 
     from{
-        transform:scale(1)
-        translateY(0);
+        transform:scale(1) translateY(0);
     }
 
     to{
-        transform:scale(1.05)
-        translateY(-10px);
+        transform:scale(1.05) translateY(-10px);
     }
 
 }
@@ -83,15 +80,12 @@ body::before{
 #intro{
 
     position:fixed;
-
     inset:0;
 
     background:#000;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     flex-direction:column;
@@ -106,7 +100,6 @@ body::before{
 #intro img{
 
     width:120px;
-
     height:120px;
 
     border-radius:50%;
@@ -115,7 +108,7 @@ body::before{
 
     box-shadow:
     0 0 25px
-    rgba(212,175,55,0.4);
+    rgba(212,175,55,.4);
 
     object-fit:cover;
 
@@ -152,7 +145,7 @@ header{
 
     border-bottom:
     1px solid
-    rgba(212,175,55,0.3);
+    rgba(212,175,55,.3);
 
     position:relative;
 
@@ -162,7 +155,6 @@ header{
 header img{
 
     width:90px;
-
     height:90px;
 
     border-radius:50%;
@@ -173,7 +165,7 @@ header img{
 
     box-shadow:
     0 0 20px
-    rgba(212,175,55,0.3);
+    rgba(212,175,55,.3);
 
     animation:
     logoFloat 4s ease-in-out infinite;
@@ -187,7 +179,7 @@ header img{
 
         box-shadow:
         0 0 10px
-        rgba(212,175,55,0.3);
+        rgba(212,175,55,.3);
 
     }
 
@@ -197,7 +189,7 @@ header img{
 
         box-shadow:
         0 0 25px
-        rgba(212,175,55,0.5);
+        rgba(212,175,55,.5);
 
     }
 
@@ -207,7 +199,7 @@ header img{
 
         box-shadow:
         0 0 10px
-        rgba(212,175,55,0.3);
+        rgba(212,175,55,.3);
 
     }
 
@@ -232,7 +224,6 @@ header h1{
     gap:10px;
 
     margin-top:10px;
-
 }
 
 .btn{
@@ -250,7 +241,6 @@ header h1{
     text-decoration:none;
 
     transition:.3s;
-
 }
 
 .btn:hover{
@@ -262,7 +252,6 @@ header h1{
     box-shadow:
     0 0 15px
     rgba(212,175,55,.25);
-
 }
 
 
@@ -279,7 +268,6 @@ header h1{
     margin:15px 0;
 
     flex-wrap:wrap;
-
 }
 
 .tab-btn{
@@ -297,7 +285,6 @@ header h1{
     font-family:'Vazirmatn',sans-serif;
 
     cursor:pointer;
-
 }
 
 .tab-btn.active{
@@ -305,11 +292,10 @@ header h1{
     border-color:#d4af37;
 
     color:#d4af37;
-
 }
 
 
-/* ================= MENU ================= */
+/* ================= CONTAINER ================= */
 
 .container{
 
@@ -322,29 +308,26 @@ header h1{
     position:relative;
 
     z-index:1;
-
 }
 
 .section{
 
     display:none;
-
 }
 
 .section.active{
 
     display:block;
-
 }
 
 .section h2{
 
     color:#d4af37;
 
-    border-right:3px solid #d4af37;
+    border-right:
+    3px solid #d4af37;
 
     padding-right:10px;
-
 }
 
 
@@ -364,7 +347,9 @@ header h1{
 
     justify-content:space-between;
 
-    gap:12px;
+    align-items:center;
+
+    gap:10px;
 
     opacity:0;
 
@@ -374,8 +359,7 @@ header h1{
 
     border:
     1px solid
-    rgba(212,175,55,0.05);
-
+    rgba(212,175,55,.05);
 }
 
 .card.show{
@@ -383,7 +367,6 @@ header h1{
     opacity:1;
 
     transform:translateY(0);
-
 }
 
 .card:hover{
@@ -393,7 +376,6 @@ header h1{
     box-shadow:
     0 0 20px
     rgba(212,175,55,.15);
-
 }
 
 .price{
@@ -402,10 +384,11 @@ header h1{
 
     white-space:nowrap;
 
+    font-size:13px;
 }
 
 
-/* ================= ORDER BUTTON ================= */
+/* ================= ADD BUTTON ================= */
 
 .add-btn{
 
@@ -415,9 +398,9 @@ header h1{
 
     color:#d4af37;
 
-    border-radius:8px;
-
     padding:6px 10px;
+
+    border-radius:8px;
 
     font-family:'Vazirmatn',sans-serif;
 
@@ -425,6 +408,7 @@ header h1{
 
     white-space:nowrap;
 
+    transition:.25s;
 }
 
 .add-btn:hover{
@@ -432,64 +416,6 @@ header h1{
     background:#d4af37;
 
     color:#000;
-
-}
-
-
-/* ================= MULTI CARD ================= */
-
-.multi-card{
-
-    display:block;
-
-    padding:15px;
-
-}
-
-.item-info strong{
-
-    display:block;
-
-    font-size:18px;
-
-    color:#d4af37;
-
-    margin-bottom:12px;
-
-}
-
-.size-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:8px 0;
-
-    border-top:
-    1px solid
-    rgba(255,255,255,.08);
-
-}
-
-.size-row:first-of-type{
-
-    border-top:none;
-
-}
-
-.size-actions{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
 }
 
 
@@ -502,7 +428,6 @@ header h1{
     gap:10px;
 
     margin:15px 0 20px;
-
 }
 
 .sub-tab{
@@ -524,7 +449,6 @@ header h1{
     transition:.3s;
 
     font-family:'Vazirmatn',sans-serif;
-
 }
 
 .sub-tab.active{
@@ -532,19 +456,59 @@ header h1{
     border-color:#d4af37;
 
     color:#d4af37;
-
 }
 
 .sub-section{
 
     display:none;
-
 }
 
 .sub-section.active{
 
     display:block;
+}
 
+
+/* ================= MULTI CARD ================= */
+
+.multi-card{
+
+    display:block;
+
+    padding:15px;
+}
+
+.item-info strong{
+
+    display:block;
+
+    font-size:18px;
+
+    color:#d4af37;
+
+    margin-bottom:12px;
+}
+
+.size-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:8px 0;
+
+    border-top:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+.size-row:first-of-type{
+
+    border-top:none;
 }
 
 
@@ -560,7 +524,6 @@ header h1{
     gap:10px;
 
     margin:15px 0 20px;
-
 }
 
 .cold-tabs .sub-tab{
@@ -574,7 +537,60 @@ header h1{
     padding:10px 5px;
 
     font-size:13px;
+}
 
+
+/* ================= ADD TOAST ================= */
+
+#addToast{
+
+    position:fixed;
+
+    bottom:90px;
+
+    right:50%;
+
+    transform:
+    translateX(50%)
+    translateY(20px);
+
+    background:#151515;
+
+    color:#fff;
+
+    border:1px solid #d4af37;
+
+    border-radius:10px;
+
+    padding:10px 18px;
+
+    font-size:13px;
+
+    box-shadow:
+    0 5px 25px
+    rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:all .3s ease;
+
+    z-index:99999;
+
+    pointer-events:none;
+
+}
+
+#addToast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+    translateX(50%)
+    translateY(0);
 }
 
 
@@ -585,7 +601,6 @@ header h1{
     position:fixed;
 
     left:15px;
-
     right:15px;
 
     bottom:15px;
@@ -595,7 +610,6 @@ header h1{
     max-width:520px;
 
     margin:auto;
-
 }
 
 .cart-toggle{
@@ -623,7 +637,6 @@ header h1{
     box-shadow:
     0 5px 25px
     rgba(0,0,0,.5);
-
 }
 
 .cart-panel{
@@ -645,13 +658,11 @@ header h1{
     max-height:65vh;
 
     overflow-y:auto;
-
 }
 
 .cart-panel.open{
 
     display:block;
-
 }
 
 .cart-title{
@@ -663,7 +674,6 @@ header h1{
     font-weight:700;
 
     margin-bottom:12px;
-
 }
 
 .cart-item{
@@ -672,13 +682,11 @@ header h1{
     1px solid #292929;
 
     padding:10px 0;
-
 }
 
 .cart-item:last-child{
 
     border-bottom:none;
-
 }
 
 .cart-row{
@@ -690,7 +698,6 @@ header h1{
     gap:10px;
 
     align-items:center;
-
 }
 
 .qty{
@@ -700,13 +707,11 @@ header h1{
     align-items:center;
 
     gap:8px;
-
 }
 
 .qty button{
 
     width:28px;
-
     height:28px;
 
     border-radius:7px;
@@ -718,7 +723,6 @@ header h1{
     border:1px solid #444;
 
     cursor:pointer;
-
 }
 
 .cart-total{
@@ -734,13 +738,11 @@ header h1{
     border-top:1px solid #333;
 
     font-size:17px;
-
 }
 
 .cart-total strong{
 
     color:#d4af37;
-
 }
 
 
@@ -749,7 +751,6 @@ header h1{
 .order-form{
 
     margin-top:15px;
-
 }
 
 .order-form label{
@@ -761,7 +762,6 @@ header h1{
     font-size:13px;
 
     margin-bottom:6px;
-
 }
 
 .order-form input{
@@ -783,13 +783,11 @@ header h1{
     margin-bottom:10px;
 
     outline:none;
-
 }
 
 .order-form input:focus{
 
     border-color:#d4af37;
-
 }
 
 .submit-order{
@@ -811,7 +809,6 @@ header h1{
     font-weight:700;
 
     cursor:pointer;
-
 }
 
 .submit-order:disabled{
@@ -819,7 +816,6 @@ header h1{
     opacity:.5;
 
     cursor:not-allowed;
-
 }
 
 
@@ -838,7 +834,6 @@ header h1{
     text-align:center;
 
     font-size:13px;
-
 }
 
 .message.success{
@@ -853,7 +848,6 @@ header h1{
     border:
     1px solid
     rgba(46,204,113,.3);
-
 }
 
 .message.error{
@@ -868,7 +862,6 @@ header h1{
     border:
     1px solid
     rgba(231,76,60,.3);
-
 }
 
 
@@ -884,7 +877,6 @@ header h1{
     color:#888;
 
     border-top:1px solid #222;
-
 }
 
 .footer .btn{
@@ -896,13 +888,6 @@ header h1{
     border:1px solid #d4af37;
 
     color:#d4af37;
-
-}
-
-html{
-
-    scroll-behavior:smooth;
-
 }
 
 </style>
@@ -916,9 +901,7 @@ html{
 
 <div id="intro">
 
-    <img
-        src="file_000000005f7471fdbdd33eefd3f2e476.png"
-    >
+    <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
 
     <h1>
         HAYAT COMPLEX
@@ -931,9 +914,7 @@ html{
 
 <header>
 
-    <img
-        src="file_000000005f7471fdbdd33eefd3f2e476.png"
-    >
+    <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
 
     <h1>
         HAYAT COMPLEX
@@ -942,18 +923,17 @@ html{
     <div class="actions">
 
         <a
-            class="btn"
-            target="_blank"
-            href="https://instagram.com/hayat_complex">
+        class="btn"
+        target="_blank"
+        href="https://instagram.com/hayat_complex">
 
             📷 اینستاگرام
 
         </a>
 
-
         <a
-            class="btn"
-            href="tel:+989011286503">
+        class="btn"
+        href="tel:+989011286503">
 
             📞 تماس
 
@@ -964,13 +944,13 @@ html{
 </header>
 
 
-<!-- ================= TABS ================= -->
+<!-- ================= MAIN TABS ================= -->
 
 <div class="tabs">
 
     <button
-        class="tab-btn active"
-        onclick="show('breakfast',this)">
+    class="tab-btn active"
+    onclick="show('breakfast',this)">
 
         صبحانه
 
@@ -978,8 +958,8 @@ html{
 
 
     <button
-        class="tab-btn"
-        onclick="show('food',this)">
+    class="tab-btn"
+    onclick="show('food',this)">
 
         غذا
 
@@ -987,8 +967,8 @@ html{
 
 
     <button
-        class="tab-btn"
-        onclick="show('cake',this)">
+    class="tab-btn"
+    onclick="show('cake',this)">
 
         کیک
 
@@ -996,8 +976,8 @@ html{
 
 
     <button
-        class="tab-btn"
-        onclick="show('hot',this)">
+    class="tab-btn"
+    onclick="show('hot',this)">
 
         نوشیدنی گرم
 
@@ -1005,8 +985,8 @@ html{
 
 
     <button
-        class="tab-btn"
-        onclick="show('cold',this)">
+    class="tab-btn"
+    onclick="show('cold',this)">
 
         نوشیدنی سرد
 
@@ -1031,19 +1011,17 @@ class="section active">
 
 <div class="card">
 
-    <div>
-        <span>
-            املت گوجه
-        </span>
-    </div>
+    <span>
+        املت گوجه
+    </span>
 
     <span class="price">
         245,000 تومان
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('املت گوجه',245)">
+    class="add-btn"
+    onclick="addItem('املت گوجه',245)">
 
         افزودن
 
@@ -1063,8 +1041,8 @@ class="section active">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('نیمرو',130)">
+    class="add-btn"
+    onclick="addItem('نیمرو',130)">
 
         افزودن
 
@@ -1084,8 +1062,8 @@ class="section active">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('املت پنیری',290)">
+    class="add-btn"
+    onclick="addItem('املت پنیری',290)">
 
         افزودن
 
@@ -1105,8 +1083,8 @@ class="section active">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('املت قارچ پنیر',230)">
+    class="add-btn"
+    onclick="addItem('املت قارچ پنیر',230)">
 
         افزودن
 
@@ -1126,8 +1104,8 @@ class="section active">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('رویال',370)">
+    class="add-btn"
+    onclick="addItem('رویال',370)">
 
         افزودن
 
@@ -1147,8 +1125,8 @@ class="section active">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('سوسیس تخم مرغ',250)">
+    class="add-btn"
+    onclick="addItem('سوسیس تخم مرغ',250)">
 
         افزودن
 
@@ -1168,8 +1146,8 @@ class="section active">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('بشقاب ایرانی',165)">
+    class="add-btn"
+    onclick="addItem('بشقاب ایرانی',165)">
 
         افزودن
 
@@ -1202,8 +1180,8 @@ class="section">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('پاستا آلفردو',535)">
+    class="add-btn"
+    onclick="addItem('پاستا آلفردو',535)">
 
         افزودن
 
@@ -1223,8 +1201,8 @@ class="section">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('سیب زمینی مخصوص',260)">
+    class="add-btn"
+    onclick="addItem('سیب زمینی مخصوص',260)">
 
         افزودن
 
@@ -1244,8 +1222,8 @@ class="section">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('سالاد ماکارونی',180)">
+    class="add-btn"
+    onclick="addItem('سالاد ماکارونی',180)">
 
         افزودن
 
@@ -1265,8 +1243,8 @@ class="section">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('چیپس و پنیر',280)">
+    class="add-btn"
+    onclick="addItem('چیپس و پنیر',280)">
 
         افزودن
 
@@ -1299,8 +1277,8 @@ class="section">
     </span>
 
     <button
-        class="add-btn"
-        onclick="addItem('کیک روز',245)">
+    class="add-btn"
+    onclick="addItem('کیک روز',245)">
 
         افزودن
 
@@ -1331,7 +1309,6 @@ onclick="showHot('espresso',this)">
 ☕ بر پایه اسپرسو
 
 </button>
-
 
 <button
 class="sub-tab"
@@ -1911,7 +1888,7 @@ onclick="addItem('چای',90)">
 
 </div>
 
-    <!-- ================= COLD ================= -->
+<!-- ================= COLD ================= -->
 
 <div id="cold" class="section">
 
@@ -1919,64 +1896,44 @@ onclick="addItem('چای',90)">
     🧊 نوشیدنی‌های سرد
 </h2>
 
-
 <div class="sub-tabs cold-tabs">
 
-<button
-class="sub-tab active"
+<button class="sub-tab active"
 onclick="showCold('cold-espresso',this)">
-
 ☕ بر پایه اسپرسو
-
 </button>
 
-<button
-class="sub-tab"
+<button class="sub-tab"
 onclick="showCold('cold-normal',this)">
-
 🧊 نوشیدنی‌های سرد
-
 </button>
 
-<button
-class="sub-tab"
+<button class="sub-tab"
 onclick="showCold('mocktail',this)">
-
 🍹 ماکتل‌ها
-
 </button>
 
-<button
-class="sub-tab"
+<button class="sub-tab"
 onclick="showCold('shake',this)">
-
 🥤 شیک‌ها
-
 </button>
 
-<button
-class="sub-tab"
+<button class="sub-tab"
 onclick="showCold('smoothie',this)">
-
 🍓 اسموتی‌ها
-
 </button>
 
-<button
-class="sub-tab"
+<button class="sub-tab"
 onclick="showCold('juice',this)">
-
 🍊 آب‌میوه‌ها
-
 </button>
 
 </div>
 
 
-<!-- ================= COLD ESPRESSO ================= -->
+<!-- COLD ESPRESSO -->
 
-<div
-id="cold-espresso"
+<div id="cold-espresso"
 class="sub-section active">
 
 
@@ -1984,75 +1941,54 @@ class="sub-section active">
 
 <div class="item-info">
 
-<strong>
-☕ آیس آمریکانو
-</strong>
-
+<strong>☕ آیس آمریکانو</strong>
 
 <div class="size-row">
 
-<span>
-سینگل
-</span>
+<span>سینگل</span>
 
 <span class="price">
 105,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس آمریکانو - سینگل',105)">
-
 افزودن
-
 </button>
 
 </div>
 
-
 <div class="size-row">
 
-<span>
-دبل
-</span>
+<span>دبل</span>
 
 <span class="price">
 155,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس آمریکانو - دبل',155)">
-
 افزودن
-
 </button>
 
 </div>
 
-
 <div class="size-row">
 
-<span>
-۱۰۰٪ عربیکا
-</span>
+<span>۱۰۰٪ عربیکا</span>
 
 <span class="price">
 175,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس آمریکانو - ۱۰۰٪ عربیکا',175)">
-
 افزودن
-
 </button>
 
 </div>
 
 </div>
-
 </div>
 
 
@@ -2060,75 +1996,54 @@ onclick="addItem('آیس آمریکانو - ۱۰۰٪ عربیکا',175)">
 
 <div class="item-info">
 
-<strong>
-☕ آیس لاته
-</strong>
-
+<strong>☕ آیس لاته</strong>
 
 <div class="size-row">
 
-<span>
-سینگل
-</span>
+<span>سینگل</span>
 
 <span class="price">
 175,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس لاته - سینگل',175)">
-
 افزودن
-
 </button>
 
 </div>
 
-
 <div class="size-row">
 
-<span>
-دبل
-</span>
+<span>دبل</span>
 
 <span class="price">
 195,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس لاته - دبل',195)">
-
 افزودن
-
 </button>
 
 </div>
 
-
 <div class="size-row">
 
-<span>
-۱۰۰٪ عربیکا
-</span>
+<span>۱۰۰٪ عربیکا</span>
 
 <span class="price">
 205,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس لاته - ۱۰۰٪ عربیکا',205)">
-
 افزودن
-
 </button>
 
 </div>
 
 </div>
-
 </div>
 
 
@@ -2136,103 +2051,74 @@ onclick="addItem('آیس لاته - ۱۰۰٪ عربیکا',205)">
 
 <div class="item-info">
 
-<strong>
-☕ آیس موکا
-</strong>
-
+<strong>☕ آیس موکا</strong>
 
 <div class="size-row">
 
-<span>
-سینگل
-</span>
+<span>سینگل</span>
 
 <span class="price">
 185,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس موکا - سینگل',185)">
-
 افزودن
-
 </button>
 
 </div>
 
-
 <div class="size-row">
 
-<span>
-دبل
-</span>
+<span>دبل</span>
 
 <span class="price">
 205,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس موکا - دبل',205)">
-
 افزودن
-
 </button>
 
 </div>
 
-
 <div class="size-row">
 
-<span>
-۱۰۰٪ عربیکا
-</span>
+<span>۱۰۰٪ عربیکا</span>
 
 <span class="price">
 220,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس موکا - ۱۰۰٪ عربیکا',220)">
-
 افزودن
-
 </button>
 
 </div>
 
 </div>
-
 </div>
 
 </div>
 
 
-<!-- ================= COLD NORMAL ================= -->
+<!-- COLD NORMAL -->
 
-<div
-id="cold-normal"
-class="sub-section">
-
+<div id="cold-normal" class="sub-section">
 
 <div class="card">
 
-<span>
-آفوگاتو
-</span>
+<span>آفوگاتو</span>
 
 <span class="price">
 245,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آفوگاتو',245)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2240,20 +2126,15 @@ onclick="addItem('آفوگاتو',245)">
 
 <div class="card">
 
-<span>
-آیس چاکلت
-</span>
+<span>آیس چاکلت</span>
 
 <span class="price">
 210,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس چاکلت',210)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2261,20 +2142,15 @@ onclick="addItem('آیس چاکلت',210)">
 
 <div class="card">
 
-<span>
-آیس ماچا
-</span>
+<span>آیس ماچا</span>
 
 <span class="price">
 260,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس ماچا',260)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2282,20 +2158,15 @@ onclick="addItem('آیس ماچا',260)">
 
 <div class="card">
 
-<span>
-آیس ماچا توت‌فرنگی
-</span>
+<span>آیس ماچا توت‌فرنگی</span>
 
 <span class="price">
 300,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('آیس ماچا توت‌فرنگی',300)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2303,29 +2174,21 @@ onclick="addItem('آیس ماچا توت‌فرنگی',300)">
 </div>
 
 
-<!-- ================= MOCKTAIL ================= -->
+<!-- MOCKTAIL -->
 
-<div
-id="mocktail"
-class="sub-section">
-
+<div id="mocktail" class="sub-section">
 
 <div class="card">
 
-<span>
-لیموناد
-</span>
+<span>لیموناد</span>
 
 <span class="price">
 180,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('لیموناد',180)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2333,20 +2196,15 @@ onclick="addItem('لیموناد',180)">
 
 <div class="card">
 
-<span>
-موهیتو
-</span>
+<span>موهیتو</span>
 
 <span class="price">
 190,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('موهیتو',190)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2354,20 +2212,15 @@ onclick="addItem('موهیتو',190)">
 
 <div class="card">
 
-<span>
-بلو موهیتو
-</span>
+<span>بلو موهیتو</span>
 
 <span class="price">
 210,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('بلو موهیتو',210)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2375,20 +2228,15 @@ onclick="addItem('بلو موهیتو',210)">
 
 <div class="card">
 
-<span>
-موهیتو توت‌فرنگی
-</span>
+<span>موهیتو توت‌فرنگی</span>
 
 <span class="price">
 230,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('موهیتو توت‌فرنگی',230)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2396,20 +2244,15 @@ onclick="addItem('موهیتو توت‌فرنگی',230)">
 
 <div class="card">
 
-<span>
-بلو هاوایی
-</span>
+<span>بلو هاوایی</span>
 
 <span class="price">
 265,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('بلو هاوایی',265)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2417,29 +2260,21 @@ onclick="addItem('بلو هاوایی',265)">
 </div>
 
 
-<!-- ================= SHAKE ================= -->
+<!-- SHAKE -->
 
-<div
-id="shake"
-class="sub-section">
-
+<div id="shake" class="sub-section">
 
 <div class="card">
 
-<span>
-نوتلا
-</span>
+<span>نوتلا</span>
 
 <span class="price">
 365,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('نوتلا',365)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2447,20 +2282,15 @@ onclick="addItem('نوتلا',365)">
 
 <div class="card">
 
-<span>
-لوتوس
-</span>
+<span>لوتوس</span>
 
 <span class="price">
 375,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('لوتوس',375)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2468,20 +2298,15 @@ onclick="addItem('لوتوس',375)">
 
 <div class="card">
 
-<span>
-اورئو
-</span>
+<span>اورئو</span>
 
 <span class="price">
 315,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('اورئو',315)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2489,20 +2314,15 @@ onclick="addItem('اورئو',315)">
 
 <div class="card">
 
-<span>
-پروتئین شیک
-</span>
+<span>پروتئین شیک</span>
 
 <span class="price">
 495,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('پروتئین شیک',495)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2510,20 +2330,15 @@ onclick="addItem('پروتئین شیک',495)">
 
 <div class="card">
 
-<span>
-تمام شیک‌های میوه‌ای
-</span>
+<span>تمام شیک‌های میوه‌ای</span>
 
 <span class="price">
 290,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('تمام شیک‌های میوه‌ای',290)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2531,29 +2346,21 @@ onclick="addItem('تمام شیک‌های میوه‌ای',290)">
 </div>
 
 
-<!-- ================= SMOOTHIE ================= -->
+<!-- SMOOTHIE -->
 
-<div
-id="smoothie"
-class="sub-section">
-
+<div id="smoothie" class="sub-section">
 
 <div class="card">
 
-<span>
-موز انبه
-</span>
+<span>موز انبه</span>
 
 <span class="price">
 375,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('موز انبه',375)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2561,20 +2368,15 @@ onclick="addItem('موز انبه',375)">
 
 <div class="card">
 
-<span>
-موز
-</span>
+<span>موز</span>
 
 <span class="price">
 250,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('موز',250)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2582,20 +2384,15 @@ onclick="addItem('موز',250)">
 
 <div class="card">
 
-<span>
-انبه
-</span>
+<span>انبه</span>
 
 <span class="price">
 280,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('انبه',280)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2603,20 +2400,15 @@ onclick="addItem('انبه',280)">
 
 <div class="card">
 
-<span>
-انبه و توت‌فرنگی
-</span>
+<span>انبه و توت‌فرنگی</span>
 
 <span class="price">
 320,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('انبه و توت‌فرنگی',320)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2624,29 +2416,21 @@ onclick="addItem('انبه و توت‌فرنگی',320)">
 </div>
 
 
-<!-- ================= JUICE ================= -->
+<!-- JUICE -->
 
-<div
-id="juice"
-class="sub-section">
-
+<div id="juice" class="sub-section">
 
 <div class="card">
 
-<span>
-تمام آب‌میوه‌های فصل
-</span>
+<span>تمام آب‌میوه‌های فصل</span>
 
 <span class="price">
 245,000 تومان
 </span>
 
-<button
-class="add-btn"
+<button class="add-btn"
 onclick="addItem('تمام آب‌میوه‌های فصل',245)">
-
 افزودن
-
 </button>
 
 </div>
@@ -2655,19 +2439,6 @@ onclick="addItem('تمام آب‌میوه‌های فصل',245)">
 
 </div>
 
-
-<!-- ================= FOOTER ================= -->
-
-<div class="footer">
-
-<a
-class="btn"
-target="_blank"
-href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
-
-📍 مسیر‌یابی به کافه
-
-</a>
 
 </div>
 
@@ -2676,28 +2447,18 @@ href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
 
 <div class="cart-box">
 
-<div
-id="cartPanel"
-class="cart-panel">
+<div id="cartPanel" class="cart-panel">
 
 <div class="cart-title">
-
-🛒 سبد سفارش
-
+🛒 سبد خرید
 </div>
 
-
-<div id="cartItems">
-
-هنوز چیزی به سبد اضافه نکرده‌اید.
-
-</div>
-
+<div id="cartItems"></div>
 
 <div class="cart-total">
 
 <span>
-مبلغ کل:
+مبلغ کل
 </span>
 
 <strong id="cartTotal">
@@ -2717,7 +2478,7 @@ class="cart-panel">
 id="tableNumber"
 type="text"
 inputmode="numeric"
-placeholder="مثلاً 12">
+placeholder="مثلاً 5">
 
 
 <button
@@ -2729,11 +2490,8 @@ onclick="submitOrder()">
 
 </button>
 
-
-<div
-id="orderMessage"
+<div id="orderMessage"
 class="message">
-
 </div>
 
 </div>
@@ -2745,24 +2503,42 @@ class="message">
 class="cart-toggle"
 onclick="toggleCart()">
 
-🛒
-سبد خرید
-(
+🛒 سبد خرید
 <span id="cartCount">
 0
 </span>
-)
 
 </button>
 
 </div>
 
 
+<!-- ================= TOAST ================= -->
+
+<div id="addToast"></div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+
+<a
+class="btn"
+target="_blank"
+href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
+
+📍 مسیر‌یابی به کافه
+
+</a>
+
+</div>
+
+
 <script>
 
-/* =====================================================
+/* ==================================================
    SUPABASE
-===================================================== */
+================================================== */
 
 const SUPABASE_URL =
 "https://lryoqddbyasdtjdrwpvx.supabase.co";
@@ -2777,33 +2553,31 @@ supabase.createClient(
 );
 
 
-/* =====================================================
+/* ==================================================
    CART
-===================================================== */
+================================================== */
 
 let cart = [];
 
 
-/* =====================================================
-   PRICE FORMAT
-===================================================== */
+/* ==================================================
+   FORMAT PRICE
+================================================== */
 
-function formatPrice(value){
+function formatPrice(price){
 
-    const number =
-        Number(value) * 1000;
-
-    return number.toLocaleString("en-US")
+    return Number(price)
+        .toLocaleString("en-US")
         + " تومان";
 
 }
 
 
-/* =====================================================
+/* ==================================================
    ADD ITEM
-===================================================== */
+================================================== */
 
-function addItem(name, price){
+function addItem(name,price){
 
     const existing =
         cart.find(
@@ -2832,55 +2606,14 @@ function addItem(name, price){
 
     updateCart();
 
+    showAddToast(name);
 
 }
 
 
-/* =====================================================
-   REMOVE ONE
-===================================================== */
-
-function decreaseItem(index){
-
-    if(
-        cart[index] &&
-        cart[index].quantity > 1
-    ){
-
-        cart[index].quantity--;
-
-    }else{
-
-        cart.splice(index,1);
-
-    }
-
-
-    updateCart();
-
-}
-
-
-/* =====================================================
-   INCREASE
-===================================================== */
-
-function increaseItem(index){
-
-    if(cart[index]){
-
-        cart[index].quantity++;
-
-    }
-
-    updateCart();
-
-}
-
-
-/* =====================================================
+/* ==================================================
    UPDATE CART
-===================================================== */
+================================================== */
 
 function updateCart(){
 
@@ -2900,115 +2633,94 @@ function updateCart(){
         );
 
 
-    if(cart.length === 0){
-
-        cartItems.innerHTML =
-        "هنوز چیزی به سبد اضافه نکرده‌اید.";
-
-        cartCount.textContent = "0";
-
-        cartTotal.textContent =
-        "0 تومان";
-
-        return;
-
-    }
-
-
     let total = 0;
 
     let count = 0;
 
 
-    cartItems.innerHTML =
-    cart.map(
-        (item,index) => {
-
-            const itemTotal =
-                item.price *
-                item.quantity *
-                1000;
-
-            total += itemTotal;
-
-            count += item.quantity;
+    cartItems.innerHTML = "";
 
 
-            return `
+    cart.forEach(function(item,index){
 
-            <div class="cart-item">
-
-                <div class="cart-row">
-
-                    <div>
-
-                        <strong>
-                            ${item.name}
-                        </strong>
-
-                        <div
-                        style="
-                        color:#999;
-                        font-size:12px;
-                        margin-top:4px;
-                        ">
-
-                            ${formatPrice(item.price)}
-                            ×
-                            ${item.quantity}
-
-                        </div>
-
-                    </div>
+        const itemTotal =
+            item.price *
+            item.quantity;
 
 
-                    <div class="qty">
+        total += itemTotal;
 
-                        <button
-                        onclick="decreaseItem(${index})">
-
-                            −
-
-                        </button>
+        count += item.quantity;
 
 
-                        <span>
+        const div =
+            document.createElement("div");
 
-                            ${item.quantity}
+        div.className =
+            "cart-item";
 
-                        </span>
 
+        div.innerHTML = `
 
-                        <button
-                        onclick="increaseItem(${index})">
+            <div class="cart-row">
 
-                            +
+                <div>
 
-                        </button>
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <div
+                    style="
+                    color:#aaa;
+                    font-size:12px;
+                    margin-top:4px;
+                    ">
+
+                        ${formatPrice(item.price)}
 
                     </div>
 
                 </div>
 
 
-                <div
-                style="
-                color:#d4af37;
-                margin-top:7px;
-                font-size:13px;
-                ">
+                <div class="qty">
 
-                    ${itemTotal.toLocaleString("en-US")}
-                    تومان
+                    <button
+                    onclick="changeQty(${index},1)">
+                        +
+                    </button>
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+                    <button
+                    onclick="changeQty(${index},-1)">
+                        −
+                    </button>
 
                 </div>
 
             </div>
 
-            `;
+            <div
+            style="
+            color:#d4af37;
+            font-size:13px;
+            margin-top:6px;
+            ">
 
-        }
-    ).join("");
+                ${formatPrice(itemTotal)}
+
+            </div>
+
+        `;
+
+
+        cartItems.appendChild(div);
+
+    });
 
 
     cartCount.textContent =
@@ -3016,49 +2728,93 @@ function updateCart(){
 
 
     cartTotal.textContent =
-        total.toLocaleString("en-US")
-        + " تومان";
+        formatPrice(total);
 
 }
 
 
-/* =====================================================
-   CART OPEN / CLOSE
-===================================================== */
+/* ==================================================
+   CHANGE QUANTITY
+================================================== */
+
+function changeQty(index,change){
+
+    cart[index].quantity +=
+        change;
+
+
+    if(cart[index].quantity <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* ==================================================
+   TOGGLE CART
+================================================== */
 
 function toggleCart(){
 
-    document
-    .getElementById("cartPanel")
-    .classList.toggle("open");
+    const panel =
+        document.getElementById(
+            "cartPanel"
+        );
+
+
+    panel.classList.toggle("open");
 
 }
 
 
-function openCart(){
+/* ==================================================
+   TOAST
+================================================== */
 
-    document
-    .getElementById("cartPanel")
-    .classList.add("open");
+function showAddToast(name){
+
+    const toast =
+        document.getElementById(
+            "addToast"
+        );
+
+
+    toast.textContent =
+        "✅ " +
+        name +
+        " به سبد خرید اضافه شد";
+
+
+    toast.classList.add("show");
+
+
+    clearTimeout(
+        window.addToastTimer
+    );
+
+
+    window.addToastTimer =
+        setTimeout(function(){
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },2000);
 
 }
 
 
-/* =====================================================
+/* ==================================================
    SUBMIT ORDER
-===================================================== */
+================================================== */
 
 async function submitOrder(){
-
-    const message =
-        document.getElementById(
-            "orderMessage"
-        );
-
-    const button =
-        document.getElementById(
-            "submitOrder"
-        );
 
     const table =
         document.getElementById(
@@ -3066,14 +2822,24 @@ async function submitOrder(){
         ).value.trim();
 
 
+    const message =
+        document.getElementById(
+            "orderMessage"
+        );
+
+
+    const button =
+        document.getElementById(
+            "submitOrder"
+        );
+
+
     message.className =
         "message";
 
-    message.textContent =
-        "";
 
+    message.textContent = "";
 
-    /* EMPTY CART */
 
     if(cart.length === 0){
 
@@ -3081,14 +2847,12 @@ async function submitOrder(){
             "message error";
 
         message.textContent =
-            "❌ لطفاً حداقل یک آیتم انتخاب کنید.";
+            "⚠️ سبد خرید خالی است.";
 
         return;
 
     }
 
-
-    /* TABLE */
 
     if(!table){
 
@@ -3096,45 +2860,23 @@ async function submitOrder(){
             "message error";
 
         message.textContent =
-            "❌ لطفاً شماره میز را وارد کنید.";
+            "⚠️ لطفاً شماره میز را وارد کنید.";
 
         return;
 
     }
 
 
-    /* TOTAL */
-
     let total = 0;
 
-    cart.forEach(
-        item => {
 
-            total +=
-                item.price *
-                item.quantity *
-                1000;
+    cart.forEach(function(item){
 
-        }
-    );
+        total +=
+            item.price *
+            item.quantity;
 
-
-    /* ITEMS */
-
-    const items =
-        cart.map(
-            item => ({
-
-                name:item.name,
-
-                price:
-                    item.price * 1000,
-
-                quantity:
-                    item.quantity
-
-            })
-        );
+    });
 
 
     button.disabled = true;
@@ -3143,64 +2885,46 @@ async function submitOrder(){
         "در حال ثبت سفارش...";
 
 
-    try{
+    const items =
+        cart.map(function(item){
 
-        const { error } =
-    await supabaseClient
+            return {
 
-    .from("orders")
+                name:item.name,
 
-    .insert({
+                price:item.price,
 
-        table_number: table,
+                quantity:item.quantity
 
-        items: items,
+            };
 
-        total_price: total,
-
-        status: "new"
-
-    });
+        });
 
 
-        if(error){
+    const { error } =
+        await supabaseClient
 
-            console.error(
-                "SUPABASE ERROR:",
-                error
-            );
+        .from("orders")
 
-            throw error;
+        .insert({
 
-        }
+            table_number:table,
 
+            items:items,
 
-        message.className =
-            "message success";
+            total_price:total,
 
-        message.textContent =
-            "✅ سفارش شما با موفقیت ثبت شد.";
+            status:"new"
 
-
-        cart = [];
-
-        document
-        .getElementById(
-            "tableNumber"
-        )
-        .value = "";
+        });
 
 
-        updateCart();
+    if(error){
 
-
-        button.textContent =
-            "سفارش ثبت شد";
-
-
-    }catch(error){
-
-        console.error(error);
+        console.error(
+            "Supabase Error:",
+            error
+        );
 
 
         message.className =
@@ -3209,37 +2933,67 @@ async function submitOrder(){
         message.textContent =
             "❌ سفارش ثبت نشد. دوباره تلاش کنید.";
 
-
         button.disabled = false;
 
         button.textContent =
             "ثبت سفارش";
 
+        return;
+
     }
+
+
+    message.className =
+        "message success";
+
+    message.textContent =
+        "✅ سفارش شما با موفقیت ثبت شد.";
+
+
+    cart = [];
+
+    updateCart();
+
+
+    document.getElementById(
+        "tableNumber"
+    ).value = "";
+
+
+    button.disabled = false;
+
+    button.textContent =
+        "ثبت سفارش";
 
 }
 
 
-/* =====================================================
+/* ==================================================
    MAIN TABS
-===================================================== */
+================================================== */
 
 function show(tab,btn){
 
     document
     .querySelectorAll(".section")
-    .forEach(
-        section =>
-        section.classList.remove("active")
-    );
+    .forEach(function(section){
+
+        section.classList.remove(
+            "active"
+        );
+
+    });
 
 
     document
     .querySelectorAll(".tab-btn")
-    .forEach(
-        button =>
-        button.classList.remove("active")
-    );
+    .forEach(function(button){
+
+        button.classList.remove(
+            "active"
+        );
+
+    });
 
 
     document
@@ -3255,30 +3009,32 @@ function show(tab,btn){
 }
 
 
-/* =====================================================
-   HOT TABS
-===================================================== */
+/* ==================================================
+   HOT SUB TABS
+================================================== */
 
 function showHot(tab,btn){
 
     document
-    .querySelectorAll(
-        "#hot .sub-section"
-    )
-    .forEach(
-        section =>
-        section.classList.remove("active")
-    );
+    .querySelectorAll("#hot .sub-section")
+    .forEach(function(section){
+
+        section.classList.remove(
+            "active"
+        );
+
+    });
 
 
     document
-    .querySelectorAll(
-        "#hot .sub-tab"
-    )
-    .forEach(
-        button =>
-        button.classList.remove("active")
-    );
+    .querySelectorAll("#hot .sub-tab")
+    .forEach(function(button){
+
+        button.classList.remove(
+            "active"
+        );
+
+    });
 
 
     document
@@ -3294,30 +3050,32 @@ function showHot(tab,btn){
 }
 
 
-/* =====================================================
-   COLD TABS
-===================================================== */
+/* ==================================================
+   COLD SUB TABS
+================================================== */
 
 function showCold(tab,btn){
 
     document
-    .querySelectorAll(
-        "#cold .sub-section"
-    )
-    .forEach(
-        section =>
-        section.classList.remove("active")
-    );
+    .querySelectorAll("#cold .sub-section")
+    .forEach(function(section){
+
+        section.classList.remove(
+            "active"
+        );
+
+    });
 
 
     document
-    .querySelectorAll(
-        "#cold .sub-tab"
-    )
-    .forEach(
-        button =>
-        button.classList.remove("active")
-    );
+    .querySelectorAll("#cold .sub-tab")
+    .forEach(function(button){
+
+        button.classList.remove(
+            "active"
+        );
+
+    });
 
 
     document
@@ -3333,9 +3091,9 @@ function showCold(tab,btn){
 }
 
 
-/* =====================================================
-   REVEAL
-===================================================== */
+/* ==================================================
+   SCROLL REVEAL
+================================================== */
 
 const observer =
     new IntersectionObserver(
@@ -3368,45 +3126,46 @@ function triggerReveal(){
 
     document
     .querySelectorAll(".card")
-    .forEach(
-        card =>
-        observer.observe(card)
-    );
+    .forEach(function(card){
+
+        observer.observe(card);
+
+    });
 
 }
 
 
-/* =====================================================
+/* ==================================================
    INIT
-===================================================== */
+================================================== */
 
 triggerReveal();
 
 
-/* =====================================================
+/* ==================================================
    INTRO
-===================================================== */
+================================================== */
 
-setTimeout(
-    function(){
+setTimeout(function(){
 
-        const intro =
-            document.getElementById(
-                "intro"
-            );
+    const intro =
+        document.getElementById(
+            "intro"
+        );
 
-        if(intro){
 
-            intro.style.display =
-                "none";
+    if(intro){
 
-        }
+        intro.style.display =
+            "none";
 
-    },
-    3000
-);
+    }
+
+},3000);
 
 </script>
 
 </body>
+
 </html>
+      
