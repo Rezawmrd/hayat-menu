@@ -2246,12 +2246,17 @@ async function submitOrder(){
 
         if(error){
 
-            console.error(
-                "Supabase order error:",
-                error
-            );
+    console.error("SUPABASE ERROR:", error);
 
-            throw error;
+    showOrderMessage(
+        "خطای Supabase: " + error.message,
+        "error"
+    );
+
+    button.disabled = false;
+    button.innerText = "ثبت سفارش";
+
+    return;
 
         }
 
