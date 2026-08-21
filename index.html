@@ -3146,24 +3146,22 @@ async function submitOrder(){
 
     try{
 
-        const { data,error } =
-            await supabaseClient
+        const { error } =
+    await supabaseClient
 
-            .from("orders")
+    .from("orders")
 
-            .insert({
+    .insert({
 
-                table_number:table,
+        table_number: table,
 
-                items:items,
+        items: items,
 
-                total_price:total,
+        total_price: total,
 
-                status:"new"
+        status: "new"
 
-            })
-
-            .select();
+    });
 
 
         if(error){
