@@ -3238,21 +3238,20 @@ async function submitOrder(){
 
     try{
 
-        const {data,error} =
-            await supabaseClient
-            .from("orders")
-            .insert([{
+        const {error} =
+    await supabaseClient
+    .from("orders")
+    .insert([{
+        table_number: table,
+        items: cart,
+        total_price: total,
+        status: "new"
+    }]);
 
-                table_number:table,
-
-                items:cart,
-
-                total_price:total,
-
-                status:"new"
-
-            }])
-            .select();
+if(error){
+    console.error("Supabase Error:", error);
+    throw error;
+}
 
 
         if(error){
