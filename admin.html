@@ -1116,6 +1116,22 @@ function createOrderCard(order){
 
             </button>
 
+            <button
+    class="status-btn"
+    style="
+        color:#e74c3c;
+        border-color:#633;
+    "
+    onclick="
+        deleteOrder(
+            ${order.id}
+        )
+    ">
+
+    🗑 حذف سفارش
+
+</button>
+
 
         </div>
 
@@ -1215,7 +1231,90 @@ async function changeStatus(
 
 }
 
+/* =========================================================
+   DELETE ORDER
+========================================================= */
 
+async function deleteOrder(id){
+
+    const isAdmin =
+        await checkAdmin();
+
+    if(!isAdmin){
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "آیا مطمئنی می‌خواهی این سفارش را حذف کنی؟\n\nاین عمل قابل برگشت نیست."
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        const {
+            error
+        } =
+        await supabaseClient
+
+            .from("orders")
+
+            .delete()
+
+            .eq(
+                "id",
+                id
+            );
+
+
+        if(error){
+
+            console.error(
+                "DELETE ERROR:",
+                error
+            );
+
+            throw error;
+
+        }
+
+
+        orders =
+            orders.filter(
+                order =>
+                order.id !== id
+            );
+
+
+        updateStats();
+
+        renderOrders();
+
+
+        showToast(
+            "🗑 سفارش با موفقیت حذف شد"
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        showToast(
+            "❌ حذف سفارش انجام نشد"
+        );
+
+    }
+
+    }
+    
 /* =========================================================
    STATUS LABEL
 ========================================================= */
