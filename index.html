@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hayat Complex Menu</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>HAYAT COMPLEX</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap"
+rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
 /* ================= BASE ================= */
+
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -21,600 +32,931 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= CINEMATIC BACKGROUND ================= */
-
 body::before{
     content:"";
     position:fixed;
     inset:0;
+
     background:
-        radial-gradient(circle at 20% 30%, rgba(212,175,55,0.10), transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(255,215,0,0.06), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(212,175,55,0.08), transparent 50%);
+    radial-gradient(
+        circle at 20% 30%,
+        rgba(212,175,55,0.10),
+        transparent 40%
+    ),
+
+    radial-gradient(
+        circle at 80% 20%,
+        rgba(255,215,0,0.06),
+        transparent 45%
+    ),
+
+    radial-gradient(
+        circle at 50% 80%,
+        rgba(212,175,55,0.08),
+        transparent 50%
+    );
+
     animation:drift 12s ease-in-out infinite alternate;
+
     pointer-events:none;
+
     z-index:0;
 }
 
 @keyframes drift{
-    from{transform:scale(1) translateY(0);}
-    to{transform:scale(1.05) translateY(-10px);}
+
+    from{
+        transform:scale(1)
+        translateY(0);
+    }
+
+    to{
+        transform:scale(1.05)
+        translateY(-10px);
+    }
+
 }
+
 
 /* ================= INTRO ================= */
 
 #intro{
+
     position:fixed;
+
     inset:0;
+
     background:#000;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     flex-direction:column;
+
     z-index:9999;
+
     animation:fadeOut 1.5s ease forwards;
+
     animation-delay:3s;
 }
 
-@keyframes fadeOut{
-    to{
-        opacity:0;
-        visibility:hidden;
-        pointer-events:none;
-    }
-}
-
 #intro img{
+
     width:120px;
+
     height:120px;
+
     border-radius:50%;
+
     border:2px solid #d4af37;
-    box-shadow:0 0 25px rgba(212,175,55,0.4);
+
+    box-shadow:
+    0 0 25px
+    rgba(212,175,55,0.4);
+
     object-fit:cover;
-    animation:logoFloat 4s ease-in-out infinite;
+
+    animation:
+    logoFloat 4s ease-in-out infinite;
 }
 
 #intro h1{
+
     color:#d4af37;
+
     margin-top:15px;
+
     letter-spacing:3px;
 }
+
+@keyframes fadeOut{
+
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+
+}
+
 
 /* ================= HEADER ================= */
 
 header{
+
     text-align:center;
+
     padding:25px 10px;
-    border-bottom:1px solid rgba(212,175,55,0.3);
+
+    border-bottom:
+    1px solid
+    rgba(212,175,55,0.3);
+
     position:relative;
+
     z-index:1;
 }
 
 header img{
+
     width:90px;
+
     height:90px;
+
     border-radius:50%;
+
     border:2px solid #d4af37;
+
     object-fit:cover;
-    box-shadow:0 0 20px rgba(212,175,55,0.3);
-    animation:logoFloat 4s ease-in-out infinite;
+
+    box-shadow:
+    0 0 20px
+    rgba(212,175,55,0.3);
+
+    animation:
+    logoFloat 4s ease-in-out infinite;
 }
 
 @keyframes logoFloat{
+
     0%{
+
         transform:translateY(0);
-        box-shadow:0 0 10px rgba(212,175,55,0.3);
+
+        box-shadow:
+        0 0 10px
+        rgba(212,175,55,0.3);
+
     }
 
     50%{
+
         transform:translateY(-4px);
-        box-shadow:0 0 25px rgba(212,175,55,0.5);
+
+        box-shadow:
+        0 0 25px
+        rgba(212,175,55,0.5);
+
     }
 
     100%{
+
         transform:translateY(0);
-        box-shadow:0 0 10px rgba(212,175,55,0.3);
+
+        box-shadow:
+        0 0 10px
+        rgba(212,175,55,0.3);
+
     }
+
 }
 
 header h1{
+
     margin:0;
+
     color:#d4af37;
 }
+
 
 /* ================= BUTTONS ================= */
 
 .actions{
+
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     margin-top:10px;
+
 }
 
 .btn{
+
     background:#151515;
+
     border:1px solid #333;
+
     color:#fff;
+
     padding:8px 14px;
+
     border-radius:8px;
+
     text-decoration:none;
-    transition:0.3s;
-    cursor:pointer;
-    font-family:'Vazirmatn',sans-serif;
+
+    transition:.3s;
+
 }
 
 .btn:hover{
+
     border-color:#d4af37;
+
     color:#d4af37;
-    box-shadow:0 0 15px rgba(212,175,55,0.25);
+
+    box-shadow:
+    0 0 15px
+    rgba(212,175,55,.25);
+
 }
+
 
 /* ================= TABS ================= */
 
 .tabs{
+
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     margin:15px 0;
+
     flex-wrap:wrap;
-    position:relative;
-    z-index:1;
+
 }
 
 .tab-btn{
+
     background:#151515;
+
     border:1px solid #333;
+
     color:#fff;
+
     padding:8px 14px;
+
     border-radius:20px;
+
     font-family:'Vazirmatn',sans-serif;
+
     cursor:pointer;
+
 }
 
 .tab-btn.active{
+
     border-color:#d4af37;
+
     color:#d4af37;
+
 }
+
 
 /* ================= MENU ================= */
 
-.section{
-    display:none;
+.container{
+
     max-width:520px;
+
     margin:auto;
-    padding:0 20px;
+
+    padding:20px;
+
     position:relative;
+
     z-index:1;
+
+}
+
+.section{
+
+    display:none;
+
 }
 
 .section.active{
+
     display:block;
+
 }
 
 .section h2{
+
     color:#d4af37;
+
     border-right:3px solid #d4af37;
+
     padding-right:10px;
+
 }
+
 
 /* ================= CARDS ================= */
 
 .card{
+
     background:#151515;
+
     padding:11px 14px;
+
     margin-bottom:8px;
+
     border-radius:10px;
+
     display:flex;
+
     justify-content:space-between;
+
     gap:12px;
 
     opacity:0;
-    transform:translateY(30px);
-    transition:all 0.6s ease;
 
-    border:1px solid rgba(212,175,55,0.05);
+    transform:translateY(30px);
+
+    transition:all .6s ease;
+
+    border:
+    1px solid
+    rgba(212,175,55,0.05);
+
 }
 
 .card.show{
+
     opacity:1;
+
     transform:translateY(0);
+
 }
 
 .card:hover{
-    box-shadow:0 0 20px rgba(212,175,55,0.15);
+
+    transform:scale(1.02);
+
+    box-shadow:
+    0 0 20px
+    rgba(212,175,55,.15);
+
 }
 
 .price{
+
     color:#d4af37;
+
+    white-space:nowrap;
+
 }
+
+
+/* ================= ORDER BUTTON ================= */
+
+.add-btn{
+
+    background:#151515;
+
+    border:1px solid #d4af37;
+
+    color:#d4af37;
+
+    border-radius:8px;
+
+    padding:6px 10px;
+
+    font-family:'Vazirmatn',sans-serif;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+}
+
+.add-btn:hover{
+
+    background:#d4af37;
+
+    color:#000;
+
+}
+
+
+/* ================= MULTI CARD ================= */
+
+.multi-card{
+
+    display:block;
+
+    padding:15px;
+
+}
+
+.item-info strong{
+
+    display:block;
+
+    font-size:18px;
+
+    color:#d4af37;
+
+    margin-bottom:12px;
+
+}
+
+.size-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 0;
+
+    border-top:
+    1px solid
+    rgba(255,255,255,.08);
+
+}
+
+.size-row:first-of-type{
+
+    border-top:none;
+
+}
+
+.size-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
 
 /* ================= SUB TABS ================= */
 
 .sub-tabs{
+
     display:flex;
+
     gap:10px;
+
     margin:15px 0 20px;
+
 }
 
 .sub-tab{
+
     flex:1;
+
     background:#151515;
+
     color:#fff;
+
     border:1px solid #333;
+
     border-radius:12px;
+
     padding:10px;
+
     cursor:pointer;
+
     transition:.3s;
+
     font-family:'Vazirmatn',sans-serif;
+
 }
 
 .sub-tab.active{
+
     border-color:#d4af37;
+
     color:#d4af37;
+
 }
 
 .sub-section{
+
     display:none;
+
 }
 
 .sub-section.active{
+
     display:block;
+
 }
 
-.multi-card{
-    display:block;
-    padding:15px;
-}
-
-.item-info strong{
-    display:block;
-    font-size:18px;
-    color:#d4af37;
-    margin-bottom:12px;
-}
-
-.size-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:8px 0;
-    border-top:1px solid rgba(255,255,255,.08);
-    cursor:pointer;
-    border-radius:6px;
-}
-
-.size-row:first-of-type{
-    border-top:none;
-}
 
 /* ================= COLD TABS ================= */
 
 .cold-tabs{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:10px;
+
     margin:15px 0 20px;
+
 }
 
 .cold-tabs .sub-tab{
+
     width:100%;
+
     box-sizing:border-box;
+
     white-space:nowrap;
+
     padding:10px 5px;
+
     font-size:13px;
+
 }
 
-/* ================= ADD BUTTON ================= */
 
-.add-btn{
-    background:transparent;
-    border:1px solid #d4af37;
-    color:#d4af37;
-    border-radius:7px;
-    padding:5px 9px;
-    font-family:'Vazirmatn',sans-serif;
-    cursor:pointer;
-    font-size:12px;
-    white-space:nowrap;
-    align-self:center;
+/* ================= CART ================= */
+
+.cart-box{
+
+    position:fixed;
+
+    left:15px;
+
+    right:15px;
+
+    bottom:15px;
+
+    z-index:5000;
+
+    max-width:520px;
+
+    margin:auto;
+
 }
 
-.add-btn:hover{
+.cart-toggle{
+
+    width:100%;
+
     background:#d4af37;
+
     color:#000;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:13px;
+
+    font-family:'Vazirmatn',sans-serif;
+
+    font-weight:700;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 5px 25px
+    rgba(0,0,0,.5);
+
 }
+
+.cart-panel{
+
+    display:none;
+
+    background:#121212;
+
+    border:
+    1px solid
+    rgba(212,175,55,.4);
+
+    border-radius:15px;
+
+    margin-bottom:8px;
+
+    padding:15px;
+
+    max-height:65vh;
+
+    overflow-y:auto;
+
+}
+
+.cart-panel.open{
+
+    display:block;
+
+}
+
+.cart-title{
+
+    color:#d4af37;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.cart-item{
+
+    border-bottom:
+    1px solid #292929;
+
+    padding:10px 0;
+
+}
+
+.cart-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.cart-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    align-items:center;
+
+}
+
+.qty{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.qty button{
+
+    width:28px;
+
+    height:28px;
+
+    border-radius:7px;
+
+    background:#1d1d1d;
+
+    color:#d4af37;
+
+    border:1px solid #444;
+
+    cursor:pointer;
+
+}
+
+.cart-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:12px;
+
+    padding-top:12px;
+
+    border-top:1px solid #333;
+
+    font-size:17px;
+
+}
+
+.cart-total strong{
+
+    color:#d4af37;
+
+}
+
+
+/* ================= ORDER FORM ================= */
+
+.order-form{
+
+    margin-top:15px;
+
+}
+
+.order-form label{
+
+    display:block;
+
+    color:#aaa;
+
+    font-size:13px;
+
+    margin-bottom:6px;
+
+}
+
+.order-form input{
+
+    width:100%;
+
+    padding:11px;
+
+    border-radius:8px;
+
+    background:#191919;
+
+    border:1px solid #333;
+
+    color:#fff;
+
+    font-family:'Vazirmatn',sans-serif;
+
+    margin-bottom:10px;
+
+    outline:none;
+
+}
+
+.order-form input:focus{
+
+    border-color:#d4af37;
+
+}
+
+.submit-order{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:9px;
+
+    background:#d4af37;
+
+    color:#000;
+
+    font-family:'Vazirmatn',sans-serif;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.submit-order:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
+
+
+/* ================= MESSAGE ================= */
+
+.message{
+
+    display:none;
+
+    margin-top:10px;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    font-size:13px;
+
+}
+
+.message.success{
+
+    display:block;
+
+    background:
+    rgba(46,204,113,.1);
+
+    color:#58d68d;
+
+    border:
+    1px solid
+    rgba(46,204,113,.3);
+
+}
+
+.message.error{
+
+    display:block;
+
+    background:
+    rgba(231,76,60,.1);
+
+    color:#ec7063;
+
+    border:
+    1px solid
+    rgba(231,76,60,.3);
+
+}
+
 
 /* ================= FOOTER ================= */
 
 .footer{
+
     text-align:center;
-    padding:25px 10px;
+
+    padding:
+    90px 10px 25px;
+
     color:#888;
+
     border-top:1px solid #222;
-    position:relative;
-    z-index:1;
+
 }
 
 .footer .btn{
+
     margin-top:10px;
+
     display:inline-block;
+
     border:1px solid #d4af37;
+
     color:#d4af37;
+
 }
 
 html{
+
     scroll-behavior:smooth;
-}
 
-/* ================= CART BUTTON ================= */
-
-.cart-fab{
-    position:fixed;
-    left:18px;
-    bottom:18px;
-    z-index:5000;
-    width:58px;
-    height:58px;
-    border-radius:50%;
-    border:1px solid #d4af37;
-    background:#151515;
-    color:#d4af37;
-    font-size:25px;
-    cursor:pointer;
-    box-shadow:0 0 22px rgba(212,175,55,.25);
-}
-
-.cart-count{
-    position:absolute;
-    top:-5px;
-    right:-5px;
-    background:#d4af37;
-    color:#000;
-    min-width:22px;
-    height:22px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
-    font-weight:700;
-}
-
-/* ================= CART PANEL ================= */
-
-.cart-panel{
-    position:fixed;
-    inset:0;
-    z-index:6000;
-    display:none;
-    background:rgba(0,0,0,.75);
-}
-
-.cart-panel.open{
-    display:block;
-}
-
-.cart-box{
-    position:absolute;
-    left:50%;
-    bottom:0;
-    transform:translateX(-50%);
-    width:min(520px,100%);
-    max-height:88vh;
-    overflow:auto;
-    background:#101010;
-    border:1px solid rgba(212,175,55,.35);
-    border-radius:18px 18px 0 0;
-    padding:18px;
-    box-sizing:border-box;
-}
-
-.cart-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #292929;
-    padding-bottom:12px;
-}
-
-.cart-head h3{
-    margin:0;
-    color:#d4af37;
-}
-
-.close-cart{
-    background:none;
-    border:0;
-    color:#fff;
-    font-size:25px;
-    cursor:pointer;
-}
-
-.cart-empty{
-    text-align:center;
-    color:#888;
-    padding:35px 10px;
-}
-
-.cart-item{
-    background:#171717;
-    border:1px solid #252525;
-    border-radius:10px;
-    padding:10px;
-    margin:9px 0;
-}
-
-.cart-item-top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.cart-item-meta{
-    font-size:12px;
-    color:#999;
-    margin-top:3px;
-}
-
-.qty{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-top:8px;
-}
-
-.qty button{
-    width:28px;
-    height:28px;
-    border-radius:7px;
-    border:1px solid #444;
-    background:#111;
-    color:#d4af37;
-    cursor:pointer;
-    font-size:17px;
-}
-
-.qty span{
-    min-width:24px;
-    text-align:center;
-}
-
-.cart-total{
-    display:flex;
-    justify-content:space-between;
-    padding:15px 0;
-    margin-top:10px;
-    border-top:1px solid #333;
-    font-size:18px;
-    color:#d4af37;
-}
-
-/* ================= TABLE ================= */
-
-.table-label{
-    display:block;
-    color:#ddd;
-    margin-bottom:7px;
-}
-
-.table-input{
-    width:100%;
-    box-sizing:border-box;
-    background:#151515;
-    color:#fff;
-    border:1px solid #444;
-    border-radius:9px;
-    padding:12px;
-    font-family:'Vazirmatn',sans-serif;
-    font-size:15px;
-    outline:none;
-}
-
-.table-input:focus{
-    border-color:#d4af37;
-}
-
-/* ================= ORDER BUTTON ================= */
-
-.submit-order{
-    width:100%;
-    margin-top:12px;
-    background:#d4af37;
-    color:#000;
-    border:0;
-    border-radius:10px;
-    padding:13px;
-    font-family:'Vazirmatn',sans-serif;
-    font-weight:700;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.submit-order:disabled{
-    opacity:.55;
-    cursor:not-allowed;
-}
-
-/* ================= MESSAGE ================= */
-
-.order-message{
-    display:none;
-    margin-top:12px;
-    padding:12px;
-    border-radius:9px;
-    text-align:center;
-    font-size:14px;
-}
-
-.order-message.success{
-    display:block;
-    background:rgba(45,150,80,.15);
-    border:1px solid #2d9650;
-    color:#72d891;
-}
-
-.order-message.error{
-    display:block;
-    background:rgba(180,50,50,.15);
-    border:1px solid #a33;
-    color:#ff8c8c;
-}
-
-/* ================= TOAST ================= */
-
-.toast{
-    position:fixed;
-    right:50%;
-    top:20px;
-    transform:translateX(50%) translateY(-20px);
-    opacity:0;
-    pointer-events:none;
-    z-index:8000;
-    background:#171717;
-    border:1px solid #d4af37;
-    color:#fff;
-    padding:11px 16px;
-    border-radius:10px;
-    transition:.3s;
-}
-
-.toast.show{
-    opacity:1;
-    transform:translateX(50%) translateY(0);
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- INTRO -->
+
+<!-- ================= INTRO ================= -->
 
 <div id="intro">
 
-    <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
+    <img
+        src="file_000000005f7471fdbdd33eefd3f2e476.png"
+    >
 
-    <h1>HAYAT COMPLEX</h1>
+    <h1>
+        HAYAT COMPLEX
+    </h1>
 
 </div>
 
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
-    <img src="file_000000005f7471fdbdd33eefd3f2e476.png">
+    <img
+        src="file_000000005f7471fdbdd33eefd3f2e476.png"
+    >
 
-    <h1>HAYAT COMPLEX</h1>
+    <h1>
+        HAYAT COMPLEX
+    </h1>
 
     <div class="actions">
 
-        <a class="btn" href="https://instagram.com/hayat_complex">
+        <a
+            class="btn"
+            target="_blank"
+            href="https://instagram.com/hayat_complex">
+
             📷 اینستاگرام
+
         </a>
 
-        <a class="btn" href="tel:+989011286503">
+
+        <a
+            class="btn"
+            href="tel:+989011286503">
+
             📞 تماس
+
         </a>
 
     </div>
@@ -622,72 +964,217 @@ html{
 </header>
 
 
-<!-- MAIN TABS -->
+<!-- ================= TABS ================= -->
 
 <div class="tabs">
 
-    <button class="tab-btn active" onclick="show('breakfast',this)">
+    <button
+        class="tab-btn active"
+        onclick="show('breakfast',this)">
+
         صبحانه
+
     </button>
 
-    <button class="tab-btn" onclick="show('food',this)">
+
+    <button
+        class="tab-btn"
+        onclick="show('food',this)">
+
         غذا
+
     </button>
 
-    <button class="tab-btn" onclick="show('cake',this)">
+
+    <button
+        class="tab-btn"
+        onclick="show('cake',this)">
+
         کیک
+
     </button>
 
-    <button class="tab-btn" onclick="show('hot',this)">
+
+    <button
+        class="tab-btn"
+        onclick="show('hot',this)">
+
         نوشیدنی گرم
+
     </button>
 
-    <button class="tab-btn" onclick="show('cold',this)">
+
+    <button
+        class="tab-btn"
+        onclick="show('cold',this)">
+
         نوشیدنی سرد
+
     </button>
 
 </div>
+
+
+<div class="container">
 
 
 <!-- ================= BREAKFAST ================= -->
 
-<div id="breakfast" class="section active">
+<div
+id="breakfast"
+class="section active">
 
-<h2>🍳 صبحانه</h2>
+<h2>
+    🍳 صبحانه
+</h2>
+
 
 <div class="card">
-    <span>املت گوجه</span>
-    <span class="price">245</span>
+
+    <div>
+        <span>
+            املت گوجه
+        </span>
+    </div>
+
+    <span class="price">
+        245,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('املت گوجه',245)">
+
+        افزودن
+
+    </button>
+
 </div>
 
-<div class="card">
-    <span>نیمرو</span>
-    <span class="price">130</span>
-</div>
 
 <div class="card">
-    <span>املت پنیری</span>
-    <span class="price">290</span>
+
+    <span>
+        نیمرو
+    </span>
+
+    <span class="price">
+        130,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('نیمرو',130)">
+
+        افزودن
+
+    </button>
+
 </div>
 
-<div class="card">
-    <span>املت قارچ پنیر</span>
-    <span class="price">230</span>
-</div>
 
 <div class="card">
-    <span>رویال</span>
-    <span class="price">370</span>
+
+    <span>
+        املت پنیری
+    </span>
+
+    <span class="price">
+        290,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('املت پنیری',290)">
+
+        افزودن
+
+    </button>
+
 </div>
 
-<div class="card">
-    <span>سوسیس تخم مرغ</span>
-    <span class="price">250</span>
-</div>
 
 <div class="card">
-    <span>بشقاب ایرانی</span>
-    <span class="price">165</span>
+
+    <span>
+        املت قارچ پنیر
+    </span>
+
+    <span class="price">
+        230,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('املت قارچ پنیر',230)">
+
+        افزودن
+
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <span>
+        رویال
+    </span>
+
+    <span class="price">
+        370,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('رویال',370)">
+
+        افزودن
+
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <span>
+        سوسیس تخم مرغ
+    </span>
+
+    <span class="price">
+        250,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('سوسیس تخم مرغ',250)">
+
+        افزودن
+
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <span>
+        بشقاب ایرانی
+    </span>
+
+    <span class="price">
+        165,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('بشقاب ایرانی',165)">
+
+        افزودن
+
+    </button>
+
 </div>
 
 </div>
@@ -695,28 +1182,96 @@ html{
 
 <!-- ================= FOOD ================= -->
 
-<div id="food" class="section">
+<div
+id="food"
+class="section">
 
-<h2>غذا</h2>
+<h2>
+    🍽 غذا
+</h2>
+
 
 <div class="card">
-    <span>پاستا آلفردو</span>
-    <span class="price">535</span>
+
+    <span>
+        پاستا آلفردو
+    </span>
+
+    <span class="price">
+        535,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('پاستا آلفردو',535)">
+
+        افزودن
+
+    </button>
+
 </div>
 
-<div class="card">
-    <span>سیب زمینی مخصوص</span>
-    <span class="price">260</span>
-</div>
 
 <div class="card">
-    <span>سالاد ماکارونی</span>
-    <span class="price">180</span>
+
+    <span>
+        سیب زمینی مخصوص
+    </span>
+
+    <span class="price">
+        260,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('سیب زمینی مخصوص',260)">
+
+        افزودن
+
+    </button>
+
 </div>
 
+
 <div class="card">
-    <span>چیپس و پنیر</span>
-    <span class="price">280</span>
+
+    <span>
+        سالاد ماکارونی
+    </span>
+
+    <span class="price">
+        180,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('سالاد ماکارونی',180)">
+
+        افزودن
+
+    </button>
+
+</div>
+
+
+<div class="card">
+
+    <span>
+        چیپس و پنیر
+    </span>
+
+    <span class="price">
+        280,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('چیپس و پنیر',280)">
+
+        افزودن
+
+    </button>
+
 </div>
 
 </div>
@@ -724,13 +1279,33 @@ html{
 
 <!-- ================= CAKE ================= -->
 
-<div id="cake" class="section">
+<div
+id="cake"
+class="section">
 
-<h2>کیک</h2>
+<h2>
+    🍰 کیک
+</h2>
+
 
 <div class="card">
-    <span>کیک روز</span>
-    <span class="price">245</span>
+
+    <span>
+        کیک روز
+    </span>
+
+    <span class="price">
+        245,000 تومان
+    </span>
+
+    <button
+        class="add-btn"
+        onclick="addItem('کیک روز',245)">
+
+        افزودن
+
+    </button>
+
 </div>
 
 </div>
@@ -738,152 +1313,420 @@ html{
 
 <!-- ================= HOT ================= -->
 
-<div id="hot" class="section">
+<div
+id="hot"
+class="section">
 
-<h2>☕ نوشیدنی‌های گرم</h2>
+<h2>
+    ☕ نوشیدنی‌های گرم
+</h2>
+
 
 <div class="sub-tabs">
 
-    <button class="sub-tab active" onclick="showHot('espresso',this)">
-        ☕ بر پایه اسپرسو
-    </button>
+<button
+class="sub-tab active"
+onclick="showHot('espresso',this)">
 
-    <button class="sub-tab" onclick="showHot('normal',this)">
-        🍵 نوشیدنی گرم
-    </button>
+☕ بر پایه اسپرسو
 
-</div>
+</button>
 
 
-<div id="espresso" class="sub-section active">
+<button
+class="sub-tab"
+onclick="showHot('normal',this)">
 
+🍵 نوشیدنی گرم
 
-<div class="card multi-card">
-
-    <div class="item-info">
-
-        <strong>☕ اسپرسو</strong>
-
-        <div class="size-row">
-            <span>سینگل</span>
-            <span class="price">95</span>
-        </div>
-
-        <div class="size-row">
-            <span>دبل</span>
-            <span class="price">145</span>
-        </div>
-
-        <div class="size-row">
-            <span>۱۰۰٪ عربیکا</span>
-            <span class="price">165</span>
-        </div>
-
-    </div>
+</button>
 
 </div>
 
 
+<!-- ESPRESSO -->
+
+<div
+id="espresso"
+class="sub-section active">
+
+
 <div class="card multi-card">
 
-    <div class="item-info">
+<div class="item-info">
 
-        <strong>☕ آمریکانو</strong>
+<strong>
+☕ اسپرسو
+</strong>
 
-        <div class="size-row">
-            <span>سینگل</span>
-            <span class="price">95</span>
-        </div>
 
-        <div class="size-row">
-            <span>دبل</span>
-            <span class="price">145</span>
-        </div>
+<div class="size-row">
 
-        <div class="size-row">
-            <span>۱۰۰٪ عربیکا</span>
-            <span class="price">165</span>
-        </div>
+<span>
+سینگل
+</span>
 
-    </div>
+<span class="price">
+95,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('اسپرسو - سینگل',95)">
+
+افزودن
+
+</button>
 
 </div>
 
 
-<div class="card multi-card">
+<div class="size-row">
 
-    <div class="item-info">
+<span>
+دبل
+</span>
 
-        <strong>☕ لاته</strong>
+<span class="price">
+145,000 تومان
+</span>
 
-        <div class="size-row">
-            <span>سینگل</span>
-            <span class="price">175</span>
-        </div>
+<button
+class="add-btn"
+onclick="addItem('اسپرسو - دبل',145)">
 
-        <div class="size-row">
-            <span>دبل</span>
-            <span class="price">195</span>
-        </div>
+افزودن
 
-        <div class="size-row">
-            <span>۱۰۰٪ عربیکا</span>
-            <span class="price">205</span>
-        </div>
-
-    </div>
+</button>
 
 </div>
 
 
-<div class="card multi-card">
+<div class="size-row">
 
-    <div class="item-info">
+<span>
+۱۰۰٪ عربیکا
+</span>
 
-        <strong>☕ کاپوچینو</strong>
+<span class="price">
+165,000 تومان
+</span>
 
-        <div class="size-row">
-            <span>سینگل</span>
-            <span class="price">160</span>
-        </div>
+<button
+class="add-btn"
+onclick="addItem('اسپرسو - ۱۰۰٪ عربیکا',165)">
 
-        <div class="size-row">
-            <span>دبل</span>
-            <span class="price">180</span>
-        </div>
+افزودن
 
-        <div class="size-row">
-            <span>۱۰۰٪ عربیکا</span>
-            <span class="price">190</span>
-        </div>
+</button>
 
-    </div>
+</div>
+
+</div>
 
 </div>
 
 
 <div class="card multi-card">
 
-    <div class="item-info">
+<div class="item-info">
 
-        <strong>☕ موکا</strong>
+<strong>
+☕ آمریکانو
+</strong>
 
-        <div class="size-row">
-            <span>سینگل</span>
-            <span class="price">185</span>
-        </div>
 
-        <div class="size-row">
-            <span>دبل</span>
-            <span class="price">205</span>
-        </div>
+<div class="size-row">
 
-        <div class="size-row">
-            <span>۱۰۰٪ عربیکا</span>
-            <span class="price">220</span>
-        </div>
+<span>
+سینگل
+</span>
 
-    </div>
+<span class="price">
+95,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آمریکانو - سینگل',95)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+دبل
+</span>
+
+<span class="price">
+145,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آمریکانو - دبل',145)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+۱۰۰٪ عربیکا
+</span>
+
+<span class="price">
+165,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آمریکانو - ۱۰۰٪ عربیکا',165)">
+
+افزودن
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card multi-card">
+
+<div class="item-info">
+
+<strong>
+☕ لاته
+</strong>
+
+
+<div class="size-row">
+
+<span>
+سینگل
+</span>
+
+<span class="price">
+175,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('لاته - سینگل',175)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+دبل
+</span>
+
+<span class="price">
+195,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('لاته - دبل',195)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+۱۰۰٪ عربیکا
+</span>
+
+<span class="price">
+205,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('لاته - ۱۰۰٪ عربیکا',205)">
+
+افزودن
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card multi-card">
+
+<div class="item-info">
+
+<strong>
+☕ کاپوچینو
+</strong>
+
+
+<div class="size-row">
+
+<span>
+سینگل
+</span>
+
+<span class="price">
+160,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('کاپوچینو - سینگل',160)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+دبل
+</span>
+
+<span class="price">
+180,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('کاپوچینو - دبل',180)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+۱۰۰٪ عربیکا
+</span>
+
+<span class="price">
+190,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('کاپوچینو - ۱۰۰٪ عربیکا',190)">
+
+افزودن
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card multi-card">
+
+<div class="item-info">
+
+<strong>
+☕ موکا
+</strong>
+
+
+<div class="size-row">
+
+<span>
+سینگل
+</span>
+
+<span class="price">
+185,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('موکا - سینگل',185)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+دبل
+</span>
+
+<span class="price">
+205,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('موکا - دبل',205)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+۱۰۰٪ عربیکا
+</span>
+
+<span class="price">
+220,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('موکا - ۱۰۰٪ عربیکا',220)">
+
+افزودن
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -892,163 +1735,472 @@ html{
 
 <!-- NORMAL HOT -->
 
-<div id="normal" class="sub-section">
+<div
+id="normal"
+class="sub-section">
+
 
 <div class="card">
-    <span>هات چاکلت</span>
-    <span class="price">220</span>
+
+<span>
+هات چاکلت
+</span>
+
+<span class="price">
+220,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('هات چاکلت',220)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-    <span>چای ماسالا</span>
-    <span class="price">215</span>
+
+<span>
+چای ماسالا
+</span>
+
+<span class="price">
+215,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('چای ماسالا',215)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-    <span>وایت چاکلت</span>
-    <span class="price">215</span>
+
+<span>
+وایت چاکلت
+</span>
+
+<span class="price">
+215,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('وایت چاکلت',215)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-    <span>پینک چاکلت</span>
-    <span class="price">225</span>
+
+<span>
+پینک چاکلت
+</span>
+
+<span class="price">
+225,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('پینک چاکلت',225)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-    <span>کرک</span>
-    <span class="price">210</span>
+
+<span>
+کرک
+</span>
+
+<span class="price">
+210,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('کرک',210)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-    <span>ماچا</span>
-    <span class="price">240</span>
+
+<span>
+ماچا
+</span>
+
+<span class="price">
+240,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('ماچا',240)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-    <span>دمنوش</span>
-    <span class="price">115</span>
+
+<span>
+دمنوش
+</span>
+
+<span class="price">
+115,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('دمنوش',115)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-    <span>چای</span>
-    <span class="price">90</span>
-</div>
+
+<span>
+چای
+</span>
+
+<span class="price">
+90,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('چای',90)">
+
+افزودن
+
+</button>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- ================= COLD ================= -->
+    <!-- ================= COLD ================= -->
 
 <div id="cold" class="section">
 
-<h2>🧊 نوشیدنی‌های سرد</h2>
+<h2>
+    🧊 نوشیدنی‌های سرد
+</h2>
+
 
 <div class="sub-tabs cold-tabs">
 
-    <button class="sub-tab active" onclick="showCold('cold-espresso',this)">
-        ☕ بر پایه اسپرسو
-    </button>
+<button
+class="sub-tab active"
+onclick="showCold('cold-espresso',this)">
 
-    <button class="sub-tab" onclick="showCold('cold-normal',this)">
-        🧊 نوشیدنی‌های سرد
-    </button>
+☕ بر پایه اسپرسو
 
-    <button class="sub-tab" onclick="showCold('mocktail',this)">
-        🍹 ماکتل‌ها
-    </button>
+</button>
 
-    <button class="sub-tab" onclick="showCold('shake',this)">
-        🥤 شیک‌ها
-    </button>
+<button
+class="sub-tab"
+onclick="showCold('cold-normal',this)">
 
-    <button class="sub-tab" onclick="showCold('smoothie',this)">
-        🍓 اسموتی‌ها
-    </button>
+🧊 نوشیدنی‌های سرد
 
-    <button class="sub-tab" onclick="showCold('juice',this)">
-        🍊 آب‌میوه‌ها
-    </button>
+</button>
 
-</div>
+<button
+class="sub-tab"
+onclick="showCold('mocktail',this)">
 
+🍹 ماکتل‌ها
 
-<!-- COLD ESPRESSO -->
+</button>
 
-<div id="cold-espresso" class="sub-section active">
+<button
+class="sub-tab"
+onclick="showCold('shake',this)">
 
-<div class="card multi-card">
+🥤 شیک‌ها
 
-<div class="item-info">
+</button>
 
-<strong>☕ آیس آمریکانو</strong>
+<button
+class="sub-tab"
+onclick="showCold('smoothie',this)">
 
-<div class="size-row">
-<span>سینگل</span>
-<span class="price">105</span>
-</div>
+🍓 اسموتی‌ها
 
-<div class="size-row">
-<span>دبل</span>
-<span class="price">155</span>
-</div>
+</button>
 
-<div class="size-row">
-<span>۱۰۰٪ عربیکا</span>
-<span class="price">175</span>
-</div>
+<button
+class="sub-tab"
+onclick="showCold('juice',this)">
 
-</div>
+🍊 آب‌میوه‌ها
+
+</button>
 
 </div>
 
 
-<div class="card multi-card">
+<!-- ================= COLD ESPRESSO ================= -->
 
-<div class="item-info">
-
-<strong>☕ آیس لاته</strong>
-
-<div class="size-row">
-<span>سینگل</span>
-<span class="price">175</span>
-</div>
-
-<div class="size-row">
-<span>دبل</span>
-<span class="price">195</span>
-</div>
-
-<div class="size-row">
-<span>۱۰۰٪ عربیکا</span>
-<span class="price">205</span>
-</div>
-
-</div>
-
-</div>
+<div
+id="cold-espresso"
+class="sub-section active">
 
 
 <div class="card multi-card">
 
 <div class="item-info">
 
-<strong>☕ آیس موکا</strong>
+<strong>
+☕ آیس آمریکانو
+</strong>
+
 
 <div class="size-row">
-<span>سینگل</span>
-<span class="price">185</span>
+
+<span>
+سینگل
+</span>
+
+<span class="price">
+105,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس آمریکانو - سینگل',105)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="size-row">
-<span>دبل</span>
-<span class="price">205</span>
+
+<span>
+دبل
+</span>
+
+<span class="price">
+155,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس آمریکانو - دبل',155)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="size-row">
-<span>۱۰۰٪ عربیکا</span>
-<span class="price">220</span>
+
+<span>
+۱۰۰٪ عربیکا
+</span>
+
+<span class="price">
+175,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس آمریکانو - ۱۰۰٪ عربیکا',175)">
+
+افزودن
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card multi-card">
+
+<div class="item-info">
+
+<strong>
+☕ آیس لاته
+</strong>
+
+
+<div class="size-row">
+
+<span>
+سینگل
+</span>
+
+<span class="price">
+175,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس لاته - سینگل',175)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+دبل
+</span>
+
+<span class="price">
+195,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس لاته - دبل',195)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+۱۰۰٪ عربیکا
+</span>
+
+<span class="price">
+205,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس لاته - ۱۰۰٪ عربیکا',205)">
+
+افزودن
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card multi-card">
+
+<div class="item-info">
+
+<strong>
+☕ آیس موکا
+</strong>
+
+
+<div class="size-row">
+
+<span>
+سینگل
+</span>
+
+<span class="price">
+185,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس موکا - سینگل',185)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+دبل
+</span>
+
+<span class="price">
+205,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس موکا - دبل',205)">
+
+افزودن
+
+</button>
+
+</div>
+
+
+<div class="size-row">
+
+<span>
+۱۰۰٪ عربیکا
+</span>
+
+<span class="price">
+220,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس موکا - ۱۰۰٪ عربیکا',220)">
+
+افزودن
+
+</button>
+
 </div>
 
 </div>
@@ -1058,702 +2210,610 @@ html{
 </div>
 
 
-<!-- COLD NORMAL -->
+<!-- ================= COLD NORMAL ================= -->
 
-<div id="cold-normal" class="sub-section">
+<div
+id="cold-normal"
+class="sub-section">
+
 
 <div class="card">
-<span>آفوگاتو</span>
-<span class="price">245</span>
+
+<span>
+آفوگاتو
+</span>
+
+<span class="price">
+245,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آفوگاتو',245)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>آیس چاکلت</span>
-<span class="price">210</span>
+
+<span>
+آیس چاکلت
+</span>
+
+<span class="price">
+210,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس چاکلت',210)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>آیس ماچا</span>
-<span class="price">260</span>
+
+<span>
+آیس ماچا
+</span>
+
+<span class="price">
+260,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس ماچا',260)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>آیس ماچا توت‌فرنگی</span>
-<span class="price">300</span>
-</div>
+
+<span>
+آیس ماچا توت‌فرنگی
+</span>
+
+<span class="price">
+300,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('آیس ماچا توت‌فرنگی',300)">
+
+افزودن
+
+</button>
 
 </div>
 
+</div>
 
-<!-- MOCKTAIL -->
 
-<div id="mocktail" class="sub-section">
+<!-- ================= MOCKTAIL ================= -->
+
+<div
+id="mocktail"
+class="sub-section">
+
 
 <div class="card">
-<span>لیموناد</span>
-<span class="price">180</span>
+
+<span>
+لیموناد
+</span>
+
+<span class="price">
+180,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('لیموناد',180)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>موهیتو</span>
-<span class="price">190</span>
+
+<span>
+موهیتو
+</span>
+
+<span class="price">
+190,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('موهیتو',190)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>بلو موهیتو</span>
-<span class="price">210</span>
+
+<span>
+بلو موهیتو
+</span>
+
+<span class="price">
+210,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('بلو موهیتو',210)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>موهیتو توت‌فرنگی</span>
-<span class="price">230</span>
+
+<span>
+موهیتو توت‌فرنگی
+</span>
+
+<span class="price">
+230,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('موهیتو توت‌فرنگی',230)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>بلو هاوایی</span>
-<span class="price">265</span>
-</div>
+
+<span>
+بلو هاوایی
+</span>
+
+<span class="price">
+265,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('بلو هاوایی',265)">
+
+افزودن
+
+</button>
 
 </div>
 
+</div>
 
-<!-- SHAKE -->
 
-<div id="shake" class="sub-section">
+<!-- ================= SHAKE ================= -->
+
+<div
+id="shake"
+class="sub-section">
+
 
 <div class="card">
-<span>نوتلا</span>
-<span class="price">365</span>
+
+<span>
+نوتلا
+</span>
+
+<span class="price">
+365,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('نوتلا',365)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>لوتوس</span>
-<span class="price">375</span>
+
+<span>
+لوتوس
+</span>
+
+<span class="price">
+375,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('لوتوس',375)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>اورئو</span>
-<span class="price">315</span>
+
+<span>
+اورئو
+</span>
+
+<span class="price">
+315,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('اورئو',315)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>پروتئین شیک</span>
-<span class="price">495</span>
+
+<span>
+پروتئین شیک
+</span>
+
+<span class="price">
+495,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('پروتئین شیک',495)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>تمام شیک‌های میوه‌ای</span>
-<span class="price">290</span>
-</div>
+
+<span>
+تمام شیک‌های میوه‌ای
+</span>
+
+<span class="price">
+290,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('تمام شیک‌های میوه‌ای',290)">
+
+افزودن
+
+</button>
 
 </div>
 
+</div>
 
-<!-- SMOOTHIE -->
 
-<div id="smoothie" class="sub-section">
+<!-- ================= SMOOTHIE ================= -->
+
+<div
+id="smoothie"
+class="sub-section">
+
 
 <div class="card">
-<span>موز انبه</span>
-<span class="price">375</span>
+
+<span>
+موز انبه
+</span>
+
+<span class="price">
+375,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('موز انبه',375)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>موز</span>
-<span class="price">250</span>
+
+<span>
+موز
+</span>
+
+<span class="price">
+250,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('موز',250)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>انبه</span>
-<span class="price">280</span>
+
+<span>
+انبه
+</span>
+
+<span class="price">
+280,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('انبه',280)">
+
+افزودن
+
+</button>
+
 </div>
+
 
 <div class="card">
-<span>انبه و توت‌فرنگی</span>
-<span class="price">320</span>
-</div>
+
+<span>
+انبه و توت‌فرنگی
+</span>
+
+<span class="price">
+320,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('انبه و توت‌فرنگی',320)">
+
+افزودن
+
+</button>
 
 </div>
 
+</div>
 
-<!-- JUICE -->
 
-<div id="juice" class="sub-section">
+<!-- ================= JUICE ================= -->
+
+<div
+id="juice"
+class="sub-section">
+
 
 <div class="card">
-<span>تمام آب‌میوه‌های فصل</span>
-<span class="price">245</span>
-</div>
+
+<span>
+تمام آب‌میوه‌های فصل
+</span>
+
+<span class="price">
+245,000 تومان
+</span>
+
+<button
+class="add-btn"
+onclick="addItem('تمام آب‌میوه‌های فصل',245)">
+
+افزودن
+
+</button>
 
 </div>
 
 </div>
+
+</div>
+
+
 <!-- ================= FOOTER ================= -->
 
 <div class="footer">
 
-    <a class="btn"
-       target="_blank"
-       href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
-        📍 مسیر‌یابی به کافه
-    </a>
+<a
+class="btn"
+target="_blank"
+href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA">
+
+📍 مسیر‌یابی به کافه
+
+</a>
 
 </div>
 
 
-<!-- ================= CART BUTTON ================= -->
+<!-- ================= CART ================= -->
 
-<button class="cart-fab" onclick="openCart()" aria-label="سبد خرید">
+<div class="cart-box">
 
-    🛒
+<div
+id="cartPanel"
+class="cart-panel">
 
-    <span id="cartCount" class="cart-count">
-        0
-    </span>
+<div class="cart-title">
+
+🛒 سبد سفارش
+
+</div>
+
+
+<div id="cartItems">
+
+هنوز چیزی به سبد اضافه نکرده‌اید.
+
+</div>
+
+
+<div class="cart-total">
+
+<span>
+مبلغ کل:
+</span>
+
+<strong id="cartTotal">
+0 تومان
+</strong>
+
+</div>
+
+
+<div class="order-form">
+
+<label>
+شماره میز
+</label>
+
+<input
+id="tableNumber"
+type="text"
+inputmode="numeric"
+placeholder="مثلاً 12">
+
+
+<button
+id="submitOrder"
+class="submit-order"
+onclick="submitOrder()">
+
+ثبت سفارش
 
 </button>
 
 
-<!-- ================= CART PANEL ================= -->
+<div
+id="orderMessage"
+class="message">
 
-<div id="cartPanel" class="cart-panel" onclick="closeCartOutside(event)">
+</div>
 
-    <div class="cart-box">
-
-        <div class="cart-head">
-
-            <h3>🛒 سبد سفارش</h3>
-
-            <button
-                class="close-cart"
-                onclick="closeCart()">
-                ×
-            </button>
-
-        </div>
-
-
-        <!-- ITEMS -->
-
-        <div id="cartItems">
-
-            <div class="cart-empty">
-                سبد سفارش خالی است
-            </div>
-
-        </div>
-
-
-        <!-- TOTAL -->
-
-        <div class="cart-total">
-
-            <span>
-                مبلغ کل
-            </span>
-
-            <strong>
-                <span id="cartTotal">0</span>
-                تومان
-            </strong>
-
-        </div>
-
-
-        <!-- TABLE NUMBER -->
-
-        <div>
-
-            <label class="table-label" for="tableNumber">
-                🪑 شماره میز
-            </label>
-
-            <input
-                id="tableNumber"
-                class="table-input"
-                type="text"
-                inputmode="numeric"
-                placeholder="مثلاً 5"
-                maxlength="10"
-            >
-
-        </div>
-
-
-        <!-- MESSAGE -->
-
-        <div
-            id="orderMessage"
-            class="order-message">
-        </div>
-
-
-        <!-- SUBMIT -->
-
-        <button
-            id="submitOrderBtn"
-            class="submit-order"
-            onclick="submitOrder()">
-
-            ثبت سفارش
-
-        </button>
-
-    </div>
+</div>
 
 </div>
 
 
-<!-- ================= TOAST ================= -->
+<button
+class="cart-toggle"
+onclick="toggleCart()">
 
-<div id="toast" class="toast"></div>
+🛒
+سبد خرید
+(
+<span id="cartCount">
+0
+</span>
+)
+
+</button>
+
+</div>
 
 
 <script>
 
-/* =========================================================
+/* =====================================================
    SUPABASE
-========================================================= */
+===================================================== */
 
 const SUPABASE_URL =
-    "https://lryoqddbyasdtjdrwpvx.supabase.co";
+"https://lryoqddbyasdtjdrwpvx.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_pZbQaJ78di1MH3PUcJfeyw_0vPl43k9";
-
+"sb_publishable_pZbQaJ78di1MH3PUcJfeyw_0vPl43k9";
 
 const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 
-/* =========================================================
+/* =====================================================
    CART
-========================================================= */
+===================================================== */
 
 let cart = [];
 
 
-/* =========================================================
-   TAB SWITCH
-========================================================= */
+/* =====================================================
+   PRICE FORMAT
+===================================================== */
 
-function show(tab, btn){
+function formatPrice(value){
 
-    document
-        .querySelectorAll(".section")
-        .forEach(function(section){
+    const number =
+        Number(value) * 1000;
 
-            section.classList.remove("active");
-
-        });
-
-
-    document
-        .querySelectorAll(".tab-btn")
-        .forEach(function(button){
-
-            button.classList.remove("active");
-
-        });
-
-
-    const selected =
-        document.getElementById(tab);
-
-
-    if(selected){
-
-        selected.classList.add("active");
-
-    }
-
-
-    if(btn){
-
-        btn.classList.add("active");
-
-    }
-
-
-    triggerReveal();
+    return number.toLocaleString("en-US")
+        + " تومان";
 
 }
 
 
-/* =========================================================
-   HOT SUB TABS
-========================================================= */
-
-function showHot(tab, btn){
-
-    document
-        .querySelectorAll("#hot .sub-section")
-        .forEach(function(section){
-
-            section.classList.remove("active");
-
-        });
-
-
-    document
-        .querySelectorAll("#hot .sub-tab")
-        .forEach(function(button){
-
-            button.classList.remove("active");
-
-        });
-
-
-    const selected =
-        document.getElementById(tab);
-
-
-    if(selected){
-
-        selected.classList.add("active");
-
-    }
-
-
-    if(btn){
-
-        btn.classList.add("active");
-
-    }
-
-
-    triggerReveal();
-
-}
-
-
-/* =========================================================
-   COLD SUB TABS
-========================================================= */
-
-function showCold(tab, btn){
-
-    document
-        .querySelectorAll("#cold .sub-section")
-        .forEach(function(section){
-
-            section.classList.remove("active");
-
-        });
-
-
-    document
-        .querySelectorAll("#cold .sub-tab")
-        .forEach(function(button){
-
-            button.classList.remove("active");
-
-        });
-
-
-    const selected =
-        document.getElementById(tab);
-
-
-    if(selected){
-
-        selected.classList.add("active");
-
-    }
-
-
-    if(btn){
-
-        btn.classList.add("active");
-
-    }
-
-
-    triggerReveal();
-
-}
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const observer =
-    new IntersectionObserver(
-
-        function(entries){
-
-            entries.forEach(function(entry){
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add("show");
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold:0.15
-        }
-
-    );
-
-
-function triggerReveal(){
-
-    document
-        .querySelectorAll(".card")
-        .forEach(function(card){
-
-            observer.observe(card);
-
-        });
-
-}
-
-
-/* =========================================================
-   FIND CARD ITEM
-========================================================= */
-
-function getCardText(card){
-
-    const strong =
-        card.querySelector(".item-info strong");
-
-
-    if(strong){
-
-        return strong.innerText.trim();
-
-    }
-
-
-    const firstSpan =
-        card.querySelector(":scope > span");
-
-
-    if(firstSpan){
-
-        return firstSpan.innerText.trim();
-
-    }
-
-
-    return "آیتم";
-
-}
-
-
-/* =========================================================
-   CREATE ADD BUTTONS
-========================================================= */
-
-function prepareMenuItems(){
-
-    document
-        .querySelectorAll(".card")
-        .forEach(function(card){
-
-            /*
-             * کارت‌هایی که چند سایز دارند،
-             * هر سایز به صورت جداگانه قابل سفارش است.
-             */
-
-            const sizeRows =
-                card.querySelectorAll(".size-row");
-
-
-            if(sizeRows.length > 0){
-
-                sizeRows.forEach(function(row){
-
-                    if(row.querySelector(".add-btn")){
-
-                        return;
-
-                    }
-
-
-                    const nameElement =
-                        row.querySelector("span:first-child");
-
-
-                    const priceElement =
-                        row.querySelector(".price");
-
-
-                    if(!nameElement || !priceElement){
-
-                        return;
-
-                    }
-
-
-                    const itemName =
-                        getCardText(card);
-
-
-                    const sizeName =
-                        nameElement.innerText.trim();
-
-
-                    const price =
-                        parsePrice(
-                            priceElement.innerText
-                        );
-
-
-                    const button =
-                        document.createElement("button");
-
-
-                    button.className = "add-btn";
-
-                    button.innerText =
-                        "افزودن";
-
-
-                    button.type = "button";
-
-
-                    button.onclick =
-                        function(event){
-
-                            event.stopPropagation();
-
-                            addToCart(
-                                itemName,
-                                sizeName,
-                                price
-                            );
-
-                        };
-
-
-                    row.appendChild(button);
-
-                });
-
-
-                return;
-
-            }
-
-
-            /*
-             * آیتم‌های معمولی
-             */
-
-            if(card.querySelector(".add-btn")){
-
-                return;
-
-            }
-
-
-            const spans =
-                card.querySelectorAll(":scope > span");
-
-
-            if(spans.length < 2){
-
-                return;
-
-            }
-
-
-            const name =
-                spans[0].innerText.trim();
-
-
-            const price =
-                parsePrice(
-                    spans[1].innerText
-                );
-
-
-            const button =
-                document.createElement("button");
-
-
-            button.className = "add-btn";
-
-            button.innerText =
-                "افزودن";
-
-
-            button.type = "button";
-
-
-            button.onclick =
-                function(event){
-
-                    event.stopPropagation();
-
-                    addToCart(
-                        name,
-                        "",
-                        price
-                    );
-
-                };
-
-
-            card.appendChild(button);
-
-        });
-
-}
-
-
-/* =========================================================
-   PRICE
-========================================================= */
-
-function parsePrice(value){
-
-    return Number(
-        String(value)
-            .replace(/[۰-۹]/g, function(d){
-
-                return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
-
-            })
-            .replace(/,/g,"")
-            .replace(/٬/g,"")
-            .trim()
-    ) || 0;
-
-}
-
-
-/* =========================================================
-   ADD TO CART
-========================================================= */
-
-function addToCart(name, option, price){
+/* =====================================================
+   ADD ITEM
+===================================================== */
+
+function addItem(name, price){
 
     const existing =
-        cart.find(function(item){
-
-            return (
-                item.name === name &&
-                item.option === option
-            );
-
-        });
+        cart.find(
+            item => item.name === name
+        );
 
 
     if(existing){
 
-        existing.quantity += 1;
+        existing.quantity++;
 
     }else{
 
@@ -1761,9 +2821,7 @@ function addToCart(name, option, price){
 
             name:name,
 
-            option:option,
-
-            price:price,
+            price:Number(price),
 
             quantity:1
 
@@ -1774,52 +2832,25 @@ function addToCart(name, option, price){
 
     updateCart();
 
-
-    showToast(
-        "✅ به سبد سفارش اضافه شد"
-    );
+    openCart();
 
 }
 
 
-/* =========================================================
-   INCREASE
-========================================================= */
-
-function increaseItem(index){
-
-    if(!cart[index]){
-
-        return;
-
-    }
-
-
-    cart[index].quantity += 1;
-
-
-    updateCart();
-
-}
-
-
-/* =========================================================
-   DECREASE
-========================================================= */
+/* =====================================================
+   REMOVE ONE
+===================================================== */
 
 function decreaseItem(index){
 
-    if(!cart[index]){
+    if(
+        cart[index] &&
+        cart[index].quantity > 1
+    ){
 
-        return;
+        cart[index].quantity--;
 
-    }
-
-
-    cart[index].quantity -= 1;
-
-
-    if(cart[index].quantity <= 0){
+    }else{
 
         cart.splice(index,1);
 
@@ -1831,477 +2862,343 @@ function decreaseItem(index){
 }
 
 
-/* =========================================================
-   TOTAL
-========================================================= */
+/* =====================================================
+   INCREASE
+===================================================== */
 
-function getCartTotal(){
+function increaseItem(index){
 
-    return cart.reduce(
+    if(cart[index]){
 
-        function(total,item){
-
-            return total +
-                (item.price * item.quantity);
-
-        },
-
-        0
-
-    );
-
-}
-
-
-/* =========================================================
-   CART COUNT
-========================================================= */
-
-function getCartCount(){
-
-    return cart.reduce(
-
-        function(total,item){
-
-            return total + item.quantity;
-
-        },
-
-        0
-
-    );
-
-}
-
-
-/* =========================================================
-   UPDATE CART
-========================================================= */
-
-function updateCart(){
-
-    const container =
-        document.getElementById("cartItems");
-
-
-    const count =
-        document.getElementById("cartCount");
-
-
-    const total =
-        document.getElementById("cartTotal");
-
-
-    count.innerText =
-        getCartCount();
-
-
-    total.innerText =
-        formatNumber(getCartTotal());
-
-
-    if(cart.length === 0){
-
-        container.innerHTML = `
-            <div class="cart-empty">
-                سبد سفارش خالی است
-            </div>
-        `;
-
-        return;
+        cart[index].quantity++;
 
     }
-
-
-    container.innerHTML = "";
-
-
-    cart.forEach(function(item,index){
-
-        const itemTotal =
-            item.price * item.quantity;
-
-
-        const div =
-            document.createElement("div");
-
-
-        div.className =
-            "cart-item";
-
-
-        div.innerHTML = `
-
-            <div class="cart-item-top">
-
-                <div>
-
-                    <strong>
-                        ${escapeHTML(item.name)}
-                    </strong>
-
-                    ${
-                        item.option
-                        ?
-                        `
-                        <div class="cart-item-meta">
-                            ${escapeHTML(item.option)}
-                        </div>
-                        `
-                        :
-                        ""
-                    }
-
-                </div>
-
-                <strong class="price">
-                    ${formatNumber(itemTotal)}
-                </strong>
-
-            </div>
-
-
-            <div class="qty">
-
-                <button
-                    type="button"
-                    onclick="increaseItem(${index})">
-                    +
-                </button>
-
-
-                <span>
-                    ${item.quantity}
-                </span>
-
-
-                <button
-                    type="button"
-                    onclick="decreaseItem(${index})">
-                    −
-                </button>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(div);
-
-    });
-
-}
-
-
-/* =========================================================
-   FORMAT NUMBER
-========================================================= */
-
-function formatNumber(number){
-
-    return Number(number || 0)
-        .toLocaleString("fa-IR");
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value){
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   OPEN CART
-========================================================= */
-
-function openCart(){
-
-    document
-        .getElementById("cartPanel")
-        .classList.add("open");
-
-
-    document.body.style.overflow =
-        "hidden";
-
 
     updateCart();
 
 }
 
 
-/* =========================================================
-   CLOSE CART
-========================================================= */
+/* =====================================================
+   UPDATE CART
+===================================================== */
 
-function closeCart(){
+function updateCart(){
 
-    document
-        .getElementById("cartPanel")
-        .classList.remove("open");
+    const cartItems =
+        document.getElementById(
+            "cartItems"
+        );
 
+    const cartCount =
+        document.getElementById(
+            "cartCount"
+        );
 
-    document.body.style.overflow =
-        "";
+    const cartTotal =
+        document.getElementById(
+            "cartTotal"
+        );
 
-}
-
-
-/* =========================================================
-   CLOSE BY OUTSIDE CLICK
-========================================================= */
-
-function closeCartOutside(event){
-
-    if(event.target.id === "cartPanel"){
-
-        closeCart();
-
-    }
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-
-    toast.innerText =
-        message;
-
-
-    toast.classList.add("show");
-
-
-    clearTimeout(toastTimer);
-
-
-    toastTimer =
-        setTimeout(function(){
-
-            toast.classList.remove("show");
-
-        },2200);
-
-}
-
-
-/* =========================================================
-   ORDER MESSAGE
-========================================================= */
-
-function showOrderMessage(message,type){
-
-    const box =
-        document.getElementById("orderMessage");
-
-
-    box.innerText =
-        message;
-
-
-    box.className =
-        "order-message " + type;
-
-}
-
-
-/* =========================================================
-   SUBMIT ORDER
-========================================================= */
-
-async function submitOrder(){
-
-    const button =
-        document.getElementById("submitOrderBtn");
-
-
-    const tableInput =
-        document.getElementById("tableNumber");
-
-
-    const tableNumber =
-        tableInput.value.trim();
-
-
-    /*
-     * جلوگیری از سفارش خالی
-     */
 
     if(cart.length === 0){
 
-        showOrderMessage(
-            "سبد سفارش شما خالی است.",
-            "error"
-        );
+        cartItems.innerHTML =
+        "هنوز چیزی به سبد اضافه نکرده‌اید.";
+
+        cartCount.textContent = "0";
+
+        cartTotal.textContent =
+        "0 تومان";
 
         return;
 
     }
 
 
-    /*
-     * بررسی شماره میز
-     */
+    let total = 0;
 
-    if(!tableNumber){
+    let count = 0;
 
-        showOrderMessage(
-            "لطفاً شماره میز را وارد کنید.",
-            "error"
+
+    cartItems.innerHTML =
+    cart.map(
+        (item,index) => {
+
+            const itemTotal =
+                item.price *
+                item.quantity *
+                1000;
+
+            total += itemTotal;
+
+            count += item.quantity;
+
+
+            return `
+
+            <div class="cart-item">
+
+                <div class="cart-row">
+
+                    <div>
+
+                        <strong>
+                            ${item.name}
+                        </strong>
+
+                        <div
+                        style="
+                        color:#999;
+                        font-size:12px;
+                        margin-top:4px;
+                        ">
+
+                            ${formatPrice(item.price)}
+                            ×
+                            ${item.quantity}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="qty">
+
+                        <button
+                        onclick="decreaseItem(${index})">
+
+                            −
+
+                        </button>
+
+
+                        <span>
+
+                            ${item.quantity}
+
+                        </span>
+
+
+                        <button
+                        onclick="increaseItem(${index})">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                style="
+                color:#d4af37;
+                margin-top:7px;
+                font-size:13px;
+                ">
+
+                    ${itemTotal.toLocaleString("en-US")}
+                    تومان
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+    ).join("");
+
+
+    cartCount.textContent =
+        count;
+
+
+    cartTotal.textContent =
+        total.toLocaleString("en-US")
+        + " تومان";
+
+}
+
+
+/* =====================================================
+   CART OPEN / CLOSE
+===================================================== */
+
+function toggleCart(){
+
+    document
+    .getElementById("cartPanel")
+    .classList.toggle("open");
+
+}
+
+
+function openCart(){
+
+    document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+}
+
+
+/* =====================================================
+   SUBMIT ORDER
+===================================================== */
+
+async function submitOrder(){
+
+    const message =
+        document.getElementById(
+            "orderMessage"
         );
 
-        tableInput.focus();
+    const button =
+        document.getElementById(
+            "submitOrder"
+        );
+
+    const table =
+        document.getElementById(
+            "tableNumber"
+        ).value.trim();
+
+
+    message.className =
+        "message";
+
+    message.textContent =
+        "";
+
+
+    /* EMPTY CART */
+
+    if(cart.length === 0){
+
+        message.className =
+            "message error";
+
+        message.textContent =
+            "❌ لطفاً حداقل یک آیتم انتخاب کنید.";
 
         return;
 
     }
 
 
-    /*
-     * جلوگیری از دوبار کلیک
-     */
+    /* TABLE */
 
-    button.disabled =
-        true;
+    if(!table){
+
+        message.className =
+            "message error";
+
+        message.textContent =
+            "❌ لطفاً شماره میز را وارد کنید.";
+
+        return;
+
+    }
 
 
-    button.innerText =
-        "در حال ثبت سفارش...";
+    /* TOTAL */
 
+    let total = 0;
 
-    showOrderMessage(
-        "",
-        ""
+    cart.forEach(
+        item => {
+
+            total +=
+                item.price *
+                item.quantity *
+                1000;
+
+        }
     );
 
 
-    /*
-     * آماده‌سازی اطلاعات آیتم‌ها
-     */
+    /* ITEMS */
 
-    const orderItems =
-        cart.map(function(item){
-
-            return {
+    const items =
+        cart.map(
+            item => ({
 
                 name:item.name,
 
-                option:item.option,
+                price:
+                    item.price * 1000,
 
-                price:item.price,
+                quantity:
+                    item.quantity
 
-                quantity:item.quantity,
-
-                total:item.price * item.quantity
-
-            };
-
-        });
+            })
+        );
 
 
-    const totalPrice =
-        getCartTotal();
+    button.disabled = true;
+
+    button.textContent =
+        "در حال ثبت سفارش...";
 
 
     try{
 
-        const { data, error } =
+        const { data,error } =
             await supabaseClient
-                .from("orders")
-                .insert({
 
-                    table_number:tableNumber,
+            .from("orders")
 
-                    items:orderItems,
+            .insert({
 
-                    total_price:totalPrice,
+                table_number:table,
 
-                    status:"new"
+                items:items,
 
-                })
-                .select()
-                .single();
+                total_price:total,
+
+                status:"new"
+
+            })
+
+            .select();
 
 
         if(error){
 
-    console.error("SUPABASE ERROR:", error);
+            console.error(
+                "SUPABASE ERROR:",
+                error
+            );
 
-    showOrderMessage(
-        "خطای Supabase: " + error.message,
-        "error"
-    );
-
-    button.disabled = false;
-    button.innerText = "ثبت سفارش";
-
-    return;
+            throw error;
 
         }
 
 
-        /*
-         * سفارش با موفقیت ثبت شد
-         */
+        message.className =
+            "message success";
 
-        showOrderMessage(
-            "✅ سفارش شما با موفقیت ثبت شد.",
-            "success"
-        );
+        message.textContent =
+            "✅ سفارش شما با موفقیت ثبت شد.";
 
-
-        showToast(
-            "✅ سفارش ثبت شد"
-        );
-
-
-        /*
-         * پاک کردن سبد
-         */
 
         cart = [];
+
+        document
+        .getElementById(
+            "tableNumber"
+        )
+        .value = "";
 
 
         updateCart();
 
 
-        /*
-         * پاک کردن شماره میز
-         */
-
-        tableInput.value = "";
-
-
-        /*
-         * بعد از چند ثانیه بستن سبد
-         */
-
-        setTimeout(function(){
-
-            closeCart();
-
-        },2500);
+        button.textContent =
+            "سفارش ثبت شد";
 
 
     }catch(error){
@@ -2309,35 +3206,16 @@ async function submitOrder(){
         console.error(error);
 
 
-        let message =
-            "ثبت سفارش انجام نشد.";
+        message.className =
+            "message error";
+
+        message.textContent =
+            "❌ سفارش ثبت نشد. دوباره تلاش کنید.";
 
 
-        if(
-            error &&
-            error.message
-        ){
+        button.disabled = false;
 
-            console.log(
-                error.message
-            );
-
-        }
-
-
-        showOrderMessage(
-            message +
-            " لطفاً دوباره تلاش کنید.",
-            "error"
-        );
-
-    }finally{
-
-        button.disabled =
-            false;
-
-
-        button.innerText =
+        button.textContent =
             "ثبت سفارش";
 
     }
@@ -2345,35 +3223,191 @@ async function submitOrder(){
 }
 
 
-/* =========================================================
-   INTRO
-========================================================= */
+/* =====================================================
+   MAIN TABS
+===================================================== */
 
-setTimeout(function(){
+function show(tab,btn){
 
-    const intro =
-        document.getElementById("intro");
-
-
-    if(intro){
-
-        intro.style.display =
-            "none";
-
-    }
-
-},4500);
+    document
+    .querySelectorAll(".section")
+    .forEach(
+        section =>
+        section.classList.remove("active")
+    );
 
 
-/* =========================================================
+    document
+    .querySelectorAll(".tab-btn")
+    .forEach(
+        button =>
+        button.classList.remove("active")
+    );
+
+
+    document
+    .getElementById(tab)
+    .classList.add("active");
+
+
+    btn.classList.add("active");
+
+
+    triggerReveal();
+
+}
+
+
+/* =====================================================
+   HOT TABS
+===================================================== */
+
+function showHot(tab,btn){
+
+    document
+    .querySelectorAll(
+        "#hot .sub-section"
+    )
+    .forEach(
+        section =>
+        section.classList.remove("active")
+    );
+
+
+    document
+    .querySelectorAll(
+        "#hot .sub-tab"
+    )
+    .forEach(
+        button =>
+        button.classList.remove("active")
+    );
+
+
+    document
+    .getElementById(tab)
+    .classList.add("active");
+
+
+    btn.classList.add("active");
+
+
+    triggerReveal();
+
+}
+
+
+/* =====================================================
+   COLD TABS
+===================================================== */
+
+function showCold(tab,btn){
+
+    document
+    .querySelectorAll(
+        "#cold .sub-section"
+    )
+    .forEach(
+        section =>
+        section.classList.remove("active")
+    );
+
+
+    document
+    .querySelectorAll(
+        "#cold .sub-tab"
+    )
+    .forEach(
+        button =>
+        button.classList.remove("active")
+    );
+
+
+    document
+    .getElementById(tab)
+    .classList.add("active");
+
+
+    btn.classList.add("active");
+
+
+    triggerReveal();
+
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+const observer =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                        .classList
+                        .add("show");
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.15
+        }
+    );
+
+
+function triggerReveal(){
+
+    document
+    .querySelectorAll(".card")
+    .forEach(
+        card =>
+        observer.observe(card)
+    );
+
+}
+
+
+/* =====================================================
    INIT
-========================================================= */
+===================================================== */
 
 triggerReveal();
 
-prepareMenuItems();
 
-updateCart();
+/* =====================================================
+   INTRO
+===================================================== */
+
+setTimeout(
+    function(){
+
+        const intro =
+            document.getElementById(
+                "intro"
+            );
+
+        if(intro){
+
+            intro.style.display =
+                "none";
+
+        }
+
+    },
+    3000
+);
 
 </script>
 
