@@ -3292,8 +3292,18 @@ if(error){
         );
 
 
-        message.textContent =
-            "❌ سفارش ثبت نشد. دوباره تلاش کنید.";
+        message.innerHTML =
+    `
+    ✅ سفارش با موفقیت ثبت شد.
+    <br><br>
+    کد پیگیری شما:
+    <br>
+    <strong style="color:#d4af37;font-size:18px;">
+    ${trackingCode}
+    </strong>
+    <br><br>
+    این کد را برای پیگیری سفارش نگه دارید.
+    `;
 
         message.classList.add("error");
 
