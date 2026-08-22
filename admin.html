@@ -1048,28 +1048,24 @@ showToast(
 
 
 
-function printInvoice(id){
 
+
+
+
+function printInvoice(id){
 
 const order =
 orders.find(
 o=>o.id===id
 );
 
-
-
 if(!order){
 return;
 }
 
-
-
 let rows="";
 
-
-
 order.items.forEach(item=>{
-
 
 rows += `
 
@@ -1079,11 +1075,9 @@ rows += `
 ${item.name}
 </td>
 
-
 <td>
 ${item.quantity || 1}
 </td>
-
 
 <td>
 ${formatNumber(
@@ -1092,16 +1086,11 @@ ${formatNumber(
 )}
 </td>
 
-
 </tr>
 
 `;
 
-
 });
-
-
-
 
 
 let win =
@@ -1112,9 +1101,7 @@ window.open(
 );
 
 
-
 win.document.write(`
-
 
 <html lang="fa" dir="rtl">
 
@@ -1122,12 +1109,10 @@ win.document.write(`
 
 <meta charset="UTF-8">
 
-
 <style>
 
-
 @page{
-    size:80mm 200mm;
+    size:80mm auto;
     margin:0;
 }
 
@@ -1135,31 +1120,21 @@ html,body{
     width:80mm;
     margin:0;
     padding:0;
+    height:auto;
 }
 
 body{
-    font-family:tahoma;
-    font-size:12px;
-    text-align:center;
-    padding:5px;
-    overflow:hidden;
+
+font-family:tahoma;
+
+font-size:12px;
+
+text-align:center;
+
+padding:5px;
+
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-td{
-    padding:6px;
-    border-bottom:1px dashed #999;
-}
-
-.total{
-    font-size:18px;
-    font-weight:bold;
-    margin-top:15px;
-}
 
 table{
 
@@ -1170,7 +1145,6 @@ border-collapse:collapse;
 }
 
 
-
 td{
 
 padding:6px;
@@ -1178,7 +1152,6 @@ padding:6px;
 border-bottom:1px dashed #999;
 
 }
-
 
 
 .total{
@@ -1194,9 +1167,7 @@ margin-top:15px;
 
 </style>
 
-
 </head>
-
 
 
 <body>
@@ -1219,9 +1190,7 @@ ${order.table_number}
 </p>
 
 
-
 <hr>
-
 
 
 <table>
@@ -1231,9 +1200,7 @@ ${rows}
 </table>
 
 
-
 <hr>
-
 
 
 <div class="total">
@@ -1246,9 +1213,7 @@ ${formatNumber(order.total_price)}
 
 تومان
 
-
 </div>
-
 
 
 <br>
@@ -1259,23 +1224,25 @@ ${formatNumber(order.total_price)}
 
 </body>
 
-
 </html>
 
-
 `);
-
 
 
 win.document.close();
 
 
-
 setTimeout(()=>{
+
+
+win.document.body.style.height =
+win.document.body.scrollHeight + "px";
+
 
 win.focus();
 
 win.print();
+
 
 setTimeout(()=>{
 
@@ -1283,11 +1250,11 @@ win.close();
 
 },500);
 
-},300);
+
+},500);
 
 
 }
-
 
 function formatNumber(num){
 
