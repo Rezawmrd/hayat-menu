@@ -3176,8 +3176,7 @@ function toggleCart(){
    SUBMIT ORDER
 ===================================================== */
 
-
-        async function submitOrder(){
+async function submitOrder(){
 
     const message =
         document.getElementById("orderMessage");
@@ -3194,7 +3193,8 @@ function toggleCart(){
 
     message.textContent = "";
 
-    message.className = "message";
+    message.className =
+        "message";
 
 
     if(cart.length === 0){
@@ -3236,103 +3236,43 @@ function toggleCart(){
         "در حال ثبت...";
 
 
-    let trackingCode = "";
-
-
     try{
 
-        /* ساخت کد پیگیری */
+        const {error} =
+    await supabaseClient
+    .from("orders")
+    .insert([{
+        table_number: table,
+        items: cart,
+        total_price: total,
+        status: "new"
+    }]);
 
-        trackingCode =
-            "HAYAT-" +
-            Math.floor(
-                1000 + Math.random() * 9000
-            );
-
-
-        /* ثبت سفارش در Supabase */
-
-        const { data, error } =
-            await supabaseClient
-
-            .from("orders")
-
-            .insert([{
-
-                table_number: table,
-
-                items: cart,
-
-                total_price: total,
-
-                status: "new",
-
-                tracking_code: trackingCode
-
-            }])
-
-            .select();
+if(error){
+    console.error("Supabase Error:", error);
+    throw error;
+}
 
 
         if(error){
 
-            console.error(
-                "Supabase Error:",
-                error
-            );
+            console.error(error);
 
             throw error;
 
         }
 
 
-        /* نمایش کد پیگیری به مشتری */
-
-        message.innerHTML = `
-
-            ✅ سفارش با موفقیت ثبت شد.
-
-            <br><br>
-
-            <span>
-                کد پیگیری شما:
-            </span>
-
-            <br>
-
-            <strong
-            style="
-            display:inline-block;
-            color:#d4af37;
-            font-size:20px;
-            margin-top:6px;
-            direction:ltr;
-            ">
-
-                ${trackingCode}
-
-            </strong>
-
-            <br><br>
-
-            <small>
-                این کد را برای پیگیری سفارش نگه دارید.
-            </small>
-
-        `;
-
+        message.textContent =
+            "✅ سفارش با موفقیت ثبت شد.";
 
         message.classList.add("success");
 
-
-        /* خالی کردن سبد */
 
         cart = [];
 
         updateCart();
 
-
-        /* خالی کردن شماره میز */
 
         document
         .getElementById("tableNumber")
@@ -3341,20 +3281,16 @@ function toggleCart(){
 
     }catch(error){
 
-    console.error(
-        "Supabase Error:",
-        error
-    );
+        console.error(
+            "Supabase Error:",
+            error
+        );
 
-    message.innerHTML = `
-        ❌ خطا در ثبت سفارش
-        <br><br>
-        <small style="direction:ltr;display:block;">
-        ${error.message || error}
-        </small>
-    `;
 
-    message.classList.add("error");
+        message.textContent =
+            "❌ سفارش ثبت نشد. دوباره تلاش کنید.";
+
+        message.classList.add("error");
 
 
     }finally{
@@ -3366,7 +3302,7 @@ function toggleCart(){
 
     }
 
-        }
+}
 
 
 
