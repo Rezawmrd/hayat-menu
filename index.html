@@ -3341,16 +3341,20 @@ function toggleCart(){
 
     }catch(error){
 
-        console.error(
-            "Supabase Error:",
-            error
-        );
+    console.error(
+        "Supabase Error:",
+        error
+    );
 
+    message.innerHTML = `
+        ❌ خطا در ثبت سفارش
+        <br><br>
+        <small style="direction:ltr;display:block;">
+        ${error.message || error}
+        </small>
+    `;
 
-        message.textContent =
-            "❌ سفارش ثبت نشد. دوباره تلاش کنید.";
-
-        message.classList.add("error");
+    message.classList.add("error");
 
 
     }finally{
