@@ -3176,7 +3176,8 @@ function toggleCart(){
    SUBMIT ORDER
 ===================================================== */
 
-async function submitOrder(){
+
+        async function submitOrder(){
 
     const message =
         document.getElementById("orderMessage");
@@ -3193,8 +3194,7 @@ async function submitOrder(){
 
     message.textContent = "";
 
-    message.className =
-        "message";
+    message.className = "message";
 
 
     if(cart.length === 0){
@@ -3236,48 +3236,103 @@ async function submitOrder(){
         "در حال ثبت...";
 
 
+    let trackingCode = "";
+
+
     try{
 
-        const trackingCode =
-    "HAYAT-" + Math.floor(1000 + Math.random() * 9000);
+        /* ساخت کد پیگیری */
+
+        trackingCode =
+            "HAYAT-" +
+            Math.floor(
+                1000 + Math.random() * 9000
+            );
 
 
-const {error} =
-await supabaseClient
-.from("orders")
-.insert([{
-    table_number: table,
-    items: cart,
-    total_price: total,
-    status: "new",
-    tracking_code: trackingCode
-}]);
+        /* ثبت سفارش در Supabase */
 
-if(error){
-    console.error("Supabase Error:", error);
-    throw error;
-}
+        const { data, error } =
+            await supabaseClient
+
+            .from("orders")
+
+            .insert([{
+
+                table_number: table,
+
+                items: cart,
+
+                total_price: total,
+
+                status: "new",
+
+                tracking_code: trackingCode
+
+            }])
+
+            .select();
 
 
         if(error){
 
-            console.error(error);
+            console.error(
+                "Supabase Error:",
+                error
+            );
 
             throw error;
 
         }
 
 
-        message.textContent =
-            "✅ سفارش با موفقیت ثبت شد.";
+        /* نمایش کد پیگیری به مشتری */
+
+        message.innerHTML = `
+
+            ✅ سفارش با موفقیت ثبت شد.
+
+            <br><br>
+
+            <span>
+                کد پیگیری شما:
+            </span>
+
+            <br>
+
+            <strong
+            style="
+            display:inline-block;
+            color:#d4af37;
+            font-size:20px;
+            margin-top:6px;
+            direction:ltr;
+            ">
+
+                ${trackingCode}
+
+            </strong>
+
+            <br><br>
+
+            <small>
+                این کد را برای پیگیری سفارش نگه دارید.
+            </small>
+
+        `;
+
 
         message.classList.add("success");
 
+
+        /* خالی کردن سبد */
 
         cart = [];
 
         updateCart();
 
+
+        /* خالی کردن شماره میز */
 
         document
         .getElementById("tableNumber")
@@ -3292,18 +3347,8 @@ if(error){
         );
 
 
-        message.innerHTML =
-    `
-    ✅ سفارش با موفقیت ثبت شد.
-    <br><br>
-    کد پیگیری شما:
-    <br>
-    <strong style="color:#d4af37;font-size:18px;">
-    ${trackingCode}
-    </strong>
-    <br><br>
-    این کد را برای پیگیری سفارش نگه دارید.
-    `;
+        message.textContent =
+            "❌ سفارش ثبت نشد. دوباره تلاش کنید.";
 
         message.classList.add("error");
 
@@ -3317,7 +3362,7 @@ if(error){
 
     }
 
-}
+        }
 
 
 
