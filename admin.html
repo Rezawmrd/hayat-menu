@@ -1127,24 +1127,38 @@ win.document.write(`
 
 
 @page{
-    size:80mm auto;
+    size:80mm 200mm;
     margin:0;
 }
 
+html,body{
+    width:80mm;
+    margin:0;
+    padding:0;
+}
+
 body{
+    font-family:tahoma;
+    font-size:12px;
+    text-align:center;
+    padding:5px;
+    overflow:hidden;
+}
 
-width:72mm;
+table{
+    width:100%;
+    border-collapse:collapse;
+}
 
-font-family:tahoma;
+td{
+    padding:6px;
+    border-bottom:1px dashed #999;
+}
 
-font-size:12px;
-
-text-align:center;
-
-margin:0 auto;
-
-padding:5px;
-
+.total{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:15px;
 }
 
 table{
