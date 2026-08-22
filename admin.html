@@ -1052,6 +1052,8 @@ showToast(
 
 
 
+
+
 function printInvoice(id){
 
 const order =
@@ -1112,55 +1114,58 @@ win.document.write(`
 <style>
 
 @page{
-    size:80mm auto;
+    size:80mm 150mm;
     margin:0;
 }
 
 html,body{
+
     width:80mm;
+
     margin:0;
+
     padding:0;
-    height:auto;
+
 }
 
 body{
 
-font-family:tahoma;
+    font-family:tahoma;
 
-font-size:12px;
+    font-size:12px;
 
-text-align:center;
+    text-align:center;
 
-padding:5px;
+    padding:5px;
 
 }
 
 
 table{
 
-width:100%;
+    width:100%;
 
-border-collapse:collapse;
+    border-collapse:collapse;
 
 }
 
 
 td{
 
-padding:6px;
+    padding:6px;
 
-border-bottom:1px dashed #999;
+    border-bottom:1px dashed #999;
 
 }
 
 
 .total{
 
-font-size:18px;
+    font-size:18px;
 
-font-weight:bold;
+    font-weight:bold;
 
-margin-top:15px;
+    margin-top:15px;
 
 }
 
@@ -1233,11 +1238,6 @@ win.document.close();
 
 
 setTimeout(()=>{
-
-
-win.document.body.style.height =
-win.document.body.scrollHeight + "px";
-
 
 win.focus();
 
