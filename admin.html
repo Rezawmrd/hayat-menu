@@ -1126,18 +1126,26 @@ win.document.write(`
 <style>
 
 
+@page{
+    size:80mm auto;
+    margin:0;
+}
+
 body{
 
-width:280px;
+width:72mm;
 
 font-family:tahoma;
 
+font-size:12px;
+
 text-align:center;
 
-margin:auto;
+margin:0 auto;
+
+padding:5px;
 
 }
-
 
 table{
 
@@ -1251,12 +1259,17 @@ win.document.close();
 
 setTimeout(()=>{
 
+win.focus();
+
 win.print();
+
+setTimeout(()=>{
+
+win.close();
 
 },500);
 
-
-}
+},300);
 
 
 
