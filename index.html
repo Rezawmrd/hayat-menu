@@ -3132,6 +3132,35 @@ window.supabase.createClient(
     SUPABASE_KEY
 );
 
+    /* =====================================================
+   LOAD MENU FROM DATABASE
+===================================================== */
+
+async function loadMenu(){
+
+    const { data, error } =
+    await supabaseClient
+    .from("menu_items")
+    .select("*")
+    .eq("active", true)
+    .order("id");
+
+
+    if(error){
+
+        console.error(
+            "Menu Error:",
+            error
+        );
+
+        return;
+
+    }
+
+
+    console.log("MENU:", data);
+
+}
 
 
 /* =====================================================
@@ -3187,6 +3216,7 @@ function addItem(name,price){
 
 
     updateCart();
+    loadMenu();
 
     showAddToast(name);
 
