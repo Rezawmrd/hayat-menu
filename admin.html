@@ -506,6 +506,8 @@ let orders=[];
 
 let currentFilter="all";
 
+let menuItems=[];
+
 
 
 async function checkAdmin(){
@@ -606,6 +608,43 @@ renderOrders();
 
 
 }
+
+    async function loadMenuItems(){
+
+const {
+data,
+error
+}=await supabaseClient
+
+.from("menu_items")
+
+.select("*")
+
+.order("id");
+
+
+if(error){
+
+console.log(error);
+
+showToast(
+"❌ دریافت منو انجام نشد"
+);
+
+return;
+
+}
+
+
+menuItems = data || [];
+
+
+console.log(
+"MENU ITEMS:",
+menuItems
+);
+
+    }
 
 function updateStats(){
 
@@ -1375,6 +1414,8 @@ checkAdmin()
 if(ok){
 
 loadOrders();
+
+loadMenuItems();
 
 }
 
