@@ -468,8 +468,19 @@ onclick="setFilter('cancelled',this)">
 
 </div>
 
+<h2 style="color:#d4af37;margin-top:40px;">
+🍽 مدیریت منو
+</h2>
 
+<div id="menuItems" class="orders">
 
+<div class="loading">
+در حال دریافت منو...
+</div>
+
+</div>
+
+    
 </main>
 
 
@@ -639,12 +650,95 @@ return;
 menuItems = data || [];
 
 
-console.log(
-"MENU ITEMS:",
-menuItems
-);
+renderMenuItems();
 
-    }
+}
+
+
+
+function renderMenuItems(){
+
+const container =
+document.getElementById("menuItems");
+
+
+if(!container) return;
+
+
+if(menuItems.length===0){
+
+container.innerHTML=`
+
+<div class="empty">
+
+منویی وجود ندارد
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+
+container.innerHTML="";
+
+
+menuItems.forEach(item=>{
+
+
+container.innerHTML += `
+
+<div class="order">
+
+
+<div class="order-head">
+
+<strong style="color:#d4af37">
+
+${item.name}
+
+</strong>
+
+
+<span>
+
+${item.price.toLocaleString()}
+تومان
+
+</span>
+
+
+</div>
+
+
+<div>
+
+دسته:
+${item.category || "-"}
+
+</div>
+
+
+<div>
+
+وضعیت:
+${item.active ? "فعال ✅" : "غیرفعال ❌"}
+
+</div>
+
+
+</div>
+
+`;
+
+
+});
+
+
+}
 
 function updateStats(){
 
