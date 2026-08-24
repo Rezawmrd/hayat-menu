@@ -682,7 +682,6 @@ return;
 }
 
 
-
 container.innerHTML="";
 
 
@@ -705,8 +704,7 @@ ${item.name}
 
 <span>
 
-${item.price.toLocaleString()}
-تومان
+${item.category || "-"}
 
 </span>
 
@@ -714,18 +712,53 @@ ${item.price.toLocaleString()}
 </div>
 
 
-<div>
 
-دسته:
-${item.category || "-"}
-
-</div>
+<div style="margin-top:10px">
 
 
-<div>
+<label style="color:#aaa;font-size:13px">
 
-وضعیت:
-${item.active ? "فعال ✅" : "غیرفعال ❌"}
+قیمت
+
+</label>
+
+
+<input
+
+id="price-${item.id}"
+
+value="${item.price}"
+
+type="number"
+
+style="
+width:100%;
+margin-top:5px;
+padding:10px;
+background:#090909;
+color:#fff;
+border:1px solid #333;
+border-radius:8px;
+font-family:inherit;
+">
+
+
+<button
+
+onclick="updateMenuPrice(${item.id})"
+
+class="status-btn"
+
+style="
+margin-top:10px;
+color:#d4af37;
+border-color:#d4af37;
+">
+
+💾 ذخیره قیمت
+
+</button>
+
 
 </div>
 
@@ -734,11 +767,61 @@ ${item.active ? "فعال ✅" : "غیرفعال ❌"}
 
 `;
 
-
 });
 
 
 }
+
+
+    async function updateMenuPrice(id){
+
+const input =
+document.getElementById(
+"price-"+id
+);
+
+
+const price =
+Number(input.value);
+
+
+const {
+error
+}=await supabaseClient
+
+.from("menu_items")
+
+.update({
+price:price
+})
+
+.eq("id",id);
+
+
+
+if(error){
+
+console.log(error);
+
+showToast(
+"❌ ذخیره نشد"
+);
+
+return;
+
+}
+
+
+showToast(
+"✅ قیمت ذخیره شد"
+);
+
+
+loadMenuItems();
+
+
+    }
+    
 
 function updateStats(){
 
