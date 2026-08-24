@@ -3132,6 +3132,44 @@ window.supabase.createClient(
     SUPABASE_KEY
 );
 
+
+/* =====================================================
+   LOAD MENU FROM DATABASE
+===================================================== */
+
+async function loadDatabaseMenu(){
+
+const {
+data,
+error
+}=await supabaseClient
+
+.from("menu_items")
+
+.select("*")
+
+.eq("active",true);
+
+
+if(error){
+
+console.log(
+"Menu Error:",
+error
+);
+
+return;
+
+}
+
+
+console.log(
+"DATABASE MENU:",
+data
+);
+
+}
+
     /* =====================================================
    LOAD MENU FROM DATABASE
 ===================================================== */
@@ -3750,7 +3788,8 @@ function triggerReveal(){
 
 triggerReveal();
 
-
+loadDatabaseMenu();
+    
 updateCart();
 
 
