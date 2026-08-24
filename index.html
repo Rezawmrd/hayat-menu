@@ -1298,7 +1298,6 @@ onclick="addItem('بشقاب ایرانی',165000)">
 
 </div>
 
-
 <!-- ================= FOOD ================= -->
 
 <div
@@ -1308,6 +1307,40 @@ class="section">
 <h2>
 غذا
 </h2>
+
+
+
+<div class="sub-tabs">
+
+
+<button
+class="sub-tab active"
+onclick="showFood('foods',this)">
+
+🍽 غذا
+
+</button>
+
+
+<button
+class="sub-tab"
+onclick="showFood('mini',this)">
+
+🌭 مینی‌ها
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div
+id="foods"
+class="sub-section active">
+
 
 
 <div class="card">
@@ -1329,6 +1362,8 @@ onclick="addItem('پاستا آلفردو',535000)">
 </button>
 
 </div>
+
+
 
 
 <div class="card">
@@ -1353,6 +1388,7 @@ onclick="addItem('سیب زمینی مخصوص',260000)">
 
 
 
+
 <div class="card">
 
 <span>
@@ -1372,6 +1408,52 @@ onclick="addItem('چیپس و پنیر',280000)">
 </button>
 
 </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div
+id="mini"
+class="sub-section">
+
+
+
+<div class="card">
+
+
+<span>
+مینی هات داگ
+</span>
+
+
+<span class="price">
+235,000 تومان
+</span>
+
+
+<button
+class="add-btn"
+onclick="addItem('مینی هات داگ',235000)">
+
+افزودن
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
 
 </div>
 
@@ -3456,6 +3538,42 @@ function show(tab,btn){
 }
 
 
+
+    /* =====================================================
+   FOOD TABS
+===================================================== */
+
+function showFood(tab,btn){
+
+    document
+    .querySelectorAll("#food .sub-section")
+    .forEach(function(section){
+
+        section.classList.remove("active");
+
+    });
+
+
+    document
+    .querySelectorAll("#food .sub-tab")
+    .forEach(function(button){
+
+        button.classList.remove("active");
+
+    });
+
+
+    document
+    .getElementById(tab)
+    .classList.add("active");
+
+
+    btn.classList.add("active");
+
+
+    triggerReveal();
+
+}
 
 /* =====================================================
    HOT TABS
