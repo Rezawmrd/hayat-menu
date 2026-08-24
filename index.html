@@ -3138,7 +3138,7 @@ window.supabase.createClient(
 ===================================================== */
 
 async function loadDatabaseMenu(){
-alert("تابع اجرا شد");
+
 const {
 data,
 error
@@ -3164,14 +3164,28 @@ return;
 
 window.menuDatabase = data;
 
+}
 
-console.log(
-"DATABASE MENU:",
-data
+    function updateTestPrice(){
+
+if(!window.menuDatabase) return;
+
+
+const pasta =
+window.menuDatabase.find(
+item => item.name === "پاستا آلفردو"
+);
+
+
+if(pasta){
+
+alert(
+"قیمت پاستا از دیتابیس: " + pasta.price
 );
 
 }
 
+    }
     /* =====================================================
    LOAD MENU FROM DATABASE
 ===================================================== */
@@ -3790,7 +3804,11 @@ function triggerReveal(){
 
 triggerReveal();
 
-loadDatabaseMenu();
+loadDatabaseMenu().then(()=>{
+
+updateTestPrice();
+
+});
     
 updateCart();
 
