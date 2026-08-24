@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HAYAT | مدیریت منو</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<style>
+
+body{
+margin:0;
+font-family:Vazirmatn,sans-serif;
+background:#0b0b0b;
+color:#fff;
+padding:20px;
+}
+
+h1{
+text-align:center;
+color:#d4af37;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+}
+
+.card{
+
+background:#151515;
+border:1px solid #333;
+border-radius:12px;
+padding:15px;
+margin-bottom:12px;
+
+}
+
+input{
+
+width:100%;
+box-sizing:border-box;
+background:#090909;
+color:#fff;
+border:1px solid #333;
+border-radius:8px;
+padding:10px;
+font-family:inherit;
+margin-top:8px;
+
+}
+
+
+button{
+
+background:#d4af37;
+color:#000;
+border:0;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+font-family:inherit;
+margin-top:10px;
+
+}
+
+
+.toggle{
+
+background:#222;
+color:#fff;
+
+}
+
+
+.price{
+
+color:#d4af37;
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+HAYAT COMPLEX
+<br>
+مدیریت منو
+</h1>
+
+
+<div id="menu">
+
+در حال دریافت...
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+const SUPABASE_URL =
+"https://lryoqddbyasdtjdrwpvx.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_pZbQaJ78di1MH3PUcJfeyw_0vPl43k9";
+
+
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+
+let items=[];
+
+
+
+async function loadMenu(){
+
+
+const {data,error}=await supabaseClient
+
+.from("menu_items")
+
+.select("*")
+
+.order("id");
+
+
+
+if(error){
+
+console.log(error);
+
+return;
+
+}
+
+
+items=data || [];
+
+render();
+
+}
+
+
+
+function render(){
+
+
+const box=document.getElementById("menu");
+
+
+box.innerHTML="";
+
+
+items.forEach(item=>{
+
+
+box.innerHTML += `
+
+
+<div class="card">
+
+
+<h3>
+${item.name}
+</h3>
+
+
+<p>
+دسته:
+${item.category || "-"}
+</p>
+
+
+<p>
+قیمت فعلی:
+<span class="price">
+${Number(item.price).toLocaleString()}
+</span>
+تومان
+</p>
+
+
+<input
+
+id="price-${item.id}"
+
+value="${item.price}"
+
+type="number"
+
+>
+
+
+<button onclick="updatePrice(${item.id})">
+
+💾 ذخیره قیمت
+
+</button>
+
+
+
+<button
+
+class="toggle"
+
+onclick="toggleActive(${item.id},${item.active})">
+
+${item.active ? "❌ غیرفعال کن" : "✅ فعال کن"}
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+
+async function updatePrice(id){
+
+
+const price =
+document.getElementById(
+"price-"+id
+).value;
+
+
+
+const {error}=await supabaseClient
+
+.from("menu_items")
+
+.update({
+
+price:Number(price)
+
+})
+
+.eq("id",id);
+
+
+
+if(error){
+
+alert("خطا در تغییر قیمت");
+
+console.log(error);
+
+return;
+
+}
+
+
+alert("قیمت تغییر کرد ✅");
+
+loadMenu();
+
+
+}
+
+
+
+
+async function toggleActive(id,status){
+
+
+const {error}=await supabaseClient
+
+.from("menu_items")
+
+.update({
+
+active:!status
+
+})
+
+.eq("id",id);
+
+
+
+if(error){
+
+alert("خطا");
+
+return;
+
+}
+
+
+loadMenu();
+
+
+}
+
+
+
+
+loadMenu();
+
+
+</script>
+
+
+</body>
+
+</html>
