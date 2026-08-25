@@ -3165,6 +3165,79 @@ onclick="addItem('${item.name}',${item.price})">
 
 
     }
+
+        async function loadSubCategoryMenu(category, subcategory, elementId){
+
+const {
+data,
+error
+}=await supabaseClient
+
+.from("menu_items")
+
+.select("*")
+
+.eq("category",category)
+
+.eq("subcategory",subcategory)
+
+.eq("active",true)
+
+.order("id");
+
+
+if(error){
+
+console.log(error);
+
+return;
+
+}
+
+
+const box =
+document.getElementById(elementId);
+
+
+if(!box) return;
+
+
+box.innerHTML="";
+
+
+data.forEach(item=>{
+
+
+box.innerHTML += `
+
+<div class="card">
+
+<span>
+${item.name}
+</span>
+
+
+<span class="price">
+${Number(item.price).toLocaleString("fa-IR")} تومان
+</span>
+
+
+<button
+class="add-btn"
+onclick="addItem('${item.name}',${item.price})">
+
+افزودن
+
+</button>
+
+</div>
+
+`;
+
+});
+
+
+        }
     /* =====================================================
    LOAD MENU FROM DATABASE
 ===================================================== */
@@ -3795,9 +3868,10 @@ await loadCategoryMenu(
 );
 
 
-await loadCategoryMenu(
+await loadSubCategoryMenu(
 "غذا",
-"database-food-menu"
+"مینی ها",
+"database-mini-menu"
 );
 
 
