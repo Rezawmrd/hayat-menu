@@ -387,6 +387,13 @@ onclick="loadOrders()">
 
 </button>
 
+    <button
+class="refresh"
+onclick="document.getElementById('menuSection').scrollIntoView({behavior:'smooth'})">
+
+🍽 مدیریت منو
+
+    </button>
 
 <button
 class="logout"
@@ -468,7 +475,7 @@ onclick="setFilter('cancelled',this)">
 
 </div>
 
-<h2 style="color:#d4af37;margin-top:40px;">
+<h2 id="menuSection" style="color:#d4af37;margin-top:40px;">
 🍽 مدیریت منو
 </h2>
 
