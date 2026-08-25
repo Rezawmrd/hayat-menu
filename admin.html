@@ -695,6 +695,7 @@ container.innerHTML += `
 
 <div class="order-head">
 
+
 <strong style="color:#d4af37">
 
 ${item.name}
@@ -702,14 +703,28 @@ ${item.name}
 </strong>
 
 
-<span>
+<div style="text-align:left">
 
-${item.category || "-"}
+
+<span style="display:block">
+
+📂 ${item.category || "-"}
+
+</span>
+
+
+<span style="display:block;color:#888;font-size:13px;margin-top:5px">
+
+${item.subcategory || "-"}
 
 </span>
 
 
 </div>
+
+
+</div>
+
 
 
 
@@ -721,6 +736,7 @@ ${item.category || "-"}
 قیمت
 
 </label>
+
 
 
 <input
@@ -740,7 +756,11 @@ color:#fff;
 border:1px solid #333;
 border-radius:8px;
 font-family:inherit;
-">
+"
+
+>
+
+
 
 
 <button
@@ -753,11 +773,14 @@ style="
 margin-top:10px;
 color:#d4af37;
 border-color:#d4af37;
-">
+"
+
+>
 
 💾 ذخیره قیمت
 
 </button>
+
 
 
 </div>
@@ -821,7 +844,33 @@ loadMenuItems();
 
 
     }
-    
+
+    async function toggleMenuActive(id,status){
+
+const {error}=await supabaseClient
+
+.from("menu_items")
+
+.update({
+active: !status
+})
+
+.eq("id",id);
+
+
+if(error){
+
+showToast("❌ تغییر وضعیت نشد");
+return;
+
+}
+
+
+showToast("✅ وضعیت آیتم تغییر کرد");
+
+loadMenuItems();
+
+    }
 
 function updateStats(){
 
