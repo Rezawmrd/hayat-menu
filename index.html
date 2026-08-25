@@ -3783,48 +3783,50 @@ function triggerReveal(){
 
 triggerReveal();
 
-window.addEventListener("load",()=>{
-
-loadDatabaseMenu().then(()=>{
+window.addEventListener("load", async ()=>{
 
 
-loadCategoryMenu(
+await loadDatabaseMenu();
+
+
+await loadCategoryMenu(
 "صبحانه",
 "database-breakfast-menu"
 );
 
 
-loadCategoryMenu(
+await loadCategoryMenu(
 "غذا",
 "database-food-menu"
 );
 
 
-loadCategoryMenu(
+await loadCategoryMenu(
 "سالاد",
 "database-salad-menu"
 );
 
 
-loadCategoryMenu(
+await loadCategoryMenu(
 "کیک",
 "database-cake-menu"
 );
 
 
-loadCategoryMenu(
+await loadCategoryMenu(
 "نوشیدنی گرم",
 "database-hot-menu"
 );
 
 
-loadCategoryMenu(
+await loadCategoryMenu(
 "نوشیدنی سرد",
 "database-cold-menu"
 );
 
 
-});
+triggerReveal();
+
 
 });
     
