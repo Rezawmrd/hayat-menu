@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HAYAT | پنل مدیریت سفارش‌ها</title>
+<title>HAYAT | پنل مدیریت</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <style>
 
 *{
 box-sizing:border-box;
 }
+
 
 body{
 margin:0;
@@ -26,6 +28,7 @@ background:#090909;
 color:#fff;
 min-height:100vh;
 }
+
 
 body::before{
 content:"";
@@ -37,6 +40,7 @@ radial-gradient(circle at 20% 20%,rgba(212,175,55,.10),transparent 40%),
 radial-gradient(circle at 80% 70%,rgba(212,175,55,.07),transparent 45%);
 }
 
+
 .header{
 position:relative;
 z-index:1;
@@ -46,20 +50,21 @@ border-bottom:1px solid rgba(212,175,55,.25);
 background:rgba(10,10,10,.9);
 }
 
+
 .logo{
 width:75px;
 height:75px;
 border-radius:50%;
 object-fit:cover;
 border:2px solid #d4af37;
-box-shadow:0 0 25px rgba(212,175,55,.3);
 }
+
 
 .header h1{
 margin:10px 0 3px;
 color:#d4af37;
-letter-spacing:2px;
 }
+
 
 .header p{
 margin:0;
@@ -67,12 +72,43 @@ color:#888;
 font-size:13px;
 }
 
+
 .container{
 position:relative;
 z-index:1;
 width:min(1000px,100%);
 margin:auto;
 padding:20px;
+}
+
+
+.main-tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+
+.main-tab{
+flex:1;
+padding:12px;
+background:#151515;
+color:#aaa;
+border:1px solid #333;
+border-radius:10px;
+font-family:inherit;
+cursor:pointer;
+}
+
+
+.main-tab.active{
+color:#d4af37;
+border-color:#d4af37;
+}
+
+
+.section-hide{
+display:none;
 }
 
 
@@ -136,18 +172,6 @@ border:1px solid #633;
 }
 
 
-.refresh:hover{
-background:#d4af37;
-color:#000;
-}
-
-
-.logout:hover{
-background:#e74c3c;
-color:#fff;
-}
-
-
 .filters{
 display:flex;
 gap:8px;
@@ -207,8 +231,7 @@ border-right:3px solid #2ecc71;
 border-right:3px solid #e74c3c;
 }
 
-
-.order-head{
+    .order-head{
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -245,11 +268,6 @@ display:flex;
 justify-content:space-between;
 gap:10px;
 padding:8px 0;
-}
-
-
-.item-qty{
-color:#d4af37;
 }
 
 
@@ -323,33 +341,14 @@ transition:.3s;
 opacity:1;
 }
 
-    .main-tabs{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-}
-
-.main-tab{
-flex:1;
-padding:12px;
-background:#151515;
-color:#aaa;
-border:1px solid #333;
-border-radius:10px;
-font-family:inherit;
-cursor:pointer;
-}
-
-.main-tab.active{
-color:#d4af37;
-border-color:#d4af37;
-}
 
 </style>
 
 </head>
 
-    <body>
+
+<body>
+
 
 <header class="header">
 
@@ -358,11 +357,13 @@ class="logo"
 src="file_000000005f7471fdbdd33eefd3f2e476.png"
 >
 
+
 <h1>HAYAT COMPLEX</h1>
 
 <p>
 پنل مدیریت سفارش‌ها
 </p>
+
 
 </header>
 
@@ -370,38 +371,79 @@ src="file_000000005f7471fdbdd33eefd3f2e476.png"
 <main class="container">
 
 
-<div class="top-bar">
-
 <div class="main-tabs">
 
-<button class="main-tab active" onclick="showPanel('ordersPanel',this)">
+
+<button
+class="main-tab active"
+onclick="showPanel('ordersPanel',this)">
+
 📦 سفارش‌ها
+
 </button>
 
-<button class="main-tab" onclick="showPanel('menuPanel',this)">
+
+
+<button
+class="main-tab"
+onclick="showPanel('menuPanel',this)">
+
 🍽 مدیریت منو
+
 </button>
+
 
 </div>
-    
+
+
+
+<div id="ordersPanel">
+
+
+<div class="top-bar">
+
+
 <div class="stats">
 
 
 <div class="stat">
-<span>کل سفارش‌ها</span>
-<strong id="totalOrders">0</strong>
+
+<span>
+کل سفارش‌ها
+</span>
+
+<strong id="totalOrders">
+0
+</strong>
+
 </div>
 
 
+
 <div class="stat">
-<span>سفارش جدید</span>
-<strong id="newOrders">0</strong>
+
+<span>
+سفارش جدید
+</span>
+
+<strong id="newOrders">
+0
+</strong>
+
 </div>
 
 
+
 <div class="stat">
-<span>در حال آماده‌سازی</span>
-<strong id="preparingOrders">0</strong>
+
+<span>
+در حال آماده‌سازی
+</span>
+
+<strong id="preparingOrders">
+0
+</strong>
+
 </div>
 
 
@@ -420,13 +462,6 @@ onclick="loadOrders()">
 
 </button>
 
-    <button
-class="refresh"
-onclick="document.getElementById('menuSection').scrollIntoView({behavior:'smooth'})">
-
-🍽 مدیریت منو
-
-    </button>
 
 <button
 class="logout"
@@ -496,8 +531,6 @@ onclick="setFilter('cancelled',this)">
 
 
 
-<div id="ordersPanel">
-
 <div id="orders" class="orders">
 
 <div class="loading">
@@ -508,29 +541,41 @@ onclick="setFilter('cancelled',this)">
 
 </div>
 
+
 </div>
+
+
 
 <div id="menuPanel" style="display:none">
 
+
 <h2 style="color:#d4af37">
+
 🍽 مدیریت منو
+
 </h2>
+
+
 
 <div id="menuItems" class="orders">
 
-</div>
 
 <div class="loading">
+
 در حال دریافت منو...
-</div>
 
 </div>
 
-    
+
+</div>
+
+
+</div>
+
+    <div id="toast" class="toast"></div>
+
+
 </main>
-
-
-<div id="toast" class="toast"></div>
 
 
 
@@ -545,10 +590,8 @@ const SUPABASE_KEY =
 "sb_publishable_pZbQaJ78di1MH3PUcJfeyw_0vPl43k9";
 
 
-
 const ADMIN_UID =
 "c7916c81-caaa-4050-bcae-9d0546bebb96";
-
 
 
 const supabaseClient =
@@ -569,12 +612,10 @@ let menuItems=[];
 
 async function checkAdmin(){
 
-
 const {
 data,
 error
 }=await supabaseClient.auth.getSession();
-
 
 
 if(error || !data.session){
@@ -586,24 +627,18 @@ return false;
 }
 
 
-
 if(data.session.user.id !== ADMIN_UID){
-
 
 await supabaseClient.auth.signOut();
 
-
 window.location.href="login.html";
-
 
 return false;
 
 }
 
 
-
 return true;
-
 
 }
 
@@ -612,15 +647,9 @@ return true;
 
 async function loadOrders(){
 
-
 if(!await checkAdmin()){
 return;
 }
-
-
-const container =
-document.getElementById("orders");
-
 
 
 const {
@@ -643,11 +672,7 @@ ascending:false
 
 if(error){
 
-console.log(error);
-
-showToast(
-"❌ دریافت سفارش‌ها انجام نشد"
-);
+showToast("❌ دریافت سفارش‌ها انجام نشد");
 
 return;
 
@@ -660,13 +685,14 @@ orders=data || [];
 
 updateStats();
 
-
 renderOrders();
-
 
 }
 
-    async function loadMenuItems(){
+
+
+
+async function loadMenuItems(){
 
 const {
 data,
@@ -680,25 +706,23 @@ error
 .order("id");
 
 
+
 if(error){
 
-console.log(error);
-
-showToast(
-"❌ دریافت منو انجام نشد"
-);
+showToast("❌ دریافت منو انجام نشد");
 
 return;
 
 }
 
 
-menuItems = data || [];
+menuItems=data || [];
 
 
 renderMenuItems();
 
 }
+
 
 
 
@@ -708,7 +732,7 @@ const container =
 document.getElementById("menuItems");
 
 
-if(!container) return;
+if(!container)return;
 
 
 if(menuItems.length===0){
@@ -726,6 +750,7 @@ container.innerHTML=`
 return;
 
 }
+
 
 
 container.innerHTML="";
@@ -749,19 +774,9 @@ ${item.name}
 </strong>
 
 
-<div style="text-align:left">
+<span>
 
-
-<span style="display:block">
-
-📂 ${item.category || "-"}
-
-</span>
-
-
-<span style="display:block;color:#888;font-size:13px;margin-top:5px">
-
-${item.subcategory || "-"}
+${item.category || "-"}
 
 </span>
 
@@ -769,20 +784,12 @@ ${item.subcategory || "-"}
 </div>
 
 
-</div>
 
-
-
-
-<div style="margin-top:10px">
-
-
-<label style="color:#aaa;font-size:13px">
+<label style="color:#aaa">
 
 قیمت
 
 </label>
-
 
 
 <input
@@ -801,25 +808,18 @@ background:#090909;
 color:#fff;
 border:1px solid #333;
 border-radius:8px;
-font-family:inherit;
 "
+
 
 >
 
 
 
-
 <button
-
-onclick="updateMenuPrice(${item.id})"
 
 class="status-btn"
 
-style="
-margin-top:10px;
-color:#d4af37;
-border-color:#d4af37;
-"
+onclick="updateMenuPrice(${item.id})"
 
 >
 
@@ -827,25 +827,20 @@ border-color:#d4af37;
 
 </button>
 
-<button
 
-onclick="toggleMenuActive(${item.id},${item.active})"
+
+<button
 
 class="status-btn"
 
-style="
-margin-top:10px;
-color:#3498db;
-border-color:#3498db;
-"
+onclick="toggleMenuActive(${item.id},${item.active})"
 
 >
 
-${item.active ? "⏸ غیرفعال کردن" : "▶️ فعال کردن"}
+${item.active ? "⏸ غیرفعال کردن":"▶️ فعال کردن"}
 
 </button>
 
-</div>
 
 
 </div>
@@ -858,16 +853,16 @@ ${item.active ? "⏸ غیرفعال کردن" : "▶️ فعال کردن"}
 }
 
 
-    async function updateMenuPrice(id){
 
-const input =
-document.getElementById(
-"price-"+id
-);
 
+
+async function updateMenuPrice(id){
 
 const price =
-Number(input.value);
+Number(
+document.getElementById("price-"+id).value
+);
+
 
 
 const {
@@ -886,72 +881,69 @@ price:price
 
 if(error){
 
-console.log(error);
-
-showToast(
-"❌ ذخیره نشد"
-);
+showToast("❌ ذخیره نشد");
 
 return;
 
 }
 
 
-showToast(
-"✅ قیمت ذخیره شد"
-);
-
+showToast("✅ قیمت ذخیره شد");
 
 loadMenuItems();
 
+}
 
-    }
 
-    async function toggleMenuActive(id,status){
 
-const {error}=await supabaseClient
+
+async function toggleMenuActive(id,status){
+
+
+const {
+error
+}=await supabaseClient
 
 .from("menu_items")
 
 .update({
-active: !status
+active:!status
 })
 
 .eq("id",id);
 
 
+
 if(error){
 
 showToast("❌ تغییر وضعیت نشد");
+
 return;
 
 }
 
 
-showToast("✅ وضعیت آیتم تغییر کرد");
+showToast("✅ وضعیت تغییر کرد");
 
 loadMenuItems();
 
-    }
+}
+
+
+
 
 function updateStats(){
 
-document.getElementById("totalOrders")
-.innerText = orders.length;
+document.getElementById("totalOrders").innerText =
+orders.length;
 
 
-document.getElementById("newOrders")
-.innerText =
-orders.filter(
-o=>o.status==="new"
-).length;
+document.getElementById("newOrders").innerText =
+orders.filter(o=>o.status==="new").length;
 
 
-document.getElementById("preparingOrders")
-.innerText =
-orders.filter(
-o=>o.status==="preparing"
-).length;
+document.getElementById("preparingOrders").innerText =
+orders.filter(o=>o.status==="preparing").length;
 
 }
 
@@ -963,8 +955,7 @@ function setFilter(filter,btn){
 currentFilter=filter;
 
 
-document
-.querySelectorAll(".filter")
+document.querySelectorAll(".filter")
 .forEach(
 b=>b.classList.remove("active")
 );
@@ -982,20 +973,16 @@ renderOrders();
 
 function renderOrders(){
 
-
 const container =
 document.getElementById("orders");
-
 
 
 let list=orders;
 
 
-
 if(currentFilter!=="all"){
 
-list =
-orders.filter(
+list=orders.filter(
 o=>o.status===currentFilter
 );
 
@@ -1020,9 +1007,7 @@ return;
 }
 
 
-
 container.innerHTML="";
-
 
 
 list.forEach(order=>{
@@ -1034,24 +1019,16 @@ container.innerHTML += createOrderHTML(order);
 
 }
 
-
-
-
-function createOrderHTML(order){
-
+    function createOrderHTML(order){
 
 let items="";
 
 
-
 (order.items || []).forEach(item=>{
-
 
 items += `
 
-
 <div class="item">
-
 
 <div>
 
@@ -1060,15 +1037,11 @@ ${escapeHTML(item.name)}
 <br>
 
 <small>
-
 تعداد:
 ${item.quantity || 1}
-
 </small>
 
-
 </div>
-
 
 
 <div class="item-price">
@@ -1080,9 +1053,7 @@ ${formatNumber(
 
 </div>
 
-
 </div>
-
 
 `;
 
@@ -1090,20 +1061,15 @@ ${formatNumber(
 
 
 
-
-
 return `
 
-
 <div class="order ${order.status}">
-
 
 
 <div class="order-head">
 
 
 <div>
-
 
 <span class="order-id">
 
@@ -1116,14 +1082,11 @@ return `
 
 
 <small>
-
 ${formatDate(order.created_at)}
-
 </small>
 
 
 </div>
-
 
 
 
@@ -1135,10 +1098,7 @@ ${order.table_number}
 </div>
 
 
-
 </div>
-
-
 
 
 
@@ -1150,10 +1110,7 @@ ${items}
 
 
 
-
-
 <div class="total">
-
 
 <span>
 مبلغ کل
@@ -1172,14 +1129,10 @@ ${formatNumber(order.total_price)}
 
 
 
-
-
 <div class="order-actions">
 
 
-
-<button
-class="status-btn"
+<button class="status-btn"
 onclick="changeStatus(${order.id},'new')">
 
 🟡 جدید
@@ -1188,9 +1141,7 @@ onclick="changeStatus(${order.id},'new')">
 
 
 
-
-<button
-class="status-btn"
+<button class="status-btn"
 onclick="changeStatus(${order.id},'preparing')">
 
 🔵 آماده‌سازی
@@ -1199,9 +1150,7 @@ onclick="changeStatus(${order.id},'preparing')">
 
 
 
-
-<button
-class="status-btn"
+<button class="status-btn"
 onclick="changeStatus(${order.id},'ready')">
 
 🟢 آماده شد
@@ -1210,9 +1159,7 @@ onclick="changeStatus(${order.id},'ready')">
 
 
 
-
-<button
-class="status-btn"
+<button class="status-btn"
 onclick="changeStatus(${order.id},'cancelled')">
 
 🔴 لغو
@@ -1221,13 +1168,7 @@ onclick="changeStatus(${order.id},'cancelled')">
 
 
 
-
-<button
-class="status-btn"
-style="
-color:#d4af37;
-border-color:#d4af37;
-"
+<button class="status-btn"
 onclick="printInvoice(${order.id})">
 
 🖨 چاپ فاکتور
@@ -1236,32 +1177,26 @@ onclick="printInvoice(${order.id})">
 
 
 
-
-
-<button
-class="status-btn"
-style="
-color:#e74c3c;
-border-color:#633;
-"
+<button class="status-btn"
 onclick="deleteOrder(${order.id})">
 
-🗑 حذف سفارش
+🗑 حذف
 
 </button>
 
 
-
 </div>
 
 
-
 </div>
-
 
 `;
 
 }
+
+
+
+
 async function changeStatus(id,status){
 
 const {
@@ -1280,9 +1215,7 @@ status:status
 
 if(error){
 
-showToast(
-"❌ تغییر وضعیت انجام نشد"
-);
+showToast("❌ تغییر وضعیت نشد");
 
 return;
 
@@ -1290,10 +1223,8 @@ return;
 
 
 
-const order =
-orders.find(
-o=>o.id===id
-);
+let order =
+orders.find(o=>o.id===id);
 
 
 if(order){
@@ -1303,30 +1234,20 @@ order.status=status;
 }
 
 
-
 renderOrders();
 
-
-showToast(
-"✅ وضعیت تغییر کرد"
-);
-
+showToast("✅ وضعیت تغییر کرد");
 
 }
+
 
 
 
 
 async function deleteOrder(id){
 
-
-if(!confirm(
-"حذف این سفارش؟"
-)){
-
+if(!confirm("حذف این سفارش؟"))
 return;
-
-}
 
 
 
@@ -1344,9 +1265,7 @@ error
 
 if(error){
 
-showToast(
-"❌ حذف انجام نشد"
-);
+showToast("❌ حذف نشد");
 
 return;
 
@@ -1363,254 +1282,34 @@ o=>o.id!==id
 
 renderOrders();
 
-
-showToast(
-"🗑 سفارش حذف شد"
-);
-
+showToast("🗑 حذف شد");
 
 }
 
 
 
 
-
-
-
-
-
-
-
-function printInvoice(id){
-
-const order =
-orders.find(
-o=>o.id===id
-);
-
-if(!order){
-return;
-}
-
-let rows="";
-
-order.items.forEach(item=>{
-
-rows += `
-
-<tr>
-
-<td>
-${item.name}
-</td>
-
-<td>
-${item.quantity || 1}
-</td>
-
-<td>
-${formatNumber(
-(item.price||0) *
-(item.quantity||1)
-)}
-</td>
-
-</tr>
-
-`;
-
-});
-
-
-let win =
-window.open(
-"",
-"_blank",
-"width=350,height=600"
-);
-
-
-win.document.write(`
-
-<html lang="fa" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<style>
-
-@page{
-    size:80mm 150mm;
-    margin:0;
-}
-
-html,body{
-
-    width:80mm;
-
-    margin:0;
-
-    padding:0;
-
-}
-
-body{
-
-    font-family:tahoma;
-
-    font-size:12px;
-
-    text-align:center;
-
-    padding:5px;
-
-}
-
-
-table{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-}
-
-
-td{
-
-    padding:6px;
-
-    border-bottom:1px dashed #999;
-
-}
-
-
-.total{
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    margin-top:15px;
-
-}
-
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<h2>
-HAYAT COMPLEX
-</h2>
-
-
-<p>
-شماره سفارش:
-${order.id}
-</p>
-
-
-<p>
-میز:
-${order.table_number}
-</p>
-
-
-<hr>
-
-
-<table>
-
-${rows}
-
-</table>
-
-
-<hr>
-
-
-<div class="total">
-
-جمع کل
-
-<br>
-
-${formatNumber(order.total_price)}
-
-تومان
-
-</div>
-
-
-<br>
-
-
-با تشکر ❤️
-
-
-</body>
-
-</html>
-
-`);
-
-
-win.document.close();
-
-
-setTimeout(()=>{
-
-win.focus();
-
-win.print();
-
-
-setTimeout(()=>{
-
-win.close();
-
-},500);
-
-
-},500);
-
-
-}
 
 function formatNumber(num){
 
 return Number(num || 0)
-
 .toLocaleString("fa-IR");
 
 }
 
 
 
-
-
 function formatDate(date){
-
 
 if(!date)
 return "";
 
 
-
 return new Date(date)
-
-.toLocaleString(
-"fa-IR"
-);
-
+.toLocaleString("fa-IR");
 
 }
+
 
 
 
@@ -1634,13 +1333,7 @@ return String(value)
 
 
 
-
-let toastTimer;
-
-
-
 function showToast(msg){
-
 
 const toast =
 document.getElementById("toast");
@@ -1652,21 +1345,13 @@ toast.innerText=msg;
 toast.classList.add("show");
 
 
-
-clearTimeout(toastTimer);
-
-
-
-toastTimer =
 setTimeout(()=>{
 
 toast.classList.remove("show");
 
 },2000);
 
-
 }
-
 
 
 
@@ -1675,9 +1360,179 @@ async function logout(){
 
 await supabaseClient.auth.signOut();
 
-
 window.location.href="login.html";
 
+}
+
+
+
+
+
+function printInvoice(id){
+
+const order =
+orders.find(o=>o.id===id);
+
+
+if(!order)
+return;
+
+
+let rows="";
+
+
+order.items.forEach(item=>{
+
+
+rows += `
+
+<tr>
+
+<td>${item.name}</td>
+
+<td>${item.quantity || 1}</td>
+
+<td>
+${formatNumber(
+item.price *
+(item.quantity || 1)
+)}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+
+let win =
+window.open(
+"",
+"_blank",
+"width=350,height=600"
+);
+
+
+
+win.document.write(`
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+<style>
+
+body{
+font-family:tahoma;
+width:80mm;
+text-align:center;
+}
+
+table{
+width:100%;
+}
+
+td{
+padding:5px;
+border-bottom:1px dashed #999;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h2>
+HAYAT COMPLEX
+</h2>
+
+
+<p>
+سفارش #${order.id}
+</p>
+
+
+<p>
+میز ${order.table_number}
+</p>
+
+
+<hr>
+
+
+<table>
+
+${rows}
+
+</table>
+
+
+<hr>
+
+
+<h3>
+
+${formatNumber(order.total_price)}
+تومان
+
+</h3>
+
+
+</body>
+
+</html>
+
+`);
+
+
+
+win.document.close();
+
+
+setTimeout(()=>{
+
+win.print();
+
+win.close();
+
+},500);
+
+
+}
+
+
+
+
+
+function showPanel(id,btn){
+
+document.getElementById("ordersPanel")
+.style.display="none";
+
+
+document.getElementById("menuPanel")
+.style.display="none";
+
+
+
+document.getElementById(id)
+.style.display="block";
+
+
+
+document.querySelectorAll(".main-tab")
+.forEach(
+b=>b.classList.remove("active")
+);
+
+
+
+btn.classList.add("active");
 
 }
 
@@ -1709,22 +1564,6 @@ loadMenuItems();
 
 });
 
-    function showPanel(id,btn){
-
-document.getElementById("ordersPanel").style.display="none";
-document.getElementById("menuPanel").style.display="none";
-
-document.getElementById(id).style.display="block";
-
-
-document
-.querySelectorAll(".main-tab")
-.forEach(b=>b.classList.remove("active"));
-
-
-btn.classList.add("active");
-
-    }
 
 </script>
 
@@ -1732,6 +1571,3 @@ btn.classList.add("active");
 </body>
 
 </html>
-    
-
-    
