@@ -1149,7 +1149,8 @@ class="section active">
 🍳 صبحانه
 </h2>
 
-
+<div id="database-breakfast-menu"></div>
+    
 <div class="card">
 
 <span>
@@ -1488,7 +1489,7 @@ class="section">
 🥗 سالاد
 </h2>
 
-
+<div id="database-salad-menu"></div>
 <div class="card">
 
 <span>
@@ -1525,6 +1526,7 @@ class="section">
 کیک
 </h2>
 
+    <div id="database-cake-menu"></div>
 
 <div class="card">
 
@@ -1559,7 +1561,7 @@ class="section">
 ☕ نوشیدنی‌های گرم
 </h2>
 
-
+<div id="database-hot-menu"></div>
 <div class="sub-tabs">
 
 
@@ -2159,7 +2161,7 @@ onclick="addItem('چای',90000)">
 🧊 نوشیدنی‌های سرد
 </h2>
 
-
+<div id="database-cold-menu"></div>
 <div class="sub-tabs cold-tabs">
 
 <button
@@ -3257,6 +3259,78 @@ onclick="addItem('${item.name}',${item.price})">
 
 
     }
+
+    async function loadCategoryMenu(category, elementId){
+
+const {
+data,
+error
+}=await supabaseClient
+
+.from("menu_items")
+.select("*")
+.eq("category",category)
+.eq("active",true)
+.order("id");
+
+
+if(error){
+
+console.log(category,error);
+
+return;
+
+}
+
+
+const box =
+document.getElementById(elementId);
+
+
+if(!box) return;
+
+
+box.innerHTML="";
+
+
+data.forEach(item=>{
+
+
+box.innerHTML += `
+
+<div class="card">
+
+<div class="item">
+
+<span>
+${item.name}
+</span>
+
+</div>
+
+
+<span class="price">
+${Number(item.price).toLocaleString("fa-IR")} تومان
+</span>
+
+
+<button
+class="add-btn"
+onclick="addItem('${item.name}',${item.price})">
+
+افزودن
+
+</button>
+
+
+</div>
+
+`;
+
+});
+
+
+    }
     /* =====================================================
    LOAD MENU FROM DATABASE
 ===================================================== */
@@ -3877,9 +3951,42 @@ triggerReveal();
 
 loadDatabaseMenu().then(()=>{
 
-updateTestPrice();
 
-loadFoodFromDatabase();
+loadCategoryMenu(
+"صبحانه",
+"database-breakfast-menu"
+);
+
+
+loadCategoryMenu(
+"غذا",
+"database-food-menu"
+);
+
+
+loadCategoryMenu(
+"سالاد",
+"database-salad-menu"
+);
+
+
+loadCategoryMenu(
+"کیک",
+"database-cake-menu"
+);
+
+
+loadCategoryMenu(
+"نوشیدنی گرم",
+"database-hot-menu"
+);
+
+
+loadCategoryMenu(
+"نوشیدنی سرد",
+"database-cold-menu"
+);
+
 
 });
     
