@@ -1361,7 +1361,7 @@ onclick="showFood('mini',this)">
 id="foods"
 class="sub-section active">
 
-
+<div id="database-food-menu"></div>
 
 <div class="card">
 
@@ -3186,6 +3186,77 @@ alert(
 }
 
     }
+
+
+    async function loadFoodFromDatabase(){
+
+const {
+data,
+error
+}=await supabaseClient
+
+.from("menu_items")
+
+.select("*")
+
+.eq("category","food")
+
+.eq("active",true);
+
+
+if(error){
+
+console.log("Food Error:",error);
+
+return;
+
+}
+
+
+const box =
+document.getElementById("database-food-menu");
+
+
+if(!box) return;
+
+
+box.innerHTML = "";
+
+
+data.forEach(item=>{
+
+
+box.innerHTML += `
+
+<div class="card">
+
+<span>
+${item.name}
+</span>
+
+
+<span class="price">
+${Number(item.price).toLocaleString("fa-IR")} تومان
+</span>
+
+
+<button
+class="add-btn"
+onclick="addItem('${item.name}',${item.price})">
+
+افزودن
+
+</button>
+
+</div>
+
+`;
+
+
+});
+
+
+    }
     /* =====================================================
    LOAD MENU FROM DATABASE
 ===================================================== */
@@ -3807,6 +3878,8 @@ triggerReveal();
 loadDatabaseMenu().then(()=>{
 
 updateTestPrice();
+
+loadFoodFromDatabase();
 
 });
     
