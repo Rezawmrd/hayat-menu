@@ -323,6 +323,28 @@ transition:.3s;
 opacity:1;
 }
 
+    .main-tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.main-tab{
+flex:1;
+padding:12px;
+background:#151515;
+color:#aaa;
+border:1px solid #333;
+border-radius:10px;
+font-family:inherit;
+cursor:pointer;
+}
+
+.main-tab.active{
+color:#d4af37;
+border-color:#d4af37;
+}
+
 </style>
 
 </head>
@@ -350,7 +372,18 @@ src="file_000000005f7471fdbdd33eefd3f2e476.png"
 
 <div class="top-bar">
 
+<div class="main-tabs">
 
+<button class="main-tab active" onclick="showPanel('ordersPanel',this)">
+📦 سفارش‌ها
+</button>
+
+<button class="main-tab" onclick="showPanel('menuPanel',this)">
+🍽 مدیریت منو
+</button>
+
+</div>
+    
 <div class="stats">
 
 
@@ -463,8 +496,9 @@ onclick="setFilter('cancelled',this)">
 
 
 
-<div id="orders" class="orders">
+<div id="ordersPanel">
 
+<div id="orders" class="orders">
 
 <div class="loading">
 
@@ -472,14 +506,19 @@ onclick="setFilter('cancelled',this)">
 
 </div>
 
+</div>
 
 </div>
 
-<h2 id="menuSection" style="color:#d4af37;margin-top:40px;">
+<div id="menuPanel" style="display:none">
+
+<h2 style="color:#d4af37">
 🍽 مدیریت منو
 </h2>
 
 <div id="menuItems" class="orders">
+
+</div>
 
 <div class="loading">
 در حال دریافت منو...
@@ -1670,6 +1709,22 @@ loadMenuItems();
 
 });
 
+    function showPanel(id,btn){
+
+document.getElementById("ordersPanel").style.display="none";
+document.getElementById("menuPanel").style.display="none";
+
+document.getElementById(id).style.display="block";
+
+
+document
+.querySelectorAll(".main-tab")
+.forEach(b=>b.classList.remove("active"));
+
+
+btn.classList.add("active");
+
+    }
 
 </script>
 
