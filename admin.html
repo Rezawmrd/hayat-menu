@@ -1,1170 +1,624 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HAYAT | پنل مدیریت</title>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
-
 
 body{
-margin:0;
-font-family:'Vazirmatn',sans-serif;
-background:#090909;
-color:#fff;
-min-height:100vh;
+    margin:0;
+    font-family:'Vazirmatn',sans-serif;
+    background:#090909;
+    color:#fff;
+    min-height:100vh;
 }
-
 
 body::before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-
-background:
-radial-gradient(
-circle at 20% 20%,
-rgba(212,175,55,.10),
-transparent 40%
-),
-
-radial-gradient(
-circle at 80% 70%,
-rgba(212,175,55,.07),
-transparent 45%
-);
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+    radial-gradient(circle at 20% 20%,rgba(212,175,55,.10),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(212,175,55,.07),transparent 45%);
 }
-
-
-/* =====================================================
-   HEADER
-===================================================== */
 
 .header{
-position:relative;
-z-index:1;
-
-padding:25px 18px;
-
-text-align:center;
-
-border-bottom:
-1px solid rgba(212,175,55,.25);
-
-background:rgba(10,10,10,.9);
+    position:relative;
+    z-index:1;
+    padding:25px 18px;
+    text-align:center;
+    border-bottom:1px solid rgba(212,175,55,.25);
+    background:rgba(10,10,10,.9);
 }
-
 
 .logo{
-width:75px;
-height:75px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-border:2px solid #d4af37;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #d4af37;
 }
-
 
 .header h1{
-margin:10px 0 3px;
-
-color:#d4af37;
+    margin:10px 0 3px;
+    color:#d4af37;
 }
-
 
 .header p{
-margin:0;
-
-color:#888;
-
-font-size:13px;
+    margin:0;
+    color:#888;
+    font-size:13px;
 }
-
-
-/* =====================================================
-   CONTAINER
-===================================================== */
 
 .container{
-position:relative;
-z-index:1;
-
-width:min(1100px,100%);
-
-margin:auto;
-
-padding:20px;
+    position:relative;
+    z-index:1;
+    width:min(1100px,100%);
+    margin:auto;
+    padding:20px;
 }
-
-
-/* =====================================================
-   MAIN TABS
-===================================================== */
 
 .main-tabs{
-display:flex;
-
-gap:10px;
-
-margin-bottom:20px;
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
 }
-
 
 .main-tab{
-flex:1;
-
-padding:13px;
-
-background:#151515;
-
-color:#aaa;
-
-border:
-1px solid #333;
-
-border-radius:10px;
-
-font-family:inherit;
-
-cursor:pointer;
-
-font-size:14px;
+    flex:1;
+    padding:12px;
+    background:#151515;
+    color:#aaa;
+    border:1px solid #333;
+    border-radius:10px;
+    font-family:inherit;
+    cursor:pointer;
 }
-
 
 .main-tab.active{
-color:#d4af37;
-
-border-color:#d4af37;
+    color:#d4af37;
+    border-color:#d4af37;
 }
-
-
-.section-hide{
-display:none;
-}
-
-
-/* =====================================================
-   TOP BAR
-===================================================== */
 
 .top-bar{
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-gap:12px;
-
-margin-bottom:20px;
-
-flex-wrap:wrap;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
 }
-
 
 .stats{
-display:flex;
-
-gap:10px;
-
-flex-wrap:wrap;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
-
 
 .stat{
-background:#151515;
-
-border:
-1px solid #292929;
-
-border-radius:10px;
-
-padding:10px 15px;
+    background:#151515;
+    border:1px solid #292929;
+    border-radius:10px;
+    padding:10px 15px;
 }
-
 
 .stat span{
-color:#888;
-
-font-size:12px;
+    color:#888;
+    font-size:12px;
 }
-
 
 .stat strong{
-display:block;
-
-color:#d4af37;
-
-font-size:20px;
+    display:block;
+    color:#d4af37;
+    font-size:20px;
 }
-
-
-/* =====================================================
-   BUTTONS
-===================================================== */
 
 button{
-font-family:inherit;
+    font-family:inherit;
 }
-
 
 .refresh,
 .logout{
-background:#151515;
-
-padding:10px 16px;
-
-border-radius:9px;
-
-font-family:inherit;
-
-cursor:pointer;
+    background:#151515;
+    padding:10px 16px;
+    border-radius:9px;
+    cursor:pointer;
 }
-
 
 .refresh{
-color:#d4af37;
-
-border:
-1px solid #d4af37;
+    color:#d4af37;
+    border:1px solid #d4af37;
 }
-
 
 .logout{
-color:#e74c3c;
-
-border:
-1px solid #633;
+    color:#e74c3c;
+    border:1px solid #633;
 }
-
-
-.primary-btn{
-background:#d4af37;
-
-color:#090909;
-
-border:0;
-
-border-radius:9px;
-
-padding:11px 17px;
-
-cursor:pointer;
-
-font-weight:700;
-
-font-family:inherit;
-}
-
-
-.secondary-btn{
-background:#181818;
-
-color:#ddd;
-
-border:
-1px solid #333;
-
-border-radius:9px;
-
-padding:10px 15px;
-
-cursor:pointer;
-
-font-family:inherit;
-}
-
-
-.danger-btn{
-background:#181818;
-
-color:#e74c3c;
-
-border:
-1px solid #633;
-
-border-radius:9px;
-
-padding:10px 15px;
-
-cursor:pointer;
-
-font-family:inherit;
-}
-
-
-/* =====================================================
-   FILTERS
-===================================================== */
 
 .filters{
-display:flex;
-
-gap:8px;
-
-overflow-x:auto;
-
-margin-bottom:15px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    margin-bottom:15px;
 }
-
 
 .filter{
-background:#151515;
-
-color:#aaa;
-
-border:
-1px solid #333;
-
-border-radius:20px;
-
-padding:8px 15px;
-
-font-family:inherit;
-
-cursor:pointer;
-
-white-space:nowrap;
+    background:#151515;
+    color:#aaa;
+    border:1px solid #333;
+    border-radius:20px;
+    padding:8px 15px;
+    font-family:inherit;
+    cursor:pointer;
+    white-space:nowrap;
 }
-
 
 .filter.active{
-color:#d4af37;
-
-border-color:#d4af37;
+    color:#d4af37;
+    border-color:#d4af37;
 }
-
-
-/* =====================================================
-   ORDERS
-===================================================== */
 
 .orders{
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
 }
-
 
 .order{
-background:#121212;
-
-border:
-1px solid #292929;
-
-border-radius:14px;
-
-padding:16px;
+    background:#121212;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:16px;
 }
-
 
 .order.new{
-border-right:
-3px solid #d4af37;
+    border-right:3px solid #d4af37;
 }
-
 
 .order.preparing{
-border-right:
-3px solid #3498db;
+    border-right:3px solid #3498db;
 }
-
 
 .order.ready{
-border-right:
-3px solid #2ecc71;
+    border-right:3px solid #2ecc71;
 }
-
 
 .order.cancelled{
-border-right:
-3px solid #e74c3c;
+    border-right:3px solid #e74c3c;
 }
-
 
 .order-head{
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-gap:10px;
-
-flex-wrap:wrap;
-
-margin-bottom:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
 }
-
 
 .order-id{
-color:#d4af37;
-
-font-weight:700;
+    color:#d4af37;
+    font-weight:700;
 }
-
 
 .table{
-background:#1d1d1d;
-
-border:
-1px solid #333;
-
-border-radius:8px;
-
-padding:6px 10px;
+    background:#1d1d1d;
+    border:1px solid #333;
+    border-radius:8px;
+    padding:6px 10px;
 }
-
 
 .items{
-border-top:
-1px solid #292929;
-
-border-bottom:
-1px solid #292929;
-
-padding:8px 0;
-
-margin-bottom:12px;
+    border-top:1px solid #292929;
+    border-bottom:1px solid #292929;
+    padding:8px 0;
+    margin-bottom:12px;
 }
-
 
 .item{
-display:flex;
-
-justify-content:space-between;
-
-gap:10px;
-
-padding:8px 0;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:8px 0;
 }
-
 
 .item-price{
-white-space:nowrap;
+    white-space:nowrap;
 }
-
 
 .total{
-display:flex;
-
-justify-content:space-between;
-
-font-size:17px;
+    display:flex;
+    justify-content:space-between;
+    font-size:17px;
 }
-
 
 .total strong{
-color:#d4af37;
+    color:#d4af37;
 }
-
 
 .order-actions{
-display:flex;
-
-gap:8px;
-
-flex-wrap:wrap;
-
-margin-top:15px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
 }
-
 
 .status-btn{
-flex:1;
-
-min-width:120px;
-
-background:#181818;
-
-color:#ddd;
-
-border:
-1px solid #333;
-
-border-radius:8px;
-
-padding:9px;
-
-font-family:inherit;
-
-cursor:pointer;
+    flex:1;
+    min-width:120px;
+    background:#181818;
+    color:#ddd;
+    border:1px solid #333;
+    border-radius:8px;
+    padding:9px;
+    font-family:inherit;
+    cursor:pointer;
 }
-
 
 .status-btn:hover{
-border-color:#d4af37;
-
-color:#d4af37;
+    border-color:#d4af37;
+    color:#d4af37;
 }
-
-
-/* =====================================================
-   MENU MANAGEMENT
-===================================================== */
-
-.menu-header{
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-gap:10px;
-
-margin-bottom:18px;
-
-flex-wrap:wrap;
-}
-
-
-.menu-header h2{
-color:#d4af37;
-
-margin:0;
-}
-
-
-/* =====================================================
-   CATEGORY TABS
-===================================================== */
-
-.category-tabs{
-display:flex;
-
-gap:8px;
-
-overflow-x:auto;
-
-padding-bottom:8px;
-
-margin-bottom:18px;
-}
-
-
-.category-tab{
-position:relative;
-
-display:flex;
-
-align-items:center;
-
-gap:8px;
-
-background:#151515;
-
-color:#aaa;
-
-border:
-1px solid #333;
-
-border-radius:10px;
-
-padding:10px 14px;
-
-cursor:pointer;
-
-white-space:nowrap;
-
-font-family:inherit;
-}
-
-
-.category-tab.active{
-color:#d4af37;
-
-border-color:#d4af37;
-}
-
-
-.category-count{
-font-size:11px;
-
-background:#242424;
-
-color:#777;
-
-border-radius:20px;
-
-padding:2px 7px;
-}
-
-
-/* =====================================================
-   CATEGORY ACTIONS
-===================================================== */
-
-.category-actions{
-display:flex;
-
-gap:5px;
-}
-
-
-.icon-btn{
-width:30px;
-
-height:30px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-background:#1d1d1d;
-
-border:
-1px solid #333;
-
-border-radius:7px;
-
-color:#aaa;
-
-cursor:pointer;
-}
-
-
-.icon-btn:hover{
-border-color:#d4af37;
-
-color:#d4af37;
-}
-
-
-.icon-btn.delete:hover{
-border-color:#e74c3c;
-
-color:#e74c3c;
-}
-
-
-/* =====================================================
-   MENU ITEM
-===================================================== */
-
-.menu-item{
-background:#121212;
-
-border:
-1px solid #292929;
-
-border-radius:14px;
-
-padding:16px;
-}
-
-
-.menu-item.inactive{
-opacity:.55;
-}
-
-
-.menu-item-head{
-display:flex;
-
-justify-content:space-between;
-
-align-items:flex-start;
-
-gap:12px;
-
-margin-bottom:12px;
-}
-
-
-.menu-item-name{
-font-size:17px;
-
-font-weight:700;
-
-color:#d4af37;
-}
-
-
-.menu-item-description{
-font-size:13px;
-
-color:#888;
-
-margin-top:5px;
-
-line-height:1.8;
-}
-
-
-.menu-item-price{
-font-size:16px;
-
-font-weight:700;
-
-color:#fff;
-
-white-space:nowrap;
-}
-
-
-.menu-item-actions{
-display:flex;
-
-gap:7px;
-
-flex-wrap:wrap;
-
-margin-top:14px;
-}
-
-
-.menu-item-actions button{
-flex:1;
-
-min-width:100px;
-}
-
-
-/* =====================================================
-   FORMS
-===================================================== */
-
-.form-box{
-background:#121212;
-
-border:
-1px solid #292929;
-
-border-radius:14px;
-
-padding:18px;
-
-margin-bottom:18px;
-}
-
-
-.form-title{
-color:#d4af37;
-
-font-size:17px;
-
-font-weight:700;
-
-margin-bottom:15px;
-}
-
-
-.form-grid{
-display:grid;
-
-grid-template-columns:
-repeat(2,minmax(0,1fr));
-
-gap:12px;
-}
-
-
-.form-group{
-display:flex;
-
-flex-direction:column;
-
-gap:6px;
-}
-
-
-.form-group.full{
-grid-column:
-1 / -1;
-}
-
-
-.form-group label{
-font-size:12px;
-
-color:#888;
-}
-
-
-.form-input,
-.form-textarea,
-.form-select{
-width:100%;
-
-padding:11px 12px;
-
-background:#090909;
-
-color:#fff;
-
-border:
-1px solid #333;
-
-border-radius:8px;
-
-font-family:inherit;
-
-outline:none;
-}
-
-
-.form-input:focus,
-.form-textarea:focus,
-.form-select:focus{
-border-color:#d4af37;
-}
-
-
-.form-textarea{
-min-height:90px;
-
-resize:vertical;
-}
-
-
-.form-buttons{
-display:flex;
-
-gap:8px;
-
-margin-top:15px;
-
-flex-wrap:wrap;
-}
-
-
-/* =====================================================
-   TOGGLE
-===================================================== */
-
-.switch-row{
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-margin-top:10px;
-}
-
-
-.switch{
-position:relative;
-
-width:46px;
-
-height:24px;
-}
-
-
-.switch input{
-display:none;
-}
-
-
-.slider{
-position:absolute;
-
-inset:0;
-
-background:#333;
-
-border-radius:20px;
-
-cursor:pointer;
-
-transition:.2s;
-}
-
-
-.slider:before{
-content:"";
-
-position:absolute;
-
-width:18px;
-
-height:18px;
-
-right:3px;
-
-top:3px;
-
-background:#aaa;
-
-border-radius:50%;
-
-transition:.2s;
-}
-
-
-.switch input:checked + .slider{
-background:#d4af37;
-}
-
-
-.switch input:checked + .slider:before{
-transform:translateX(-22px);
-
-background:#111;
-}
-
-
-/* =====================================================
-   EMPTY / LOADING
-===================================================== */
 
 .empty,
 .loading{
-text-align:center;
-
-padding:50px;
-
-color:#777;
+    text-align:center;
+    padding:50px;
+    color:#777;
 }
-
-
-/* =====================================================
-   TOAST
-===================================================== */
 
 .toast{
-position:fixed;
-
-top:20px;
-
-right:50%;
-
-transform:
-translateX(50%);
-
-background:#171717;
-
-border:
-1px solid #d4af37;
-
-padding:12px 20px;
-
-border-radius:10px;
-
-opacity:0;
-
-transition:.3s;
-
-z-index:9999;
-
-pointer-events:none;
+    position:fixed;
+    top:20px;
+    right:50%;
+    transform:translateX(50%);
+    background:#171717;
+    border:1px solid #d4af37;
+    padding:12px 20px;
+    border-radius:10px;
+    opacity:0;
+    transition:.3s;
+    z-index:9999;
 }
-
 
 .toast.show{
-opacity:1;
+    opacity:1;
 }
 
+/* ================= MENU ================= */
 
-/* =====================================================
-   MODAL
-===================================================== */
-
-.modal{
-position:fixed;
-
-inset:0;
-
-background:
-rgba(0,0,0,.78);
-
-display:none;
-
-align-items:center;
-
-justify-content:center;
-
-padding:20px;
-
-z-index:5000;
+.menu-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
 }
 
-
-.modal.show{
-display:flex;
+.menu-title h2{
+    color:#d4af37;
+    margin:0;
 }
 
-
-.modal-box{
-width:min(500px,100%);
-
-background:#121212;
-
-border:
-1px solid #333;
-
-border-radius:15px;
-
-padding:20px;
-
-max-height:90vh;
-
-overflow-y:auto;
+.gold-btn{
+    background:#d4af37;
+    color:#090909;
+    border:0;
+    border-radius:9px;
+    padding:10px 16px;
+    font-weight:700;
+    cursor:pointer;
 }
 
-
-.modal-title{
-color:#d4af37;
-
-font-size:18px;
-
-font-weight:700;
-
-margin-bottom:18px;
+.dark-btn{
+    background:#151515;
+    color:#ddd;
+    border:1px solid #333;
+    border-radius:8px;
+    padding:9px 13px;
+    cursor:pointer;
 }
 
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:650px){
-
-.container{
-padding:14px;
+.dark-btn:hover{
+    border-color:#d4af37;
+    color:#d4af37;
 }
 
-
-.form-grid{
-grid-template-columns:1fr;
+.section-card{
+    background:#121212;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:15px;
+    margin-bottom:15px;
 }
 
-
-.form-group.full{
-grid-column:auto;
+.section-card.inactive{
+    opacity:.55;
 }
 
-
-.menu-header{
-align-items:stretch;
+.section-main{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-
-.menu-header .primary-btn{
-width:100%;
+.section-name{
+    color:#d4af37;
+    font-size:18px;
+    font-weight:700;
 }
 
-
-.stats{
-width:100%;
+.section-actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
 }
 
-
-.stat{
-flex:1;
-
-min-width:100px;
+.subsections{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px solid #292929;
 }
 
-
-.top-bar > div:last-child{
-width:100%;
+.subsection{
+    background:#181818;
+    border:1px solid #303030;
+    border-radius:10px;
+    padding:10px;
+    margin-bottom:8px;
 }
 
-
-.refresh,
-.logout{
-flex:1;
+.subsection-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
-
-.order-actions{
-display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
+.sub-name{
+    color:#eee;
+    font-weight:600;
 }
 
-
-.status-btn{
-min-width:0;
+.items-box{
+    margin-top:10px;
 }
 
+.menu-item{
+    background:#0d0d0d;
+    border:1px solid #292929;
+    border-radius:10px;
+    padding:12px;
+    margin-top:8px;
+}
+
+.menu-item.inactive{
+    opacity:.5;
+}
+
+.menu-item-head{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+}
+
+.menu-item-name{
+    font-weight:600;
+}
+
+.menu-item-price{
+    color:#d4af37;
+    white-space:nowrap;
+}
+
+.menu-item-desc{
+    color:#888;
+    font-size:13px;
+    margin-top:5px;
+}
 
 .menu-item-actions{
-display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:10px;
 }
 
-
-.menu-item-actions button{
-min-width:0;
+.small-btn{
+    background:#151515;
+    color:#ccc;
+    border:1px solid #333;
+    border-radius:7px;
+    padding:7px 10px;
+    cursor:pointer;
 }
 
-
-.category-tab{
-padding:9px 11px;
+.small-btn:hover{
+    border-color:#d4af37;
+    color:#d4af37;
 }
 
+.danger-btn:hover{
+    border-color:#e74c3c;
+    color:#e74c3c;
 }
 
+.add-item-btn{
+    width:100%;
+    margin-top:8px;
+    background:#111;
+    color:#d4af37;
+    border:1px dashed #d4af37;
+    border-radius:9px;
+    padding:10px;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.add-sub-btn{
+    margin-top:10px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:5000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(520px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    background:#151515;
+    border:1px solid #444;
+    border-radius:16px;
+    padding:20px;
+}
+
+.modal-box h3{
+    color:#d4af37;
+    margin-top:0;
+}
+
+.form-group{
+    margin-bottom:13px;
+}
+
+.form-group label{
+    display:block;
+    color:#aaa;
+    margin-bottom:6px;
+    font-size:13px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:11px;
+    background:#090909;
+    color:#fff;
+    border:1px solid #333;
+    border-radius:8px;
+    font-family:inherit;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#d4af37;
+}
+
+.modal-actions{
+    display:flex;
+    gap:8px;
+    margin-top:18px;
+}
+
+.modal-actions button{
+    flex:1;
+}
+
+.close-btn{
+    background:#222;
+    color:#aaa;
+    border:1px solid #333;
+    border-radius:8px;
+    padding:10px;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none !important;
+}
+
+@media(max-width:600px){
+
+    .container{
+        padding:12px;
+    }
+
+    .main-tabs{
+        gap:6px;
+    }
+
+    .main-tab{
+        font-size:13px;
+        padding:10px 5px;
+    }
+
+    .section-main{
+        align-items:flex-start;
+    }
+
+    .section-actions{
+        width:100%;
+    }
+
+    .section-actions button{
+        flex:1;
+    }
+
+    .menu-item-head{
+        align-items:flex-start;
+    }
+
+    .menu-item-actions button{
+        flex:1;
+    }
+}
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header class="header">
 
 <img
 class="logo"
 src="file_000000005f7471fdbdd33eefd3f2e476.png"
-alt="HAYAT"
 >
 
 <h1>HAYAT COMPLEX</h1>
 
 <p>
-پنل مدیریت
+پنل مدیریت سفارش‌ها
 </p>
 
 </header>
 
-
 <main class="container">
-
-
-<!-- =====================================================
-     MAIN TABS
-===================================================== -->
 
 <div class="main-tabs">
 
@@ -1172,77 +626,43 @@ alt="HAYAT"
 class="main-tab active"
 onclick="showPanel('ordersPanel',this)"
 >
-
 📦 سفارش‌ها
-
 </button>
-
 
 <button
 class="main-tab"
 onclick="showPanel('menuPanel',this)"
 >
-
 🍽 مدیریت منو
-
 </button>
 
 </div>
 
 
-<!-- =====================================================
-     ORDERS PANEL
-===================================================== -->
+<!-- ================= ORDERS ================= -->
 
 <div id="ordersPanel">
 
-
 <div class="top-bar">
-
 
 <div class="stats">
 
+<div class="stat">
+<span>کل سفارش‌ها</span>
+<strong id="totalOrders">0</strong>
+</div>
 
 <div class="stat">
-
-<span>
-کل سفارش‌ها
-</span>
-
-<strong id="totalOrders">
-0
-</strong>
-
+<span>سفارش جدید</span>
+<strong id="newOrders">0</strong>
 </div>
-
 
 <div class="stat">
-
-<span>
-سفارش جدید
-</span>
-
-<strong id="newOrders">
-0
-</strong>
-
-</div>
-
-
-<div class="stat">
-
-<span>
-در حال آماده‌سازی
-</span>
-
-<strong id="preparingOrders">
-0
-</strong>
-
+<span>در حال آماده‌سازی</span>
+<strong id="preparingOrders">0</strong>
 </div>
 
 </div>
-
 
 <div style="display:flex;gap:8px;">
 
@@ -1250,19 +670,14 @@ onclick="showPanel('menuPanel',this)"
 class="refresh"
 onclick="loadOrders()"
 >
-
 🔄 بروزرسانی
-
 </button>
-
 
 <button
 class="logout"
 onclick="logout()"
 >
-
 خروج
-
 </button>
 
 </div>
@@ -1272,54 +687,39 @@ onclick="logout()"
 
 <div class="filters">
 
-
 <button
 class="filter active"
 onclick="setFilter('all',this)"
 >
-
 همه
-
 </button>
-
 
 <button
 class="filter"
 onclick="setFilter('new',this)"
 >
-
 🟡 جدید
-
 </button>
-
 
 <button
 class="filter"
 onclick="setFilter('preparing',this)"
 >
-
 🔵 آماده‌سازی
-
 </button>
-
 
 <button
 class="filter"
 onclick="setFilter('ready',this)"
 >
-
 🟢 آماده شد
-
 </button>
-
 
 <button
 class="filter"
 onclick="setFilter('cancelled',this)"
 >
-
 🔴 لغو شده
-
 </button>
 
 </div>
@@ -1328,445 +728,61 @@ onclick="setFilter('cancelled',this)"
 <div id="orders" class="orders">
 
 <div class="loading">
-
 در حال دریافت سفارش‌ها...
-
 </div>
 
 </div>
 
-
 </div>
 
 
-<!-- =====================================================
-     MENU PANEL
-===================================================== -->
+<!-- ================= MENU ================= -->
 
-<div
-id="menuPanel"
-style="display:none"
->
+<div id="menuPanel" style="display:none">
 
-
-<div class="menu-header">
+<div class="menu-title">
 
 <h2>
 🍽 مدیریت منو
 </h2>
 
-
 <button
-class="primary-btn"
-onclick="openCategoryModal()"
+class="gold-btn"
+onclick="openAddMainSectionModal()"
 >
-
 ➕ افزودن تب اصلی
-
 </button>
 
 </div>
 
 
-<!-- CATEGORY TABS -->
-
-<div
-id="categoryTabs"
-class="category-tabs"
->
+<div id="menuSections">
 
 <div class="loading">
-
-در حال دریافت دسته‌بندی‌ها...
-
+در حال دریافت بخش‌های منو...
 </div>
-
-</div>
-
-
-<!-- ADD ITEM -->
-
-<div
-id="addItemBox"
-class="form-box"
-style="display:none"
->
-
-
-<div class="form-title">
-
-➕ افزودن خوراکی
-
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-نام خوراکی
-</label>
-
-<input
-id="newItemName"
-class="form-input"
-placeholder="مثلاً موهیتو"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-قیمت
-</label>
-
-<input
-id="newItemPrice"
-class="form-input"
-type="number"
-min="0"
-placeholder="120000"
->
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-توضیحات
-</label>
-
-<textarea
-id="newItemDescription"
-class="form-textarea"
-placeholder="توضیح کوتاه درباره خوراکی"
-></textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-ترتیب نمایش
-</label>
-
-<input
-id="newItemSort"
-class="form-input"
-type="number"
-value="0"
->
-
-</div>
-
-
-</div>
-
-
-<div class="switch-row">
-
-<label class="switch">
-
-<input
-id="newItemActive"
-type="checkbox"
-checked
->
-
-<span class="slider"></span>
-
-</label>
-
-<span>
-نمایش در منو
-</span>
-
-</div>
-
-
-<div class="form-buttons">
-
-<button
-class="primary-btn"
-onclick="addMenuItem()"
->
-
-💾 افزودن خوراکی
-
-</button>
-
-
-<button
-class="secondary-btn"
-onclick="closeAddItem()"
->
-
-انصراف
-
-</button>
 
 </div>
 
 </div>
 
 
-<!-- ITEMS -->
-
-<div
-id="menuItems"
-class="orders"
->
-
-<div class="loading">
-
-در حال دریافت منو...
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================================
-     TOAST
-===================================================== -->
-
-<div
-id="toast"
-class="toast"
-></div>
-
+<div id="toast" class="toast"></div>
 
 </main>
 
 
-<!-- =====================================================
-     CATEGORY MODAL
-===================================================== -->
+<!-- ================= MODAL ================= -->
 
-<div
-id="categoryModal"
-class="modal"
->
+<div id="modal" class="modal">
 
 <div class="modal-box">
 
-
-<div class="modal-title">
-
-<span id="categoryModalTitle">
-➕ افزودن تب اصلی
-</span>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-نام تب
-</label>
-
-<input
-id="categoryName"
-class="form-input"
-placeholder="مثلاً نوشیدنی"
->
-
-</div>
-
-
-<div style="margin-top:12px;">
-
-<label style="color:#888;font-size:12px;">
-ترتیب نمایش
-</label>
-
-<input
-id="categorySort"
-class="form-input"
-type="number"
-value="0"
-style="margin-top:6px;"
->
-
-</div>
-
-
-<div class="form-buttons">
-
-<button
-id="categorySaveBtn"
-class="primary-btn"
-onclick="saveCategory()"
->
-
-💾 ذخیره
-
-</button>
-
-
-<button
-class="secondary-btn"
-onclick="closeCategoryModal()"
->
-
-انصراف
-
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     ITEM EDIT MODAL
-===================================================== -->
-
-<div
-id="itemModal"
-class="modal"
->
-
-<div class="modal-box">
-
-
-<div class="modal-title">
-
-✏️ ویرایش خوراکی
-
-</div>
-
-
-<input
-id="editItemId"
-type="hidden"
->
-
-
-<div class="form-group">
-
-<label>
-نام خوراکی
-</label>
-
-<input
-id="editItemName"
-class="form-input"
->
-
-</div>
-
-
-<div
-class="form-group"
-style="margin-top:12px;"
->
-
-<label>
-قیمت
-</label>
-
-<input
-id="editItemPrice"
-class="form-input"
-type="number"
-min="0"
->
-
-</div>
-
-
-<div
-class="form-group"
-style="margin-top:12px;"
->
-
-<label>
-توضیحات
-</label>
-
-<textarea
-id="editItemDescription"
-class="form-textarea"
-></textarea>
-
-</div>
-
-
-<div
-class="form-group"
-style="margin-top:12px;"
->
-
-<label>
-ترتیب نمایش
-</label>
-
-<input
-id="editItemSort"
-class="form-input"
-type="number"
->
-
-</div>
-
-
-<div class="switch-row">
-
-<label class="switch">
-
-<input
-id="editItemActive"
-type="checkbox"
->
-
-<span class="slider"></span>
-
-</label>
-
-<span>
-فعال باشد
-</span>
-
-</div>
-
-
-<div class="form-buttons">
-
-<button
-class="primary-btn"
-onclick="saveItemEdit()"
->
-
-💾 ذخیره تغییرات
-
-</button>
-
-
-<button
-class="secondary-btn"
-onclick="closeItemModal()"
->
-
-انصراف
-
-</button>
-
-</div>
-
+<h3 id="modalTitle">
+مدیریت
+</h3>
+
+<div id="modalContent"></div>
 
 </div>
 
@@ -1782,10 +798,8 @@ onclick="closeItemModal()"
 const SUPABASE_URL =
 "https://lryoqddbyasdtjdrwpvx.supabase.co";
 
-
 const SUPABASE_KEY =
 "sb_publishable_pZbQaJ78di1MH3PUcJfeyw_0vPl43k9";
-
 
 const ADMIN_UID =
 "c7916c81-caaa-4050-bcae-9d0546bebb96";
@@ -1793,26 +807,20 @@ const ADMIN_UID =
 
 const supabaseClient =
 window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
+    SUPABASE_URL,
+    SUPABASE_KEY
 );
 
 
 /* =====================================================
-   GLOBALS
+   GLOBAL
 ===================================================== */
 
 let orders = [];
-
 let currentFilter = "all";
 
-let categories = [];
-
+let menuSections = [];
 let menuItems = [];
-
-let selectedCategoryId = null;
-
-let editingCategoryId = null;
 
 
 /* =====================================================
@@ -1821,42 +829,28 @@ let editingCategoryId = null;
 
 async function checkAdmin(){
 
-const {
-data,
-error
-} =
-await supabaseClient.auth.getSession();
+    const {
+        data,
+        error
+    } = await supabaseClient.auth.getSession();
 
+    if(error || !data.session){
 
-if(
-error ||
-!data.session
-){
+        window.location.href = "login.html";
 
-window.location.href =
-"login.html";
+        return false;
+    }
 
-return false;
+    if(data.session.user.id !== ADMIN_UID){
 
-}
+        await supabaseClient.auth.signOut();
 
+        window.location.href = "login.html";
 
-if(
-data.session.user.id !== ADMIN_UID
-){
+        return false;
+    }
 
-await supabaseClient.auth.signOut();
-
-window.location.href =
-"login.html";
-
-return false;
-
-}
-
-
-return true;
-
+    return true;
 }
 
 
@@ -1866,1258 +860,1331 @@ return true;
 
 async function loadOrders(){
 
-if(
-!await checkAdmin()
-){
-return;
+    if(!await checkAdmin()){
+        return;
+    }
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("orders")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+    if(error){
+
+        showToast("❌ دریافت سفارش‌ها انجام نشد");
+
+        return;
+    }
+
+    orders = data || [];
+
+    updateStats();
+
+    renderOrders();
 }
 
-
-const {
-data,
-error
-} =
-await supabaseClient
-
-.from("orders")
-
-.select("*")
-
-.order(
-"created_at",
-{
-ascending:false
-}
-);
-
-
-if(error){
-    console.error("MENU CATEGORIES ERROR:", error);
-    showToast("❌ خطا: " + (error.message || "نامشخص"));
-    alert(
-        "خطای دریافت تب‌ها:\n\n" +
-        (error.message || "نامشخص") +
-        "\n\nکد خطا: " +
-        (error.code || "ندارد")
-    );
-    return;
-}
-
-
-orders = data || [];
-
-
-updateStats();
-
-renderOrders();
-
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
 
 function updateStats(){
 
-document.getElementById(
-"totalOrders"
-).innerText =
-orders.length;
+    document.getElementById("totalOrders").innerText =
+        orders.length;
 
+    document.getElementById("newOrders").innerText =
+        orders.filter(
+            o => o.status === "new"
+        ).length;
 
-document.getElementById(
-"newOrders"
-).innerText =
-orders.filter(
-o => o.status === "new"
-).length;
-
-
-document.getElementById(
-"preparingOrders"
-).innerText =
-orders.filter(
-o => o.status === "preparing"
-).length;
-
+    document.getElementById("preparingOrders").innerText =
+        orders.filter(
+            o => o.status === "preparing"
+        ).length;
 }
 
 
-/* =====================================================
-   FILTER
-===================================================== */
+function setFilter(filter,btn){
 
-function setFilter(
-filter,
-btn
-){
+    currentFilter = filter;
 
-currentFilter =
-filter;
+    document.querySelectorAll(".filter")
+        .forEach(
+            b => b.classList.remove("active")
+        );
 
+    btn.classList.add("active");
 
-document
-.querySelectorAll(".filter")
-.forEach(
-b =>
-b.classList.remove("active")
-);
-
-
-btn.classList.add("active");
-
-
-renderOrders();
-
+    renderOrders();
 }
 
-
-/* =====================================================
-   RENDER ORDERS
-===================================================== */
 
 function renderOrders(){
 
-const container =
-document.getElementById(
-"orders"
-);
+    const container =
+        document.getElementById("orders");
 
+    let list = orders;
 
-let list =
-orders;
+    if(currentFilter !== "all"){
 
+        list = orders.filter(
+            o => o.status === currentFilter
+        );
+    }
 
-if(
-currentFilter !== "all"
-){
+    if(list.length === 0){
 
-list =
-orders.filter(
-o =>
-o.status === currentFilter
-);
+        container.innerHTML = `
+            <div class="empty">
+                📋 سفارشی وجود ندارد
+            </div>
+        `;
 
+        return;
+    }
+
+    container.innerHTML = "";
+
+    list.forEach(order => {
+
+        container.innerHTML +=
+            createOrderHTML(order);
+
+    });
 }
 
-
-if(
-list.length === 0
-){
-
-container.innerHTML = `
-
-<div class="empty">
-
-📋 سفارشی وجود ندارد
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-container.innerHTML = "";
-
-
-list.forEach(
-order => {
-
-container.innerHTML +=
-createOrderHTML(order);
-
-});
-
-}
-
-
-/* =====================================================
-   ORDER HTML
-===================================================== */
 
 function createOrderHTML(order){
 
-let items = "";
+    let items = "";
 
+    (order.items || []).forEach(item => {
 
-(order.items || [])
-.forEach(
-item => {
+        items += `
+            <div class="item">
 
-items += `
+                <div>
 
-<div class="item">
+                    ${escapeHTML(item.name)}
 
-<div>
+                    <br>
 
-${escapeHTML(item.name)}
+                    <small>
+                        تعداد:
+                        ${item.quantity || 1}
+                    </small>
 
-<br>
+                </div>
 
-<small>
-تعداد:
-${item.quantity || 1}
-</small>
+                <div class="item-price">
 
-</div>
+                    ${formatNumber(
+                        (item.price || 0) *
+                        (item.quantity || 1)
+                    )}
 
+                </div>
 
-<div class="item-price">
+            </div>
+        `;
+    });
 
-${formatNumber(
-(item.price || 0) *
-(item.quantity || 1)
-)}
 
-</div>
+    return `
 
-</div>
+        <div class="order ${order.status}">
 
-`;
+            <div class="order-head">
 
-});
+                <div>
 
+                    <span class="order-id">
+                        سفارش #${order.id}
+                    </span>
 
-return `
+                    <br>
 
-<div class="order ${order.status}">
+                    <small>
+                        ${formatDate(order.created_at)}
+                    </small>
 
+                </div>
 
-<div class="order-head">
+                <div class="table">
 
+                    🪑 میز:
+                    ${escapeHTML(order.table_number)}
 
-<div>
+                </div>
 
-<span class="order-id">
+            </div>
 
-سفارش #${order.id}
 
-</span>
+            <div class="items">
 
+                ${items}
 
-<br>
+            </div>
 
-<small>
 
-${formatDate(
-order.created_at
-)}
+            <div class="total">
 
-</small>
+                <span>
+                    مبلغ کل
+                </span>
 
-</div>
+                <strong>
 
+                    ${formatNumber(order.total_price)}
+                    تومان
 
-<div class="table">
+                </strong>
 
-🪑 میز:
-${escapeHTML(
-order.table_number
-)}
+            </div>
 
-</div>
 
+            <div class="order-actions">
 
-</div>
+                <button
+                class="status-btn"
+                onclick="changeStatus(${order.id},'new')"
+                >
+                    🟡 جدید
+                </button>
 
-
-<div class="items">
-
-${items}
-
-</div>
-
-
-<div class="total">
-
-<span>
-مبلغ کل
-</span>
-
-
-<strong>
-
-${formatNumber(
-order.total_price
-)}
-
-تومان
-
-</strong>
-
-</div>
-
-
-<div class="order-actions">
-
-
-<button
-class="status-btn"
-onclick="changeStatus(${order.id},'new')"
->
-
-🟡 جدید
-
-</button>
-
-
-<button
-class="status-btn"
-onclick="changeStatus(${order.id},'preparing')"
->
-
-🔵 آماده‌سازی
-
-</button>
-
-
-<button
-class="status-btn"
-onclick="changeStatus(${order.id},'ready')"
->
-
-🟢 آماده شد
-
-</button>
-
-
-<button
-class="status-btn"
-onclick="changeStatus(${order.id},'cancelled')"
->
-
-🔴 لغو
-
-</button>
-
-
-<button
-class="status-btn"
-onclick="printInvoice(${order.id})"
->
-
-🖨 چاپ فاکتور
-
-</button>
-
-
-<button
-class="status-btn"
-onclick="deleteOrder(${order.id})"
->
-
-🗑 حذف
-
-</button>
-
-
-</div>
-
-
-</div>
-
-`;
-
+                <button
+                class="status-btn"
+                onclick="changeStatus(${order.id},'preparing')"
+                >
+                    🔵 آماده‌سازی
+                </button>
+
+                <button
+                class="status-btn"
+                onclick="changeStatus(${order.id},'ready')"
+                >
+                    🟢 آماده شد
+                </button>
+
+                <button
+                class="status-btn"
+                onclick="changeStatus(${order.id},'cancelled')"
+                >
+                    🔴 لغو
+                </button>
+
+                <button
+                class="status-btn"
+                onclick="printInvoice(${order.id})"
+                >
+                    🖨 چاپ فاکتور
+                </button>
+
+                <button
+                class="status-btn"
+                onclick="deleteOrder(${order.id})"
+                >
+                    🗑 حذف
+                </button>
+
+            </div>
+
+        </div>
+    `;
 }
 
 
-/* =====================================================
-   CHANGE STATUS
-===================================================== */
+async function changeStatus(id,status){
 
-async function changeStatus(
-id,
-status
-){
+    const {
+        error
+    } = await supabaseClient
+        .from("orders")
+        .update({
+            status:status
+        })
+        .eq("id",id);
 
-const {
-error
-} =
-await supabaseClient
+    if(error){
 
-.from("orders")
+        showToast("❌ تغییر وضعیت نشد");
 
-.update({
-status:status
-})
+        return;
+    }
 
-.eq(
-"id",
-id
-);
+    let order =
+        orders.find(
+            o => o.id === id
+        );
 
+    if(order){
 
-if(error){
+        order.status = status;
+    }
 
-showToast(
-"❌ تغییر وضعیت نشد"
-);
+    updateStats();
 
-return;
+    renderOrders();
 
+    showToast("✅ وضعیت تغییر کرد");
 }
 
-
-const order =
-orders.find(
-o => o.id === id
-);
-
-
-if(order){
-
-order.status =
-status;
-
-}
-
-
-updateStats();
-
-renderOrders();
-
-showToast(
-"✅ وضعیت تغییر کرد"
-);
-
-}
-
-
-/* =====================================================
-   DELETE ORDER
-===================================================== */
 
 async function deleteOrder(id){
 
-if(
-!confirm(
-"حذف این سفارش؟"
-)
-){
-return;
-}
+    if(!confirm("حذف این سفارش؟"))
+        return;
 
+    const {
+        error
+    } = await supabaseClient
+        .from("orders")
+        .delete()
+        .eq("id",id);
 
-const {
-error
-} =
-await supabaseClient
+    if(error){
 
-.from("orders")
+        showToast("❌ حذف نشد");
 
-.delete()
+        return;
+    }
 
-.eq(
-"id",
-id
-);
+    orders =
+        orders.filter(
+            o => o.id !== id
+        );
 
+    updateStats();
 
-if(error){
+    renderOrders();
 
-showToast(
-"❌ حذف نشد"
-);
-
-return;
-
-}
-
-
-orders =
-orders.filter(
-o => o.id !== id
-);
-
-
-updateStats();
-
-renderOrders();
-
-showToast(
-"🗑 حذف شد"
-);
-
+    showToast("🗑 حذف شد");
 }
 
 
 /* =====================================================
-   MENU - LOAD CATEGORIES
+   MENU SECTIONS
 ===================================================== */
 
-async function loadCategories(){
+async function loadMenu(){
 
-const {
-data,
-error
-} =
-await supabaseClient
+    const {
+        data:sections,
+        error:sectionError
+    } = await supabaseClient
+        .from("menu_sections")
+        .select("*")
+        .order("sort_order",{ascending:true});
 
-.from("menu_categories")
+    if(sectionError){
 
-.select("*")
+        console.error(sectionError);
 
-.order(
-"sort_order",
-{
-ascending:true
+        showToast("❌ دریافت تب‌های منو انجام نشد");
+
+        return;
+    }
+
+
+    const {
+        data:items,
+        error:itemError
+    } = await supabaseClient
+        .from("menu_items")
+        .select("*")
+        .order("id",{ascending:true});
+
+    if(itemError){
+
+        console.error(itemError);
+
+        showToast("❌ دریافت آیتم‌های منو انجام نشد");
+
+        return;
+    }
+
+
+    menuSections = sections || [];
+
+    menuItems = items || [];
+
+    renderMenu();
 }
-);
 
 
-if(error){
-    console.error("MENU CATEGORIES ERROR:", error);
-    showToast("❌ خطا: " + (error.message || "نامشخص"));
-    alert(
-        "خطای دریافت تب‌ها:\n\n" +
-        (error.message || "نامشخص") +
-        "\n\nکد خطا: " +
-        (error.code || "ندارد")
+function renderMenu(){
+
+    const container =
+        document.getElementById("menuSections");
+
+    if(!container)
+        return;
+
+
+    const mains =
+        menuSections.filter(
+            s => !s.parent_id
+        );
+
+
+    if(mains.length === 0){
+
+        container.innerHTML = `
+            <div class="empty">
+                هیچ تب اصلی وجود ندارد.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    mains.forEach(main => {
+
+        const children =
+            menuSections
+                .filter(
+                    s => s.parent_id === main.id
+                )
+                .sort(
+                    (a,b) =>
+                    Number(a.sort_order || 0) -
+                    Number(b.sort_order || 0)
+                );
+
+
+        const mainItems =
+            menuItems.filter(
+                item =>
+                    item.category === main.name &&
+                    !item.subcategory
+            );
+
+
+        let childrenHTML = "";
+
+
+        children.forEach(child => {
+
+            const childItems =
+                menuItems.filter(
+                    item =>
+                        item.category === main.name &&
+                        item.subcategory === child.name
+                );
+
+
+            childrenHTML += `
+
+                <div class="subsection">
+
+                    <div class="subsection-head">
+
+                        <div class="sub-name">
+
+                            ${escapeHTML(child.name)}
+
+                            ${
+                                child.active
+                                ? ""
+                                : " — غیرفعال"
+                            }
+
+                        </div>
+
+
+                        <div class="section-actions">
+
+                            <button
+                            class="small-btn"
+                            onclick="editSection('${child.id}')"
+                            >
+                                ✏️ ویرایش
+                            </button>
+
+                            <button
+                            class="small-btn"
+                            onclick="toggleSection('${child.id}',${child.active})"
+                            >
+                                ${
+                                    child.active
+                                    ? "⏸ غیرفعال"
+                                    : "▶️ فعال"
+                                }
+                            </button>
+
+                            <button
+                            class="small-btn danger-btn"
+                            onclick="deleteSection('${child.id}')"
+                            >
+                                🗑 حذف
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="items-box">
+
+                        ${
+                            renderItemsHTML(
+                                childItems,
+                                main.name,
+                                child.name
+                            )
+                        }
+
+                    </div>
+
+                </div>
+            `;
+        });
+
+
+        container.innerHTML += `
+
+            <div class="section-card ${main.active ? "" : "inactive"}">
+
+                <div class="section-main">
+
+                    <div>
+
+                        <div class="section-name">
+
+                            ${escapeHTML(main.name)}
+
+                            ${
+                                main.active
+                                ? ""
+                                : " — غیرفعال"
+                            }
+
+                        </div>
+
+                        <small style="color:#777">
+                            ${
+                                children.length
+                                ? children.length + " زیرتب"
+                                : "بدون زیرتب"
+                            }
+                        </small>
+
+                    </div>
+
+
+                    <div class="section-actions">
+
+                        <button
+                        class="dark-btn"
+                        onclick="editSection('${main.id}')"
+                        >
+                            ✏️ ویرایش
+                        </button>
+
+                        <button
+                        class="dark-btn"
+                        onclick="toggleSection('${main.id}',${main.active})"
+                        >
+                            ${
+                                main.active
+                                ? "⏸ غیرفعال"
+                                : "▶️ فعال"
+                            }
+                        </button>
+
+                        <button
+                        class="dark-btn"
+                        onclick="openAddSubSectionModal('${main.id}')"
+                        >
+                            ➕ زیرتب
+                        </button>
+
+                        <button
+                        class="dark-btn danger-btn"
+                        onclick="deleteSection('${main.id}')"
+                        >
+                            🗑 حذف
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="items-box">
+
+                    ${
+                        renderItemsHTML(
+                            mainItems,
+                            main.name,
+                            ""
+                        )
+                    }
+
+                    <button
+                    class="add-item-btn"
+                    onclick="openAddItemModal('${main.id}','')"
+                    >
+                        ➕ افزودن آیتم به ${escapeHTML(main.name)}
+                    </button>
+
+                </div>
+
+
+                ${
+                    children.length
+                    ? `
+                        <div class="subsections">
+                            ${childrenHTML}
+                        </div>
+                    `
+                    : ""
+                }
+
+            </div>
+        `;
+    });
+}
+
+
+function renderItemsHTML(items,mainName,subName){
+
+    let html = "";
+
+
+    items.forEach(item => {
+
+        html += `
+
+            <div class="menu-item ${item.active ? "" : "inactive"}">
+
+                <div class="menu-item-head">
+
+                    <div>
+
+                        <div class="menu-item-name">
+
+                            ${escapeHTML(item.name)}
+
+                        </div>
+
+                        ${
+                            item.description
+                            ? `
+                                <div class="menu-item-desc">
+                                    ${escapeHTML(item.description)}
+                                </div>
+                            `
+                            : ""
+                        }
+
+                    </div>
+
+
+                    <div class="menu-item-price">
+
+                        ${formatNumber(item.price)}
+                        تومان
+
+                    </div>
+
+                </div>
+
+
+                <div class="menu-item-actions">
+
+                    <button
+                    class="small-btn"
+                    onclick="editItem(${item.id})"
+                    >
+                        ✏️ ویرایش
+                    </button>
+
+                    <button
+                    class="small-btn"
+                    onclick="quickPrice(${item.id},${item.price})"
+                    >
+                        💰 قیمت
+                    </button>
+
+                    <button
+                    class="small-btn"
+                    onclick="toggleItem(${item.id},${item.active})"
+                    >
+                        ${
+                            item.active
+                            ? "⏸ غیرفعال"
+                            : "▶️ فعال"
+                        }
+                    </button>
+
+                    <button
+                    class="small-btn danger-btn"
+                    onclick="deleteItem(${item.id})"
+                    >
+                        🗑 حذف
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+    });
+
+
+    if(items.length === 0){
+
+        html += `
+            <div style="
+                color:#666;
+                padding:10px 2px;
+                font-size:13px;
+            ">
+                هنوز آیتمی در این بخش وجود ندارد.
+            </div>
+        `;
+    }
+
+
+    return html;
+}
+
+
+/* =====================================================
+   ADD MAIN SECTION
+===================================================== */
+
+function openAddMainSectionModal(){
+
+    openModal(
+        "➕ افزودن تب اصلی",
+        `
+
+        <div class="form-group">
+
+            <label>
+                نام تب اصلی
+            </label>
+
+            <input
+            id="newMainName"
+            placeholder="مثلاً دسر"
+            >
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+            class="gold-btn"
+            onclick="addMainSection()"
+            >
+                افزودن
+            </button>
+
+            <button
+            class="close-btn"
+            onclick="closeModal()"
+            >
+                انصراف
+            </button>
+
+        </div>
+
+        `
     );
-    return;
 }
 
 
-categories =
-data || [];
+async function addMainSection(){
 
+    const name =
+        document
+        .getElementById("newMainName")
+        .value
+        .trim();
 
-if(
-categories.length === 0
-){
 
-selectedCategoryId =
-null;
+    if(!name){
 
-}else{
+        showToast("⚠️ نام تب را وارد کنید");
 
-if(
-!categories.some(
-c =>
-c.id === selectedCategoryId
-)
-){
+        return;
+    }
 
-selectedCategoryId =
-categories[0].id;
 
-}
+    const duplicate =
+        menuSections.some(
+            s =>
+                !s.parent_id &&
+                s.name === name
+        );
 
-}
 
+    if(duplicate){
 
-renderCategoryTabs();
+        showToast("⚠️ این تب قبلاً وجود دارد");
 
-await loadMenuItems();
+        return;
+    }
 
-}
 
+    const mainSections =
+        menuSections.filter(
+            s => !s.parent_id
+        );
 
-/* =====================================================
-   RENDER CATEGORY TABS
-===================================================== */
 
-function renderCategoryTabs(){
+    const maxSort =
+        mainSections.length
+        ? Math.max(
+            ...mainSections.map(
+                s => Number(s.sort_order || 0)
+            )
+        )
+        : 0;
 
-const container =
-document.getElementById(
-"categoryTabs"
-);
 
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_sections")
+        .insert({
+            name:name,
+            parent_id:null,
+            sort_order:maxSort + 1,
+            active:true
+        });
 
-if(
-categories.length === 0
-){
 
-container.innerHTML = `
+    if(error){
 
-<div class="empty">
+        console.error(error);
 
-هنوز هیچ تبی ساخته نشده است.
+        showToast("❌ افزودن تب انجام نشد");
 
-</div>
+        return;
+    }
 
-`;
 
-document.getElementById(
-"menuItems"
-).innerHTML = "";
+    closeModal();
 
-document.getElementById(
-"addItemBox"
-).style.display =
-"none";
+    showToast("✅ تب اصلی اضافه شد");
 
-return;
-
-}
-
-
-container.innerHTML = "";
-
-
-categories.forEach(
-category => {
-
-const count =
-menuItems.filter(
-item =>
-item.category_id === category.id
-).length;
-
-
-const wrapper =
-document.createElement(
-"div"
-);
-
-
-wrapper.className =
-"category-tab" +
-(
-category.id === selectedCategoryId
-? " active"
-: ""
-);
-
-
-wrapper.onclick =
-() => selectCategory(
-category.id
-);
-
-
-wrapper.innerHTML = `
-
-<span>
-
-${escapeHTML(
-category.name
-)}
-
-</span>
-
-
-<span class="category-count">
-
-${count}
-
-</span>
-
-
-<span class="category-actions">
-
-
-<button
-class="icon-btn"
-title="ویرایش"
-onclick="event.stopPropagation();editCategory('${category.id}')"
->
-
-✏️
-
-</button>
-
-
-<button
-class="icon-btn delete"
-title="حذف"
-onclick="event.stopPropagation();deleteCategory('${category.id}')"
->
-
-🗑
-
-</button>
-
-
-</span>
-
-`;
-
-
-container.appendChild(
-wrapper
-);
-
-});
-
+    await loadMenu();
 }
 
 
 /* =====================================================
-   SELECT CATEGORY
+   ADD SUB SECTION
 ===================================================== */
 
-function selectCategory(
-id
-){
+function openAddSubSectionModal(parentId){
 
-selectedCategoryId =
-id;
+    const parent =
+        menuSections.find(
+            s => s.id === parentId
+        );
 
-
-renderCategoryTabs();
-
-renderMenuItems();
+    if(!parent)
+        return;
 
 
-document.getElementById(
-"addItemBox"
-).style.display =
-"block";
+    openModal(
+        "➕ افزودن زیرتب",
+        `
 
+        <div style="
+            color:#888;
+            margin-bottom:15px;
+        ">
+            تب اصلی:
+            <strong style="color:#d4af37">
+                ${escapeHTML(parent.name)}
+            </strong>
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                نام زیرتب
+            </label>
+
+            <input
+            id="newSubName"
+            placeholder="مثلاً دسرهای ویژه"
+            >
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+            class="gold-btn"
+            onclick="addSubSection('${parentId}')"
+            >
+                افزودن
+            </button>
+
+            <button
+            class="close-btn"
+            onclick="closeModal()"
+            >
+                انصراف
+            </button>
+
+        </div>
+
+        `
+    );
+}
+
+
+async function addSubSection(parentId){
+
+    const parent =
+        menuSections.find(
+            s => s.id === parentId
+        );
+
+    if(!parent)
+        return;
+
+
+    const name =
+        document
+        .getElementById("newSubName")
+        .value
+        .trim();
+
+
+    if(!name){
+
+        showToast("⚠️ نام زیرتب را وارد کنید");
+
+        return;
+    }
+
+
+    const duplicate =
+        menuSections.some(
+            s =>
+                s.parent_id === parentId &&
+                s.name === name
+        );
+
+
+    if(duplicate){
+
+        showToast("⚠️ این زیرتب قبلاً وجود دارد");
+
+        return;
+    }
+
+
+    const children =
+        menuSections.filter(
+            s => s.parent_id === parentId
+        );
+
+
+    const maxSort =
+        children.length
+        ? Math.max(
+            ...children.map(
+                s => Number(s.sort_order || 0)
+            )
+        )
+        : 0;
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_sections")
+        .insert({
+            name:name,
+            parent_id:parentId,
+            sort_order:maxSort + 1,
+            active:true
+        });
+
+
+    if(error){
+
+        console.error(error);
+
+        showToast("❌ افزودن زیرتب انجام نشد");
+
+        return;
+    }
+
+
+    closeModal();
+
+    showToast("✅ زیرتب اضافه شد");
+
+    await loadMenu();
 }
 
 
 /* =====================================================
-   LOAD MENU ITEMS
+   EDIT SECTION
 ===================================================== */
 
-async function loadMenuItems(){
+function editSection(id){
 
-const {
-data,
-error
-} =
-await supabaseClient
+    const section =
+        menuSections.find(
+            s => s.id === id
+        );
 
-.from("menu_items")
+    if(!section)
+        return;
 
-.select("*")
 
-.order(
-"sort_order",
-{
-ascending:true
+    openModal(
+        "✏️ ویرایش تب",
+        `
+
+        <div class="form-group">
+
+            <label>
+                نام جدید
+            </label>
+
+            <input
+            id="editSectionName"
+            value="${escapeAttribute(section.name)}"
+            >
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+            class="gold-btn"
+            onclick="saveSectionEdit('${id}')"
+            >
+                ذخیره
+            </button>
+
+            <button
+            class="close-btn"
+            onclick="closeModal()"
+            >
+                انصراف
+            </button>
+
+        </div>
+
+        `
+    );
 }
-);
 
 
-if(error){
+async function saveSectionEdit(id){
 
-showToast(
-"❌ دریافت منو انجام نشد"
-);
+    const section =
+        menuSections.find(
+            s => s.id === id
+        );
 
-return;
-
-}
-
-
-menuItems =
-data || [];
+    if(!section)
+        return;
 
 
-renderCategoryTabs();
+    const newName =
+        document
+        .getElementById("editSectionName")
+        .value
+        .trim();
 
-renderMenuItems();
 
+    if(!newName){
+
+        showToast("⚠️ نام را وارد کنید");
+
+        return;
+    }
+
+
+    if(newName === section.name){
+
+        closeModal();
+
+        return;
+    }
+
+
+    const duplicate =
+        menuSections.some(
+            s =>
+                s.id !== id &&
+                s.parent_id === section.parent_id &&
+                s.name === newName
+        );
+
+
+    if(duplicate){
+
+        showToast("⚠️ این نام قبلاً وجود دارد");
+
+        return;
+    }
+
+
+    /*
+       اول نام آیتم‌های موجود را هماهنگ می‌کنیم.
+       این قسمت مهم است تا آیتم‌های ۶۹گانه orphan نشوند.
+    */
+
+    if(!section.parent_id){
+
+        const {
+            error:itemError
+        } = await supabaseClient
+            .from("menu_items")
+            .update({
+                category:newName
+            })
+            .eq("category",section.name);
+
+
+        if(itemError){
+
+            console.error(itemError);
+
+            showToast("❌ آیتم‌های این تب به‌روزرسانی نشدند");
+
+            return;
+        }
+
+    }else{
+
+        const parent =
+            menuSections.find(
+                s => s.id === section.parent_id
+            );
+
+
+        if(parent){
+
+            const {
+                error:itemError
+            } = await supabaseClient
+                .from("menu_items")
+                .update({
+                    subcategory:newName
+                })
+                .eq("category",parent.name)
+                .eq("subcategory",section.name);
+
+
+            if(itemError){
+
+                console.error(itemError);
+
+                showToast("❌ آیتم‌های زیرتب به‌روزرسانی نشدند");
+
+                return;
+            }
+        }
+    }
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_sections")
+        .update({
+            name:newName
+        })
+        .eq("id",id);
+
+
+    if(error){
+
+        console.error(error);
+
+        showToast("❌ تغییر نام انجام نشد");
+
+        return;
+    }
+
+
+    closeModal();
+
+    showToast("✅ نام تغییر کرد");
+
+    await loadMenu();
 }
 
 
 /* =====================================================
-   RENDER MENU ITEMS
+   TOGGLE SECTION
 ===================================================== */
 
-function renderMenuItems(){
+async function toggleSection(id,status){
 
-const container =
-document.getElementById(
-"menuItems"
-);
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_sections")
+        .update({
+            active:!status
+        })
+        .eq("id",id);
 
 
-if(
-!selectedCategoryId
-){
+    if(error){
 
-container.innerHTML = `
+        console.error(error);
 
-<div class="empty">
+        showToast("❌ تغییر وضعیت تب انجام نشد");
 
-ابتدا یک تب را انتخاب کنید.
+        return;
+    }
 
-</div>
 
-`;
+    showToast(
+        !status
+        ? "✅ تب فعال شد"
+        : "⏸ تب غیرفعال شد"
+    );
 
-return;
-
-}
-
-
-const list =
-menuItems.filter(
-item =>
-item.category_id ===
-selectedCategoryId
-);
-
-
-if(
-list.length === 0
-){
-
-container.innerHTML = `
-
-<div class="empty">
-
-هنوز خوراکی‌ای در این تب وجود ندارد.
-
-<br><br>
-
-از دکمه «افزودن خوراکی» استفاده کن.
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-container.innerHTML = "";
-
-
-list.forEach(
-item => {
-
-const div =
-document.createElement(
-"div"
-);
-
-
-div.className =
-"menu-item" +
-(
-item.active
-? ""
-: " inactive"
-);
-
-
-div.innerHTML = `
-
-<div class="menu-item-head">
-
-
-<div>
-
-<div class="menu-item-name">
-
-${escapeHTML(
-item.name
-)}
-
-</div>
-
-
-${
-item.description
-?
-`
-<div class="menu-item-description">
-
-${escapeHTML(
-item.description
-)}
-
-</div>
-`
-:
-""
-}
-
-
-</div>
-
-
-<div class="menu-item-price">
-
-${formatNumber(
-item.price
-)}
-
- تومان
-
-</div>
-
-
-</div>
-
-
-<div
-style="
-font-size:12px;
-color:${item.active ? '#2ecc71':'#e74c3c'};
-"
->
-
-${item.active
-? "● فعال"
-: "● غیرفعال"
-}
-
-</div>
-
-
-<div class="menu-item-actions">
-
-
-<button
-class="secondary-btn"
-onclick="editItem('${item.id}')"
->
-
-✏️ ویرایش
-
-</button>
-
-
-<button
-class="secondary-btn"
-onclick="toggleItem('${item.id}',${item.active})"
->
-
-${
-item.active
-? "⏸ غیرفعال"
-: "▶️ فعال"
-}
-
-</button>
-
-
-<button
-class="danger-btn"
-onclick="deleteItem('${item.id}')"
->
-
-🗑 حذف
-
-</button>
-
-
-</div>
-
-`;
-
-
-container.appendChild(
-div
-);
-
-});
-
+    await loadMenu();
 }
 
 
 /* =====================================================
-   ADD CATEGORY
+   DELETE SECTION
 ===================================================== */
 
-function openCategoryModal(){
+async function deleteSection(id){
 
-editingCategoryId =
-null;
+    const section =
+        menuSections.find(
+            s => s.id === id
+        );
 
+    if(!section)
+        return;
 
-document.getElementById(
-"categoryModalTitle"
-).innerText =
-"➕ افزودن تب اصلی";
 
+    const children =
+        menuSections.filter(
+            s => s.parent_id === id
+        );
 
-document.getElementById(
-"categoryName"
-).value = "";
 
+    if(children.length > 0){
 
-document.getElementById(
-"categorySort"
-).value =
-categories.length + 1;
+        showToast(
+            "⚠️ اول زیرتب‌های این بخش را حذف کنید"
+        );
 
+        return;
+    }
 
-document.getElementById(
-"categoryModal"
-).classList.add(
-"show"
-);
 
+    let query =
+        supabaseClient
+        .from("menu_items")
+        .select("id",{count:"exact",head:true});
 
-setTimeout(
-() =>
-document.getElementById(
-"categoryName"
-).focus(),
-100
-);
 
-}
+    if(section.parent_id){
 
+        const parent =
+            menuSections.find(
+                s => s.id === section.parent_id
+            );
 
-/* =====================================================
-   EDIT CATEGORY
-===================================================== */
+        if(parent){
 
-function editCategory(id){
+            query =
+                query
+                .eq("category",parent.name)
+                .eq("subcategory",section.name);
+        }
 
-const category =
-categories.find(
-c => c.id === id
-);
+    }else{
 
+        query =
+            query
+            .eq("category",section.name);
+    }
 
-if(!category)
-return;
 
+    const {
+        count,
+        error:countError
+    } = await query;
 
-editingCategoryId =
-id;
 
+    if(countError){
 
-document.getElementById(
-"categoryModalTitle"
-).innerText =
-"✏️ ویرایش تب";
+        console.error(countError);
 
+        showToast("❌ بررسی آیتم‌ها انجام نشد");
 
-document.getElementById(
-"categoryName"
-).value =
-category.name;
+        return;
+    }
 
 
-document.getElementById(
-"categorySort"
-).value =
-category.sort_order;
+    if(count > 0){
 
+        showToast(
+            "⚠️ این تب آیتم دارد و قابل حذف نیست"
+        );
 
-document.getElementById(
-"categoryModal"
-).classList.add(
-"show"
-);
+        return;
+    }
 
-}
 
+    if(!confirm(
+        `تب «${section.name}» حذف شود؟`
+    )){
+        return;
+    }
 
-/* =====================================================
-   SAVE CATEGORY
-===================================================== */
 
-async function saveCategory(){
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_sections")
+        .delete()
+        .eq("id",id);
 
-const name =
-document.getElementById(
-"categoryName"
-).value.trim();
 
+    if(error){
 
-const sort =
-Number(
-document.getElementById(
-"categorySort"
-).value
-) || 0;
+        console.error(error);
 
+        showToast("❌ حذف تب انجام نشد");
 
-if(!name){
+        return;
+    }
 
-showToast(
-"⚠️ نام تب را وارد کنید"
-);
 
-return;
+    showToast("🗑 تب حذف شد");
 
-}
-
-
-let result;
-
-
-if(
-editingCategoryId
-){
-
-result =
-await supabaseClient
-
-.from("menu_categories")
-
-.update({
-name:name,
-sort_order:sort
-})
-
-.eq(
-"id",
-editingCategoryId
-);
-
-}else{
-
-result =
-await supabaseClient
-
-.from("menu_categories")
-
-.insert({
-name:name,
-sort_order:sort,
-active:true
-});
-
-}
-
-
-if(result.error){
-
-showToast(
-"❌ ذخیره تب انجام نشد"
-);
-
-console.error(
-result.error
-);
-
-return;
-
-}
-
-
-closeCategoryModal();
-
-showToast(
-editingCategoryId
-?
-"✅ تب ویرایش شد"
-:
-"✅ تب جدید اضافه شد"
-);
-
-
-editingCategoryId =
-null;
-
-
-await loadCategories();
-
-}
-
-
-/* =====================================================
-   DELETE CATEGORY
-===================================================== */
-
-async function deleteCategory(id){
-
-const category =
-categories.find(
-c => c.id === id
-);
-
-
-if(!category)
-return;
-
-
-const count =
-menuItems.filter(
-item =>
-item.category_id === id
-).length;
-
-
-if(count > 0){
-
-showToast(
-"⚠️ ابتدا خوراکی‌های این تب را حذف کنید"
-);
-
-return;
-
-}
-
-
-if(
-!confirm(
-`تب «${category.name}» حذف شود؟`
-)
-){
-return;
-}
-
-
-const {
-error
-} =
-await supabaseClient
-
-.from("menu_categories")
-
-.delete()
-
-.eq(
-"id",
-id
-);
-
-
-if(error){
-
-showToast(
-"❌ حذف تب انجام نشد"
-);
-
-return;
-
-}
-
-
-if(
-selectedCategoryId === id
-){
-
-selectedCategoryId =
-null;
-
-}
-
-
-showToast(
-"🗑 تب حذف شد"
-);
-
-
-await loadCategories();
-
-}
-
-
-/* =====================================================
-   CLOSE CATEGORY MODAL
-===================================================== */
-
-function closeCategoryModal(){
-
-document.getElementById(
-"categoryModal"
-).classList.remove(
-"show"
-);
-
-editingCategoryId =
-null;
-
+    await loadMenu();
 }
 
 
@@ -3125,179 +2192,270 @@ null;
    ADD MENU ITEM
 ===================================================== */
 
-async function addMenuItem(){
+function openAddItemModal(mainId,subId){
 
-if(
-!selectedCategoryId
-){
+    const main =
+        menuSections.find(
+            s => s.id === mainId
+        );
 
-showToast(
-"⚠️ ابتدا یک تب انتخاب کنید"
-);
+    if(!main)
+        return;
 
-return;
 
+    const sub =
+        subId
+        ? menuSections.find(
+            s => s.id === subId
+        )
+        : null;
+
+
+    openModal(
+        "➕ افزودن آیتم",
+        `
+
+        <div style="
+            color:#888;
+            margin-bottom:15px;
+            line-height:2;
+        ">
+
+            تب:
+            <strong style="color:#d4af37">
+                ${escapeHTML(main.name)}
+            </strong>
+
+            ${
+                sub
+                ? `
+                    <br>
+                    زیرتب:
+                    <strong style="color:#fff">
+                        ${escapeHTML(sub.name)}
+                    </strong>
+                `
+                : ""
+            }
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                نام آیتم
+            </label>
+
+            <input
+            id="newItemName"
+            placeholder="مثلاً پاستا آلفردو"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                قیمت
+            </label>
+
+            <input
+            id="newItemPrice"
+            type="number"
+            min="0"
+            placeholder="مثلاً 250000"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                توضیحات
+            </label>
+
+            <textarea
+            id="newItemDescription"
+            placeholder="توضیح کوتاه درباره آیتم"
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                ترتیب نمایش
+            </label>
+
+            <input
+            id="newItemSort"
+            type="number"
+            value="0"
+            min="0"
+            >
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+            class="gold-btn"
+            onclick="addMenuItem('${mainId}','${subId || ""}')"
+            >
+                افزودن آیتم
+            </button>
+
+            <button
+            class="close-btn"
+            onclick="closeModal()"
+            >
+                انصراف
+            </button>
+
+        </div>
+
+        `
+    );
 }
 
 
-const name =
-document.getElementById(
-"newItemName"
-).value.trim();
+async function addMenuItem(mainId,subId){
+
+    const main =
+        menuSections.find(
+            s => s.id === mainId
+        );
+
+    if(!main)
+        return;
 
 
-const price =
-Number(
-document.getElementById(
-"newItemPrice"
-).value
-);
+    const sub =
+        subId
+        ? menuSections.find(
+            s => s.id === subId
+        )
+        : null;
 
 
-const description =
-document.getElementById(
-"newItemDescription"
-).value.trim();
+    const name =
+        document
+        .getElementById("newItemName")
+        .value
+        .trim();
 
 
-const sort =
-Number(
-document.getElementById(
-"newItemSort"
-).value
-) || 0;
+    const price =
+        Number(
+            document
+            .getElementById("newItemPrice")
+            .value
+        );
 
 
-const active =
-document.getElementById(
-"newItemActive"
-).checked;
+    const description =
+        document
+        .getElementById("newItemDescription")
+        .value
+        .trim();
 
 
-if(!name){
-
-showToast(
-"⚠️ نام خوراکی را وارد کنید"
-);
-
-return;
-
-}
+    const sortOrder =
+        Number(
+            document
+            .getElementById("newItemSort")
+            .value
+        ) || 0;
 
 
-if(
-isNaN(price) ||
-price < 0
-){
+    if(!name){
 
-showToast(
-"⚠️ قیمت معتبر وارد کنید"
-);
+        showToast("⚠️ نام آیتم را وارد کنید");
 
-return;
-
-}
+        return;
+    }
 
 
-const category =
-categories.find(
-c =>
-c.id ===
-selectedCategoryId
-);
+    if(!price || price < 0){
+
+        showToast("⚠️ قیمت را وارد کنید");
+
+        return;
+    }
 
 
-const {error} =
-await supabaseClient
-
-.from("menu_items")
-
-.insert({
-
-name:name,
-
-price:price,
-
-description:
-description || null,
-
-category_id:
-selectedCategoryId,
-
-category:
-category
-?
-category.name
-: "",
-
-sort_order:
-sort,
-
-active:
-active
-
-});
+    const existing =
+        menuItems.some(
+            item =>
+                item.name === name &&
+                item.category === main.name &&
+                (item.subcategory || "") ===
+                (sub ? sub.name : "")
+        );
 
 
-if(error){
+    if(existing){
 
-showToast(
-"❌ افزودن خوراکی انجام نشد"
-);
+        showToast("⚠️ این آیتم قبلاً وجود دارد");
 
-console.error(error);
-
-return;
-
-}
+        return;
+    }
 
 
-document.getElementById(
-"newItemName"
-).value = "";
+    const itemData = {
+
+        name:name,
+
+        price:price,
+
+        category:main.name,
+
+        subcategory:
+            sub
+            ? sub.name
+            : null,
+
+        description:
+            description
+            ? description
+            : null,
+
+        active:true,
+
+        sort_order:sortOrder
+
+    };
 
 
-document.getElementById(
-"newItemPrice"
-).value = "";
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_items")
+        .insert(itemData);
 
 
-document.getElementById(
-"newItemDescription"
-).value = "";
+    if(error){
+
+        console.error(error);
+
+        showToast(
+            "❌ افزودن آیتم انجام نشد"
+        );
+
+        return;
+    }
 
 
-document.getElementById(
-"newItemSort"
-).value = "0";
+    closeModal();
 
+    showToast("✅ آیتم اضافه شد");
 
-document.getElementById(
-"newItemActive"
-).checked = true;
-
-
-showToast(
-"✅ خوراکی اضافه شد"
-);
-
-
-await loadMenuItems();
-
-}
-
-
-/* =====================================================
-   CLOSE ADD ITEM
-===================================================== */
-
-function closeAddItem(){
-
-document.getElementById(
-"addItemBox"
-).style.display =
-"none";
-
+    await loadMenu();
 }
 
 
@@ -3307,201 +2465,278 @@ document.getElementById(
 
 function editItem(id){
 
-const item =
-menuItems.find(
-i =>
-String(i.id) ===
-String(id)
-);
+    const item =
+        menuItems.find(
+            i => i.id === id
+        );
+
+    if(!item)
+        return;
 
 
-if(!item)
-return;
+    openModal(
+        "✏️ ویرایش آیتم",
+        `
+
+        <div class="form-group">
+
+            <label>
+                نام آیتم
+            </label>
+
+            <input
+            id="editItemName"
+            value="${escapeAttribute(item.name)}"
+            >
+
+        </div>
 
 
-document.getElementById(
-"editItemId"
-).value =
-item.id;
+        <div class="form-group">
+
+            <label>
+                قیمت
+            </label>
+
+            <input
+            id="editItemPrice"
+            type="number"
+            min="0"
+            value="${Number(item.price || 0)}"
+            >
+
+        </div>
 
 
-document.getElementById(
-"editItemName"
-).value =
-item.name || "";
+        <div class="form-group">
+
+            <label>
+                توضیحات
+            </label>
+
+            <textarea
+            id="editItemDescription"
+            >${escapeHTML(item.description || "")}</textarea>
+
+        </div>
 
 
-document.getElementById(
-"editItemPrice"
-).value =
-item.price || 0;
+        <div class="form-group">
+
+            <label>
+                ترتیب نمایش
+            </label>
+
+            <input
+            id="editItemSort"
+            type="number"
+            min="0"
+            value="${Number(item.sort_order || 0)}"
+            >
+
+        </div>
 
 
-document.getElementById(
-"editItemDescription"
-).value =
-item.description || "";
+        <div class="modal-actions">
+
+            <button
+            class="gold-btn"
+            onclick="saveItemEdit(${id})"
+            >
+                ذخیره
+            </button>
+
+            <button
+            class="close-btn"
+            onclick="closeModal()"
+            >
+                انصراف
+            </button>
+
+        </div>
+
+        `
+    );
+}
 
 
-document.getElementById(
-"editItemSort"
-).value =
-item.sort_order || 0;
+async function saveItemEdit(id){
+
+    const name =
+        document
+        .getElementById("editItemName")
+        .value
+        .trim();
 
 
-document.getElementById(
-"editItemActive"
-).checked =
-item.active;
+    const price =
+        Number(
+            document
+            .getElementById("editItemPrice")
+            .value
+        );
 
 
-document.getElementById(
-"itemModal"
-).classList.add(
-"show"
-);
+    const description =
+        document
+        .getElementById("editItemDescription")
+        .value
+        .trim();
 
+
+    const sortOrder =
+        Number(
+            document
+            .getElementById("editItemSort")
+            .value
+        ) || 0;
+
+
+    if(!name){
+
+        showToast("⚠️ نام آیتم را وارد کنید");
+
+        return;
+    }
+
+
+    if(price < 0){
+
+        showToast("⚠️ قیمت نامعتبر است");
+
+        return;
+    }
+
+
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_items")
+        .update({
+
+            name:name,
+
+            price:price,
+
+            description:
+                description
+                ? description
+                : null,
+
+            sort_order:sortOrder
+
+        })
+        .eq("id",id);
+
+
+    if(error){
+
+        console.error(error);
+
+        showToast("❌ ویرایش آیتم انجام نشد");
+
+        return;
+    }
+
+
+    closeModal();
+
+    showToast("✅ آیتم ویرایش شد");
+
+    await loadMenu();
 }
 
 
 /* =====================================================
-   SAVE ITEM EDIT
+   QUICK PRICE
 ===================================================== */
 
-async function saveItemEdit(){
+function quickPrice(id,currentPrice){
 
-const id =
-document.getElementById(
-"editItemId"
-).value;
+    openModal(
+        "💰 تغییر قیمت",
+        `
 
+        <div class="form-group">
 
-const name =
-document.getElementById(
-"editItemName"
-).value.trim();
+            <label>
+                قیمت جدید
+            </label>
 
+            <input
+            id="quickPriceInput"
+            type="number"
+            min="0"
+            value="${Number(currentPrice || 0)}"
+            >
 
-const price =
-Number(
-document.getElementById(
-"editItemPrice"
-).value
-);
-
-
-const description =
-document.getElementById(
-"editItemDescription"
-).value.trim();
+        </div>
 
 
-const sort =
-Number(
-document.getElementById(
-"editItemSort"
-).value
-) || 0;
+        <div class="modal-actions">
 
+            <button
+            class="gold-btn"
+            onclick="saveQuickPrice(${id})"
+            >
+                ذخیره
+            </button>
 
-const active =
-document.getElementById(
-"editItemActive"
-).checked;
+            <button
+            class="close-btn"
+            onclick="closeModal()"
+            >
+                انصراف
+            </button>
 
+        </div>
 
-if(!name){
-
-showToast(
-"⚠️ نام خوراکی را وارد کنید"
-);
-
-return;
-
+        `
+    );
 }
 
 
-if(
-isNaN(price) ||
-price < 0
-){
+async function saveQuickPrice(id){
 
-showToast(
-"⚠️ قیمت معتبر وارد کنید"
-);
-
-return;
-
-}
+    const price =
+        Number(
+            document
+            .getElementById("quickPriceInput")
+            .value
+        );
 
 
-const {
-error
-} =
-await supabaseClient
+    if(price < 0){
 
-.from("menu_items")
+        showToast("⚠️ قیمت نامعتبر است");
 
-.update({
-
-name:name,
-
-price:price,
-
-description:
-description || null,
-
-sort_order:
-sort,
-
-active:
-active
-
-})
-
-.eq(
-"id",
-id
-);
+        return;
+    }
 
 
-if(error){
-
-showToast(
-"❌ ویرایش انجام نشد"
-);
-
-console.error(error);
-
-return;
-
-}
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_items")
+        .update({
+            price:price
+        })
+        .eq("id",id);
 
 
-closeItemModal();
+    if(error){
 
-showToast(
-"✅ خوراکی ویرایش شد"
-);
+        showToast("❌ ذخیره قیمت انجام نشد");
 
-
-await loadMenuItems();
-
-}
+        return;
+    }
 
 
-/* =====================================================
-   CLOSE ITEM MODAL
-===================================================== */
+    closeModal();
 
-function closeItemModal(){
+    showToast("✅ قیمت ذخیره شد");
 
-document.getElementById(
-"itemModal"
-).classList.remove(
-"show"
-);
-
+    await loadMenu();
 }
 
 
@@ -3509,50 +2744,35 @@ document.getElementById(
    TOGGLE ITEM
 ===================================================== */
 
-async function toggleItem(
-id,
-status
-){
+async function toggleItem(id,status){
 
-const {
-error
-} =
-await supabaseClient
-
-.from("menu_items")
-
-.update({
-active:!status
-})
-
-.eq(
-"id",
-id
-);
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_items")
+        .update({
+            active:!status
+        })
+        .eq("id",id);
 
 
-if(error){
+    if(error){
 
-showToast(
-"❌ تغییر وضعیت انجام نشد"
-);
+        console.error(error);
 
-return;
+        showToast("❌ تغییر وضعیت آیتم انجام نشد");
 
-}
-
-
-showToast(
-status
-?
-"⏸ خوراکی غیرفعال شد"
-:
-"▶️ خوراکی فعال شد"
-);
+        return;
+    }
 
 
-await loadMenuItems();
+    showToast(
+        !status
+        ? "▶️ آیتم فعال شد"
+        : "⏸ آیتم غیرفعال شد"
+    );
 
+    await loadMenu();
 }
 
 
@@ -3562,211 +2782,151 @@ await loadMenuItems();
 
 async function deleteItem(id){
 
-const item =
-menuItems.find(
-i =>
-String(i.id) ===
-String(id)
-);
+    const item =
+        menuItems.find(
+            i => i.id === id
+        );
+
+    if(!item)
+        return;
 
 
-if(!item)
-return;
+    if(!confirm(
+        `آیتم «${item.name}» حذف شود؟`
+    )){
+        return;
+    }
 
 
-if(
-!confirm(
-`خوراکی «${item.name}» حذف شود؟`
-)
-){
-return;
-}
+    const {
+        error
+    } = await supabaseClient
+        .from("menu_items")
+        .delete()
+        .eq("id",id);
 
 
-const {
-error
-} =
-await supabaseClient
+    if(error){
 
-.from("menu_items")
+        console.error(error);
 
-.delete()
+        showToast("❌ حذف آیتم انجام نشد");
 
-.eq(
-"id",
-id
-);
+        return;
+    }
 
 
-if(error){
+    showToast("🗑 آیتم حذف شد");
 
-showToast(
-"❌ حذف خوراکی انجام نشد"
-);
-
-return;
-
-}
-
-
-showToast(
-"🗑 خوراکی حذف شد"
-);
-
-
-await loadMenuItems();
-
+    await loadMenu();
 }
 
 
 /* =====================================================
-   MAIN PANELS
+   MODAL
 ===================================================== */
 
-function showPanel(
-id,
-btn
-){
+function openModal(title,content){
 
-document.getElementById(
-"ordersPanel"
-).style.display =
-"none";
+    document.getElementById("modalTitle")
+        .innerText = title;
 
+    document.getElementById("modalContent")
+        .innerHTML = content;
 
-document.getElementById(
-"menuPanel"
-).style.display =
-"none";
+    document.getElementById("modal")
+        .classList.add("show");
 
 
-document.getElementById(
-id
-).style.display =
-"block";
+    setTimeout(() => {
+
+        const input =
+            document.querySelector(
+                "#modalContent input"
+            );
+
+        if(input)
+            input.focus();
+
+    },100);
+}
 
 
-document
-.querySelectorAll(".main-tab")
-.forEach(
-b =>
-b.classList.remove("active")
+function closeModal(){
+
+    document.getElementById("modal")
+        .classList.remove("show");
+
+    document.getElementById("modalContent")
+        .innerHTML = "";
+}
+
+
+document.getElementById("modal")
+.addEventListener(
+    "click",
+    function(e){
+
+        if(e.target === this){
+            closeModal();
+        }
+
+    }
 );
 
 
-btn.classList.add("active");
-
-
-if(
-id === "menuPanel"
-){
-
-loadCategories();
-
-}
-
-}
-
-
 /* =====================================================
-   FORMAT NUMBER
+   HELPERS
 ===================================================== */
 
 function formatNumber(num){
 
-return Number(
-num || 0
-)
-.toLocaleString("fa-IR");
-
+    return Number(num || 0)
+        .toLocaleString("fa-IR");
 }
 
-
-/* =====================================================
-   FORMAT DATE
-===================================================== */
 
 function formatDate(date){
 
-if(!date)
-return "";
+    if(!date)
+        return "";
 
-
-return new Date(date)
-.toLocaleString(
-"fa-IR"
-);
-
+    return new Date(date)
+        .toLocaleString("fa-IR");
 }
 
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
 
 function escapeHTML(value){
 
-return String(
-value ?? ""
-)
-
-.replace(
-/&/g,
-"&amp;"
-)
-
-.replace(
-/</g,
-"&lt;"
-)
-
-.replace(
-/>/g,
-"&gt;"
-)
-
-.replace(
-/"/g,
-"&quot;"
-)
-
-.replace(
-/'/g,
-"&#039;"
-);
-
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
 
 
-/* =====================================================
-   TOAST
-===================================================== */
+function escapeAttribute(value){
+
+    return escapeHTML(value);
+}
+
 
 function showToast(msg){
 
-const toast =
-document.getElementById(
-"toast"
-);
+    const toast =
+        document.getElementById("toast");
 
+    toast.innerText = msg;
 
-toast.innerText =
-msg;
+    toast.classList.add("show");
 
+    setTimeout(() => {
 
-toast.classList.add(
-"show"
-);
+        toast.classList.remove("show");
 
-
-setTimeout(
-() =>
-toast.classList.remove(
-"show"
-),
-2500
-);
-
+    },2500);
 }
 
 
@@ -3776,202 +2936,188 @@ toast.classList.remove(
 
 async function logout(){
 
-await supabaseClient
-.auth
-.signOut();
+    await supabaseClient.auth.signOut();
 
-
-window.location.href =
-"login.html";
-
+    window.location.href = "login.html";
 }
 
 
 /* =====================================================
-   PRINT INVOICE
+   PRINT
 ===================================================== */
 
 function printInvoice(id){
 
-const order =
-orders.find(
-o =>
-o.id === id
-);
+    const order =
+        orders.find(
+            o => o.id === id
+        );
+
+    if(!order)
+        return;
 
 
-if(!order)
-return;
+    let rows = "";
 
 
-let rows = "";
+    (order.items || []).forEach(item => {
+
+        rows += `
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(item.name)}
+                </td>
+
+                <td>
+                    ${item.quantity || 1}
+                </td>
+
+                <td>
+                    ${formatNumber(
+                        item.price *
+                        (item.quantity || 1)
+                    )}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
 
 
-(order.items || [])
-.forEach(
-item => {
-
-rows += `
-
-<tr>
-
-<td>
-${escapeHTML(item.name)}
-</td>
-
-<td>
-${item.quantity || 1}
-</td>
-
-<td>
-${formatNumber(
-(item.price || 0) *
-(item.quantity || 1)
-)}
-</td>
-
-</tr>
-
-`;
-
-});
+    let win =
+        window.open(
+            "",
+            "_blank",
+            "width=350,height=600"
+        );
 
 
-const win =
-window.open(
-"",
-"_blank",
-"width=350,height=600"
-);
+    if(!win){
+
+        showToast(
+            "⚠️ پنجره چاپ توسط مرورگر مسدود شد"
+        );
+
+        return;
+    }
 
 
-if(!win){
+    win.document.write(`
 
-showToast(
-"❌ پنجره چاپ توسط مرورگر مسدود شد"
-);
+        <html lang="fa" dir="rtl">
 
-return;
+        <head>
 
+            <meta charset="UTF-8">
+
+            <style>
+
+                body{
+                    font-family:tahoma;
+                    width:80mm;
+                    text-align:center;
+                }
+
+                table{
+                    width:100%;
+                    border-collapse:collapse;
+                }
+
+                td{
+                    padding:5px;
+                    border-bottom:1px dashed #999;
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <h2>
+                HAYAT COMPLEX
+            </h2>
+
+            <p>
+                سفارش #${order.id}
+            </p>
+
+            <p>
+                میز ${escapeHTML(order.table_number)}
+            </p>
+
+            <hr>
+
+            <table>
+
+                ${rows}
+
+            </table>
+
+            <hr>
+
+            <h3>
+
+                ${formatNumber(order.total_price)}
+                تومان
+
+            </h3>
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    win.document.close();
+
+
+    setTimeout(() => {
+
+        win.print();
+
+        win.close();
+
+    },500);
 }
 
 
-win.document.write(`
+/* =====================================================
+   PANEL
+===================================================== */
 
-<html lang="fa" dir="rtl">
+function showPanel(id,btn){
 
-<head>
+    document.getElementById("ordersPanel")
+        .style.display = "none";
 
-<meta charset="UTF-8">
-
-<style>
-
-body{
-
-font-family:tahoma;
-
-width:80mm;
-
-text-align:center;
-
-margin:auto;
-
-}
-
-table{
-
-width:100%;
-
-border-collapse:collapse;
-
-}
-
-td{
-
-padding:5px;
-
-border-bottom:
-1px dashed #999;
-
-font-size:12px;
-
-}
-
-h2{
-
-font-size:18px;
-
-}
-
-</style>
-
-</head>
+    document.getElementById("menuPanel")
+        .style.display = "none";
 
 
-<body>
+    document.getElementById(id)
+        .style.display = "block";
 
 
-<h2>
-HAYAT COMPLEX
-</h2>
+    document.querySelectorAll(".main-tab")
+        .forEach(
+            b => b.classList.remove("active")
+        );
 
 
-<p>
-سفارش #${order.id}
-</p>
+    btn.classList.add("active");
 
 
-<p>
-میز ${escapeHTML(
-order.table_number
-)}
-</p>
+    if(id === "menuPanel"){
 
+        loadMenu();
 
-<hr>
-
-
-<table>
-
-${rows}
-
-</table>
-
-
-<hr>
-
-
-<h3>
-
-${formatNumber(
-order.total_price
-)}
-تومان
-
-</h3>
-
-
-</body>
-
-</html>
-
-`);
-
-
-win.document.close();
-
-
-setTimeout(
-() => {
-
-win.print();
-
-win.close();
-
-},
-500
-);
-
+    }
 }
 
 
@@ -3979,36 +3125,29 @@ win.close();
    AUTO REFRESH ORDERS
 ===================================================== */
 
-setInterval(
-() => {
+setInterval(() => {
 
-loadOrders();
+    loadOrders();
 
-},
-15000
-);
+},15000);
 
 
 /* =====================================================
-   INITIAL LOAD
+   START
 ===================================================== */
 
 checkAdmin()
-.then(
-ok => {
+.then(ok => {
 
-if(ok){
+    if(ok){
 
-loadOrders();
+        loadOrders();
 
-}
+    }
 
-}
-);
+});
 
 </script>
 
-
 </body>
-
 </html>
