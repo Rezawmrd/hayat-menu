@@ -1892,13 +1892,15 @@ ascending:false
 
 
 if(error){
-
-showToast(
-"❌ دریافت سفارش‌ها انجام نشد"
-);
-
-return;
-
+    console.error("MENU CATEGORIES ERROR:", error);
+    showToast("❌ خطا: " + (error.message || "نامشخص"));
+    alert(
+        "خطای دریافت تب‌ها:\n\n" +
+        (error.message || "نامشخص") +
+        "\n\nکد خطا: " +
+        (error.code || "ندارد")
+    );
+    return;
 }
 
 
