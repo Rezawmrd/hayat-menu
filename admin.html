@@ -1218,6 +1218,10 @@ async function loadMenu(){
 }
 
 
+/* =====================================================
+   RENDER MENU
+===================================================== */
+
 function renderMenu(){
 
     const container =
@@ -1344,6 +1348,17 @@ function renderMenu(){
                             )
                         }
 
+
+                        <!-- مهم:
+                             افزودن آیتم مستقیم به همین زیرتب -->
+
+                        <button
+                        class="add-item-btn"
+                        onclick="openAddItemModal('${main.id}','${child.id}')"
+                        >
+                            ➕ افزودن آیتم به «${escapeHTML(child.name)}»
+                        </button>
+
                     </div>
 
                 </div>
@@ -1406,7 +1421,7 @@ function renderMenu(){
                         class="dark-btn"
                         onclick="openAddSubSectionModal('${main.id}')"
                         >
-                            ➕ زیرتب
+                            ➕ افزودن زیرتب
                         </button>
 
                         <button
@@ -1421,24 +1436,30 @@ function renderMenu(){
                 </div>
 
 
-                <div class="items-box">
+                ${
+                    children.length === 0
+                    ? `
+                        <div class="items-box">
 
-                    ${
-                        renderItemsHTML(
-                            mainItems,
-                            main.name,
-                            ""
-                        )
-                    }
+                            ${
+                                renderItemsHTML(
+                                    mainItems,
+                                    main.name,
+                                    ""
+                                )
+                            }
 
-                    <button
-                    class="add-item-btn"
-                    onclick="openAddItemModal('${main.id}','')"
-                    >
-                        ➕ افزودن آیتم به ${escapeHTML(main.name)}
-                    </button>
+                            <button
+                            class="add-item-btn"
+                            onclick="openAddItemModal('${main.id}','')"
+                            >
+                                ➕ افزودن آیتم به ${escapeHTML(main.name)}
+                            </button>
 
-                </div>
+                        </div>
+                    `
+                    : ""
+                }
 
 
                 ${
@@ -1948,11 +1969,6 @@ async function saveSectionEdit(id){
     }
 
 
-    /*
-       اول نام آیتم‌های موجود را هماهنگ می‌کنیم.
-       این قسمت مهم است تا آیتم‌های ۶۹گانه orphan نشوند.
-    */
-
     if(!section.parent_id){
 
         const {
@@ -2212,7 +2228,9 @@ function openAddItemModal(mainId,subId){
 
 
     openModal(
-        "➕ افزودن آیتم",
+        sub
+        ? `➕ افزودن آیتم به «${sub.name}»`
+        : `➕ افزودن آیتم به «${main.name}»`,
         `
 
         <div style="
