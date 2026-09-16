@@ -5,16 +5,23 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>HAYAT | پنل مدیریت</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
 
 *{
 box-sizing:border-box;
@@ -35,18 +42,37 @@ content:"";
 position:fixed;
 inset:0;
 pointer-events:none;
+
 background:
-radial-gradient(circle at 20% 20%,rgba(212,175,55,.10),transparent 40%),
-radial-gradient(circle at 80% 70%,rgba(212,175,55,.07),transparent 45%);
+radial-gradient(
+circle at 20% 20%,
+rgba(212,175,55,.10),
+transparent 40%
+),
+
+radial-gradient(
+circle at 80% 70%,
+rgba(212,175,55,.07),
+transparent 45%
+);
 }
 
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header{
 position:relative;
 z-index:1;
+
 padding:25px 18px;
+
 text-align:center;
-border-bottom:1px solid rgba(212,175,55,.25);
+
+border-bottom:
+1px solid rgba(212,175,55,.25);
+
 background:rgba(10,10,10,.9);
 }
 
@@ -54,55 +80,85 @@ background:rgba(10,10,10,.9);
 .logo{
 width:75px;
 height:75px;
+
 border-radius:50%;
+
 object-fit:cover;
+
 border:2px solid #d4af37;
 }
 
 
 .header h1{
 margin:10px 0 3px;
+
 color:#d4af37;
 }
 
 
 .header p{
 margin:0;
+
 color:#888;
+
 font-size:13px;
 }
 
 
+/* =====================================================
+   CONTAINER
+===================================================== */
+
 .container{
 position:relative;
 z-index:1;
-width:min(1000px,100%);
+
+width:min(1100px,100%);
+
 margin:auto;
+
 padding:20px;
 }
 
 
+/* =====================================================
+   MAIN TABS
+===================================================== */
+
 .main-tabs{
 display:flex;
+
 gap:10px;
+
 margin-bottom:20px;
 }
 
 
 .main-tab{
 flex:1;
-padding:12px;
+
+padding:13px;
+
 background:#151515;
+
 color:#aaa;
-border:1px solid #333;
+
+border:
+1px solid #333;
+
 border-radius:10px;
+
 font-family:inherit;
+
 cursor:pointer;
+
+font-size:14px;
 }
 
 
 .main-tab.active{
 color:#d4af37;
+
 border-color:#d4af37;
 }
 
@@ -112,161 +168,301 @@ display:none;
 }
 
 
+/* =====================================================
+   TOP BAR
+===================================================== */
+
 .top-bar{
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 gap:12px;
+
 margin-bottom:20px;
+
 flex-wrap:wrap;
 }
 
 
 .stats{
 display:flex;
+
 gap:10px;
+
 flex-wrap:wrap;
 }
 
 
 .stat{
 background:#151515;
-border:1px solid #292929;
+
+border:
+1px solid #292929;
+
 border-radius:10px;
+
 padding:10px 15px;
 }
 
 
 .stat span{
 color:#888;
+
 font-size:12px;
 }
 
 
 .stat strong{
 display:block;
+
 color:#d4af37;
+
 font-size:20px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button{
+font-family:inherit;
 }
 
 
 .refresh,
 .logout{
 background:#151515;
+
 padding:10px 16px;
+
 border-radius:9px;
+
 font-family:inherit;
+
 cursor:pointer;
 }
 
 
 .refresh{
 color:#d4af37;
-border:1px solid #d4af37;
+
+border:
+1px solid #d4af37;
 }
 
 
 .logout{
 color:#e74c3c;
-border:1px solid #633;
+
+border:
+1px solid #633;
 }
 
 
+.primary-btn{
+background:#d4af37;
+
+color:#090909;
+
+border:0;
+
+border-radius:9px;
+
+padding:11px 17px;
+
+cursor:pointer;
+
+font-weight:700;
+
+font-family:inherit;
+}
+
+
+.secondary-btn{
+background:#181818;
+
+color:#ddd;
+
+border:
+1px solid #333;
+
+border-radius:9px;
+
+padding:10px 15px;
+
+cursor:pointer;
+
+font-family:inherit;
+}
+
+
+.danger-btn{
+background:#181818;
+
+color:#e74c3c;
+
+border:
+1px solid #633;
+
+border-radius:9px;
+
+padding:10px 15px;
+
+cursor:pointer;
+
+font-family:inherit;
+}
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
 .filters{
 display:flex;
+
 gap:8px;
+
 overflow-x:auto;
+
 margin-bottom:15px;
 }
 
 
 .filter{
 background:#151515;
+
 color:#aaa;
-border:1px solid #333;
+
+border:
+1px solid #333;
+
 border-radius:20px;
+
 padding:8px 15px;
+
 font-family:inherit;
+
 cursor:pointer;
+
+white-space:nowrap;
 }
 
 
 .filter.active{
 color:#d4af37;
+
 border-color:#d4af37;
 }
 
 
+/* =====================================================
+   ORDERS
+===================================================== */
+
 .orders{
 display:flex;
+
 flex-direction:column;
+
 gap:12px;
 }
 
 
 .order{
 background:#121212;
-border:1px solid #292929;
+
+border:
+1px solid #292929;
+
 border-radius:14px;
+
 padding:16px;
 }
 
 
 .order.new{
-border-right:3px solid #d4af37;
+border-right:
+3px solid #d4af37;
 }
 
 
 .order.preparing{
-border-right:3px solid #3498db;
+border-right:
+3px solid #3498db;
 }
 
 
 .order.ready{
-border-right:3px solid #2ecc71;
+border-right:
+3px solid #2ecc71;
 }
 
 
 .order.cancelled{
-border-right:3px solid #e74c3c;
+border-right:
+3px solid #e74c3c;
 }
 
-    .order-head{
+
+.order-head{
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 gap:10px;
+
 flex-wrap:wrap;
+
 margin-bottom:12px;
 }
 
 
 .order-id{
 color:#d4af37;
+
 font-weight:700;
 }
 
 
 .table{
 background:#1d1d1d;
-border:1px solid #333;
+
+border:
+1px solid #333;
+
 border-radius:8px;
+
 padding:6px 10px;
 }
 
 
 .items{
-border-top:1px solid #292929;
-border-bottom:1px solid #292929;
+border-top:
+1px solid #292929;
+
+border-bottom:
+1px solid #292929;
+
 padding:8px 0;
+
 margin-bottom:12px;
 }
 
 
 .item{
 display:flex;
+
 justify-content:space-between;
+
 gap:10px;
+
 padding:8px 0;
 }
 
@@ -278,7 +474,9 @@ white-space:nowrap;
 
 .total{
 display:flex;
+
 justify-content:space-between;
+
 font-size:17px;
 }
 
@@ -290,50 +488,496 @@ color:#d4af37;
 
 .order-actions{
 display:flex;
+
 gap:8px;
+
 flex-wrap:wrap;
+
 margin-top:15px;
 }
 
 
 .status-btn{
 flex:1;
+
 min-width:120px;
+
 background:#181818;
+
 color:#ddd;
-border:1px solid #333;
+
+border:
+1px solid #333;
+
 border-radius:8px;
+
 padding:9px;
+
 font-family:inherit;
+
 cursor:pointer;
 }
 
 
 .status-btn:hover{
 border-color:#d4af37;
+
 color:#d4af37;
 }
 
 
+/* =====================================================
+   MENU MANAGEMENT
+===================================================== */
+
+.menu-header{
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:10px;
+
+margin-bottom:18px;
+
+flex-wrap:wrap;
+}
+
+
+.menu-header h2{
+color:#d4af37;
+
+margin:0;
+}
+
+
+/* =====================================================
+   CATEGORY TABS
+===================================================== */
+
+.category-tabs{
+display:flex;
+
+gap:8px;
+
+overflow-x:auto;
+
+padding-bottom:8px;
+
+margin-bottom:18px;
+}
+
+
+.category-tab{
+position:relative;
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+background:#151515;
+
+color:#aaa;
+
+border:
+1px solid #333;
+
+border-radius:10px;
+
+padding:10px 14px;
+
+cursor:pointer;
+
+white-space:nowrap;
+
+font-family:inherit;
+}
+
+
+.category-tab.active{
+color:#d4af37;
+
+border-color:#d4af37;
+}
+
+
+.category-count{
+font-size:11px;
+
+background:#242424;
+
+color:#777;
+
+border-radius:20px;
+
+padding:2px 7px;
+}
+
+
+/* =====================================================
+   CATEGORY ACTIONS
+===================================================== */
+
+.category-actions{
+display:flex;
+
+gap:5px;
+}
+
+
+.icon-btn{
+width:30px;
+
+height:30px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#1d1d1d;
+
+border:
+1px solid #333;
+
+border-radius:7px;
+
+color:#aaa;
+
+cursor:pointer;
+}
+
+
+.icon-btn:hover{
+border-color:#d4af37;
+
+color:#d4af37;
+}
+
+
+.icon-btn.delete:hover{
+border-color:#e74c3c;
+
+color:#e74c3c;
+}
+
+
+/* =====================================================
+   MENU ITEM
+===================================================== */
+
+.menu-item{
+background:#121212;
+
+border:
+1px solid #292929;
+
+border-radius:14px;
+
+padding:16px;
+}
+
+
+.menu-item.inactive{
+opacity:.55;
+}
+
+
+.menu-item-head{
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+gap:12px;
+
+margin-bottom:12px;
+}
+
+
+.menu-item-name{
+font-size:17px;
+
+font-weight:700;
+
+color:#d4af37;
+}
+
+
+.menu-item-description{
+font-size:13px;
+
+color:#888;
+
+margin-top:5px;
+
+line-height:1.8;
+}
+
+
+.menu-item-price{
+font-size:16px;
+
+font-weight:700;
+
+color:#fff;
+
+white-space:nowrap;
+}
+
+
+.menu-item-actions{
+display:flex;
+
+gap:7px;
+
+flex-wrap:wrap;
+
+margin-top:14px;
+}
+
+
+.menu-item-actions button{
+flex:1;
+
+min-width:100px;
+}
+
+
+/* =====================================================
+   FORMS
+===================================================== */
+
+.form-box{
+background:#121212;
+
+border:
+1px solid #292929;
+
+border-radius:14px;
+
+padding:18px;
+
+margin-bottom:18px;
+}
+
+
+.form-title{
+color:#d4af37;
+
+font-size:17px;
+
+font-weight:700;
+
+margin-bottom:15px;
+}
+
+
+.form-grid{
+display:grid;
+
+grid-template-columns:
+repeat(2,minmax(0,1fr));
+
+gap:12px;
+}
+
+
+.form-group{
+display:flex;
+
+flex-direction:column;
+
+gap:6px;
+}
+
+
+.form-group.full{
+grid-column:
+1 / -1;
+}
+
+
+.form-group label{
+font-size:12px;
+
+color:#888;
+}
+
+
+.form-input,
+.form-textarea,
+.form-select{
+width:100%;
+
+padding:11px 12px;
+
+background:#090909;
+
+color:#fff;
+
+border:
+1px solid #333;
+
+border-radius:8px;
+
+font-family:inherit;
+
+outline:none;
+}
+
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus{
+border-color:#d4af37;
+}
+
+
+.form-textarea{
+min-height:90px;
+
+resize:vertical;
+}
+
+
+.form-buttons{
+display:flex;
+
+gap:8px;
+
+margin-top:15px;
+
+flex-wrap:wrap;
+}
+
+
+/* =====================================================
+   TOGGLE
+===================================================== */
+
+.switch-row{
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-top:10px;
+}
+
+
+.switch{
+position:relative;
+
+width:46px;
+
+height:24px;
+}
+
+
+.switch input{
+display:none;
+}
+
+
+.slider{
+position:absolute;
+
+inset:0;
+
+background:#333;
+
+border-radius:20px;
+
+cursor:pointer;
+
+transition:.2s;
+}
+
+
+.slider:before{
+content:"";
+
+position:absolute;
+
+width:18px;
+
+height:18px;
+
+right:3px;
+
+top:3px;
+
+background:#aaa;
+
+border-radius:50%;
+
+transition:.2s;
+}
+
+
+.switch input:checked + .slider{
+background:#d4af37;
+}
+
+
+.switch input:checked + .slider:before{
+transform:translateX(-22px);
+
+background:#111;
+}
+
+
+/* =====================================================
+   EMPTY / LOADING
+===================================================== */
+
 .empty,
 .loading{
 text-align:center;
+
 padding:50px;
+
 color:#777;
 }
 
 
+/* =====================================================
+   TOAST
+===================================================== */
+
 .toast{
 position:fixed;
+
 top:20px;
+
 right:50%;
-transform:translateX(50%);
+
+transform:
+translateX(50%);
+
 background:#171717;
-border:1px solid #d4af37;
+
+border:
+1px solid #d4af37;
+
 padding:12px 20px;
+
 border-radius:10px;
+
 opacity:0;
+
 transition:.3s;
+
+z-index:9999;
+
+pointer-events:none;
 }
 
 
@@ -341,6 +985,150 @@ transition:.3s;
 opacity:1;
 }
 
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+position:fixed;
+
+inset:0;
+
+background:
+rgba(0,0,0,.78);
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+padding:20px;
+
+z-index:5000;
+}
+
+
+.modal.show{
+display:flex;
+}
+
+
+.modal-box{
+width:min(500px,100%);
+
+background:#121212;
+
+border:
+1px solid #333;
+
+border-radius:15px;
+
+padding:20px;
+
+max-height:90vh;
+
+overflow-y:auto;
+}
+
+
+.modal-title{
+color:#d4af37;
+
+font-size:18px;
+
+font-weight:700;
+
+margin-bottom:18px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:650px){
+
+.container{
+padding:14px;
+}
+
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+
+.form-group.full{
+grid-column:auto;
+}
+
+
+.menu-header{
+align-items:stretch;
+}
+
+
+.menu-header .primary-btn{
+width:100%;
+}
+
+
+.stats{
+width:100%;
+}
+
+
+.stat{
+flex:1;
+
+min-width:100px;
+}
+
+
+.top-bar > div:last-child{
+width:100%;
+}
+
+
+.refresh,
+.logout{
+flex:1;
+}
+
+
+.order-actions{
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+}
+
+
+.status-btn{
+min-width:0;
+}
+
+
+.menu-item-actions{
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+}
+
+
+.menu-item-actions button{
+min-width:0;
+}
+
+
+.category-tab{
+padding:9px 11px;
+}
+
+}
 
 </style>
 
@@ -350,20 +1138,23 @@ opacity:1;
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="header">
 
 <img
 class="logo"
 src="file_000000005f7471fdbdd33eefd3f2e476.png"
+alt="HAYAT"
 >
-
 
 <h1>HAYAT COMPLEX</h1>
 
 <p>
-پنل مدیریت سفارش‌ها
+پنل مدیریت
 </p>
-
 
 </header>
 
@@ -371,31 +1162,37 @@ src="file_000000005f7471fdbdd33eefd3f2e476.png"
 <main class="container">
 
 
-<div class="main-tabs">
+<!-- =====================================================
+     MAIN TABS
+===================================================== -->
 
+<div class="main-tabs">
 
 <button
 class="main-tab active"
-onclick="showPanel('ordersPanel',this)">
+onclick="showPanel('ordersPanel',this)"
+>
 
 📦 سفارش‌ها
 
 </button>
 
 
-
 <button
 class="main-tab"
-onclick="showPanel('menuPanel',this)">
+onclick="showPanel('menuPanel',this)"
+>
 
 🍽 مدیریت منو
 
 </button>
 
-
 </div>
 
 
+<!-- =====================================================
+     ORDERS PANEL
+===================================================== -->
 
 <div id="ordersPanel">
 
@@ -419,7 +1216,6 @@ onclick="showPanel('menuPanel',this)">
 </div>
 
 
-
 <div class="stat">
 
 <span>
@@ -431,7 +1227,6 @@ onclick="showPanel('menuPanel',this)">
 </strong>
 
 </div>
-
 
 
 <div class="stat">
@@ -446,17 +1241,15 @@ onclick="showPanel('menuPanel',this)">
 
 </div>
 
-
 </div>
-
 
 
 <div style="display:flex;gap:8px;">
 
-
 <button
 class="refresh"
-onclick="loadOrders()">
+onclick="loadOrders()"
+>
 
 🔄 بروزرسانی
 
@@ -465,18 +1258,16 @@ onclick="loadOrders()">
 
 <button
 class="logout"
-onclick="logout()">
+onclick="logout()"
+>
 
 خروج
 
 </button>
 
-
 </div>
 
-
 </div>
-
 
 
 <div class="filters">
@@ -484,7 +1275,8 @@ onclick="logout()">
 
 <button
 class="filter active"
-onclick="setFilter('all',this)">
+onclick="setFilter('all',this)"
+>
 
 همه
 
@@ -493,7 +1285,8 @@ onclick="setFilter('all',this)">
 
 <button
 class="filter"
-onclick="setFilter('new',this)">
+onclick="setFilter('new',this)"
+>
 
 🟡 جدید
 
@@ -502,7 +1295,8 @@ onclick="setFilter('new',this)">
 
 <button
 class="filter"
-onclick="setFilter('preparing',this)">
+onclick="setFilter('preparing',this)"
+>
 
 🔵 آماده‌سازی
 
@@ -511,7 +1305,8 @@ onclick="setFilter('preparing',this)">
 
 <button
 class="filter"
-onclick="setFilter('ready',this)">
+onclick="setFilter('ready',this)"
+>
 
 🟢 آماده شد
 
@@ -520,15 +1315,14 @@ onclick="setFilter('ready',this)">
 
 <button
 class="filter"
-onclick="setFilter('cancelled',this)">
+onclick="setFilter('cancelled',this)"
+>
 
 🔴 لغو شده
 
 </button>
 
-
 </div>
-
 
 
 <div id="orders" class="orders">
@@ -545,20 +1339,189 @@ onclick="setFilter('cancelled',this)">
 </div>
 
 
+<!-- =====================================================
+     MENU PANEL
+===================================================== -->
 
-<div id="menuPanel" style="display:none">
+<div
+id="menuPanel"
+style="display:none"
+>
 
 
-<h2 style="color:#d4af37">
+<div class="menu-header">
 
+<h2>
 🍽 مدیریت منو
-
 </h2>
 
 
+<button
+class="primary-btn"
+onclick="openCategoryModal()"
+>
 
-<div id="menuItems" class="orders">
+➕ افزودن تب اصلی
 
+</button>
+
+</div>
+
+
+<!-- CATEGORY TABS -->
+
+<div
+id="categoryTabs"
+class="category-tabs"
+>
+
+<div class="loading">
+
+در حال دریافت دسته‌بندی‌ها...
+
+</div>
+
+</div>
+
+
+<!-- ADD ITEM -->
+
+<div
+id="addItemBox"
+class="form-box"
+style="display:none"
+>
+
+
+<div class="form-title">
+
+➕ افزودن خوراکی
+
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+نام خوراکی
+</label>
+
+<input
+id="newItemName"
+class="form-input"
+placeholder="مثلاً موهیتو"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+قیمت
+</label>
+
+<input
+id="newItemPrice"
+class="form-input"
+type="number"
+min="0"
+placeholder="120000"
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+توضیحات
+</label>
+
+<textarea
+id="newItemDescription"
+class="form-textarea"
+placeholder="توضیح کوتاه درباره خوراکی"
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+ترتیب نمایش
+</label>
+
+<input
+id="newItemSort"
+class="form-input"
+type="number"
+value="0"
+>
+
+</div>
+
+
+</div>
+
+
+<div class="switch-row">
+
+<label class="switch">
+
+<input
+id="newItemActive"
+type="checkbox"
+checked
+>
+
+<span class="slider"></span>
+
+</label>
+
+<span>
+نمایش در منو
+</span>
+
+</div>
+
+
+<div class="form-buttons">
+
+<button
+class="primary-btn"
+onclick="addMenuItem()"
+>
+
+💾 افزودن خوراکی
+
+</button>
+
+
+<button
+class="secondary-btn"
+onclick="closeAddItem()"
+>
+
+انصراف
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ITEMS -->
+
+<div
+id="menuItems"
+class="orders"
+>
 
 <div class="loading">
 
@@ -566,21 +1529,255 @@ onclick="setFilter('cancelled',this)">
 
 </div>
 
-
 </div>
 
 
 </div>
 
-    <div id="toast" class="toast"></div>
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+id="toast"
+class="toast"
+></div>
 
 
 </main>
 
 
+<!-- =====================================================
+     CATEGORY MODAL
+===================================================== -->
+
+<div
+id="categoryModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+
+<div class="modal-title">
+
+<span id="categoryModalTitle">
+➕ افزودن تب اصلی
+</span>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+نام تب
+</label>
+
+<input
+id="categoryName"
+class="form-input"
+placeholder="مثلاً نوشیدنی"
+>
+
+</div>
+
+
+<div style="margin-top:12px;">
+
+<label style="color:#888;font-size:12px;">
+ترتیب نمایش
+</label>
+
+<input
+id="categorySort"
+class="form-input"
+type="number"
+value="0"
+style="margin-top:6px;"
+>
+
+</div>
+
+
+<div class="form-buttons">
+
+<button
+id="categorySaveBtn"
+class="primary-btn"
+onclick="saveCategory()"
+>
+
+💾 ذخیره
+
+</button>
+
+
+<button
+class="secondary-btn"
+onclick="closeCategoryModal()"
+>
+
+انصراف
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     ITEM EDIT MODAL
+===================================================== -->
+
+<div
+id="itemModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+
+<div class="modal-title">
+
+✏️ ویرایش خوراکی
+
+</div>
+
+
+<input
+id="editItemId"
+type="hidden"
+>
+
+
+<div class="form-group">
+
+<label>
+نام خوراکی
+</label>
+
+<input
+id="editItemName"
+class="form-input"
+>
+
+</div>
+
+
+<div
+class="form-group"
+style="margin-top:12px;"
+>
+
+<label>
+قیمت
+</label>
+
+<input
+id="editItemPrice"
+class="form-input"
+type="number"
+min="0"
+>
+
+</div>
+
+
+<div
+class="form-group"
+style="margin-top:12px;"
+>
+
+<label>
+توضیحات
+</label>
+
+<textarea
+id="editItemDescription"
+class="form-textarea"
+></textarea>
+
+</div>
+
+
+<div
+class="form-group"
+style="margin-top:12px;"
+>
+
+<label>
+ترتیب نمایش
+</label>
+
+<input
+id="editItemSort"
+class="form-input"
+type="number"
+>
+
+</div>
+
+
+<div class="switch-row">
+
+<label class="switch">
+
+<input
+id="editItemActive"
+type="checkbox"
+>
+
+<span class="slider"></span>
+
+</label>
+
+<span>
+فعال باشد
+</span>
+
+</div>
+
+
+<div class="form-buttons">
+
+<button
+class="primary-btn"
+onclick="saveItemEdit()"
+>
+
+💾 ذخیره تغییرات
+
+</button>
+
+
+<button
+class="secondary-btn"
+onclick="closeItemModal()"
+>
+
+انصراف
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
 
 <script>
 
+/* =====================================================
+   SUPABASE
+===================================================== */
 
 const SUPABASE_URL =
 "https://lryoqddbyasdtjdrwpvx.supabase.co";
@@ -601,37 +1798,57 @@ SUPABASE_KEY
 );
 
 
+/* =====================================================
+   GLOBALS
+===================================================== */
 
-let orders=[];
+let orders = [];
 
-let currentFilter="all";
+let currentFilter = "all";
 
-let menuItems=[];
+let categories = [];
+
+let menuItems = [];
+
+let selectedCategoryId = null;
+
+let editingCategoryId = null;
 
 
+/* =====================================================
+   ADMIN CHECK
+===================================================== */
 
 async function checkAdmin(){
 
 const {
 data,
 error
-}=await supabaseClient.auth.getSession();
+} =
+await supabaseClient.auth.getSession();
 
 
-if(error || !data.session){
+if(
+error ||
+!data.session
+){
 
-window.location.href="login.html";
+window.location.href =
+"login.html";
 
 return false;
 
 }
 
 
-if(data.session.user.id !== ADMIN_UID){
+if(
+data.session.user.id !== ADMIN_UID
+){
 
 await supabaseClient.auth.signOut();
 
-window.location.href="login.html";
+window.location.href =
+"login.html";
 
 return false;
 
@@ -643,11 +1860,15 @@ return true;
 }
 
 
-
+/* =====================================================
+   ORDERS
+===================================================== */
 
 async function loadOrders(){
 
-if(!await checkAdmin()){
+if(
+!await checkAdmin()
+){
 return;
 }
 
@@ -655,7 +1876,8 @@ return;
 const {
 data,
 error
-}=await supabaseClient
+} =
+await supabaseClient
 
 .from("orders")
 
@@ -669,18 +1891,18 @@ ascending:false
 );
 
 
-
 if(error){
 
-showToast("❌ دریافت سفارش‌ها انجام نشد");
+showToast(
+"❌ دریافت سفارش‌ها انجام نشد"
+);
 
 return;
 
 }
 
 
-
-orders=data || [];
+orders = data || [];
 
 
 updateStats();
@@ -690,274 +1912,54 @@ renderOrders();
 }
 
 
-
-
-async function loadMenuItems(){
-
-const {
-data,
-error
-}=await supabaseClient
-
-.from("menu_items")
-
-.select("*")
-
-.order("id");
-
-
-
-if(error){
-
-showToast("❌ دریافت منو انجام نشد");
-
-return;
-
-}
-
-
-menuItems=data || [];
-
-
-renderMenuItems();
-
-}
-
-
-
-
-function renderMenuItems(){
-
-const container =
-document.getElementById("menuItems");
-
-
-if(!container)return;
-
-
-if(menuItems.length===0){
-
-container.innerHTML=`
-
-<div class="empty">
-
-منویی وجود ندارد
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-
-container.innerHTML="";
-
-
-menuItems.forEach(item=>{
-
-
-container.innerHTML += `
-
-<div class="order">
-
-
-<div class="order-head">
-
-
-<strong style="color:#d4af37">
-
-${item.name}
-
-</strong>
-
-
-<span>
-
-${item.category || "-"}
-
-</span>
-
-
-</div>
-
-
-
-<label style="color:#aaa">
-
-قیمت
-
-</label>
-
-
-<input
-
-id="price-${item.id}"
-
-value="${item.price}"
-
-type="number"
-
-style="
-width:100%;
-margin-top:5px;
-padding:10px;
-background:#090909;
-color:#fff;
-border:1px solid #333;
-border-radius:8px;
-"
-
-
->
-
-
-
-<button
-
-class="status-btn"
-
-onclick="updateMenuPrice(${item.id})"
-
->
-
-💾 ذخیره قیمت
-
-</button>
-
-
-
-<button
-
-class="status-btn"
-
-onclick="toggleMenuActive(${item.id},${item.active})"
-
->
-
-${item.active ? "⏸ غیرفعال کردن":"▶️ فعال کردن"}
-
-</button>
-
-
-
-</div>
-
-`;
-
-});
-
-
-}
-
-
-
-
-
-async function updateMenuPrice(id){
-
-const price =
-Number(
-document.getElementById("price-"+id).value
-);
-
-
-
-const {
-error
-}=await supabaseClient
-
-.from("menu_items")
-
-.update({
-price:price
-})
-
-.eq("id",id);
-
-
-
-if(error){
-
-showToast("❌ ذخیره نشد");
-
-return;
-
-}
-
-
-showToast("✅ قیمت ذخیره شد");
-
-loadMenuItems();
-
-}
-
-
-
-
-async function toggleMenuActive(id,status){
-
-
-const {
-error
-}=await supabaseClient
-
-.from("menu_items")
-
-.update({
-active:!status
-})
-
-.eq("id",id);
-
-
-
-if(error){
-
-showToast("❌ تغییر وضعیت نشد");
-
-return;
-
-}
-
-
-showToast("✅ وضعیت تغییر کرد");
-
-loadMenuItems();
-
-}
-
-
-
+/* =====================================================
+   STATS
+===================================================== */
 
 function updateStats(){
 
-document.getElementById("totalOrders").innerText =
+document.getElementById(
+"totalOrders"
+).innerText =
 orders.length;
 
 
-document.getElementById("newOrders").innerText =
-orders.filter(o=>o.status==="new").length;
+document.getElementById(
+"newOrders"
+).innerText =
+orders.filter(
+o => o.status === "new"
+).length;
 
 
-document.getElementById("preparingOrders").innerText =
-orders.filter(o=>o.status==="preparing").length;
+document.getElementById(
+"preparingOrders"
+).innerText =
+orders.filter(
+o => o.status === "preparing"
+).length;
 
 }
 
 
+/* =====================================================
+   FILTER
+===================================================== */
+
+function setFilter(
+filter,
+btn
+){
+
+currentFilter =
+filter;
 
 
-function setFilter(filter,btn){
-
-currentFilter=filter;
-
-
-document.querySelectorAll(".filter")
+document
+.querySelectorAll(".filter")
 .forEach(
-b=>b.classList.remove("active")
+b =>
+b.classList.remove("active")
 );
 
 
@@ -969,30 +1971,40 @@ renderOrders();
 }
 
 
-
+/* =====================================================
+   RENDER ORDERS
+===================================================== */
 
 function renderOrders(){
 
 const container =
-document.getElementById("orders");
+document.getElementById(
+"orders"
+);
 
 
-let list=orders;
+let list =
+orders;
 
 
-if(currentFilter!=="all"){
+if(
+currentFilter !== "all"
+){
 
-list=orders.filter(
-o=>o.status===currentFilter
+list =
+orders.filter(
+o =>
+o.status === currentFilter
 );
 
 }
 
 
+if(
+list.length === 0
+){
 
-if(list.length===0){
-
-container.innerHTML=`
+container.innerHTML = `
 
 <div class="empty">
 
@@ -1007,24 +2019,32 @@ return;
 }
 
 
-container.innerHTML="";
+container.innerHTML = "";
 
 
-list.forEach(order=>{
+list.forEach(
+order => {
 
-container.innerHTML += createOrderHTML(order);
+container.innerHTML +=
+createOrderHTML(order);
 
 });
 
-
 }
 
-    function createOrderHTML(order){
 
-let items="";
+/* =====================================================
+   ORDER HTML
+===================================================== */
+
+function createOrderHTML(order){
+
+let items = "";
 
 
-(order.items || []).forEach(item=>{
+(order.items || [])
+.forEach(
+item => {
 
 items += `
 
@@ -1060,7 +2080,6 @@ ${formatNumber(
 });
 
 
-
 return `
 
 <div class="order ${order.status}">
@@ -1080,26 +2099,28 @@ return `
 
 <br>
 
-
 <small>
-${formatDate(order.created_at)}
+
+${formatDate(
+order.created_at
+)}
+
 </small>
 
-
 </div>
-
 
 
 <div class="table">
 
 🪑 میز:
-${order.table_number}
+${escapeHTML(
+order.table_number
+)}
 
 </div>
 
 
 </div>
-
 
 
 <div class="items">
@@ -1107,7 +2128,6 @@ ${order.table_number}
 ${items}
 
 </div>
-
 
 
 <div class="total">
@@ -1119,66 +2139,74 @@ ${items}
 
 <strong>
 
-${formatNumber(order.total_price)}
+${formatNumber(
+order.total_price
+)}
+
 تومان
 
 </strong>
 
-
 </div>
-
 
 
 <div class="order-actions">
 
 
-<button class="status-btn"
-onclick="changeStatus(${order.id},'new')">
+<button
+class="status-btn"
+onclick="changeStatus(${order.id},'new')"
+>
 
 🟡 جدید
 
 </button>
 
 
-
-<button class="status-btn"
-onclick="changeStatus(${order.id},'preparing')">
+<button
+class="status-btn"
+onclick="changeStatus(${order.id},'preparing')"
+>
 
 🔵 آماده‌سازی
 
 </button>
 
 
-
-<button class="status-btn"
-onclick="changeStatus(${order.id},'ready')">
+<button
+class="status-btn"
+onclick="changeStatus(${order.id},'ready')"
+>
 
 🟢 آماده شد
 
 </button>
 
 
-
-<button class="status-btn"
-onclick="changeStatus(${order.id},'cancelled')">
+<button
+class="status-btn"
+onclick="changeStatus(${order.id},'cancelled')"
+>
 
 🔴 لغو
 
 </button>
 
 
-
-<button class="status-btn"
-onclick="printInvoice(${order.id})">
+<button
+class="status-btn"
+onclick="printInvoice(${order.id})"
+>
 
 🖨 چاپ فاکتور
 
 </button>
 
 
-
-<button class="status-btn"
-onclick="deleteOrder(${order.id})">
+<button
+class="status-btn"
+onclick="deleteOrder(${order.id})"
+>
 
 🗑 حذف
 
@@ -1195,13 +2223,19 @@ onclick="deleteOrder(${order.id})">
 }
 
 
+/* =====================================================
+   CHANGE STATUS
+===================================================== */
 
-
-async function changeStatus(id,status){
+async function changeStatus(
+id,
+status
+){
 
 const {
 error
-}=await supabaseClient
+} =
+await supabaseClient
 
 .from("orders")
 
@@ -1209,95 +2243,1444 @@ error
 status:status
 })
 
-.eq("id",id);
-
+.eq(
+"id",
+id
+);
 
 
 if(error){
 
-showToast("❌ تغییر وضعیت نشد");
+showToast(
+"❌ تغییر وضعیت نشد"
+);
 
 return;
 
 }
 
 
-
-let order =
-orders.find(o=>o.id===id);
+const order =
+orders.find(
+o => o.id === id
+);
 
 
 if(order){
 
-order.status=status;
+order.status =
+status;
 
 }
 
+
+updateStats();
 
 renderOrders();
 
-showToast("✅ وضعیت تغییر کرد");
+showToast(
+"✅ وضعیت تغییر کرد"
+);
 
 }
 
 
-
-
+/* =====================================================
+   DELETE ORDER
+===================================================== */
 
 async function deleteOrder(id){
 
-if(!confirm("حذف این سفارش؟"))
+if(
+!confirm(
+"حذف این سفارش؟"
+)
+){
 return;
-
+}
 
 
 const {
 error
-}=await supabaseClient
+} =
+await supabaseClient
 
 .from("orders")
 
 .delete()
 
-.eq("id",id);
-
+.eq(
+"id",
+id
+);
 
 
 if(error){
 
-showToast("❌ حذف نشد");
+showToast(
+"❌ حذف نشد"
+);
 
 return;
 
 }
 
 
-
 orders =
 orders.filter(
-o=>o.id!==id
+o => o.id !== id
 );
 
 
+updateStats();
 
 renderOrders();
 
-showToast("🗑 حذف شد");
+showToast(
+"🗑 حذف شد"
+);
 
 }
 
 
+/* =====================================================
+   MENU - LOAD CATEGORIES
+===================================================== */
+
+async function loadCategories(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("menu_categories")
+
+.select("*")
+
+.order(
+"sort_order",
+{
+ascending:true
+}
+);
 
 
+if(error){
+
+showToast(
+"❌ دریافت تب‌ها انجام نشد"
+);
+
+return;
+
+}
+
+
+categories =
+data || [];
+
+
+if(
+categories.length === 0
+){
+
+selectedCategoryId =
+null;
+
+}else{
+
+if(
+!categories.some(
+c =>
+c.id === selectedCategoryId
+)
+){
+
+selectedCategoryId =
+categories[0].id;
+
+}
+
+}
+
+
+renderCategoryTabs();
+
+await loadMenuItems();
+
+}
+
+
+/* =====================================================
+   RENDER CATEGORY TABS
+===================================================== */
+
+function renderCategoryTabs(){
+
+const container =
+document.getElementById(
+"categoryTabs"
+);
+
+
+if(
+categories.length === 0
+){
+
+container.innerHTML = `
+
+<div class="empty">
+
+هنوز هیچ تبی ساخته نشده است.
+
+</div>
+
+`;
+
+document.getElementById(
+"menuItems"
+).innerHTML = "";
+
+document.getElementById(
+"addItemBox"
+).style.display =
+"none";
+
+return;
+
+}
+
+
+container.innerHTML = "";
+
+
+categories.forEach(
+category => {
+
+const count =
+menuItems.filter(
+item =>
+item.category_id === category.id
+).length;
+
+
+const wrapper =
+document.createElement(
+"div"
+);
+
+
+wrapper.className =
+"category-tab" +
+(
+category.id === selectedCategoryId
+? " active"
+: ""
+);
+
+
+wrapper.onclick =
+() => selectCategory(
+category.id
+);
+
+
+wrapper.innerHTML = `
+
+<span>
+
+${escapeHTML(
+category.name
+)}
+
+</span>
+
+
+<span class="category-count">
+
+${count}
+
+</span>
+
+
+<span class="category-actions">
+
+
+<button
+class="icon-btn"
+title="ویرایش"
+onclick="event.stopPropagation();editCategory('${category.id}')"
+>
+
+✏️
+
+</button>
+
+
+<button
+class="icon-btn delete"
+title="حذف"
+onclick="event.stopPropagation();deleteCategory('${category.id}')"
+>
+
+🗑
+
+</button>
+
+
+</span>
+
+`;
+
+
+container.appendChild(
+wrapper
+);
+
+});
+
+}
+
+
+/* =====================================================
+   SELECT CATEGORY
+===================================================== */
+
+function selectCategory(
+id
+){
+
+selectedCategoryId =
+id;
+
+
+renderCategoryTabs();
+
+renderMenuItems();
+
+
+document.getElementById(
+"addItemBox"
+).style.display =
+"block";
+
+}
+
+
+/* =====================================================
+   LOAD MENU ITEMS
+===================================================== */
+
+async function loadMenuItems(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("menu_items")
+
+.select("*")
+
+.order(
+"sort_order",
+{
+ascending:true
+}
+);
+
+
+if(error){
+
+showToast(
+"❌ دریافت منو انجام نشد"
+);
+
+return;
+
+}
+
+
+menuItems =
+data || [];
+
+
+renderCategoryTabs();
+
+renderMenuItems();
+
+}
+
+
+/* =====================================================
+   RENDER MENU ITEMS
+===================================================== */
+
+function renderMenuItems(){
+
+const container =
+document.getElementById(
+"menuItems"
+);
+
+
+if(
+!selectedCategoryId
+){
+
+container.innerHTML = `
+
+<div class="empty">
+
+ابتدا یک تب را انتخاب کنید.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const list =
+menuItems.filter(
+item =>
+item.category_id ===
+selectedCategoryId
+);
+
+
+if(
+list.length === 0
+){
+
+container.innerHTML = `
+
+<div class="empty">
+
+هنوز خوراکی‌ای در این تب وجود ندارد.
+
+<br><br>
+
+از دکمه «افزودن خوراکی» استفاده کن.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML = "";
+
+
+list.forEach(
+item => {
+
+const div =
+document.createElement(
+"div"
+);
+
+
+div.className =
+"menu-item" +
+(
+item.active
+? ""
+: " inactive"
+);
+
+
+div.innerHTML = `
+
+<div class="menu-item-head">
+
+
+<div>
+
+<div class="menu-item-name">
+
+${escapeHTML(
+item.name
+)}
+
+</div>
+
+
+${
+item.description
+?
+`
+<div class="menu-item-description">
+
+${escapeHTML(
+item.description
+)}
+
+</div>
+`
+:
+""
+}
+
+
+</div>
+
+
+<div class="menu-item-price">
+
+${formatNumber(
+item.price
+)}
+
+ تومان
+
+</div>
+
+
+</div>
+
+
+<div
+style="
+font-size:12px;
+color:${item.active ? '#2ecc71':'#e74c3c'};
+"
+>
+
+${item.active
+? "● فعال"
+: "● غیرفعال"
+}
+
+</div>
+
+
+<div class="menu-item-actions">
+
+
+<button
+class="secondary-btn"
+onclick="editItem('${item.id}')"
+>
+
+✏️ ویرایش
+
+</button>
+
+
+<button
+class="secondary-btn"
+onclick="toggleItem('${item.id}',${item.active})"
+>
+
+${
+item.active
+? "⏸ غیرفعال"
+: "▶️ فعال"
+}
+
+</button>
+
+
+<button
+class="danger-btn"
+onclick="deleteItem('${item.id}')"
+>
+
+🗑 حذف
+
+</button>
+
+
+</div>
+
+`;
+
+
+container.appendChild(
+div
+);
+
+});
+
+}
+
+
+/* =====================================================
+   ADD CATEGORY
+===================================================== */
+
+function openCategoryModal(){
+
+editingCategoryId =
+null;
+
+
+document.getElementById(
+"categoryModalTitle"
+).innerText =
+"➕ افزودن تب اصلی";
+
+
+document.getElementById(
+"categoryName"
+).value = "";
+
+
+document.getElementById(
+"categorySort"
+).value =
+categories.length + 1;
+
+
+document.getElementById(
+"categoryModal"
+).classList.add(
+"show"
+);
+
+
+setTimeout(
+() =>
+document.getElementById(
+"categoryName"
+).focus(),
+100
+);
+
+}
+
+
+/* =====================================================
+   EDIT CATEGORY
+===================================================== */
+
+function editCategory(id){
+
+const category =
+categories.find(
+c => c.id === id
+);
+
+
+if(!category)
+return;
+
+
+editingCategoryId =
+id;
+
+
+document.getElementById(
+"categoryModalTitle"
+).innerText =
+"✏️ ویرایش تب";
+
+
+document.getElementById(
+"categoryName"
+).value =
+category.name;
+
+
+document.getElementById(
+"categorySort"
+).value =
+category.sort_order;
+
+
+document.getElementById(
+"categoryModal"
+).classList.add(
+"show"
+);
+
+}
+
+
+/* =====================================================
+   SAVE CATEGORY
+===================================================== */
+
+async function saveCategory(){
+
+const name =
+document.getElementById(
+"categoryName"
+).value.trim();
+
+
+const sort =
+Number(
+document.getElementById(
+"categorySort"
+).value
+) || 0;
+
+
+if(!name){
+
+showToast(
+"⚠️ نام تب را وارد کنید"
+);
+
+return;
+
+}
+
+
+let result;
+
+
+if(
+editingCategoryId
+){
+
+result =
+await supabaseClient
+
+.from("menu_categories")
+
+.update({
+name:name,
+sort_order:sort
+})
+
+.eq(
+"id",
+editingCategoryId
+);
+
+}else{
+
+result =
+await supabaseClient
+
+.from("menu_categories")
+
+.insert({
+name:name,
+sort_order:sort,
+active:true
+});
+
+}
+
+
+if(result.error){
+
+showToast(
+"❌ ذخیره تب انجام نشد"
+);
+
+console.error(
+result.error
+);
+
+return;
+
+}
+
+
+closeCategoryModal();
+
+showToast(
+editingCategoryId
+?
+"✅ تب ویرایش شد"
+:
+"✅ تب جدید اضافه شد"
+);
+
+
+editingCategoryId =
+null;
+
+
+await loadCategories();
+
+}
+
+
+/* =====================================================
+   DELETE CATEGORY
+===================================================== */
+
+async function deleteCategory(id){
+
+const category =
+categories.find(
+c => c.id === id
+);
+
+
+if(!category)
+return;
+
+
+const count =
+menuItems.filter(
+item =>
+item.category_id === id
+).length;
+
+
+if(count > 0){
+
+showToast(
+"⚠️ ابتدا خوراکی‌های این تب را حذف کنید"
+);
+
+return;
+
+}
+
+
+if(
+!confirm(
+`تب «${category.name}» حذف شود؟`
+)
+){
+return;
+}
+
+
+const {
+error
+} =
+await supabaseClient
+
+.from("menu_categories")
+
+.delete()
+
+.eq(
+"id",
+id
+);
+
+
+if(error){
+
+showToast(
+"❌ حذف تب انجام نشد"
+);
+
+return;
+
+}
+
+
+if(
+selectedCategoryId === id
+){
+
+selectedCategoryId =
+null;
+
+}
+
+
+showToast(
+"🗑 تب حذف شد"
+);
+
+
+await loadCategories();
+
+}
+
+
+/* =====================================================
+   CLOSE CATEGORY MODAL
+===================================================== */
+
+function closeCategoryModal(){
+
+document.getElementById(
+"categoryModal"
+).classList.remove(
+"show"
+);
+
+editingCategoryId =
+null;
+
+}
+
+
+/* =====================================================
+   ADD MENU ITEM
+===================================================== */
+
+async function addMenuItem(){
+
+if(
+!selectedCategoryId
+){
+
+showToast(
+"⚠️ ابتدا یک تب انتخاب کنید"
+);
+
+return;
+
+}
+
+
+const name =
+document.getElementById(
+"newItemName"
+).value.trim();
+
+
+const price =
+Number(
+document.getElementById(
+"newItemPrice"
+).value
+);
+
+
+const description =
+document.getElementById(
+"newItemDescription"
+).value.trim();
+
+
+const sort =
+Number(
+document.getElementById(
+"newItemSort"
+).value
+) || 0;
+
+
+const active =
+document.getElementById(
+"newItemActive"
+).checked;
+
+
+if(!name){
+
+showToast(
+"⚠️ نام خوراکی را وارد کنید"
+);
+
+return;
+
+}
+
+
+if(
+isNaN(price) ||
+price < 0
+){
+
+showToast(
+"⚠️ قیمت معتبر وارد کنید"
+);
+
+return;
+
+}
+
+
+const category =
+categories.find(
+c =>
+c.id ===
+selectedCategoryId
+);
+
+
+const {error} =
+await supabaseClient
+
+.from("menu_items")
+
+.insert({
+
+name:name,
+
+price:price,
+
+description:
+description || null,
+
+category_id:
+selectedCategoryId,
+
+category:
+category
+?
+category.name
+: "",
+
+sort_order:
+sort,
+
+active:
+active
+
+});
+
+
+if(error){
+
+showToast(
+"❌ افزودن خوراکی انجام نشد"
+);
+
+console.error(error);
+
+return;
+
+}
+
+
+document.getElementById(
+"newItemName"
+).value = "";
+
+
+document.getElementById(
+"newItemPrice"
+).value = "";
+
+
+document.getElementById(
+"newItemDescription"
+).value = "";
+
+
+document.getElementById(
+"newItemSort"
+).value = "0";
+
+
+document.getElementById(
+"newItemActive"
+).checked = true;
+
+
+showToast(
+"✅ خوراکی اضافه شد"
+);
+
+
+await loadMenuItems();
+
+}
+
+
+/* =====================================================
+   CLOSE ADD ITEM
+===================================================== */
+
+function closeAddItem(){
+
+document.getElementById(
+"addItemBox"
+).style.display =
+"none";
+
+}
+
+
+/* =====================================================
+   EDIT ITEM
+===================================================== */
+
+function editItem(id){
+
+const item =
+menuItems.find(
+i =>
+String(i.id) ===
+String(id)
+);
+
+
+if(!item)
+return;
+
+
+document.getElementById(
+"editItemId"
+).value =
+item.id;
+
+
+document.getElementById(
+"editItemName"
+).value =
+item.name || "";
+
+
+document.getElementById(
+"editItemPrice"
+).value =
+item.price || 0;
+
+
+document.getElementById(
+"editItemDescription"
+).value =
+item.description || "";
+
+
+document.getElementById(
+"editItemSort"
+).value =
+item.sort_order || 0;
+
+
+document.getElementById(
+"editItemActive"
+).checked =
+item.active;
+
+
+document.getElementById(
+"itemModal"
+).classList.add(
+"show"
+);
+
+}
+
+
+/* =====================================================
+   SAVE ITEM EDIT
+===================================================== */
+
+async function saveItemEdit(){
+
+const id =
+document.getElementById(
+"editItemId"
+).value;
+
+
+const name =
+document.getElementById(
+"editItemName"
+).value.trim();
+
+
+const price =
+Number(
+document.getElementById(
+"editItemPrice"
+).value
+);
+
+
+const description =
+document.getElementById(
+"editItemDescription"
+).value.trim();
+
+
+const sort =
+Number(
+document.getElementById(
+"editItemSort"
+).value
+) || 0;
+
+
+const active =
+document.getElementById(
+"editItemActive"
+).checked;
+
+
+if(!name){
+
+showToast(
+"⚠️ نام خوراکی را وارد کنید"
+);
+
+return;
+
+}
+
+
+if(
+isNaN(price) ||
+price < 0
+){
+
+showToast(
+"⚠️ قیمت معتبر وارد کنید"
+);
+
+return;
+
+}
+
+
+const {
+error
+} =
+await supabaseClient
+
+.from("menu_items")
+
+.update({
+
+name:name,
+
+price:price,
+
+description:
+description || null,
+
+sort_order:
+sort,
+
+active:
+active
+
+})
+
+.eq(
+"id",
+id
+);
+
+
+if(error){
+
+showToast(
+"❌ ویرایش انجام نشد"
+);
+
+console.error(error);
+
+return;
+
+}
+
+
+closeItemModal();
+
+showToast(
+"✅ خوراکی ویرایش شد"
+);
+
+
+await loadMenuItems();
+
+}
+
+
+/* =====================================================
+   CLOSE ITEM MODAL
+===================================================== */
+
+function closeItemModal(){
+
+document.getElementById(
+"itemModal"
+).classList.remove(
+"show"
+);
+
+}
+
+
+/* =====================================================
+   TOGGLE ITEM
+===================================================== */
+
+async function toggleItem(
+id,
+status
+){
+
+const {
+error
+} =
+await supabaseClient
+
+.from("menu_items")
+
+.update({
+active:!status
+})
+
+.eq(
+"id",
+id
+);
+
+
+if(error){
+
+showToast(
+"❌ تغییر وضعیت انجام نشد"
+);
+
+return;
+
+}
+
+
+showToast(
+status
+?
+"⏸ خوراکی غیرفعال شد"
+:
+"▶️ خوراکی فعال شد"
+);
+
+
+await loadMenuItems();
+
+}
+
+
+/* =====================================================
+   DELETE ITEM
+===================================================== */
+
+async function deleteItem(id){
+
+const item =
+menuItems.find(
+i =>
+String(i.id) ===
+String(id)
+);
+
+
+if(!item)
+return;
+
+
+if(
+!confirm(
+`خوراکی «${item.name}» حذف شود؟`
+)
+){
+return;
+}
+
+
+const {
+error
+} =
+await supabaseClient
+
+.from("menu_items")
+
+.delete()
+
+.eq(
+"id",
+id
+);
+
+
+if(error){
+
+showToast(
+"❌ حذف خوراکی انجام نشد"
+);
+
+return;
+
+}
+
+
+showToast(
+"🗑 خوراکی حذف شد"
+);
+
+
+await loadMenuItems();
+
+}
+
+
+/* =====================================================
+   MAIN PANELS
+===================================================== */
+
+function showPanel(
+id,
+btn
+){
+
+document.getElementById(
+"ordersPanel"
+).style.display =
+"none";
+
+
+document.getElementById(
+"menuPanel"
+).style.display =
+"none";
+
+
+document.getElementById(
+id
+).style.display =
+"block";
+
+
+document
+.querySelectorAll(".main-tab")
+.forEach(
+b =>
+b.classList.remove("active")
+);
+
+
+btn.classList.add("active");
+
+
+if(
+id === "menuPanel"
+){
+
+loadCategories();
+
+}
+
+}
+
+
+/* =====================================================
+   FORMAT NUMBER
+===================================================== */
 
 function formatNumber(num){
 
-return Number(num || 0)
+return Number(
+num || 0
+)
 .toLocaleString("fa-IR");
 
 }
 
 
+/* =====================================================
+   FORMAT DATE
+===================================================== */
 
 function formatDate(date){
 
@@ -1306,95 +3689,139 @@ return "";
 
 
 return new Date(date)
-.toLocaleString("fa-IR");
+.toLocaleString(
+"fa-IR"
+);
 
 }
 
 
-
-
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
 function escapeHTML(value){
 
-return String(value)
+return String(
+value ?? ""
+)
 
-.replace(/&/g,"&amp;")
+.replace(
+/&/g,
+"&amp;"
+)
 
-.replace(/</g,"&lt;")
+.replace(
+/</g,
+"&lt;"
+)
 
-.replace(/>/g,"&gt;")
+.replace(
+/>/g,
+"&gt;"
+)
 
-.replace(/"/g,"&quot;")
+.replace(
+/"/g,
+"&quot;"
+)
 
-.replace(/'/g,"&#039;");
+.replace(
+/'/g,
+"&#039;"
+);
 
 }
 
 
-
+/* =====================================================
+   TOAST
+===================================================== */
 
 function showToast(msg){
 
 const toast =
-document.getElementById("toast");
+document.getElementById(
+"toast"
+);
 
 
-toast.innerText=msg;
+toast.innerText =
+msg;
 
 
-toast.classList.add("show");
+toast.classList.add(
+"show"
+);
 
 
-setTimeout(()=>{
-
-toast.classList.remove("show");
-
-},2000);
+setTimeout(
+() =>
+toast.classList.remove(
+"show"
+),
+2500
+);
 
 }
 
 
-
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 async function logout(){
 
-await supabaseClient.auth.signOut();
+await supabaseClient
+.auth
+.signOut();
 
-window.location.href="login.html";
+
+window.location.href =
+"login.html";
 
 }
 
 
-
-
+/* =====================================================
+   PRINT INVOICE
+===================================================== */
 
 function printInvoice(id){
 
 const order =
-orders.find(o=>o.id===id);
+orders.find(
+o =>
+o.id === id
+);
 
 
 if(!order)
 return;
 
 
-let rows="";
+let rows = "";
 
 
-order.items.forEach(item=>{
-
+(order.items || [])
+.forEach(
+item => {
 
 rows += `
 
 <tr>
 
-<td>${item.name}</td>
+<td>
+${escapeHTML(item.name)}
+</td>
 
-<td>${item.quantity || 1}</td>
+<td>
+${item.quantity || 1}
+</td>
 
 <td>
 ${formatNumber(
-item.price *
+(item.price || 0) *
 (item.quantity || 1)
 )}
 </td>
@@ -1406,14 +3833,23 @@ item.price *
 });
 
 
-
-let win =
+const win =
 window.open(
 "",
 "_blank",
 "width=350,height=600"
 );
 
+
+if(!win){
+
+showToast(
+"❌ پنجره چاپ توسط مرورگر مسدود شد"
+);
+
+return;
+
+}
 
 
 win.document.write(`
@@ -1422,21 +3858,45 @@ win.document.write(`
 
 <head>
 
+<meta charset="UTF-8">
+
 <style>
 
 body{
+
 font-family:tahoma;
+
 width:80mm;
+
 text-align:center;
+
+margin:auto;
+
 }
 
 table{
+
 width:100%;
+
+border-collapse:collapse;
+
 }
 
 td{
+
 padding:5px;
-border-bottom:1px dashed #999;
+
+border-bottom:
+1px dashed #999;
+
+font-size:12px;
+
+}
+
+h2{
+
+font-size:18px;
+
 }
 
 </style>
@@ -1458,7 +3918,9 @@ HAYAT COMPLEX
 
 
 <p>
-میز ${order.table_number}
+میز ${escapeHTML(
+order.table_number
+)}
 </p>
 
 
@@ -1477,7 +3939,9 @@ ${rows}
 
 <h3>
 
-${formatNumber(order.total_price)}
+${formatNumber(
+order.total_price
+)}
 تومان
 
 </h3>
@@ -1490,80 +3954,53 @@ ${formatNumber(order.total_price)}
 `);
 
 
-
 win.document.close();
 
 
-setTimeout(()=>{
+setTimeout(
+() => {
 
 win.print();
 
 win.close();
 
-},500);
-
-
-}
-
-
-
-
-
-function showPanel(id,btn){
-
-document.getElementById("ordersPanel")
-.style.display="none";
-
-
-document.getElementById("menuPanel")
-.style.display="none";
-
-
-
-document.getElementById(id)
-.style.display="block";
-
-
-
-document.querySelectorAll(".main-tab")
-.forEach(
-b=>b.classList.remove("active")
+},
+500
 );
 
-
-
-btn.classList.add("active");
-
 }
 
 
+/* =====================================================
+   AUTO REFRESH ORDERS
+===================================================== */
 
-
-
-setInterval(()=>{
+setInterval(
+() => {
 
 loadOrders();
 
-},15000);
+},
+15000
+);
 
 
-
-
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
 
 checkAdmin()
-
-.then(ok=>{
+.then(
+ok => {
 
 if(ok){
 
 loadOrders();
 
-loadMenuItems();
-
 }
 
-});
-
+}
+);
 
 </script>
 
