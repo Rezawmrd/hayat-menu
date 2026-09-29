@@ -2064,17 +2064,27 @@ function getChildren(main){
    CATEGORY IMAGE
 ========================================== */
 
-function getCategoryImage(main){
+function getCategoryImage(section){
 
-    const id =
-        String(main.id || "")
-        .toLowerCase();
+    if(!section){
+        return "";
+    }
 
+    const id = String(section.id || "").trim().toLowerCase();
+    const name = String(section.name || "").trim().toLowerCase();
 
-    return categoryImages[id]
-        ||
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80";
+    if(
+        id === "breakfast" ||
+        name === "صبحانه" ||
+        name === "breakfast"
+    ){
+        return "https://rezawmrd.github.io/hayat-menu/image_1790713742413.jpeg";
+    }
 
+    return (
+        categoryImages[id] ||
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80"
+    );
 }
 
 
