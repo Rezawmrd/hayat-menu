@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -56,7 +57,9 @@ a{
 #intro{
     position:fixed;
     inset:0;
+
     background:#090909;
+
     z-index:99999;
 
     display:flex;
@@ -70,52 +73,70 @@ a{
 #intro img{
     width:130px;
     height:130px;
+
     object-fit:cover;
+
     border-radius:50%;
+
     border:2px solid #d4af37;
+
     box-shadow:
         0 0 30px rgba(212,175,55,.16),
         0 0 80px rgba(212,175,55,.05);
+
     animation:logoIn 1.2s ease both;
 }
 
 #intro h1{
     margin-top:22px;
+
     color:#d4af37;
+
     font-size:20px;
+
     letter-spacing:4px;
+
     font-weight:700;
+
     animation:titleIn 1s ease .3s both;
 }
 
 @keyframes logoIn{
+
     from{
         opacity:0;
         transform:scale(.7);
     }
+
     to{
         opacity:1;
         transform:scale(1);
     }
+
 }
 
 @keyframes titleIn{
+
     from{
         opacity:0;
         transform:translateY(12px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 @keyframes introOut{
+
     to{
         opacity:0;
         visibility:hidden;
         pointer-events:none;
     }
+
 }
 
 
@@ -125,66 +146,55 @@ a{
 
 header{
     width:100%;
+
     padding:18px 16px 8px;
+
     position:relative;
+
     z-index:10;
 }
 
 .topbar{
     max-width:850px;
+
     margin:auto;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    position:relative;
 }
 
 .brand{
     display:flex;
+
     align-items:center;
+
+    justify-content:center;
+
     gap:10px;
 }
 
 .brand img{
     width:43px;
     height:43px;
+
     object-fit:cover;
+
     border-radius:50%;
+
     border:1px solid rgba(212,175,55,.7);
 }
 
 .brand-name{
     color:#d4af37;
+
     font-size:19px;
+
     font-weight:800;
+
     letter-spacing:2px;
-}
-
-.search-top-btn{
-    position:absolute;
-    right:0;
-
-    width:43px;
-    height:43px;
-
-    border-radius:50%;
-    border:1px solid rgba(212,175,55,.45);
-    background:#111;
-    color:#d4af37;
-
-    font-size:20px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    transition:.25s;
-}
-
-.search-top-btn:hover{
-    background:#d4af37;
-    color:#111;
 }
 
 
@@ -194,29 +204,38 @@ header{
 
 .hero{
     max-width:850px;
+
     margin:12px auto 0;
+
     padding:0 12px;
 }
 
 .slider{
     position:relative;
+
     width:100%;
+
     height:230px;
 
     overflow:hidden;
+
     border-radius:24px;
 
     background:#111;
+
     border:1px solid rgba(212,175,55,.25);
 
-    box-shadow:0 15px 45px rgba(0,0,0,.35);
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35);
 }
 
 .slide{
     position:absolute;
+
     inset:0;
 
     opacity:0;
+
     transform:scale(1.04);
 
     transition:
@@ -228,13 +247,16 @@ header{
 
 .slide.active{
     opacity:1;
+
     transform:scale(1);
 }
 
 .slide img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
 
     filter:brightness(.58);
@@ -242,7 +264,9 @@ header{
 
 .slide::after{
     content:"";
+
     position:absolute;
+
     inset:0;
 
     background:
@@ -256,6 +280,7 @@ header{
 
 .slide-content{
     position:absolute;
+
     z-index:2;
 
     right:24px;
@@ -265,29 +290,39 @@ header{
 
 .slide-small{
     color:#d4af37;
+
     font-size:12px;
+
     margin-bottom:6px;
 }
 
 .slide-title{
     font-size:25px;
+
     font-weight:800;
 }
 
 .slide-text{
     margin-top:4px;
+
     color:#ddd;
+
     font-size:12px;
 }
 
 .slider-dots{
     position:absolute;
+
     z-index:5;
+
     bottom:12px;
+
     left:50%;
+
     transform:translateX(-50%);
 
     display:flex;
+
     gap:6px;
 }
 
@@ -296,15 +331,19 @@ header{
     height:7px;
 
     border:0;
+
     border-radius:50%;
 
     background:rgba(255,255,255,.4);
+
     transition:.3s;
 }
 
 .slider-dot.active{
     width:22px;
+
     border-radius:10px;
+
     background:#d4af37;
 }
 
@@ -315,27 +354,35 @@ header{
 
 .search-box{
     max-width:850px;
+
     margin:16px auto 0;
+
     padding:0 12px;
 }
 
 .search-button{
     width:100%;
+
     height:52px;
 
     border:1px solid rgba(212,175,55,.25);
+
     border-radius:15px;
 
     background:#111;
+
     color:#aaa;
 
     display:flex;
+
     align-items:center;
+
     gap:11px;
 
     padding:0 17px;
 
     text-align:right;
+
     font-size:13px;
 
     transition:.25s;
@@ -343,11 +390,13 @@ header{
 
 .search-button:hover{
     border-color:rgba(212,175,55,.6);
+
     color:#ddd;
 }
 
 .search-icon{
     color:#d4af37;
+
     font-size:20px;
 }
 
@@ -358,13 +407,17 @@ header{
 
 .categories-section{
     max-width:850px;
+
     margin:26px auto 0;
+
     padding:0 12px;
 }
 
 .section-heading{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     margin-bottom:13px;
@@ -372,17 +425,21 @@ header{
 
 .section-heading h2{
     font-size:17px;
+
     font-weight:700;
 }
 
 .section-heading span{
     color:#777;
+
     font-size:11px;
 }
 
 .categories{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:10px;
 }
 
@@ -392,6 +449,7 @@ header{
     height:108px;
 
     overflow:hidden;
+
     border-radius:17px;
 
     border:1px solid rgba(212,175,55,.22);
@@ -407,12 +465,18 @@ header{
 
 .category-card:hover{
     transform:translateY(-3px);
+
     border-color:rgba(212,175,55,.7);
+}
+
+.category-card:active{
+    transform:scale(.97);
 }
 
 .category-card img{
     width:100%;
     height:100%;
+
     object-fit:cover;
 
     opacity:.63;
@@ -426,7 +490,9 @@ header{
 
 .category-card::after{
     content:"";
+
     position:absolute;
+
     inset:0;
 
     background:
@@ -439,6 +505,7 @@ header{
 
 .category-name{
     position:absolute;
+
     z-index:2;
 
     right:10px;
@@ -446,6 +513,7 @@ header{
     bottom:9px;
 
     font-size:13px;
+
     font-weight:600;
 
     text-align:center;
@@ -453,11 +521,12 @@ header{
 
 
 /* =========================
-   CATEGORY MODAL
+   MODAL
 ========================= */
 
 .modal{
     position:fixed;
+
     inset:0;
 
     z-index:5000;
@@ -465,27 +534,34 @@ header{
     display:none;
 
     background:rgba(0,0,0,.75);
+
     backdrop-filter:blur(8px);
 }
 
 .modal.open{
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 }
 
 .modal-panel{
     width:min(850px,94vw);
+
     height:min(82vh,760px);
 
     background:#101010;
 
     border:1px solid rgba(212,175,55,.3);
+
     border-radius:24px;
 
-    box-shadow:0 25px 90px rgba(0,0,0,.7);
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.7);
 
     display:flex;
+
     flex-direction:column;
 
     overflow:hidden;
@@ -494,14 +570,23 @@ header{
 }
 
 @keyframes modalIn{
+
     from{
         opacity:0;
-        transform:translateY(25px) scale(.97);
+
+        transform:
+            translateY(25px)
+            scale(.97);
     }
+
     to{
         opacity:1;
-        transform:translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
+
 }
 
 .modal-header{
@@ -512,23 +597,29 @@ header{
     border-bottom:1px solid rgba(255,255,255,.07);
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 }
 
 .modal-title{
     display:flex;
+
     flex-direction:column;
+
     gap:2px;
 }
 
 .modal-title strong{
     color:#d4af37;
+
     font-size:19px;
 }
 
 .modal-title span{
     color:#777;
+
     font-size:10px;
 }
 
@@ -537,16 +628,21 @@ header{
     height:39px;
 
     border:1px solid rgba(255,255,255,.12);
+
     border-radius:50%;
 
     background:#181818;
+
     color:#fff;
 
     font-size:24px;
+
     line-height:1;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     transition:.25s;
@@ -554,12 +650,15 @@ header{
 
 .close-btn:hover{
     background:#d4af37;
+
     color:#111;
 }
 
 .modal-body{
     flex:1;
+
     overflow-y:auto;
+
     padding:15px;
 }
 
@@ -569,21 +668,24 @@ header{
 
 .modal-body::-webkit-scrollbar-thumb{
     background:#333;
+
     border-radius:10px;
 }
 
 
 /* =========================
-   SUB CATEGORIES
+   SUB TABS
 ========================= */
 
 .sub-tabs{
     display:flex;
+
     gap:8px;
 
     overflow-x:auto;
 
     padding-bottom:12px;
+
     margin-bottom:7px;
 }
 
@@ -597,9 +699,11 @@ header{
     padding:8px 14px;
 
     border-radius:30px;
+
     border:1px solid rgba(212,175,55,.22);
 
     background:#151515;
+
     color:#aaa;
 
     font-size:11px;
@@ -609,7 +713,9 @@ header{
 
 .sub-tab.active{
     background:#d4af37;
+
     border-color:#d4af37;
+
     color:#111;
 }
 
@@ -620,7 +726,9 @@ header{
 
 .products{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:10px;
 }
 
@@ -628,6 +736,7 @@ header{
     background:#151515;
 
     border:1px solid rgba(255,255,255,.07);
+
     border-radius:15px;
 
     padding:13px;
@@ -635,7 +744,9 @@ header{
     min-height:125px;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:space-between;
 
     transition:.2s;
@@ -647,12 +758,15 @@ header{
 
 .product-name{
     font-size:14px;
+
     font-weight:600;
 }
 
 .product-description{
     color:#888;
+
     font-size:10px;
+
     line-height:1.7;
 
     margin-top:5px;
@@ -660,7 +774,9 @@ header{
 
 .product-bottom{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:8px;
@@ -670,7 +786,9 @@ header{
 
 .price{
     color:#d4af37;
+
     font-size:12px;
+
     font-weight:700;
 }
 
@@ -678,6 +796,7 @@ header{
     border:1px solid rgba(212,175,55,.45);
 
     background:transparent;
+
     color:#d4af37;
 
     border-radius:9px;
@@ -691,6 +810,7 @@ header{
 
 .add-btn:hover{
     background:#d4af37;
+
     color:#111;
 }
 
@@ -701,8 +821,11 @@ header{
 
 .empty{
     padding:40px 15px;
+
     text-align:center;
+
     color:#777;
+
     font-size:12px;
 }
 
@@ -713,16 +836,20 @@ header{
 
 .search-panel{
     width:min(850px,94vw);
+
     height:min(82vh,760px);
 
     background:#101010;
 
     border:1px solid rgba(212,175,55,.3);
+
     border-radius:24px;
 
-    box-shadow:0 25px 90px rgba(0,0,0,.7);
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.7);
 
     display:flex;
+
     flex-direction:column;
 
     overflow:hidden;
@@ -738,6 +865,7 @@ header{
 
 .search-input-wrap{
     display:flex;
+
     gap:8px;
 }
 
@@ -747,9 +875,11 @@ header{
     height:48px;
 
     background:#181818;
+
     color:#fff;
 
     border:1px solid rgba(212,175,55,.3);
+
     border-radius:13px;
 
     padding:0 15px;
@@ -770,9 +900,11 @@ header{
     flex:none;
 
     border-radius:13px;
+
     border:1px solid rgba(255,255,255,.12);
 
     background:#181818;
+
     color:#fff;
 
     font-size:22px;
@@ -780,7 +912,9 @@ header{
 
 .search-results{
     flex:1;
+
     overflow-y:auto;
+
     padding:15px;
 }
 
@@ -803,6 +937,7 @@ header{
     z-index:3000;
 
     left:15px;
+
     bottom:15px;
 
     height:51px;
@@ -814,12 +949,16 @@ header{
     border:1px solid rgba(212,175,55,.65);
 
     background:#111;
+
     color:#d4af37;
 
-    box-shadow:0 8px 30px rgba(0,0,0,.45);
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.45);
 
     display:flex;
+
     align-items:center;
+
     gap:9px;
 
     font-size:12px;
@@ -829,28 +968,35 @@ header{
 
 .cart-toggle:hover{
     background:#d4af37;
+
     color:#111;
 }
 
 .cart-count{
     min-width:22px;
+
     height:22px;
 
     border-radius:50%;
 
     background:#d4af37;
+
     color:#111;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     font-size:10px;
+
     font-weight:800;
 }
 
 .cart-toggle:hover .cart-count{
     background:#111;
+
     color:#d4af37;
 }
 
@@ -860,6 +1006,7 @@ header{
     z-index:3500;
 
     left:15px;
+
     bottom:76px;
 
     width:min(390px,calc(100vw - 30px));
@@ -869,11 +1016,14 @@ header{
     background:#111;
 
     border:1px solid rgba(212,175,55,.35);
+
     border-radius:20px;
 
-    box-shadow:0 20px 70px rgba(0,0,0,.65);
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.65);
 
     display:none;
+
     flex-direction:column;
 
     overflow:hidden;
@@ -886,21 +1036,28 @@ header{
 }
 
 @keyframes cartIn{
+
     from{
         opacity:0;
+
         transform:translateY(12px);
     }
+
     to{
         opacity:1;
+
         transform:translateY(0);
     }
+
 }
 
 .cart-head{
     padding:14px 15px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     border-bottom:1px solid rgba(255,255,255,.07);
@@ -915,9 +1072,11 @@ header{
     height:32px;
 
     border-radius:50%;
+
     border:1px solid rgba(255,255,255,.12);
 
     background:#1b1b1b;
+
     color:#fff;
 
     font-size:19px;
@@ -925,6 +1084,7 @@ header{
 
 .cart-items{
     overflow-y:auto;
+
     padding:12px;
 }
 
@@ -934,7 +1094,9 @@ header{
     border-bottom:1px solid rgba(255,255,255,.06);
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:10px;
@@ -946,13 +1108,17 @@ header{
 
 .cart-item-price{
     color:#d4af37;
+
     font-size:10px;
+
     margin-top:3px;
 }
 
 .qty{
     display:flex;
+
     align-items:center;
+
     gap:7px;
 }
 
@@ -965,12 +1131,15 @@ header{
     border:1px solid rgba(212,175,55,.35);
 
     background:#181818;
+
     color:#d4af37;
 }
 
 .qty span{
     min-width:15px;
+
     text-align:center;
+
     font-size:11px;
 }
 
@@ -982,7 +1151,9 @@ header{
 
 .total{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     margin-bottom:12px;
@@ -996,11 +1167,13 @@ header{
 
 .table-input{
     width:100%;
+
     height:43px;
 
     border-radius:10px;
 
     background:#181818;
+
     border:1px solid rgba(255,255,255,.1);
 
     color:#fff;
@@ -1016,15 +1189,19 @@ header{
 
 .order-btn{
     width:100%;
+
     height:45px;
 
     border:0;
+
     border-radius:11px;
 
     background:#d4af37;
+
     color:#111;
 
     font-weight:800;
+
     font-size:12px;
 }
 
@@ -1043,11 +1220,15 @@ header{
     z-index:9990;
 
     top:20px;
+
     left:50%;
 
-    transform:translateX(-50%) translateY(-20px);
+    transform:
+        translateX(-50%)
+        translateY(-20px);
 
     background:#d4af37;
+
     color:#111;
 
     padding:11px 18px;
@@ -1055,9 +1236,11 @@ header{
     border-radius:30px;
 
     font-size:11px;
+
     font-weight:700;
 
     opacity:0;
+
     pointer-events:none;
 
     transition:.3s;
@@ -1065,7 +1248,10 @@ header{
 
 .toast.show{
     opacity:1;
-    transform:translateX(-50%) translateY(0);
+
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 
@@ -1077,6 +1263,7 @@ footer{
     max-width:850px;
 
     margin:35px auto 0;
+
     padding:25px 15px 90px;
 
     border-top:1px solid rgba(255,255,255,.06);
@@ -1086,8 +1273,11 @@ footer{
 
 .footer-brand{
     color:#d4af37;
+
     font-size:15px;
+
     font-weight:800;
+
     letter-spacing:2px;
 }
 
@@ -1095,8 +1285,11 @@ footer{
     margin-top:13px;
 
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:7px;
 }
 
@@ -1116,18 +1309,21 @@ footer{
 
 .footer-links a:hover{
     color:#d4af37;
+
     border-color:rgba(212,175,55,.4);
 }
 
 .footer-copy{
     margin-top:14px;
+
     color:#444;
+
     font-size:9px;
 }
 
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
 @media(max-width:600px){
@@ -1136,12 +1332,17 @@ footer{
         padding-top:13px;
     }
 
+    .brand-name{
+        font-size:17px;
+    }
+
     .hero{
         margin-top:8px;
     }
 
     .slider{
         height:205px;
+
         border-radius:20px;
     }
 
@@ -1168,9 +1369,12 @@ footer{
     .modal-panel,
     .search-panel{
         width:100%;
+
         height:91vh;
 
-        border-radius:24px 24px 0 0;
+        border-radius:
+            24px 24px 0 0;
+
         border-bottom:0;
     }
 
@@ -1180,91 +1384,181 @@ footer{
 
     .cart-panel{
         left:10px;
+
         width:calc(100vw - 20px);
+
         bottom:75px;
     }
 
     .cart-toggle{
         left:10px;
+
         bottom:10px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- INTRO -->
+
+<!-- =========================
+     INTRO
+========================= -->
+
 <div id="intro">
-    <img src="file_000000005f7471fdbdd33eefd3f2e476.png" alt="HAYAT">
-    <h1>HAYAT COMPLEX</h1>
+
+    <img
+        src="file_000000005f7471fdbdd33eefd3f2e476.png"
+        alt="HAYAT"
+    >
+
+    <h1>
+        HAYAT COMPLEX
+    </h1>
+
 </div>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
     <div class="topbar">
 
-        <button class="search-top-btn" id="openSearch">
-           ⌕
-        </button>
-
         <div class="brand">
-            <img src="file_000000005f7471fdbdd33eefd3f2e476.png" alt="HAYAT">
+
+            <img
+                src="file_000000005f7471fdbdd33eefd3f2e476.png"
+                alt="HAYAT"
+            >
+
             <div class="brand-name">
-                HAYAT
+                HAYAT COMPLEX
             </div>
+
         </div>
 
     </div>
+
 </header>
 
 
-<!-- HERO -->
+<!-- =========================
+     SLIDER
+========================= -->
+
 <section class="hero">
 
-    <div class="slider" id="slider">
+    <div class="slider">
 
         <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85">
+
+            <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85"
+                alt=""
+            >
+
             <div class="slide-content">
-                <div class="slide-small">HAYAT COMPLEX</div>
-                <div class="slide-title">طعم خوبِ لحظه‌ها</div>
-                <div class="slide-text">منوی حیات را ببینید و سفارش خود را ثبت کنید</div>
+
+                <div class="slide-small">
+                    HAYAT COMPLEX
+                </div>
+
+                <div class="slide-title">
+                    طعم خوبِ لحظه‌ها
+                </div>
+
+                <div class="slide-text">
+                    منوی حیات را ببینید و سفارش خود را ثبت کنید
+                </div>
+
             </div>
+
         </div>
+
 
         <div class="slide">
-            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=85">
+
+            <img
+                src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=85"
+                alt=""
+            >
+
             <div class="slide-content">
-                <div class="slide-small">HAYAT COMPLEX</div>
-                <div class="slide-title">برای هر سلیقه</div>
-                <div class="slide-text">از صبحانه تا نوشیدنی‌های خنک</div>
+
+                <div class="slide-small">
+                    HAYAT COMPLEX
+                </div>
+
+                <div class="slide-title">
+                    برای هر سلیقه
+                </div>
+
+                <div class="slide-text">
+                    از صبحانه تا نوشیدنی‌های خنک
+                </div>
+
             </div>
+
         </div>
+
 
         <div class="slide">
-            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=85">
+
+            <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=85"
+                alt=""
+            >
+
             <div class="slide-content">
-                <div class="slide-small">HAYAT COMPLEX</div>
-                <div class="slide-title">انتخاب کن، سفارش بده</div>
-                <div class="slide-text">منوی دیجیتال حیات</div>
+
+                <div class="slide-small">
+                    HAYAT COMPLEX
+                </div>
+
+                <div class="slide-title">
+                    انتخاب کن، سفارش بده
+                </div>
+
+                <div class="slide-text">
+                    منوی دیجیتال حیات
+                </div>
+
             </div>
+
         </div>
 
-        <div class="slider-dots" id="sliderDots"></div>
+
+        <div
+            class="slider-dots"
+            id="sliderDots"
+        ></div>
 
     </div>
 
 </section>
 
 
-<!-- SEARCH -->
+<!-- =========================
+     SEARCH
+========================= -->
+
 <section class="search-box">
 
-    <button class="search-button" id="openSearch2">
+    <button
+        class="search-button"
+        id="openSearch2"
+    >
 
-        <span class="search-icon">⌕</span>
+        <span class="search-icon">
+            ⌕
+        </span>
 
         <span>
             جستجو در منوی حیات...
@@ -1275,46 +1569,88 @@ footer{
 </section>
 
 
-<!-- CATEGORIES -->
+<!-- =========================
+     CATEGORIES
+========================= -->
+
 <section class="categories-section">
 
     <div class="section-heading">
-        <h2>منوی حیات</h2>
-        <span>دسته‌بندی‌ها</span>
+
+        <h2>
+            منوی حیات
+        </h2>
+
+        <span>
+            دسته‌بندی‌ها
+        </span>
+
     </div>
 
-    <div class="categories" id="categories">
+
+    <div
+        class="categories"
+        id="categories"
+    >
+
         <div class="empty">
             در حال بارگذاری منو...
         </div>
+
     </div>
 
 </section>
 
 
-<!-- CATEGORY MODAL -->
-<div class="modal" id="categoryModal">
+<!-- =========================
+     CATEGORY MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="categoryModal"
+>
 
     <div class="modal-panel">
+
 
         <div class="modal-header">
 
             <div class="modal-title">
-                <strong id="modalCategoryTitle">منو</strong>
-                <span>انتخاب کنید</span>
+
+                <strong id="modalCategoryTitle">
+                    منو
+                </strong>
+
+                <span>
+                    انتخاب کنید
+                </span>
+
             </div>
 
-            <button class="close-btn" id="closeCategory">
+
+            <button
+                class="close-btn"
+                id="closeCategory"
+            >
                 ×
             </button>
 
         </div>
 
+
         <div class="modal-body">
 
-            <div class="sub-tabs" id="subTabs"></div>
+            <div
+                class="sub-tabs"
+                id="subTabs"
+            ></div>
 
-            <div class="products" id="modalProducts"></div>
+
+            <div
+                class="products"
+                id="modalProducts"
+            ></div>
 
         </div>
 
@@ -1323,10 +1659,17 @@ footer{
 </div>
 
 
-<!-- SEARCH MODAL -->
-<div class="modal" id="searchModal">
+<!-- =========================
+     SEARCH MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="searchModal"
+>
 
     <div class="search-panel">
+
 
         <div class="search-header">
 
@@ -1340,7 +1683,11 @@ footer{
                     autocomplete="off"
                 >
 
-                <button class="search-close" id="closeSearch">
+
+                <button
+                    class="search-close"
+                    id="closeSearch"
+                >
                     ×
                 </button>
 
@@ -1348,7 +1695,11 @@ footer{
 
         </div>
 
-        <div class="search-results" id="searchResults">
+
+        <div
+            class="search-results"
+            id="searchResults"
+        >
 
             <div class="empty">
                 برای جستجو، نام آیتم را وارد کنید.
@@ -1361,38 +1712,77 @@ footer{
 </div>
 
 
-<!-- CART -->
-<button class="cart-toggle" id="cartToggle">
+<!-- =========================
+     CART BUTTON
+========================= -->
 
-    <span>سبد سفارش</span>
+<button
+    class="cart-toggle"
+    id="cartToggle"
+>
 
-    <span class="cart-count" id="cartCount">
+    <span>
+        سبد سفارش
+    </span>
+
+    <span
+        class="cart-count"
+        id="cartCount"
+    >
         0
     </span>
 
 </button>
 
 
-<div class="cart-panel" id="cartPanel">
+<!-- =========================
+     CART PANEL
+========================= -->
+
+<div
+    class="cart-panel"
+    id="cartPanel"
+>
+
 
     <div class="cart-head">
 
-        <strong>سبد سفارش</strong>
+        <strong>
+            سبد سفارش
+        </strong>
 
-        <button class="cart-close" id="cartClose">
+
+        <button
+            class="cart-close"
+            id="cartClose"
+        >
             ×
         </button>
 
     </div>
 
-    <div class="cart-items" id="cartItems"></div>
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    ></div>
+
 
     <div class="cart-bottom">
 
+
         <div class="total">
-            <span>مبلغ کل</span>
-            <strong id="cartTotal">۰ تومان</strong>
+
+            <span>
+                مبلغ کل
+            </span>
+
+            <strong id="cartTotal">
+                ۰ تومان
+            </strong>
+
         </div>
+
 
         <input
             id="tableNumber"
@@ -1401,6 +1791,7 @@ footer{
             inputmode="numeric"
             placeholder="شماره میز"
         >
+
 
         <button
             class="order-btn"
@@ -1414,24 +1805,37 @@ footer{
 </div>
 
 
-<!-- TOAST -->
-<div class="toast" id="addToast">
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    class="toast"
+    id="addToast"
+>
     به سبد سفارش اضافه شد
 </div>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
     <div class="footer-brand">
         HAYAT COMPLEX
     </div>
 
+
     <div class="footer-links">
 
-        <a href="tel:+989011286503">
+        <a
+            href="tel:+989011286503"
+        >
             تماس
         </a>
+
 
         <a
             href="https://instagram.com/hayat_complex"
@@ -1439,6 +1843,7 @@ footer{
         >
             اینستاگرام
         </a>
+
 
         <a
             href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA"
@@ -1449,6 +1854,7 @@ footer{
 
     </div>
 
+
     <div class="footer-copy">
         Digital Menu
     </div>
@@ -1458,6 +1864,7 @@ footer{
 
 <script>
 
+
 /* ==========================================
    SUPABASE
 ========================================== */
@@ -1465,8 +1872,10 @@ footer{
 const SUPABASE_URL =
     "https://lryoqddbyasdtjdrwpvx.supabase.co";
 
+
 const SUPABASE_KEY =
     "sb_publishable_pZbQaJ78di1MH3PUcJfeyw_0vPl43k9";
+
 
 const supabaseClient =
     window.supabase.createClient(
@@ -1480,11 +1889,13 @@ const supabaseClient =
 ========================================== */
 
 let menuSections = [];
+
 let menuItems = [];
 
 let cart = [];
 
 let currentCategory = null;
+
 let currentSubcategory = null;
 
 
@@ -1522,7 +1933,8 @@ const categoryImages = {
 function formatPrice(price){
 
     return Number(price || 0)
-        .toLocaleString("fa-IR") + " تومان";
+        .toLocaleString("fa-IR")
+        + " تومان";
 
 }
 
@@ -1554,6 +1966,7 @@ async function loadDynamicMenu(){
                 .eq("active",true)
                 .order("sort_order",{ascending:true});
 
+
         if(sectionsResponse.error)
             throw sectionsResponse.error;
 
@@ -1572,6 +1985,7 @@ async function loadDynamicMenu(){
         menuSections =
             sectionsResponse.data || [];
 
+
         menuItems =
             itemsResponse.data || [];
 
@@ -1585,10 +1999,13 @@ async function loadDynamicMenu(){
 
         console.error(error);
 
+
         document.getElementById("categories").innerHTML = `
+
             <div class="empty">
                 خطا در دریافت منو
             </div>
+
         `;
 
     }
@@ -1597,7 +2014,7 @@ async function loadDynamicMenu(){
 
 
 /* ==========================================
-   GET MAIN SECTIONS
+   MAIN SECTIONS
 ========================================== */
 
 function getMainSections(){
@@ -1610,13 +2027,15 @@ function getMainSections(){
 
 
 /* ==========================================
-   GET CHILD SECTIONS
+   CHILD SECTIONS
 ========================================== */
 
 function getChildren(main){
 
     return menuSections.filter(section =>
-        String(section.parent_id) === String(main.id)
+        String(section.parent_id)
+        ===
+        String(main.id)
     );
 
 }
@@ -1629,9 +2048,12 @@ function getChildren(main){
 function getCategoryImage(main){
 
     const id =
-        String(main.id || "").toLowerCase();
+        String(main.id || "")
+        .toLowerCase();
 
-    return categoryImages[id] ||
+
+    return categoryImages[id]
+        ||
         "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80";
 
 }
@@ -1646,6 +2068,7 @@ function renderCategories(){
     const container =
         document.getElementById("categories");
 
+
     const mains =
         getMainSections();
 
@@ -1653,9 +2076,11 @@ function renderCategories(){
     if(!mains.length){
 
         container.innerHTML = `
+
             <div class="empty">
                 منویی برای نمایش وجود ندارد.
             </div>
+
         `;
 
         return;
@@ -1663,27 +2088,54 @@ function renderCategories(){
     }
 
 
-    container.innerHTML =
-        mains.map(main => `
+    container.innerHTML = "";
 
-            <div
-                class="category-card"
-                onclick="openCategory(${JSON.stringify(main.id)})"
+
+    mains.forEach(main => {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "category-card";
+
+
+        card.dataset.id =
+            String(main.id);
+
+
+        card.innerHTML = `
+
+            <img
+                src="${getCategoryImage(main)}"
+                alt="${escapeHTML(main.name)}"
+                loading="lazy"
             >
 
-                <img
-                    src="${getCategoryImage(main)}"
-                    alt="${escapeHTML(main.name)}"
-                    loading="lazy"
-                >
 
-                <div class="category-name">
-                    ${escapeHTML(main.name)}
-                </div>
-
+            <div class="category-name">
+                ${escapeHTML(main.name)}
             </div>
 
-        `).join("");
+        `;
+
+
+        card.addEventListener(
+            "click",
+            function(){
+
+                openCategory(
+                    this.dataset.id
+                );
+
+            }
+        );
+
+
+        container.appendChild(card);
+
+    });
 
 }
 
@@ -1696,21 +2148,28 @@ function openCategory(id){
 
     const main =
         menuSections.find(section =>
-            String(section.id) === String(id)
+            String(section.id)
+            ===
+            String(id)
         );
+
 
     if(!main)
         return;
 
 
-    currentCategory = main;
+    currentCategory =
+        main;
+
 
     const children =
         getChildren(main);
 
 
-    document.getElementById("modalCategoryTitle")
-        .textContent = main.name;
+    document
+        .getElementById("modalCategoryTitle")
+        .textContent =
+        main.name;
 
 
     const subTabs =
@@ -1724,7 +2183,7 @@ function openCategory(id){
 
                 <button
                     class="sub-tab ${index === 0 ? "active" : ""}"
-                    onclick="selectSubcategory('${String(child.id).replace(/'/g,"\\'")}')"
+                    data-sub-id="${escapeHTML(child.id)}"
                 >
                     ${escapeHTML(child.name)}
                 </button>
@@ -1732,8 +2191,27 @@ function openCategory(id){
             `).join("");
 
 
+        subTabs
+            .querySelectorAll(".sub-tab")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function(){
+
+                        selectSubcategory(
+                            this.dataset.subId
+                        );
+
+                    }
+                );
+
+            });
+
+
         currentSubcategory =
             children[0];
+
 
         renderModalProducts();
 
@@ -1749,8 +2227,10 @@ function openCategory(id){
     }
 
 
-    document.getElementById("categoryModal")
+    document
+        .getElementById("categoryModal")
         .classList.add("open");
+
 
     document.body.classList.add("modal-open");
 
@@ -1769,7 +2249,9 @@ function selectSubcategory(id){
 
     currentSubcategory =
         children.find(child =>
-            String(child.id) === String(id)
+            String(child.id)
+            ===
+            String(id)
         );
 
 
@@ -1779,8 +2261,9 @@ function selectSubcategory(id){
 
             button.classList.toggle(
                 "active",
-                button.textContent.trim() ===
-                String(currentSubcategory?.name || "").trim()
+                String(button.dataset.subId)
+                ===
+                String(id)
             );
 
         });
@@ -1792,7 +2275,7 @@ function selectSubcategory(id){
 
 
 /* ==========================================
-   RENDER PRODUCTS
+   RENDER MODAL PRODUCTS
 ========================================== */
 
 function renderModalProducts(){
@@ -1809,12 +2292,14 @@ function renderModalProducts(){
         items =
             menuItems.filter(item =>
 
-                String(item.category) ===
+                String(item.category)
+                ===
                 String(currentCategory.id)
 
                 &&
 
-                String(item.subcategory || "") ===
+                String(item.subcategory || "")
+                ===
                 String(currentSubcategory.name)
 
             );
@@ -1824,7 +2309,8 @@ function renderModalProducts(){
         items =
             menuItems.filter(item =>
 
-                String(item.category) ===
+                String(item.category)
+                ===
                 String(currentCategory.id)
 
             );
@@ -1841,17 +2327,22 @@ function renderModalProducts(){
 
 
 /* ==========================================
-   PRODUCT HTML
+   PRODUCT LIST
 ========================================== */
 
-function renderProductList(container,items){
+function renderProductList(
+    container,
+    items
+){
 
     if(!items.length){
 
         container.innerHTML = `
+
             <div class="empty">
                 آیتمی در این بخش وجود ندارد.
             </div>
+
         `;
 
         return;
@@ -1864,11 +2355,13 @@ function renderProductList(container,items){
 
             <div class="product-card">
 
+
                 <div>
 
                     <div class="product-name">
                         ${escapeHTML(item.name)}
                     </div>
+
 
                     ${
                         item.description
@@ -1884,15 +2377,18 @@ function renderProductList(container,items){
 
                 </div>
 
+
                 <div class="product-bottom">
+
 
                     <div class="price">
                         ${formatPrice(item.price)}
                     </div>
 
+
                     <button
                         class="add-btn"
-                        onclick="addItem('${String(item.id).replace(/'/g,"\\'")}')"
+                        data-item-id="${escapeHTML(item.id)}"
                     >
                         افزودن
                     </button>
@@ -1902,6 +2398,24 @@ function renderProductList(container,items){
             </div>
 
         `).join("");
+
+
+    container
+        .querySelectorAll(".add-btn")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    addItem(
+                        this.dataset.itemId
+                    );
+
+                }
+            );
+
+        });
 
 }
 
@@ -1916,7 +2430,10 @@ function closeCategory(){
         .getElementById("categoryModal")
         .classList.remove("open");
 
-    document.body.classList.remove("modal-open");
+
+    document.body.classList.remove(
+        "modal-open"
+    );
 
 }
 
@@ -1931,12 +2448,15 @@ document
 
 document
     .getElementById("categoryModal")
-    .addEventListener("click",function(e){
+    .addEventListener(
+        "click",
+        function(e){
 
-        if(e.target === this)
-            closeCategory();
+            if(e.target === this)
+                closeCategory();
 
-    });
+        }
+    );
 
 
 /* ==========================================
@@ -1949,7 +2469,11 @@ function openSearch(){
         .getElementById("searchModal")
         .classList.add("open");
 
-    document.body.classList.add("modal-open");
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
 
     setTimeout(() => {
 
@@ -1968,45 +2492,55 @@ function closeSearch(){
         .getElementById("searchModal")
         .classList.remove("open");
 
-    document.body.classList.remove("modal-open");
+
+    document.body.classList.remove(
+        "modal-open"
+    );
 
 }
 
 
 document
-    .getElementById("openSearch")
-    .addEventListener("click",openSearch);
-
-
-document
     .getElementById("openSearch2")
-    .addEventListener("click",openSearch);
+    .addEventListener(
+        "click",
+        openSearch
+    );
 
 
 document
     .getElementById("closeSearch")
-    .addEventListener("click",closeSearch);
+    .addEventListener(
+        "click",
+        closeSearch
+    );
 
 
 document
     .getElementById("searchModal")
-    .addEventListener("click",function(e){
+    .addEventListener(
+        "click",
+        function(e){
 
-        if(e.target === this)
-            closeSearch();
+            if(e.target === this)
+                closeSearch();
 
-    });
+        }
+    );
 
 
 document
     .getElementById("searchInput")
-    .addEventListener("input",function(){
+    .addEventListener(
+        "input",
+        function(){
 
-        renderSearchResults(
-            this.value.trim()
-        );
+            renderSearchResults(
+                this.value.trim()
+            );
 
-    });
+        }
+    );
 
 
 /* ==========================================
@@ -2016,15 +2550,19 @@ document
 function renderSearchResults(query){
 
     const container =
-        document.getElementById("searchResults");
+        document.getElementById(
+            "searchResults"
+        );
 
 
     if(!query){
 
         container.innerHTML = `
+
             <div class="empty">
                 نام آیتم مورد نظر را جستجو کنید.
             </div>
+
         `;
 
         return;
@@ -2042,8 +2580,11 @@ function renderSearchResults(query){
             const text = [
 
                 item.name,
+
                 item.description,
+
                 item.category,
+
                 item.subcategory
 
             ]
@@ -2060,9 +2601,11 @@ function renderSearchResults(query){
     if(!results.length){
 
         container.innerHTML = `
+
             <div class="empty">
                 موردی پیدا نشد.
             </div>
+
         `;
 
         return;
@@ -2086,7 +2629,9 @@ function addItem(id){
 
     const item =
         menuItems.find(product =>
-            String(product.id) === String(id)
+            String(product.id)
+            ===
+            String(id)
         );
 
 
@@ -2096,7 +2641,9 @@ function addItem(id){
 
     const existing =
         cart.find(product =>
-            String(product.id) === String(id)
+            String(product.id)
+            ===
+            String(id)
         );
 
 
@@ -2107,8 +2654,11 @@ function addItem(id){
     }else{
 
         cart.push({
+
             ...item,
+
             qty:1
+
         });
 
     }
@@ -2130,25 +2680,31 @@ function updateCart(){
     const count =
         cart.reduce(
             (sum,item) =>
-            sum + item.qty,
+                sum + item.qty,
             0
         );
 
 
-    document.getElementById("cartCount")
-        .textContent = count.toLocaleString("fa-IR");
+    document
+        .getElementById("cartCount")
+        .textContent =
+        count.toLocaleString("fa-IR");
 
 
     const container =
-        document.getElementById("cartItems");
+        document.getElementById(
+            "cartItems"
+        );
 
 
     if(!cart.length){
 
         container.innerHTML = `
+
             <div class="empty">
                 سبد سفارش خالی است.
             </div>
+
         `;
 
     }else{
@@ -2158,11 +2714,13 @@ function updateCart(){
 
                 <div class="cart-item">
 
+
                     <div>
 
                         <div class="cart-item-name">
                             ${escapeHTML(item.name)}
                         </div>
+
 
                         <div class="cart-item-price">
                             ${formatPrice(item.price)}
@@ -2170,23 +2728,30 @@ function updateCart(){
 
                     </div>
 
+
                     <div class="qty">
 
+
                         <button
-                            onclick="changeQty('${String(item.id).replace(/'/g,"\\'")}',1)"
+                            data-id="${escapeHTML(item.id)}"
+                            data-change="1"
                         >
                             +
                         </button>
+
 
                         <span>
                             ${item.qty.toLocaleString("fa-IR")}
                         </span>
 
+
                         <button
-                            onclick="changeQty('${String(item.id).replace(/'/g,"\\'")}',-1)"
+                            data-id="${escapeHTML(item.id)}"
+                            data-change="-1"
                         >
                             −
                         </button>
+
 
                     </div>
 
@@ -2194,18 +2759,43 @@ function updateCart(){
 
             `).join("");
 
+
+        container
+            .querySelectorAll(".qty button")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function(){
+
+                        changeQty(
+                            this.dataset.id,
+                            Number(
+                                this.dataset.change
+                            )
+                        );
+
+                    }
+                );
+
+            });
+
     }
 
 
     const total =
         cart.reduce(
             (sum,item) =>
-            sum + Number(item.price || 0) * item.qty,
+                sum +
+                Number(item.price || 0)
+                *
+                item.qty,
             0
         );
 
 
-    document.getElementById("cartTotal")
+    document
+        .getElementById("cartTotal")
         .textContent =
         formatPrice(total);
 
@@ -2216,11 +2806,16 @@ function updateCart(){
    CHANGE QTY
 ========================================== */
 
-function changeQty(id,amount){
+function changeQty(
+    id,
+    amount
+){
 
     const item =
         cart.find(product =>
-            String(product.id) === String(id)
+            String(product.id)
+            ===
+            String(id)
         );
 
 
@@ -2235,7 +2830,9 @@ function changeQty(id,amount){
 
         cart =
             cart.filter(product =>
-                String(product.id) !== String(id)
+                String(product.id)
+                !==
+                String(id)
             );
 
     }
@@ -2247,44 +2844,34 @@ function changeQty(id,amount){
 
 
 /* ==========================================
-   CART OPEN/CLOSE
+   CART OPEN / CLOSE
 ========================================== */
-
-function openCart(){
-
-    document
-        .getElementById("cartPanel")
-        .classList.add("open");
-
-}
-
-
-function closeCart(){
-
-    document
-        .getElementById("cartPanel")
-        .classList.remove("open");
-
-}
-
 
 document
     .getElementById("cartToggle")
-    .addEventListener("click",function(){
+    .addEventListener(
+        "click",
+        function(){
 
-        const panel =
-            document.getElementById("cartPanel");
+            document
+                .getElementById("cartPanel")
+                .classList.toggle("open");
 
-        panel.classList.toggle("open");
-
-    });
+        }
+    );
 
 
 document
     .getElementById("cartClose")
     .addEventListener(
         "click",
-        closeCart
+        function(){
+
+            document
+                .getElementById("cartPanel")
+                .classList.remove("open");
+
+        }
     );
 
 
@@ -2294,24 +2881,34 @@ document
 
 let toastTimer;
 
+
 function showAddToast(){
 
     const toast =
-        document.getElementById("addToast");
+        document.getElementById(
+            "addToast"
+        );
 
 
     toast.classList.add("show");
 
 
-    clearTimeout(toastTimer);
+    clearTimeout(
+        toastTimer
+    );
 
 
     toastTimer =
-        setTimeout(() => {
+        setTimeout(
+            () => {
 
-            toast.classList.remove("show");
+                toast.classList.remove(
+                    "show"
+                );
 
-        },1800);
+            },
+            1800
+        );
 
 }
 
@@ -2324,7 +2921,9 @@ async function submitOrder(){
 
     if(!cart.length){
 
-        alert("سبد سفارش خالی است.");
+        alert(
+            "سبد سفارش خالی است."
+        );
 
         return;
 
@@ -2340,7 +2939,9 @@ async function submitOrder(){
 
     if(!table){
 
-        alert("لطفاً شماره میز را وارد کنید.");
+        alert(
+            "لطفاً شماره میز را وارد کنید."
+        );
 
         return;
 
@@ -2350,7 +2951,10 @@ async function submitOrder(){
     const total =
         cart.reduce(
             (sum,item) =>
-            sum + Number(item.price || 0) * item.qty,
+                sum +
+                Number(item.price || 0)
+                *
+                item.qty,
             0
         );
 
@@ -2359,15 +2963,20 @@ async function submitOrder(){
         cart.map(item => ({
 
             id:item.id,
+
             name:item.name,
+
             price:item.price,
+
             qty:item.qty
 
         }));
 
 
     const button =
-        document.getElementById("orderBtn");
+        document.getElementById(
+            "orderBtn"
+        );
 
 
     button.disabled = true;
@@ -2398,24 +3007,37 @@ async function submitOrder(){
             throw error;
 
 
-        alert("سفارش شما با موفقیت ثبت شد.");
+        alert(
+            "سفارش شما با موفقیت ثبت شد."
+        );
 
 
         cart = [];
 
+
         document
-            .getElementById("tableNumber")
+            .getElementById(
+                "tableNumber"
+            )
             .value = "";
 
 
         updateCart();
 
-        closeCart();
+
+        document
+            .getElementById(
+                "cartPanel"
+            )
+            .classList.remove(
+                "open"
+            );
 
 
     }catch(error){
 
         console.error(error);
+
 
         alert(
             "ثبت سفارش انجام نشد. دوباره تلاش کنید."
@@ -2441,38 +3063,57 @@ document
 
 
 /* ==========================================
-   HERO SLIDER
+   SLIDER
 ========================================== */
 
 const slides =
-    document.querySelectorAll(".slide");
+    document.querySelectorAll(
+        ".slide"
+    );
+
 
 const dotsContainer =
-    document.getElementById("sliderDots");
+    document.getElementById(
+        "sliderDots"
+    );
 
 
 let currentSlide = 0;
 
 
-slides.forEach((slide,index) => {
+slides.forEach(
+    (slide,index) => {
 
-    const dot =
-        document.createElement("button");
-
-    dot.className =
-        "slider-dot" +
-        (index === 0 ? " active" : "");
-
-
-    dot.addEventListener(
-        "click",
-        () => showSlide(index)
-    );
+        const dot =
+            document.createElement(
+                "button"
+            );
 
 
-    dotsContainer.appendChild(dot);
+        dot.className =
+            "slider-dot"
+            +
+            (
+                index === 0
+                ?
+                " active"
+                :
+                ""
+            );
 
-});
+
+        dot.addEventListener(
+            "click",
+            () => showSlide(index)
+        );
+
+
+        dotsContainer.appendChild(
+            dot
+        );
+
+    }
+);
 
 
 function showSlide(index){
@@ -2480,79 +3121,112 @@ function showSlide(index){
     currentSlide = index;
 
 
-    slides.forEach((slide,i) => {
+    slides.forEach(
+        (slide,i) => {
 
-        slide.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
-
-    document
-        .querySelectorAll(".slider-dot")
-        .forEach((dot,i) => {
-
-            dot.classList.toggle(
+            slide.classList.toggle(
                 "active",
                 i === index
             );
 
-        });
+        }
+    );
+
+
+    document
+        .querySelectorAll(
+            ".slider-dot"
+        )
+        .forEach(
+            (dot,i) => {
+
+                dot.classList.toggle(
+                    "active",
+                    i === index
+                );
+
+            }
+        );
 
 }
 
 
-setInterval(() => {
+setInterval(
+    () => {
 
-    showSlide(
-        (currentSlide + 1) % slides.length
-    );
+        showSlide(
+            (
+                currentSlide + 1
+            )
+            %
+            slides.length
+        );
 
-},4000);
+    },
+    4000
+);
 
 
 /* ==========================================
-   ESC KEY
+   ESC
 ========================================== */
 
-document.addEventListener("keydown",function(e){
+document.addEventListener(
+    "keydown",
+    function(e){
 
-    if(e.key !== "Escape")
-        return;
+        if(e.key !== "Escape")
+            return;
 
 
-    closeCategory();
+        closeCategory();
 
-    closeSearch();
+        closeSearch();
 
-    closeCart();
 
-});
+        document
+            .getElementById(
+                "cartPanel"
+            )
+            .classList.remove(
+                "open"
+            );
+
+    }
+);
 
 
 /* ==========================================
    START
 ========================================== */
 
-window.addEventListener("load",function(){
+window.addEventListener(
+    "load",
+    function(){
 
-    setTimeout(() => {
+        setTimeout(
+            () => {
 
-        const intro =
-            document.getElementById("intro");
-
-        intro.style.display = "none";
-
-    },3400);
+                const intro =
+                    document.getElementById(
+                        "intro"
+                    );
 
 
-    loadDynamicMenu();
+                intro.style.display =
+                    "none";
 
-    updateCart();
+            },
+            3400
+        );
 
-});
+
+        loadDynamicMenu();
+
+        updateCart();
+
+    }
+);
 
 </script>
 
