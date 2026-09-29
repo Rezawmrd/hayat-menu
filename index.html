@@ -57,9 +57,7 @@ a{
 #intro{
     position:fixed;
     inset:0;
-
     background:#090909;
-
     z-index:99999;
 
     display:flex;
@@ -146,45 +144,24 @@ a{
 
 header{
     width:100%;
-
     padding:18px 16px 8px;
-
     position:relative;
-
     z-index:10;
 }
 
 .topbar{
     max-width:850px;
-
     margin:auto;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 }
 
 .brand{
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    gap:10px;
-}
-
-.brand img{
-    width:43px;
-    height:43px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:1px solid rgba(212,175,55,.7);
 }
 
 .brand-name{
@@ -1433,11 +1410,6 @@ footer{
 
         <div class="brand">
 
-            <img
-                src="file_000000005f7471fdbdd33eefd3f2e476.png"
-                alt="HAYAT"
-            >
-
             <div class="brand-name">
                 HAYAT COMPLEX
             </div>
@@ -1951,6 +1923,53 @@ function escapeHTML(value){
 }
 
 
+/*
+    برای مقایسه امن ID و نام
+    فاصله و حروف بزرگ/کوچک را نادیده می‌گیرد.
+*/
+
+function normalizeValue(value){
+
+    return String(value ?? "")
+        .trim()
+        .toLowerCase();
+
+}
+
+
+/*
+    بررسی می‌کند که مقدار ذخیره‌شده
+    با ID یا نام یک بخش مطابقت دارد.
+*/
+
+function matchesSectionValue(
+    value,
+    section
+){
+
+    const normalizedValue =
+        normalizeValue(value);
+
+    if(!normalizedValue || !section)
+        return false;
+
+
+    const sectionId =
+        normalizeValue(section.id);
+
+    const sectionName =
+        normalizeValue(section.name);
+
+
+    return (
+        normalizedValue === sectionId
+        ||
+        normalizedValue === sectionName
+    );
+
+}
+
+
 /* ==========================================
    LOAD MENU
 ========================================== */
@@ -2284,36 +2303,74 @@ function renderModalProducts(){
         document.getElementById("modalProducts");
 
 
+    if(!currentCategory){
+
+        container.innerHTML = `
+
+            <div class="empty">
+                آیتمی در این بخش وجود ندارد.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
     let items = [];
 
+
+    /*
+        اگر زیردسته وجود دارد:
+        هم category را با ID یا نام بررسی می‌کنیم
+        و هم subcategory را با ID یا نام.
+    */
 
     if(currentSubcategory){
 
         items =
-            menuItems.filter(item =>
+            menuItems.filter(item => {
 
-                String(item.category)
-                ===
-                String(currentCategory.id)
+                const categoryMatch =
+                    matchesSectionValue(
+                        item.category,
+                        currentCategory
+                    );
 
-                &&
 
-                String(item.subcategory || "")
-                ===
-                String(currentSubcategory.name)
+                const subcategoryMatch =
+                    matchesSectionValue(
+                        item.subcategory,
+                        currentSubcategory
+                    );
 
-            );
+
+                return (
+                    categoryMatch
+                    &&
+                    subcategoryMatch
+                );
+
+            });
+
 
     }else{
 
+        /*
+            اگر زیردسته ندارد،
+            فقط category را بررسی می‌کنیم.
+        */
+
         items =
-            menuItems.filter(item =>
+            menuItems.filter(item => {
 
-                String(item.category)
-                ===
-                String(currentCategory.id)
+                return matchesSectionValue(
+                    item.category,
+                    currentCategory
+                );
 
-            );
+            });
 
     }
 
@@ -2571,7 +2628,7 @@ function renderSearchResults(query){
 
 
     const q =
-        query.toLowerCase();
+        normalizeValue(query);
 
 
     const results =
@@ -2589,11 +2646,11 @@ function renderSearchResults(query){
 
             ]
             .filter(Boolean)
-            .join(" ")
-            .toLowerCase();
+            .join(" ");
 
 
-            return text.includes(q);
+            return normalizeValue(text)
+                .includes(q);
 
         });
 
