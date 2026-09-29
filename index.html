@@ -2072,21 +2072,120 @@ function getCategoryImage(section){
         return "";
     }
 
-    const id = String(section.id || "").trim().toLowerCase();
-    const name = String(section.name || "").trim().toLowerCase();
+    const id =
+        String(section.id || "")
+        .trim()
+        .toLowerCase();
+
+    const name =
+        String(section.name || "")
+        .trim()
+        .toLowerCase();
+
+
+    /* =========================
+       صبحانه
+    ========================= */
 
     if(
         id === "breakfast" ||
         name === "صبحانه" ||
         name === "breakfast"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/image_1790713742413.jpeg";
+        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-28-48-300.jpg";
     }
 
-    return (
-        categoryImages[id] ||
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80"
-    );
+
+    /* =========================
+       شام / غذا
+    ========================= */
+
+    if(
+        id === "food" ||
+        name === "شام" ||
+        name === "غذا" ||
+        name === "food"
+    ){
+        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-29-24-707.jpg";
+    }
+
+
+    /* =========================
+       سالاد
+    ========================= */
+
+    if(
+        id === "salad" ||
+        name === "سالاد" ||
+        name === "salad"
+    ){
+        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-29-57-852.jpg";
+    }
+
+
+    /* =========================
+       نوشیدنی گرم
+    ========================= */
+
+    if(
+        id === "hot" ||
+        name === "نوشیدنی گرم" ||
+        name === "نوشیدنی گذم" ||
+        name === "نوشیدنی گرم" ||
+        name === "hot"
+    ){
+        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-30-29-392.jpg";
+    }
+
+
+    /* =========================
+       نوشیدنی سرد
+    ========================= */
+
+    if(
+        id === "cold" ||
+        name === "نوشیدنی سرد" ||
+        name === "cold"
+    ){
+        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-30-51-639.jpg";
+    }
+
+
+    /* =========================
+       کیک
+    ========================= */
+
+    if(
+        id === "cake" ||
+        name === "کیک" ||
+        name === "cake"
+    ){
+        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-31-49-765.jpg";
+    }
+
+
+    /* =========================
+       لیوان تیک اوی
+    ========================= */
+
+    if(
+        id === "takeaway" ||
+        name === "لیوان تیک اوی" ||
+        name === "لیوان تیک‌اوی" ||
+        name === "تیک اوی" ||
+        name === "تیک‌اوی" ||
+        name === "takeaway"
+    ){
+        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-31-26-773.jpg";
+    }
+
+
+    /* =========================
+       عکس پیش‌فرض
+    ========================= */
+
+    return "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80";
+
 }
 
 
