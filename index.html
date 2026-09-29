@@ -1494,17 +1494,20 @@ class="category-modal">
 
 <div class="cart-box">
 
-    <button
+<button
     class="cart-toggle"
+    id="cartToggle"
     onclick="toggleCart()">
 
+    <span id="cartButtonText">
         سبد خرید
+    </span>
 
-        <span id="cartCount">
-            0
-        </span>
+    <span id="cartCount">
+        0
+    </span>
 
-    </button>
+</button>
 
 
     <div
@@ -2907,13 +2910,36 @@ function changeQty(
 
 function toggleCart(){
 
-    document
-    .getElementById(
-        "cartPanel"
-    )
-    .classList.toggle(
-        "open"
-    );
+    const panel =
+        document.getElementById("cartPanel");
+
+    const buttonText =
+        document.getElementById("cartButtonText");
+
+    const count =
+        document.getElementById("cartCount");
+
+    const isOpen =
+        panel.classList.toggle("open");
+
+
+    if(isOpen){
+
+        buttonText.textContent = "بستن";
+
+        count.textContent = "×";
+
+        count.style.fontSize = "18px";
+
+        count.style.padding = "0 6px";
+
+    }else{
+
+        buttonText.textContent = "سبد خرید";
+
+        updateCart();
+
+    }
 
 }
 
