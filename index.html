@@ -38,6 +38,10 @@ body{
     overflow-x:hidden;
 }
 
+body.modal-open{
+    overflow:hidden;
+}
+
 body::before{
     content:"";
     position:fixed;
@@ -426,31 +430,127 @@ header h1{
 
 
 /* =====================================================
-   PRODUCTS AREA
+   CATEGORY MODAL
 ===================================================== */
 
-.menu-content{
+.category-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:4000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+.category-modal.open{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+
+/* BACKDROP */
+
+.category-backdrop{
+
+    position:absolute;
+
+    inset:0;
 
     background:
-        rgba(16,16,16,.92);
+        rgba(0,0,0,.78);
+
+    backdrop-filter:
+        blur(7px);
+
+    -webkit-backdrop-filter:
+        blur(7px);
+}
+
+
+/* MODAL BOX */
+
+.category-modal-box{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    max-width:620px;
+
+    max-height:88vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #0d0d0d
+        );
 
     border:
         1px solid
-        rgba(212,175,55,.12);
+        rgba(212,175,55,.45);
 
-    border-radius:20px;
-
-    padding:
-        17px 13px;
-
-    min-height:100px;
+    border-radius:24px;
 
     box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.22);
+        0 25px 80px
+        rgba(0,0,0,.65),
+
+        0 0 40px
+        rgba(212,175,55,.08);
+
+    transform:
+        translateY(25px)
+        scale(.97);
+
+    transition:
+        transform .3s ease;
 }
 
-.menu-heading{
+.category-modal.open
+.category-modal-box{
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* MODAL HEADER */
+
+.category-modal-header{
+
+    flex-shrink:0;
 
     display:flex;
 
@@ -460,31 +560,118 @@ header h1{
 
     gap:10px;
 
-    margin:
-        0 4px
-        15px;
-
-    padding-bottom:12px;
+    padding:
+        17px 17px 14px;
 
     border-bottom:
         1px solid
         rgba(255,255,255,.08);
 }
 
-.menu-heading h2{
+.category-modal-title{
 
     margin:0;
 
+    color:#d4af37;
+
     font-size:19px;
 
-    color:#d4af37;
+    font-weight:600;
 }
 
-.menu-heading span{
+.category-close{
 
-    color:#777;
+    width:35px;
+    height:35px;
 
-    font-size:11px;
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(212,175,55,.35);
+
+    background:#151515;
+
+    color:#d4af37;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    line-height:1;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    transition:.25s;
+}
+
+.category-close:hover{
+
+    background:#d4af37;
+
+    color:#000;
+}
+
+
+/* MODAL CONTENT */
+
+.category-modal-content{
+
+    overflow-y:auto;
+
+    padding:
+        15px 14px 25px;
+
+    overscroll-behavior:
+        contain;
+
+    scrollbar-width:
+        thin;
+
+    scrollbar-color:
+        #555 transparent;
+}
+
+.category-modal-content::-webkit-scrollbar{
+    width:5px;
+}
+
+.category-modal-content::-webkit-scrollbar-thumb{
+
+    background:#555;
+
+    border-radius:10px;
+}
+
+
+/* =====================================================
+   PRODUCTS AREA
+===================================================== */
+
+.menu-content{
+
+    background:
+        transparent;
+
+    border:none;
+
+    border-radius:0;
+
+    padding:0;
+
+    min-height:100px;
+
+    box-shadow:none;
+}
+
+.menu-heading{
+
+    display:none;
 }
 
 
@@ -1104,13 +1291,52 @@ header h1{
         font-size:13px;
     }
 
-    .menu-content{
-        padding:14px 10px;
-        border-radius:17px;
+    .category-modal{
+
+        align-items:flex-end;
+
+        padding:0;
     }
 
-    .menu-heading h2{
+    .category-modal-box{
+
+        max-width:none;
+
+        width:100%;
+
+        max-height:91vh;
+
+        border-radius:
+            24px 24px 0 0;
+
+        border-bottom:none;
+
+        transform:
+            translateY(100%);
+    }
+
+    .category-modal.open
+    .category-modal-box{
+
+        transform:
+            translateY(0);
+    }
+
+    .category-modal-header{
+
+        padding:
+            15px 15px 12px;
+    }
+
+    .category-modal-title{
+
         font-size:17px;
+    }
+
+    .category-modal-content{
+
+        padding:
+            13px 10px 25px;
     }
 
     .card{
@@ -1209,6 +1435,57 @@ header h1{
 ===================================================== -->
 
 <div id="dynamicMenu"></div>
+
+
+<!-- =====================================================
+     CATEGORY MODAL
+===================================================== -->
+
+<div
+id="categoryModal"
+class="category-modal">
+
+    <div
+    class="category-backdrop"
+    onclick="closeCategoryModal()">
+    </div>
+
+
+    <div class="category-modal-box">
+
+
+        <div class="category-modal-header">
+
+            <h2
+            id="categoryModalTitle"
+            class="category-modal-title">
+
+                منو
+
+            </h2>
+
+
+            <button
+            class="category-close"
+            onclick="closeCategoryModal()"
+            aria-label="بستن">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div
+        id="categoryModalContent"
+        class="category-modal-content">
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- =====================================================
@@ -1583,12 +1860,7 @@ function renderDynamicMenu(){
                 );
 
             categoryCard.className =
-                "category-card" +
-                (
-                    index === 0
-                    ? " active"
-                    : ""
-                );
+                "category-card";
 
 
             const image =
@@ -1696,9 +1968,7 @@ function renderDynamicMenu(){
 
 
             section.style.display =
-                index === 0
-                ? "block"
-                : "none";
+                "none";
 
 
             /* =========================================
@@ -1903,8 +2173,32 @@ function renderDynamicMenu(){
     );
 
 
-    menu.appendChild(
-        menuContent
+    /*
+     * این قسمت دیگر روی صفحه اصلی
+     * نمایش داده نمی‌شود.
+     *
+     * محتوا داخل مودال قرار می‌گیرد.
+     */
+
+    const modalContent =
+        document.getElementById(
+            "categoryModalContent"
+        );
+
+
+    modalContent.innerHTML = "";
+
+
+    Array.from(
+        menuContent.children
+    ).forEach(
+        function(section){
+
+            modalContent.appendChild(
+                section
+            );
+
+        }
     );
 
 
@@ -1923,7 +2217,7 @@ function showDynamicMain(
 ){
 
     /* ---------------------------------------------
-       Update category cards
+       ACTIVE CARD
     --------------------------------------------- */
 
     document
@@ -1947,7 +2241,7 @@ function showDynamicMain(
 
 
     /* ---------------------------------------------
-       Update sections
+       FIND SELECTED SECTION
     --------------------------------------------- */
 
     const sections =
@@ -1973,25 +2267,106 @@ function showDynamicMain(
         );
 
 
-    if(selectedSection){
-
-        selectedSection.style.display =
-            "block";
-
-    }
+    if(!selectedSection)
+        return;
 
 
-    /*
-     * عمداً هیچ scroll یا scrollIntoView
-     * اینجا استفاده نشده.
-     *
-     * بنابراین صفحه با انتخاب دسته
-     * پایین نمی‌پرد.
-     */
+    selectedSection.style.display =
+        "block";
+
+
+    /* ---------------------------------------------
+       MODAL TITLE
+    --------------------------------------------- */
+
+    document
+    .getElementById(
+        "categoryModalTitle"
+    )
+    .textContent =
+        selectedMain.name;
+
+
+    /* ---------------------------------------------
+       OPEN MODAL
+    --------------------------------------------- */
+
+    const modal =
+        document.getElementById(
+            "categoryModal"
+        );
+
+
+    modal.classList.add(
+        "open"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    /* ---------------------------------------------
+       RESET MODAL SCROLL
+    --------------------------------------------- */
+
+    const modalContent =
+        document.getElementById(
+            "categoryModalContent"
+        );
+
+
+    modalContent.scrollTop = 0;
+
 
     triggerReveal();
 
 }
+
+
+/* =====================================================
+   CLOSE CATEGORY MODAL
+===================================================== */
+
+function closeCategoryModal(){
+
+    const modal =
+        document.getElementById(
+            "categoryModal"
+        );
+
+
+    modal.classList.remove(
+        "open"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeCategoryModal();
+
+        }
+
+    }
+);
 
 
 /* =====================================================
@@ -2184,7 +2559,9 @@ function renderItemsInto(
 
 
             addButton.onclick =
-                function(){
+                function(event){
+
+                    event.stopPropagation();
 
                     addItem(
                         item.name,
