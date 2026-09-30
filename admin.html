@@ -3008,38 +3008,79 @@ function printInvoice(id){
         const price =
             Number(item.price || 0);
 
-        const itemTotal =
+        const total =
             price * quantity;
 
 
         rows += `
 
-            <tr>
+            <div class="item">
 
-                <td>
-                    ${escapeHTML(item.name)}
-                </td>
+                <div class="item-top">
 
-                <td>
-                    ${quantity.toLocaleString("fa-IR")}
-                </td>
+                    <div class="item-name">
+                        ${escapeHTML(item.name)}
+                    </div>
 
-                <td>
-                    ${formatNumber(itemTotal)}
-                </td>
+                    <div class="item-total">
+                        ${formatNumber(total)}
+                    </div>
 
-            </tr>
+                </div>
+
+
+                <div class="item-bottom">
+
+                    <span>
+                        ${quantity.toLocaleString("fa-IR")}
+                        ×
+                        ${formatNumber(price)}
+                    </span>
+
+                    <span>
+                        تومان
+                    </span>
+
+                </div>
+
+            </div>
 
         `;
-
     });
 
 
-    let win =
+    const date =
+        order.created_at
+        ? new Date(order.created_at)
+            .toLocaleDateString(
+                "fa-IR",
+                {
+                    year:"numeric",
+                    month:"2-digit",
+                    day:"2-digit"
+                }
+            )
+        : "";
+
+
+    const time =
+        order.created_at
+        ? new Date(order.created_at)
+            .toLocaleTimeString(
+                "fa-IR",
+                {
+                    hour:"2-digit",
+                    minute:"2-digit"
+                }
+            )
+        : "";
+
+
+    const win =
         window.open(
             "",
             "_blank",
-            "width=350,height=600"
+            "width=400,height=700"
         );
 
 
@@ -3055,68 +3096,483 @@ function printInvoice(id){
 
     win.document.write(`
 
-        <html lang="fa" dir="rtl">
+<!DOCTYPE html>
 
-        <head>
+<html lang="fa" dir="rtl">
 
-            <meta charset="UTF-8">
+<head>
 
-            <style>
+<meta charset="UTF-8">
 
-                body{
-                    font-family:tahoma;
-                    width:80mm;
-                    text-align:center;
-                }
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-                table{
-                    width:100%;
-                    border-collapse:collapse;
-                }
+<title>
+    HAYAT - فاکتور سفارش
+</title>
 
-                td{
-                    padding:5px;
-                    border-bottom:1px dashed #999;
-                }
 
-            </style>
+<style>
 
-        </head>
+*{
+    box-sizing:border-box;
+}
 
-        <body>
 
-            <h2>
-                HAYAT COMPLEX
-            </h2>
+html,
+body{
+    margin:0;
+    padding:0;
+}
 
-            <p>
-                سفارش #${order.id}
-            </p>
 
-            <p>
-                میز ${escapeHTML(order.table_number)}
-            </p>
+body{
 
-            <hr>
+    width:80mm;
 
-            <table>
+    margin:0 auto;
 
-                ${rows}
+    padding:7mm 5mm;
 
-            </table>
+    background:#fff;
 
-            <hr>
+    color:#111;
 
-            <h3>
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
 
-                ${formatNumber(order.total_price)}
-                تومان
+    direction:rtl;
 
-            </h3>
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+}
 
-        </body>
 
-        </html>
+/* ================= HEADER ================= */
+
+.header{
+
+    text-align:center;
+
+    padding-bottom:14px;
+
+    border-bottom:
+        1px dashed #999;
+}
+
+
+.logo{
+
+    width:52px;
+
+    height:52px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:0 auto 8px;
+
+}
+
+
+.brand{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    margin-bottom:3px;
+
+}
+
+
+.subtitle{
+
+    font-size:11px;
+
+    color:#666;
+
+}
+
+
+/* ================= ORDER INFO ================= */
+
+.order-info{
+
+    padding:13px 0;
+
+    border-bottom:
+        1px dashed #999;
+
+}
+
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:11px;
+
+    margin:6px 0;
+
+}
+
+
+.info-label{
+
+    color:#777;
+
+}
+
+
+.info-value{
+
+    font-weight:700;
+
+}
+
+
+/* ================= ITEMS ================= */
+
+.items{
+
+    padding:6px 0;
+
+}
+
+
+.item{
+
+    padding:10px 0;
+
+    border-bottom:
+        1px solid #eee;
+
+}
+
+
+.item:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.item-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+}
+
+
+.item-name{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    line-height:1.7;
+
+    text-align:right;
+
+}
+
+
+.item-total{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+
+.item-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:4px;
+
+    color:#777;
+
+    font-size:9px;
+
+}
+
+
+/* ================= TOTAL ================= */
+
+.total-box{
+
+    margin-top:7px;
+
+    padding:13px 0;
+
+    border-top:
+        1.5px solid #111;
+
+    border-bottom:
+        1px dashed #999;
+
+}
+
+
+.total-label{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-size:12px;
+
+}
+
+
+.total-price{
+
+    font-size:18px;
+
+    font-weight:900;
+
+    margin-top:6px;
+
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer{
+
+    text-align:center;
+
+    padding-top:15px;
+
+}
+
+
+.thanks{
+
+    font-size:11px;
+
+    font-weight:700;
+
+    margin-bottom:5px;
+
+}
+
+
+.footer-text{
+
+    font-size:9px;
+
+    color:#777;
+
+    line-height:1.8;
+
+}
+
+
+/* ================= PRINT ================= */
+
+@media print{
+
+    @page{
+
+        size:80mm auto;
+
+        margin:0;
+
+    }
+
+
+    body{
+
+        width:80mm;
+
+        padding:6mm 5mm;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+    <img
+        class="logo"
+        src="https://rezawmrd.github.io/hayat-menu/file_000000005f7471fdbdd33eefd3f2e476.png"
+        alt="HAYAT"
+    >
+
+
+    <div class="brand">
+        HAYAT COMPLEX
+    </div>
+
+
+    <div class="subtitle">
+        فاکتور سفارش
+    </div>
+
+</div>
+
+
+
+<div class="order-info">
+
+
+    <div class="info-row">
+
+        <span class="info-label">
+            شماره سفارش
+        </span>
+
+        <span class="info-value">
+            #${escapeHTML(String(order.id))}
+        </span>
+
+    </div>
+
+
+
+    <div class="info-row">
+
+        <span class="info-label">
+            شماره میز
+        </span>
+
+        <span class="info-value">
+            ${escapeHTML(String(order.table_number || ""))}
+        </span>
+
+    </div>
+
+
+
+    <div class="info-row">
+
+        <span class="info-label">
+            تاریخ
+        </span>
+
+        <span class="info-value">
+            ${date}
+        </span>
+
+    </div>
+
+
+
+    <div class="info-row">
+
+        <span class="info-label">
+            ساعت
+        </span>
+
+        <span class="info-value">
+            ${time}
+        </span>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="items">
+
+    ${rows}
+
+</div>
+
+
+
+<div class="total-box">
+
+
+    <div class="total-label">
+
+        <span>
+            مبلغ قابل پرداخت
+        </span>
+
+        <span>
+            تومان
+        </span>
+
+    </div>
+
+
+    <div class="total-price">
+
+        ${formatNumber(order.total_price)}
+
+    </div>
+
+
+</div>
+
+
+
+<div class="footer">
+
+
+    <div class="thanks">
+        ممنون که حیات را انتخاب کردید
+    </div>
+
+
+    <div class="footer-text">
+
+        HAYAT COMPLEX
+
+        <br>
+
+        تجربه‌ای خوش‌طعم، در کنار شما
+
+    </div>
+
+
+</div>
+
+
+
+</body>
+
+</html>
 
     `);
 
@@ -3126,13 +3582,19 @@ function printInvoice(id){
 
     setTimeout(() => {
 
+        win.focus();
+
         win.print();
 
-        win.close();
+        setTimeout(() => {
+
+            win.close();
+
+        },500);
 
     },500);
-}
 
+}
 
 /* =====================================================
    PANEL
