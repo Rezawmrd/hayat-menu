@@ -960,11 +960,30 @@ function renderOrders(){
 }
 
 
+/* =====================================================
+   ORDER DISPLAY
+   FIX: SUPPORT qty + quantity
+===================================================== */
+
 function createOrderHTML(order){
 
     let items = "";
 
     (order.items || []).forEach(item => {
+
+        const quantity =
+            Number(
+                item.qty ??
+                item.quantity ??
+                1
+            );
+
+        const price =
+            Number(item.price || 0);
+
+        const itemTotal =
+            price * quantity;
+
 
         items += `
             <div class="item">
@@ -977,17 +996,15 @@ function createOrderHTML(order){
 
                     <small>
                         تعداد:
-                        ${item.quantity || 1}
+                        ${quantity.toLocaleString("fa-IR")}
                     </small>
 
                 </div>
 
                 <div class="item-price">
 
-                    ${formatNumber(
-                        (item.price || 0) *
-                        (item.quantity || 1)
-                    )}
+                    ${formatNumber(itemTotal)}
+                    تومان
 
                 </div>
 
@@ -1349,9 +1366,6 @@ function renderMenu(){
                         }
 
 
-                        <!-- مهم:
-                             افزودن آیتم مستقیم به همین زیرتب -->
-
                         <button
                         class="add-item-btn"
                         onclick="openAddItemModal('${main.id}','${child.id}')"
@@ -1386,12 +1400,15 @@ function renderMenu(){
 
                         </div>
 
+
                         <small style="color:#777">
+
                             ${
                                 children.length
                                 ? children.length + " زیرتب"
                                 : "بدون زیرتب"
                             }
+
                         </small>
 
                     </div>
@@ -2962,6 +2979,7 @@ async function logout(){
 
 /* =====================================================
    PRINT
+   FIX: SUPPORT qty + quantity
 ===================================================== */
 
 function printInvoice(id){
@@ -2980,6 +2998,20 @@ function printInvoice(id){
 
     (order.items || []).forEach(item => {
 
+        const quantity =
+            Number(
+                item.qty ??
+                item.quantity ??
+                1
+            );
+
+        const price =
+            Number(item.price || 0);
+
+        const itemTotal =
+            price * quantity;
+
+
         rows += `
 
             <tr>
@@ -2989,14 +3021,11 @@ function printInvoice(id){
                 </td>
 
                 <td>
-                    ${item.quantity || 1}
+                    ${quantity.toLocaleString("fa-IR")}
                 </td>
 
                 <td>
-                    ${formatNumber(
-                        item.price *
-                        (item.quantity || 1)
-                    )}
+                    ${formatNumber(itemTotal)}
                 </td>
 
             </tr>
