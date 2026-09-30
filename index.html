@@ -1429,7 +1429,6 @@ footer{
 
     <div class="slider">
 
-        <!-- SLIDE 1 | فضای بیرون -->
         <div class="slide active">
 
             <img
@@ -1456,7 +1455,6 @@ footer{
         </div>
 
 
-        <!-- SLIDE 2 | سالاد سزار -->
         <div class="slide">
 
             <img
@@ -1483,7 +1481,6 @@ footer{
         </div>
 
 
-        <!-- SLIDE 3 | فضای داخل -->
         <div class="slide">
 
             <img
@@ -1510,7 +1507,6 @@ footer{
         </div>
 
 
-        <!-- DOTS -->
         <div
             class="slider-dots"
             id="sliderDots"
@@ -1589,7 +1585,6 @@ footer{
 
     <div class="modal-panel">
 
-
         <div class="modal-header">
 
             <div class="modal-title">
@@ -1645,7 +1640,6 @@ footer{
 >
 
     <div class="search-panel">
-
 
         <div class="search-header">
 
@@ -1705,7 +1699,7 @@ footer{
         class="cart-count"
         id="cartCount"
     >
-        0
+        ۰
     </span>
 
 </button>
@@ -1719,7 +1713,6 @@ footer{
     class="cart-panel"
     id="cartPanel"
 >
-
 
     <div class="cart-head">
 
@@ -1745,7 +1738,6 @@ footer{
 
 
     <div class="cart-bottom">
-
 
         <div class="total">
 
@@ -1806,9 +1798,7 @@ footer{
 
     <div class="footer-links">
 
-        <a
-            href="tel:+989011286503"
-        >
+        <a href="tel:+989011286503">
             تماس
         </a>
 
@@ -1816,6 +1806,7 @@ footer{
         <a
             href="https://instagram.com/hayat_complex"
             target="_blank"
+            rel="noopener"
         >
             اینستاگرام
         </a>
@@ -1824,6 +1815,7 @@ footer{
         <a
             href="https://maps.app.goo.gl/aWadQYgRioEBqEuSA"
             target="_blank"
+            rel="noopener"
         >
             مسیریابی
         </a>
@@ -1904,6 +1896,7 @@ const categoryImages = {
 
 };
 
+
 /* ==========================================
    HELPERS
 ========================================== */
@@ -1929,11 +1922,6 @@ function escapeHTML(value){
 }
 
 
-/*
-    برای مقایسه امن ID و نام
-    فاصله و حروف بزرگ/کوچک را نادیده می‌گیرد.
-*/
-
 function normalizeValue(value){
 
     return String(value ?? "")
@@ -1942,11 +1930,6 @@ function normalizeValue(value){
 
 }
 
-
-/*
-    بررسی می‌کند که مقدار ذخیره‌شده
-    با ID یا نام یک بخش مطابقت دارد.
-*/
 
 function matchesSectionValue(
     value,
@@ -1968,8 +1951,7 @@ function matchesSectionValue(
 
 
     return (
-        normalizedValue === sectionId
-        ||
+        normalizedValue === sectionId ||
         normalizedValue === sectionName
     );
 
@@ -2072,37 +2054,32 @@ function getChildren(main){
 
 function getCategoryImage(section){
 
-    if(!section){
+    if(!section)
         return "";
-    }
+
 
     const id =
         String(section.id || "")
-        .trim()
-        .toLowerCase();
+            .trim()
+            .toLowerCase();
+
 
     const name =
         String(section.name || "")
-        .trim()
-        .toLowerCase();
+            .trim()
+            .toLowerCase();
 
-
-    /* =========================
-       صبحانه
-    ========================= */
 
     if(
         id === "breakfast" ||
         name === "صبحانه" ||
         name === "breakfast"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-28-48-300.jpg";
+
+        return categoryImages.breakfast;
+
     }
 
-
-    /* =========================
-       شام / غذا
-    ========================= */
 
     if(
         id === "food" ||
@@ -2110,67 +2087,56 @@ function getCategoryImage(section){
         name === "غذا" ||
         name === "food"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-29-24-707.jpg";
+
+        return categoryImages.food;
+
     }
 
-
-    /* =========================
-       سالاد
-    ========================= */
 
     if(
         id === "salad" ||
         name === "سالاد" ||
         name === "salad"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-29-57-852.jpg";
+
+        return categoryImages.salad;
+
     }
 
-
-    /* =========================
-       نوشیدنی گرم
-    ========================= */
 
     if(
         id === "hot" ||
         name === "نوشیدنی گرم" ||
         name === "نوشیدنی گذم" ||
-        name === "نوشیدنی گرم" ||
         name === "hot"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-30-29-392.jpg";
+
+        return categoryImages.hot;
+
     }
 
-
-    /* =========================
-       نوشیدنی سرد
-    ========================= */
 
     if(
         id === "cold" ||
         name === "نوشیدنی سرد" ||
         name === "cold"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-30-51-639.jpg";
+
+        return categoryImages.cold;
+
     }
 
-
-    /* =========================
-       کیک
-    ========================= */
 
     if(
         id === "cake" ||
         name === "کیک" ||
         name === "cake"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-31-49-765.jpg";
+
+        return categoryImages.cake;
+
     }
 
-
-    /* =========================
-       لیوان تیک اوی
-    ========================= */
 
     if(
         id === "takeaway" ||
@@ -2180,13 +2146,11 @@ function getCategoryImage(section){
         name === "تیک‌اوی" ||
         name === "takeaway"
     ){
-        return "https://rezawmrd.github.io/hayat-menu/Picsart_26-09-30_00-31-26-773.jpg";
+
+        return categoryImages.takeaway;
+
     }
 
-
-    /* =========================
-       عکس پیش‌فرض
-    ========================= */
 
     return "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80";
 
@@ -2246,7 +2210,6 @@ function renderCategories(){
                 alt="${escapeHTML(main.name)}"
                 loading="lazy"
             >
-
 
             <div class="category-name">
                 ${escapeHTML(main.name)}
@@ -2436,12 +2399,6 @@ function renderModalProducts(){
     let items = [];
 
 
-    /*
-        اگر زیردسته وجود دارد:
-        هم category را با ID یا نام بررسی می‌کنیم
-        و هم subcategory را با ID یا نام.
-    */
-
     if(currentSubcategory){
 
         items =
@@ -2462,8 +2419,7 @@ function renderModalProducts(){
 
 
                 return (
-                    categoryMatch
-                    &&
+                    categoryMatch &&
                     subcategoryMatch
                 );
 
@@ -2471,11 +2427,6 @@ function renderModalProducts(){
 
 
     }else{
-
-        /*
-            اگر زیردسته ندارد،
-            فقط category را بررسی می‌کنیم.
-        */
 
         items =
             menuItems.filter(item => {
@@ -2527,7 +2478,6 @@ function renderProductList(
 
             <div class="product-card">
 
-
                 <div>
 
                     <div class="product-name">
@@ -2552,13 +2502,13 @@ function renderProductList(
 
                 <div class="product-bottom">
 
-
                     <div class="price">
                         ${formatPrice(item.price)}
                     </div>
 
 
                     <button
+                        type="button"
                         class="add-btn"
                         data-item-id="${escapeHTML(item.id)}"
                     >
@@ -2801,8 +2751,7 @@ function addItem(id){
 
     const item =
         menuItems.find(product =>
-            String(product.id)
-            ===
+            String(product.id) ===
             String(id)
         );
 
@@ -2811,17 +2760,17 @@ function addItem(id){
         return;
 
 
-    const existing =
-        cart.find(product =>
-            String(product.id)
-            ===
+    const existingIndex =
+        cart.findIndex(product =>
+            String(product.id) ===
             String(id)
         );
 
 
-    if(existing){
+    if(existingIndex !== -1){
 
-        existing.qty++;
+        cart[existingIndex].qty =
+            Number(cart[existingIndex].qty || 0) + 1;
 
     }else{
 
@@ -2849,10 +2798,14 @@ function addItem(id){
 
 function updateCart(){
 
+    /*
+        تعداد کل آیتم‌های سبد
+    */
+
     const count =
         cart.reduce(
             (sum,item) =>
-                sum + item.qty,
+                sum + Number(item.qty || 0),
             0
         );
 
@@ -2862,6 +2815,10 @@ function updateCart(){
         .textContent =
         count.toLocaleString("fa-IR");
 
+
+    /*
+        نمایش کامل سبد
+    */
 
     const container =
         document.getElementById(
@@ -2886,7 +2843,6 @@ function updateCart(){
 
                 <div class="cart-item">
 
-
                     <div>
 
                         <div class="cart-item-name">
@@ -2903,8 +2859,8 @@ function updateCart(){
 
                     <div class="qty">
 
-
                         <button
+                            type="button"
                             data-id="${escapeHTML(item.id)}"
                             data-change="1"
                         >
@@ -2913,17 +2869,17 @@ function updateCart(){
 
 
                         <span>
-                            ${item.qty.toLocaleString("fa-IR")}
+                            ${Number(item.qty || 0).toLocaleString("fa-IR")}
                         </span>
 
 
                         <button
+                            type="button"
                             data-id="${escapeHTML(item.id)}"
                             data-change="-1"
                         >
                             −
                         </button>
-
 
                     </div>
 
@@ -2955,13 +2911,23 @@ function updateCart(){
     }
 
 
+    /*
+        محاسبه مبلغ کل
+    */
+
     const total =
         cart.reduce(
-            (sum,item) =>
-                sum +
-                Number(item.price || 0)
-                *
-                item.qty,
+            (sum,item) => {
+
+                const price =
+                    Number(item.price || 0);
+
+                const qty =
+                    Number(item.qty || 0);
+
+                return sum + (price * qty);
+
+            },
             0
         );
 
@@ -2983,29 +2949,29 @@ function changeQty(
     amount
 ){
 
-    const item =
-        cart.find(product =>
-            String(product.id)
-            ===
+    const index =
+        cart.findIndex(product =>
+            String(product.id) ===
             String(id)
         );
 
 
-    if(!item)
+    if(index === -1)
         return;
 
 
-    item.qty += amount;
+    cart[index].qty =
+        Number(cart[index].qty || 0)
+        +
+        Number(amount);
 
 
-    if(item.qty <= 0){
+    if(cart[index].qty <= 0){
 
-        cart =
-            cart.filter(product =>
-                String(product.id)
-                !==
-                String(id)
-            );
+        cart.splice(
+            index,
+            1
+        );
 
     }
 
@@ -3124,9 +3090,8 @@ async function submitOrder(){
         cart.reduce(
             (sum,item) =>
                 sum +
-                Number(item.price || 0)
-                *
-                item.qty,
+                Number(item.price || 0) *
+                Number(item.qty || 0),
             0
         );
 
@@ -3140,7 +3105,7 @@ async function submitOrder(){
 
             price:item.price,
 
-            qty:item.qty
+            qty:Number(item.qty || 0)
 
         }));
 
@@ -3272,6 +3237,9 @@ slides.forEach(
                 :
                 ""
             );
+
+
+        dot.type = "button";
 
 
         dot.addEventListener(
